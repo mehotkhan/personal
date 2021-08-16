@@ -16,7 +16,7 @@ xfeatures:
         link: /blogs/Bandersnatch-Interactive-Player
 
   - title: کتاب
-    link: /book/
+    link: /books/
     details:
       - name: کتاب نمونه
         link: /books/
