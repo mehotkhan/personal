@@ -1,11 +1,13 @@
 ---
 # icon: creative
 # category: یادداشت
-sidebar: auto
-home : false
+# sidebar: auto
+# home : false
 ---
+<div class="ltr">
+
+
 # Bandersnatch Interactive Player (based on html5 video player)
-<div dir="ltr">
 
 
 ![](/assets/images/Bandersnatch-Interactive-Player/Black-Mirror-Bandersnatch-Stefan-and-Monster.jpg)

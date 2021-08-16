@@ -1,8 +1,8 @@
 ---
 # icon: creative
 # category: یادداشت
-sidebar: auto
-home : false
+# sidebar: auto
+# home : false
 ---
 
 # جم استک : معرفی و آموزش استفاده
