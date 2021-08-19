@@ -56,7 +56,7 @@ module.exports = {
     editLinkText: "ویرایش",
     persianDate: true, // used in last-update plugin
     lastUpdated: "آخرین ویرایش",
-    logo: "/icons/android-chrome-192x192.png",
+    // logo: "/icons/android-chrome-192x192.png",
     displayAllHeaders: false, // Default: false
     nav: [
       {
