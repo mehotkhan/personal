@@ -17,8 +17,8 @@ xfeatures:
   - title: کتاب
     link: /books/
     details:
-      - name: کتاب نمونه
-        link: /books/
+      - name: Modern Web Development on the JAMstack
+        link: /books/Modern-Web-Development-on-the-JAMstack
   - title: کارها
     link: /projects/
     details:

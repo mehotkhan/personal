@@ -95,7 +95,7 @@ module.exports = {
         collapsable: false, // optional, defaults to true
         // sidebarDepth: 1,    // optional, defaults to 1
         children: [
-          'books/book-test'
+          'books/Modern-Web-Development-on-the-JAMstack/'
         ]
       },
       {
