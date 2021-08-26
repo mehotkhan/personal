@@ -86,7 +86,7 @@ module.exports = {
           // 'blogs/',
           'blogs/jamstack-intro',
           'blogs/etools-tuts-preface',
-          'blogs/Bandersnatch-Interactive-Player'
+          
         ]
       },
       {
@@ -95,17 +95,16 @@ module.exports = {
         collapsable: false, // optional, defaults to true
         // sidebarDepth: 1,    // optional, defaults to 1
         children: [
-          'books/',
           'books/book-test'
         ]
       },
       {
-        title: 'پروژه ها',   // required
+        title: 'کارها',   // required
         path: '/projects/',      // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
         // sidebarDepth: 1,    // optional, defaults to 1
         children: [
-          'projects/',
+          'projects/Bandersnatch-Interactive-Player'
         ]
       },
     ],

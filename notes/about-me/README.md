@@ -2,20 +2,22 @@
 # icon: creative
 # category: یادداشت
 sidebar: auto
-home : false
+home: false
 ---
+
 # درباره من
 
+<div class="ltr">
 
 ## OBJECTIVE
 
-Ali is an accomplished individual with a strong back-ground in software systems, software management, professional programming and software developing. 
+Ali is an accomplished individual with a strong back-ground in software systems, software management, professional programming and software developing.
 
 Ali has contributed in about 100 software projects during thelast 10 years and he is continually evaluating and upgrading his skills so that he stays at the cutting edge of web development. Ali is a quick learner who can generate new ideas and can communicate clearly and effectively. He has a great interest in open source technologies and dedicates his leisure time to study and research in this field.Currently looking for an opportunity to join a dynamic and ambitious company that offers a unique work environment within which its staff can thrive and grow.
 
 ## TECHNOLOGY SKILLS
 
- **Programming Languages**: Python, JavaScript, Golang, PHP
+**Programming Languages**: Python, JavaScript, Golang, PHP
 
 **Operations Systems**: Experience working in Unix/Linux server managment ,De-
 bian ,Centos ,Arch ,Ubuntu
@@ -42,7 +44,7 @@ gram Api
 ## **EXPERIENCE**
 
 1. **Full Stack Developer**
-    Jun 2019 , September 2019
+   Jun 2019 , September 2019
    AriaTeck , Tehran, Iran
    • Designed and developed React,material System Pannel,
    • Designed and developed Loopback Backend
@@ -53,7 +55,7 @@ gram Api
    • Designed and developed Django Rest System
    Jun 2018 , Dec 2018
 3. **Full-Stack Developer**
-    Jun 2017 , Jun 2018
+   Jun 2017 , Jun 2018
    NGN - New Genaration Network Enginearing Co , Tehran, Iran
    • Developed Laravel software systems,
    • Designed and developed EMQ(MQTT)/React Messaging System
@@ -61,18 +63,18 @@ gram Api
    • Designed and developed Gitlab + Docker Continuous Deployment Systems
    • Designed Wordpress, Drupal, Bootstrap Theme
 4. **Backend Developer**
-    Oct 2016 , Oct 2017
+   Oct 2016 , Oct 2017
    IRANHRC , Tehran, Iran
    • Designed and developed Wordpress,bootstrap News Portal,
    • Designed and developed python Location query
    • Designed and developed Django Rest System
 5. **Backend Developer**
-    Sep 2016 - May 2017
+   Sep 2016 - May 2017
    Hami Andishe, Tehran, Iran
    • Designed and Developed DRF software systems, Part of TSP Developer Teams.
    • Data Analysis ,Part of CSP Developer Teams
 6. **Full-Stack Developer**
-    May 2016 - Oct 2017
+   May 2016 - Oct 2017
    Arman Tajarat, Tehran, Iran
    • Designed and developed FLask Rest, EMQ (MQTT), Ionic application and
    systems for Iot stack
@@ -82,3 +84,4 @@ gram Api
    • Designed Drupal/Angular Websites
    Sep 2014 - Jun 2015
 
+</div>
