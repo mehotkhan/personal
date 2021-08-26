@@ -23,7 +23,7 @@ xfeatures:
     link: /projects/
     details:
       - name: Bandersnatch Interactive Player
-        link: /blogs/Bandersnatch-Interactive-Player
+        link: /projects/Bandersnatch-Interactive-Player
 
 footer: همه چیز به طور شگفت انگیزی خوب باید باشد ، طراحی و توسعه توسط علی زِمانی ❤️
 ---
