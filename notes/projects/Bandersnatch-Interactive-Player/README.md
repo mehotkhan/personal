@@ -9,7 +9,7 @@
 
 <div class="ltr">
 
-![](/assets/images/Bandersnatch-Interactive-Player/Black-Mirror-Bandersnatch-Stefan-and-Monster.jpg)
+![](./Black-Mirror-Bandersnatch-Stefan-and-Monster.jpg)
 
 With this online(html) video player you can watch `Bandersnatch` episode of `Black Mirror` **interactively**.
 
@@ -25,11 +25,11 @@ The only thing you need is 5hours video file of `Bandersnatch` episode, Drag & d
 
 - full screen mode
 
-![Screenshot](/assets/images/Bandersnatch-Interactive-Player/full-screen.png)
+![Screenshot](./full-screen.png)
 
 - non full screen mode
 
-  ![Screenshot](/assets/images/Bandersnatch-Interactive-Player/non-full-screen.png)
+  ![Screenshot](./non-full-screen.png)
 
 ## Tips
 
