@@ -34,7 +34,8 @@ Channel ,Flask microframwork ,Celery, ,express.js ,loopback(v3) ,GraphQL
 managment platform , docker , k8s ,Nginx ,kafka ,EMQ (Mqtt broker) ,RabbitMQ
 
 **Team Managements Technologies**: Jira Platform , Git , Trello , Postman
-CMS Technologies: Drupal theme and plugins (v7),wordpress theme and plugins
+
+**CMS Technologies**: Drupal theme and plugins (v7),wordpress theme and plugins
 
 **Database Technologies**: Mongodb , Postgresql ,Key-Value (redis), Neo4j
 
