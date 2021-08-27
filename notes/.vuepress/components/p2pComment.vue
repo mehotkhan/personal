@@ -8,11 +8,19 @@
       <a class="uk-alert-close" uk-close></a>
       <p>این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!!!</p>
     </div>
+    <div class="uk-alert-success" uk-alert v-if="savedCred">
+      <a class="uk-alert-close" uk-close></a>
+      <p>شما با موفقیت عضو شدید</p>
+    </div>
+    <div class="uk-alert-primary" uk-alert v-if="assertion">
+      <a class="uk-alert-close" uk-close></a>
+      <p>شما با موفقیت وارد شدید</p>
+    </div>
     <ul uk-tab="animation: uk-animation-fade">
-      <li class="uk-active">
+      <li>
         <a href="#"> دیدگاه های : {{ title }}</a>
       </li>
-      <li>
+      <li class="uk-active">
         <a href="#">عضویت و ارسال دیدگاه</a>
       </li>
     </ul>
@@ -229,9 +237,42 @@
         </ul>
       </li>
       <li>
-        <form>
-          <fieldset class="uk-fieldset">
-            <div class="uk-margin">
+        <fieldset class="uk-fieldset">
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2@s">
+              <input
+                v-model="inputData.username"
+                class="uk-input"
+                type="text"
+                placeholder="نام"
+              />
+            </div>
+            <div class="uk-width-1-2@s">
+              <input
+                v-model="inputData.emailAddress"
+                class="uk-input"
+                type="email"
+                placeholder="رایانامه"
+              />
+            </div>
+          </div>
+          <div class="uk-margin uk-grid-small" uk-grid>
+            <div class="uk-width-1-3@s">
+              <button
+                uk-icon="sign-in"
+                class="
+                  uk-button
+                  uk-button-default
+                  uk-width-1-1
+                  uk-margin-small-bottom
+                "
+                :disabled="!(inputData.username && inputData.emailAddress)"
+                @click="register"
+              >
+                عضویت
+              </button>
+            </div>
+            <div class="uk-width-1-3@s">
               <button
                 uk-icon="user"
                 class="
@@ -240,38 +281,67 @@
                   uk-width-1-1
                   uk-margin-small-bottom
                 "
+                :disabled="
+                  !(inputData.username && inputData.emailAddress && savedCred)
+                "
+                @click="authenticate"
               >
-                عضویت و ورود با اثر انگشت
+                ورود
               </button>
             </div>
-            <div class="uk-margin">
-              <input disabled class="uk-input" type="نام" placeholder="نام" />
+            <div class="uk-width-1-3@s">
+              <button
+                uk-icon="sign-out"
+                class="
+                  uk-button
+                  uk-button-default
+                  uk-width-1-1
+                  uk-margin-small-bottom
+                "
+                :disabled="!(assertion && savedCred)"
+                @click="exit"
+              >
+                خروج
+              </button>
             </div>
-
-            <div class="uk-margin">
-              <textarea
-                disabled
-                class="uk-textarea"
-                rows="5"
-                placeholder="نظر شما"
-              ></textarea>
-            </div>
-          </fieldset>
-          <p uk-margin>
-            <button
-              disabled
-              class="uk-button uk-button-primary uk-button-large"
-            >
-              ارسال دیدگاه
-            </button>
-          </p>
-        </form>
+          </div>
+          <hr />
+          <div class="uk-margin">
+            <textarea
+              :disabled="
+                !(inputData.username && inputData.emailAddress && assertion)
+              "
+              class="uk-textarea"
+              rows="5"
+              placeholder="نظر شما"
+            ></textarea>
+          </div>
+        </fieldset>
+        <p uk-margin>
+          <button
+            :disabled="
+              !(inputData.username && inputData.emailAddress && assertion)
+            "
+            class="uk-button uk-button-primary uk-button-large"
+          >
+            ارسال دیدگاه
+          </button>
+        </p>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import * as defaults from "./defaults";
+import {
+  generateId,
+  generateChallenge,
+  ab2b64,
+  encodeCredential,
+  encodeAssertion,
+} from "./helpers";
+
 export default {
   // change this!
   props: ["title"],
@@ -281,6 +351,119 @@ export default {
     const Icons = require("uikit/dist/js/uikit-icons");
     UIkit.use(Icons);
     window.UIkit = UIkit;
+  },
+  data: () => ({
+    inputData: {
+      username: "",
+      emailAddress: "",
+      relyingParty: {
+        name: "Ali Zemani Personal Website",
+        id: "alizemani.ir",
+      },
+      attachment: "any",
+      attestation: "none",
+    },
+    userDetails: null,
+    savedCred: null,
+    assertion: null,
+  }),
+  computed: {
+    formattedUserDetails() {
+      if (!this.userDetails) return null;
+      return {
+        ...this.userDetails,
+        id: ab2b64(this.userDetails.id),
+      };
+    },
+    formattedSavedCred() {
+      if (!this.savedCred) return null;
+      return encodeCredential(this.savedCred);
+    },
+    formattedAssertion() {
+      if (!this.assertion) return null;
+      return encodeAssertion(this.assertion);
+    },
+  },
+  methods: {
+    async register() {
+      const publicKey = {
+        rp: this.inputData.relyingParty,
+        pubKeyCredParams: defaults.pubKeyCredParams,
+        timeout: 60 * 1000,
+
+        attestation: this.inputData.attestation,
+
+        // This would allow restricting devices to e.g. touchid or u2f key but it doesn't work consistently at the moment (2019-01-20)
+        authenticatorSelection:
+          this.inputData.attachment === "any"
+            ? undefined
+            : {
+                ...defaults.authenticatorSelection,
+                authenticatorAttachment: this.inputData.attachment,
+              },
+
+        // cryptographic challenge from server
+        challenge: generateChallenge(),
+
+        // user details from server post account creation
+        user: {
+          id: generateId(),
+          name: this.inputData.emailAddress,
+          displayName: this.inputData.username,
+        },
+      };
+
+      console.log({ publicKey });
+
+      // register / create a new credential
+      try {
+        const cred = await navigator.credentials.create({ publicKey });
+        this.savedCred = cred;
+        this.userDetails = publicKey.user;
+        console.log(`Credential obtained`, this.savedCred);
+      } catch (e) {
+        console.error(e.message);
+      }
+    },
+    async authenticate() {
+      if (!this.savedCred) {
+        alert("You must register first");
+        return;
+      }
+
+      const publicKey = {
+        rp: this.inputData.relyingParty,
+        pubKeyCredParams: defaults.pubKeyCredParams,
+        attestation: defaults.attestation,
+        timeout: 60 * 1000,
+
+        // cryptographic challenge from server
+        challenge: generateChallenge(),
+
+        allowCredentials: [
+          {
+            // user's credential id and settings from server
+            id: this.savedCred.rawId,
+            // transports: defaults.transports,
+            type: defaults.credentialType,
+          },
+        ],
+      };
+
+      console.log({ publicKey });
+
+      try {
+        const assertion = await navigator.credentials.get({ publicKey });
+        console.log(`Assertion obtained`, assertion);
+        this.assertion = assertion;
+      } catch (e) {
+        console.error(e.message);
+      }
+    },
+    async exit() {
+      this.assertion = null;
+      this.savedCred = null;
+    },
   },
 };
 </script>
