@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: ./gnu-in-meditate.png
-heroAlt: گنو
+heroImage: ./gandalf-the-gray.png
+heroAlt: گندالف
 tagline: یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
 actionText: یادداشت ها ←
 actionLink: /blogs/
@@ -28,9 +28,9 @@ xfeatures:
 footer: همه چیز به طور شگفت انگیزی خوب باید باشد ، طراحی و توسعه توسط علی زِمانی ❤️
 ---
 
-##### [GNU](https://fa.wikipedia.org/wiki/%DA%AF%D9%86%D9%88) (توضیحات تصویر) : گنو یک مخفف بازگشتی است و از نخستین حرف کلمات **GNU's Not Unix** به معنای **گنو یونیکس نیست** گرفته شده‌است. [ریچارد استالمن](https://fa.wikipedia.org/wiki/ریچارد_استالمن) این نام را روشی خلّاقانه برای ادای دین به سیستم‌عامل [یونیکس](https://fa.wikipedia.org/wiki/یونیکس) می‌داند، زیرا استفاده از نام یونیکس به دلیل علامت تجاری بودن در یک محصول دیگر بدون اجازه ممکن نیست. همچنین گنو نام گونه‌ای [گاو وحشی](https://fa.wikipedia.org/wiki/گاو_وحشی) است که در [آفریقا](https://fa.wikipedia.org/wiki/آفریقا) زندگی می‌کند.
+- **توضیحات تصویر** : **گندالف** (به [انگلیسی](https://fa.wikipedia.org/wiki/زبان_انگلیسی): Gandalf)، شخصیتی افسانه‌ای با نقشی اصلی در داستان‌های *[هابیت، یا آن‌جا و بازگشت دوباره](https://fa.wikipedia.org/wiki/هابیت،*یا*آن‌جا*و*بازگشت*دوباره)_ و _[ارباب حلقه‌ها](https://fa.wikipedia.org/wiki/ارباب_حلقه‌ها)* از [جان رونالد روئل تالکین](https://fa.wikipedia.org/wiki/جان*رونالد*روئل*تالکین) است. او یکی از پنج [ایستاری](https://fa.wikipedia.org/w/index.php?title=ایستاری&action=edit&redlink=1) بود که در [دوران سوم](https://fa.wikipedia.org/wiki/دوران_سوم) توسط [والار](https://fa.wikipedia.org/wiki/والار) به [سرزمین میانه](https://fa.wikipedia.org/wiki/سرزمین_میانه) فرستاده شد. او در [والینور](https://fa.wikipedia.org/wiki/والینور) به نام اولورین معروف است.
 
-##### نشان گنو، با طرحی از سر [گاو وحشی](https://fa.wikipedia.org/wiki/گاو_وحشی)، توسط Etienne Suvasa طراحی شده‌است و در وب‌سایت گنو یا مقاله‌های بنیاد نرم‌افزارهای آزاد به کار می‌رود.[[۴\]](https://fa.wikipedia.org/wiki/گنو#cite_note-4)
+- منبع تصویر : [www.vhv.rs](https://www.vhv.rs/viewpic/hJiJwxT_the-hobbit-gandalf-the-grey-mens-tank-gandalf/)
 
 <div class="features">
   <div class="feature" v-for="feat in $page.frontmatter.xfeatures">
