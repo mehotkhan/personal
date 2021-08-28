@@ -27,7 +27,7 @@
     <ul class="uk-switcher uk-margin">
       <li>
         <ul class="uk-comment-list">
-          <li>
+          <li v-for="comment in commentList">
             <article class="uk-comment uk-visible-toggle" tabindex="-1">
               <header class="uk-comment-header uk-position-relative">
                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
@@ -54,145 +54,7 @@
                 </div>
               </header>
               <div class="uk-comment-body">
-                <p>متن دیدگاه</p>
-              </div>
-            </article>
-            <ul>
-              <li>
-                <article
-                  class="uk-comment uk-comment-primary uk-visible-toggle"
-                  tabindex="-1"
-                >
-                  <header class="uk-comment-header uk-position-relative">
-                    <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                      <div class="uk-width-expand">
-                        <h4 class="uk-comment-title uk-margin-remove">
-                          <a class="uk-link-reset" href="#">نویسنده نظر </a>
-                        </h4>
-                        <p class="uk-comment-meta uk-margin-remove-top">
-                          <a class="uk-link-reset" href="#">۱۲ روز قبل</a>
-                        </p>
-                        <p class="uk-position-bottom-right uk-hidden-hover">
-                          <a class="uk-link-reset" href="#">کلید عمومی کاربر</a>
-                          <code
-                            >Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
-                          </code>
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      class="
-                        uk-position-top-left uk-position-small uk-hidden-hover
-                      "
-                    >
-                      <a class="uk-link-muted" href="#">پاسخ</a>
-                    </div>
-                  </header>
-                  <div class="uk-comment-body">
-                    <p>پاسخ به دیدگاه قبل</p>
-                  </div>
-                </article>
-              </li>
-            </ul>
-          </li>
-          <hr />
-          <li>
-            <article class="uk-comment uk-visible-toggle" tabindex="-1">
-              <header class="uk-comment-header uk-position-relative">
-                <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-comment-title uk-margin-remove">
-                      <a class="uk-link-reset" href="#">نویسنده دیدگاه</a>
-                    </h4>
-
-                    <p class="uk-comment-meta uk-margin-remove-top">
-                      <a class="uk-link-reset" href="#">۱۲ روز پیش</a>
-                    </p>
-                    <p class="uk-position-bottom-right uk-hidden-hover">
-                      <a class="uk-link-reset" href="#">کلید عمومی کاربر</a>
-                      <code
-                        >Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
-                      </code>
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="uk-position-top-left uk-position-small uk-hidden-hover"
-                >
-                  <a class="uk-link-muted" href="#">پاسخ به این دیدگاه</a>
-                </div>
-              </header>
-              <div class="uk-comment-body">
-                <p>متن دیدگاه</p>
-              </div>
-            </article>
-            <ul>
-              <li>
-                <article
-                  class="uk-comment uk-comment-primary uk-visible-toggle"
-                  tabindex="-1"
-                >
-                  <header class="uk-comment-header uk-position-relative">
-                    <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                      <div class="uk-width-expand">
-                        <h4 class="uk-comment-title uk-margin-remove">
-                          <a class="uk-link-reset" href="#">نویسنده نظر </a>
-                        </h4>
-                        <p class="uk-comment-meta uk-margin-remove-top">
-                          <a class="uk-link-reset" href="#">۱۲ روز قبل</a>
-                        </p>
-                        <p class="uk-position-bottom-right uk-hidden-hover">
-                          <a class="uk-link-reset" href="#">کلید عمومی کاربر</a>
-                          <code
-                            >Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
-                          </code>
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      class="
-                        uk-position-top-left uk-position-small uk-hidden-hover
-                      "
-                    >
-                      <a class="uk-link-muted" href="#">پاسخ</a>
-                    </div>
-                  </header>
-                  <div class="uk-comment-body">
-                    <p>پاسخ به دیدگاه قبل</p>
-                  </div>
-                </article>
-              </li>
-            </ul>
-          </li>
-          <hr />
-          <li>
-            <article class="uk-comment uk-visible-toggle" tabindex="-1">
-              <header class="uk-comment-header uk-position-relative">
-                <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-comment-title uk-margin-remove">
-                      <a class="uk-link-reset" href="#">نویسنده دیدگاه</a>
-                    </h4>
-
-                    <p class="uk-comment-meta uk-margin-remove-top">
-                      <a class="uk-link-reset" href="#">۱۲ روز پیش</a>
-                    </p>
-                    <p class="uk-position-bottom-right uk-hidden-hover">
-                      <a class="uk-link-reset" href="#">کلید عمومی کاربر</a>
-                      <code
-                        >Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
-                      </code>
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="uk-position-top-left uk-position-small uk-hidden-hover"
-                >
-                  <a class="uk-link-muted" href="#">پاسخ به این دیدگاه</a>
-                </div>
-              </header>
-              <div class="uk-comment-body">
-                <p>متن دیدگاه</p>
+                <p>{{ comment.text }}</p>
               </div>
             </article>
             <ul>
@@ -308,7 +170,8 @@
           <hr />
           <div class="uk-margin">
             <textarea
-              :disabled="
+              v-model="inputData.comment"
+              :disabled__="
                 !(inputData.username && inputData.emailAddress && assertion)
               "
               class="uk-textarea"
@@ -319,10 +182,11 @@
         </fieldset>
         <p uk-margin>
           <button
-            :disabled="
+            :disabled__="
               !(inputData.username && inputData.emailAddress && assertion)
             "
             class="uk-button uk-button-primary uk-button-large"
+            @click="sendComment"
           >
             ارسال دیدگاه
           </button>
@@ -363,7 +227,9 @@ export default {
     if (this.user.is) {
       console.log("user is loged in");
     }
+    this.loadComments();
   },
+
   data: () => ({
     inputData: {
       username: "",
@@ -378,6 +244,8 @@ export default {
     userDetails: null,
     savedCred: null,
     assertion: null,
+    comment: null,
+    commentList: [],
   }),
   computed: {
     formattedUserDetails() {
@@ -397,6 +265,20 @@ export default {
     },
   },
   methods: {
+    async loadComments() {
+      var self = this;
+      this.gun
+        .get(this.title)
+        .get("comments")
+        .map()
+        .on(function (item, key) {
+          self.commentList.push({
+            key: key,
+            text: item,
+          });
+        });
+      console.log(this.commentList);
+    },
     async gunRegister() {
       this.user.create(this.inputData.username, "custom pass", (cb) => {
         console.log(cb);
@@ -491,6 +373,12 @@ export default {
     async exit() {
       this.assertion = null;
       this.savedCred = null;
+    },
+    async sendComment() {
+      await this.gun
+        .get(this.title)
+        .get("comments")
+        .set(this.inputData.comment);
     },
   },
 };
