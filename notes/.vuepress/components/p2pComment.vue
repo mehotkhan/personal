@@ -266,8 +266,8 @@
                   uk-width-1-1
                   uk-margin-small-bottom
                 "
-                :disabled="!(inputData.username && inputData.emailAddress)"
-                @click="register"
+                :disabled__="!(inputData.username && inputData.emailAddress)"
+                @click="gunRegister"
               >
                 عضویت
               </button>
@@ -281,10 +281,10 @@
                   uk-width-1-1
                   uk-margin-small-bottom
                 "
-                :disabled="
+                :disabled__="
                   !(inputData.username && inputData.emailAddress && savedCred)
                 "
-                @click="authenticate"
+                @click="gunAuthenticate"
               >
                 ورود
               </button>
@@ -298,8 +298,8 @@
                   uk-width-1-1
                   uk-margin-small-bottom
                 "
-                :disabled="!(assertion && savedCred)"
-                @click="exit"
+                :disabled__="!(assertion && savedCred)"
+                @click="gunExit"
               >
                 خروج
               </button>
@@ -352,6 +352,18 @@ export default {
     UIkit.use(Icons);
     window.UIkit = UIkit;
   },
+  mounted() {
+    if (typeof window !== "undefined") window.global = window;
+    const Gun = require("gun/gun");
+    const SEA = require("gun/sea");
+
+    this.gun = Gun(["https://gundb.alizemani.ir/gun"]);
+    this.user = this.gun.user().recall({ sessionStorage: true });
+
+    if (this.user.is) {
+      console.log("user is loged in");
+    }
+  },
   data: () => ({
     inputData: {
       username: "",
@@ -385,6 +397,22 @@ export default {
     },
   },
   methods: {
+    async gunRegister() {
+      this.user.create(this.inputData.username, "custom pass", (cb) => {
+        console.log(cb);
+        console.log("user created");
+      });
+    },
+    async gunAuthenticate() {
+      await this.user.auth(this.inputData.username, "custom pass", (cb) => {
+        console.log(cb);
+        console.log("user loged in");
+      });
+    },
+    async gunExit() {
+      const user = this.gun.user();
+      user.leave();
+    },
     async register() {
       const publicKey = {
         rp: this.inputData.relyingParty,
