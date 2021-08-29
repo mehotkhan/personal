@@ -21,7 +21,6 @@
   "dependencies": {
     "cbor-web": "^8.0.1",
     "gun": "^0.2020.1234",
-    "uikit": "^3.7.2",
-    "vuepress-plugin-table-of-contents": "^1.1.7"
+    "uikit": "^3.7.2"
   }
 }
