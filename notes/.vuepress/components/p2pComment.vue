@@ -408,4 +408,14 @@ h6,
   color: #333;
   text-transform: none;
 }
+.uk-button-primary {
+  background-color: #26ace2;
+}
+.uk-tab > .uk-active > a {
+  border-color: #26ace2;
+}
+a,
+.uk-link {
+  color: #26ace2;
+}
 </style>
