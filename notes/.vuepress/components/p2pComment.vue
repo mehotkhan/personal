@@ -129,7 +129,7 @@
                   uk-margin-small-bottom
                 "
                 :disabled__="!(inputData.username && inputData.emailAddress)"
-                @click="gunRegister"
+                @click="register"
               >
                 عضویت
               </button>
@@ -146,7 +146,7 @@
                 :disabled__="
                   !(inputData.username && inputData.emailAddress && savedCred)
                 "
-                @click="gunAuthenticate"
+                @click="authenticate"
               >
                 ورود
               </button>
@@ -161,7 +161,7 @@
                   uk-margin-small-bottom
                 "
                 :disabled__="!(assertion && savedCred)"
-                @click="gunExit"
+                @click="exit"
               >
                 خروج
               </button>
