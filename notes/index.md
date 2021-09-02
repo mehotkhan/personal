@@ -9,6 +9,8 @@ xfeatures:
   - title: بلاگ
     link: /blogs/
     details:
+      - name: "مقاله ای در مورد خود یادگیری فیزیک نوین"
+        link: /blogs/self-learning-physics
       - name: "جم استک : معرفی و آموزش استفاده"
         link: /blogs/jamstack-intro
       - name: آموزش طراحی و ساخت ابزار های آنلاین - مقدمه

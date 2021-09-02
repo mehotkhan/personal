@@ -1,8 +1,10 @@
 ---
-# icon: creative
-# category: یادداشت
-# sidebar: auto
-# home : false
+date: 2021/07/02
+
+tag:
+  - طراحی وب
+
+category: یادداشت
 ---
 
 # آموزش طراحی و ساخت ابزار های آنلاین - مقدمه

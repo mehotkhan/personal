@@ -1,6 +1,6 @@
 ---
 # icon: creative
-# category: یادداشت
+category: کتاب
 # sidebar: auto
 # home : false
 ---
@@ -12,8 +12,8 @@
 ![Modern Web Development on the JAMstack-O’Reilly Media](./cover.png)
 
 ## Introduction
-` From Book`
 
+`From Book`
 
 In just the past few years, a flurry of advancements has greatly strengthened the web as a content and application platform. Brows‐ ers are much more powerful. JavaScript has matured. WebAssembly is on the horizon. It certainly feels like the beginning of a new chap‐ ter for the web. You’ve likely felt this as you’ve witnessed the explo‐ sion of new frontend frameworks and API-based services.
 
@@ -45,7 +45,6 @@ that delivers a productivity boost for developers and a large perfor‐
 mance boost for users. The JAMstack is helping to bring about a
 more secure, stable, and performant web that’s also more fun to
 develop and create for.
-
 
 Under this new approach, there isn’t a “server environment” at all—
 at least not in the traditional sense. Instead, HTML is prerendered
@@ -98,8 +97,8 @@ your own enthusiasm, too, and we’re eager to welcome you to the
 growing community of JAMstack practitioners. You’ll find develop‐
 ing for the web has become fun and fearless all over again.
 
-
 ## How to Get
+
 Download From Netlify (PDF): [oreilly-modern-web-development-on-the-jamstack.pdf](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf)
 
 </div>

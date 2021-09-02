@@ -1,4 +1,5 @@
 ---
+category: پروژه
 # icon: creative
 # category: یادداشت
 # sidebar: auto

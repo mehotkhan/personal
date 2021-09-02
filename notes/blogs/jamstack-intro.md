@@ -1,8 +1,9 @@
 ---
-# icon: creative
-# category: یادداشت
-# sidebar: auto
-# home : false
+date: 2021/08/02
+tag:
+  - جم استک
+
+category: یادداشت
 ---
 
 # جم استک : معرفی و آموزش استفاده

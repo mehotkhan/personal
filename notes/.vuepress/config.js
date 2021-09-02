@@ -88,6 +88,7 @@ module.exports = {
           // 'blogs/',
           'blogs/jamstack-intro',
           'blogs/etools-tuts-preface',
+          'blogs/self-learning-physics',
           
         ]
       },
