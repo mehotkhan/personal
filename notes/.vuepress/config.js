@@ -1,6 +1,3 @@
- 
- 
-
 module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
@@ -20,8 +17,24 @@ module.exports = {
     ["meta", { name: "theme-color", content: "#ffffff" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ["link", { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" }],
-    ["link", { rel: "icon",type:'image/png',sizes:"32x32", href: "/icons/favicon-32x32.png" }],
-    ["link", { rel: "icon",type:'image/png',sizes:"16x16", href: "/icons/favicon-16x16.png" }],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/icons/favicon-32x32.png",
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/icons/favicon-16x16.png",
+      },
+    ],
     [
       "meta",
       { name: "apple-mobile-web-app-status-bar-style", content: "black" },
@@ -66,12 +79,16 @@ module.exports = {
         link: "/blogs/",
       },
       {
-        text: "درباره من",
-        link: "/about-me/",
+        text: "کلاس درس آنلاین",
+        link: "/online-classroom/",
       },
       {
         text: "پیشنهاد همکاری",
         link: "/offer-cooperation/",
+      },
+      {
+        text: "درباره من",
+        link: "/about-me/",
       },
       {
         text: "اطلاعات تماس",
@@ -80,35 +97,30 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: 'بلاگ',   // required
-        path: '/blogs/',      // optional, link of the title, which should be an absolute path and must exist
+        title: "بلاگ", // required
+        path: "/blogs/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
-        sidebarDepth: 2,    // optional, defaults to 1
+        sidebarDepth: 2, // optional, defaults to 1
         children: [
           // 'blogs/',
-          'blogs/jamstack-intro',
-          'blogs/etools-tuts-preface',
-          'blogs/self-learning-physics',
-          
-        ]
+          "blogs/jamstack-intro",
+          "blogs/etools-tuts-preface",
+          "blogs/self-learning-physics",
+        ],
       },
       {
-        title: 'کتاب',   // required
-        path: '/books/',      // optional, link of the title, which should be an absolute path and must exist
+        title: "کتاب", // required
+        path: "/books/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
         // sidebarDepth: 1,    // optional, defaults to 1
-        children: [
-          'books/Modern-Web-Development-on-the-JAMstack/'
-        ]
+        children: ["books/Modern-Web-Development-on-the-JAMstack/"],
       },
       {
-        title: 'کارها',   // required
-        path: '/projects/',      // optional, link of the title, which should be an absolute path and must exist
+        title: "کارها", // required
+        path: "/projects/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
         // sidebarDepth: 1,    // optional, defaults to 1
-        children: [
-          'projects/Bandersnatch-Interactive-Player/'
-        ]
+        children: ["projects/Bandersnatch-Interactive-Player/"],
       },
     ],
   },
