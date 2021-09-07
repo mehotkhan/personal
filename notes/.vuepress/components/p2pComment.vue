@@ -11,7 +11,7 @@
     <div
       class="uk-alert-success"
       uk-alert
-      v-if="this.userCreated && this.$vuepress.user.is"
+      v-if="this.userCreated && this.loggedIN"
     >
       <a class="uk-alert-close" uk-close></a>
       <p>شما با موفقیت عضو و وارد شدید.</p>
@@ -23,16 +23,16 @@
 
     <div class="uk-grid-small uk-visible-toggle" uk-grid tabindex="-1">
       <!-- login area -->
-      <div class="uk-width-1-2@s" :hidden="this.$vuepress.user.is">
+      <div class="uk-width-1-2@s" :hidden="this.loggedIN">
         <input
           v-model="inputData.username"
           class="uk-input uk-width-1-1"
           type="text"
           placeholder="نام"
-          :disabled="this.$vuepress.user.is"
+          :disabled="this.loggedIN"
         />
       </div>
-      <div class="uk-width-1-4@s" :hidden="this.$vuepress.user.is">
+      <div class="uk-width-1-4@s" :hidden="this.loggedIN">
         <button
           class="
             uk-button
@@ -40,23 +40,23 @@
             uk-width-1-1
             uk-padding-remove-horizontal
           "
-          :disabled="this.$vuepress.user.is"
+          :disabled="this.loggedIN"
           @click="gunRegister"
         >
           عضویت و ورود
         </button>
       </div>
-      <div class="uk-width-1-4@s" :hidden="this.$vuepress.user.is">
+      <div class="uk-width-1-4@s" :hidden="this.loggedIN">
         <button
           class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
-          :disabled="this.$vuepress.user.is"
+          :disabled="this.loggedIN"
           @click="gunAuthenticate"
         >
           ورود
         </button>
       </div>
       <!-- user profile area -->
-      <div class="uk-width-1-3@s" :hidden="!this.$vuepress.user.is">
+      <div class="uk-width-1-3@s" :hidden="!this.loggedIN">
         <p class="uk-text-right uk-padding-right-small uk-margin-small-top">
           شما با نام
           {{ myAlias }}
@@ -80,11 +80,11 @@
           </div>
         </div>
       </div>
-      <div class="uk-width-1-5@s" :hidden="!this.$vuepress.user.is">
+      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
         <button
           class="uk-button uk-button-default uk-width-1-1"
           type="button"
-          :disabled="!this.$vuepress.user.is"
+          :disabled="!this.loggedIN"
           uk-toggle="target: #my-profile"
           uk-tooltip="برای نمایش اطلاعات کاربری خود کلیک کنید"
         >
@@ -92,19 +92,19 @@
         </button>
       </div>
 
-      <div class="uk-width-1-4@s" :hidden="!this.$vuepress.user.is">
+      <div class="uk-width-1-4@s" :hidden="!this.loggedIN">
         <button
-          :disabled="this.$vuepress.user.is && !inputData.comment"
+          :disabled="this.loggedIN && !inputData.comment"
           class="uk-button uk-button-default uk-width-1-1"
           @click="sendComment"
         >
           ارسال دیدگاه
         </button>
       </div>
-      <div class="uk-width-1-5@s" :hidden="!this.$vuepress.user.is">
+      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
         <button
           class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
-          :disabled="!this.$vuepress.user.is"
+          :disabled="!this.loggedIN"
           @click="gunExit"
         >
           خروج
@@ -114,7 +114,7 @@
     <div class="uk-margin">
       <textarea
         v-model="inputData.comment"
-        :disabled="!this.$vuepress.user.is"
+        :disabled="!this.loggedIN"
         class="uk-textarea"
         rows="3"
         placeholder="نظر شما"
@@ -170,11 +170,19 @@ export default {
     UIkit.use(Icons);
     window.UIkit = UIkit;
   },
+
   mounted() {
-    if (this.$vuepress.user.is) {
-      const pub = this.$vuepress.user.is.pub;
+    if (typeof window !== "undefined") window.global = window;
+    const Gun = require("gun/gun");
+    const SEA = require("gun/sea");
+    this.gun = Gun(["https://gundb.alizemani.ir/gun"]);
+    this.user = this.gun.user().recall({ sessionStorage: true });
+    if (this.user.is) {
+      this.loggedIN = true;
+      console.log(this.loggedIN);
+      const pub = this.user.is.pub;
       let self = this;
-      this.$vuepress.gun.user(pub).once((data, key) => {
+      this.gun.user(pub).once((data, key) => {
         self.myAlias = data.alias;
         self.myPub = pub;
       });
@@ -202,13 +210,14 @@ export default {
     userAllert: null,
     myAlias: "",
     myPub: "",
+    loggedIN: false,
   }),
   computed: {
     formattedUserDetails() {
-      if (!this.$vuepress.userDetails) return null;
+      if (!this.userDetails) return null;
       return {
-        ...this.$vuepress.userDetails,
-        id: ab2b64(this.$vuepress.userDetails.id),
+        ...this.userDetails,
+        id: ab2b64(this.userDetails.id),
       };
     },
     formattedSavedCred() {
@@ -223,7 +232,7 @@ export default {
   methods: {
     async loadComments() {
       var self = this;
-      this.$vuepress.gun
+      await this.gun
         .get(this.title)
         .get("comments")
         .map()
@@ -233,51 +242,48 @@ export default {
             text: item,
           });
         });
-      console.log(this.commentList);
     },
     async gunRegister() {
       let self = this;
-      this.$vuepress.user.create(
-        this.inputData.username,
-        "custom pass",
-        (cb) => {
-          if (cb.err) {
-            self.userAllert = cb.err;
-          } else {
+      this.user.create(this.inputData.username, "custom pass", (cb) => {
+        if (cb.err) {
+          self.userAllert = cb.err;
+        } else {
+          const pub = this.user.is.pub;
+          let self = this;
+          this.gun.user(pub).once((data, key) => {
+            self.myAlias = data.alias;
+            self.myPub = pub;
+            self.loggedIN = true;
             self.userCreated = true;
             self.userAllert = null;
             self.$forceUpdate();
-          }
+          });
         }
-      );
+      });
     },
     async gunAuthenticate() {
-      let self = this;
-      await this.$vuepress.user.auth(
-        this.inputData.username,
-        "custom pass",
-        (cb) => {
-          if (cb.err) {
-            self.userAllert = cb.err;
-          } else {
-            const pub = this.$vuepress.user.is.pub;
-            let self = this;
-            this.$vuepress.gun.user(pub).once((data, key) => {
-              self.myAlias = data.alias;
-              self.myPub = pub;
-            });
-            self.userAllert = null;
-            self.$forceUpdate();
-          }
+      const self = this;
+      this.user.auth(this.inputData.username, "custom pass", (cb) => {
+        if (cb.err) {
+          self.userAllert = cb.err;
+        } else {
+          const pub = this.user.is.pub;
+          let self = this;
+          this.gun.user(pub).once((data, key) => {
+            self.myAlias = data.alias;
+            self.myPub = pub;
+          });
+          self.userAllert = null;
+          this.loggedIN = true;
+          self.$forceUpdate();
         }
-      );
+      });
     },
     async gunExit() {
-      let self = this;
-
-      const user = this.$vuepress.gun.user();
-      user.leave();
-      self.$forceUpdate();
+      this.gun.user().leave();
+      this.loggedIN = false;
+      this.$forceUpdate();
     },
     async register() {
       const publicKey = {
@@ -313,7 +319,7 @@ export default {
       try {
         const cred = await navigator.credentials.create({ publicKey });
         this.savedCred = cred;
-        this.$vuepress.userDetails = publicKey.user;
+        this.userDetails = publicKey.user;
         console.log(`Credential obtained`, this.savedCred);
       } catch (e) {
         console.error(e.message);
@@ -361,7 +367,7 @@ export default {
     async sendComment() {
       let self = this;
 
-      await this.$vuepress.gun
+      await this.gun
         .get(this.title)
         .get("comments")
         .set(this.inputData.comment, (cb) => {

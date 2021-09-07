@@ -136,6 +136,5 @@ module.exports = {
     },
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
-    require('./gunDB/gunAdaptor.js')
   ],
 };
