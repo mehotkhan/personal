@@ -1,3 +1,6 @@
+// const Gun = require("gun/gun");
+// const SEA = require("gun/sea");
+// const GunAdaptor = require("./gunAdaptor");
 /**
  * Client app enhancement file.
  *
@@ -10,5 +13,9 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
+  // Vue.use(GunAdaptor)
+  // this.gun = Gun(["https://gundb.alizemani.ir/gun"]);
+  // this.user = this.gun.user().recall({ sessionStorage: true });
+
   // ...apply enhancements for the site.
 }

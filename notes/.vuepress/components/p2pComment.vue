@@ -217,14 +217,7 @@ export default {
     window.UIkit = UIkit;
   },
   mounted() {
-    if (typeof window !== "undefined") window.global = window;
-    const Gun = require("gun/gun");
-    const SEA = require("gun/sea");
-
-    this.gun = Gun(["https://gundb.alizemani.ir/gun"]);
-    this.user = this.gun.user().recall({ sessionStorage: true });
-
-    if (this.user.is) {
+    if (this.$vuepress.user.is) {
       console.log("user is loged in");
     }
     this.loadComments();
@@ -249,10 +242,10 @@ export default {
   }),
   computed: {
     formattedUserDetails() {
-      if (!this.userDetails) return null;
+      if (!this.$vuepress.userDetails) return null;
       return {
-        ...this.userDetails,
-        id: ab2b64(this.userDetails.id),
+        ...this.$vuepress.userDetails,
+        id: ab2b64(this.$vuepress.userDetails.id),
       };
     },
     formattedSavedCred() {
@@ -267,7 +260,7 @@ export default {
   methods: {
     async loadComments() {
       var self = this;
-      this.gun
+      this.$vuepress.gun
         .get(this.title)
         .get("comments")
         .map()
@@ -280,19 +273,27 @@ export default {
       console.log(this.commentList);
     },
     async gunRegister() {
-      this.user.create(this.inputData.username, "custom pass", (cb) => {
-        console.log(cb);
-        console.log("user created");
-      });
+      this.$vuepress.user.create(
+        this.inputData.username,
+        "custom pass",
+        (cb) => {
+          console.log(cb);
+          console.log("user created");
+        }
+      );
     },
     async gunAuthenticate() {
-      await this.user.auth(this.inputData.username, "custom pass", (cb) => {
-        console.log(cb);
-        console.log("user loged in");
-      });
+      await this.$vuepress.user.auth(
+        this.inputData.username,
+        "custom pass",
+        (cb) => {
+          console.log(cb);
+          console.log("user loged in");
+        }
+      );
     },
     async gunExit() {
-      const user = this.gun.user();
+      const user = this.$vuepress.gun.user();
       user.leave();
     },
     async register() {
@@ -329,7 +330,7 @@ export default {
       try {
         const cred = await navigator.credentials.create({ publicKey });
         this.savedCred = cred;
-        this.userDetails = publicKey.user;
+        this.$vuepress.userDetails = publicKey.user;
         console.log(`Credential obtained`, this.savedCred);
       } catch (e) {
         console.error(e.message);
@@ -375,7 +376,7 @@ export default {
       this.savedCred = null;
     },
     async sendComment() {
-      await this.gun
+      await this.$vuepress.gun
         .get(this.title)
         .get("comments")
         .set(this.inputData.comment);
