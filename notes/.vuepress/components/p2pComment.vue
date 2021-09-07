@@ -8,88 +8,144 @@
       <a class="uk-alert-close" uk-close></a>
       <p>این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!!!</p>
     </div>
-    <div class="uk-alert-success" uk-alert v-if="savedCred">
+    <div
+      class="uk-alert-success"
+      uk-alert
+      v-if="this.userCreated && this.$vuepress.user.is"
+    >
       <a class="uk-alert-close" uk-close></a>
-      <p>شما با موفقیت عضو شدید</p>
+      <p>شما با موفقیت عضو و وارد شدید.</p>
     </div>
-    <div class="uk-alert-primary" uk-alert v-if="assertion">
+    <div class="uk-alert-allert" uk-alert v-if="this.userAllert">
       <a class="uk-alert-close" uk-close></a>
-      <p>شما با موفقیت وارد شدید</p>
+      <p>{{ this.userAllert }}</p>
     </div>
 
-    <div class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-2@s">
+    <div class="uk-grid-small uk-visible-toggle" uk-grid tabindex="-1">
+      <!-- login area -->
+      <div class="uk-width-1-2@s" :hidden="this.$vuepress.user.is">
         <input
           v-model="inputData.username"
           class="uk-input uk-width-1-1"
           type="text"
           placeholder="نام"
+          :disabled="this.$vuepress.user.is"
         />
       </div>
-
-      <div class="uk-width-1-4@s">
+      <div class="uk-width-1-4@s" :hidden="this.$vuepress.user.is">
         <button
-          uk-icon="sign-in"
-          class="uk-button uk-button-default uk-width-1-1"
-          :disabled__="!(inputData.username && inputData.emailAddress)"
-          @click="register"
+          class="
+            uk-button
+            uk-button-default
+            uk-width-1-1
+            uk-padding-remove-horizontal
+          "
+          :disabled="this.$vuepress.user.is"
+          @click="gunRegister"
         >
-          عضویت
+          عضویت و ورود
         </button>
       </div>
-      <div class="uk-width-1-4@s">
+      <div class="uk-width-1-4@s" :hidden="this.$vuepress.user.is">
         <button
-          uk-icon="user"
-          class="uk-button uk-button-default uk-width-1-1"
-          :disabled__="
-            !(inputData.username && inputData.emailAddress && savedCred)
-          "
-          @click="authenticate"
+          class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
+          :disabled="this.$vuepress.user.is"
+          @click="gunAuthenticate"
         >
           ورود
         </button>
       </div>
-      <div class="uk-width-1-2@s" :hidden="!(assertion && savedCred)">
+      <!-- user profile area -->
+      <div class="uk-width-1-3@s" :hidden="!this.$vuepress.user.is">
+        <p class="uk-text-right uk-padding-right-small uk-margin-small-top">
+          شما با نام
+          {{ myAlias }}
+          وارد شده اید.
+        </p>
+        <!-- This is the profile modal -->
+        <div id="my-profile" uk-modal>
+          <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">پروفایل کابری</h2>
+            <p>نام شما : {{ this.myAlias }}</p>
+            <p>کلید عمومی شما :</p>
+            <pre><code> {{ this.myPub }}</code></pre>
+            <p class="uk-text-right">
+              <button
+                class="uk-button uk-button-default uk-modal-close"
+                type="button"
+              >
+                بستن
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="uk-width-1-5@s" :hidden="!this.$vuepress.user.is">
         <button
-          uk-icon="sign-out"
-          class="uk-button uk-button-default"
-          :disabled__="!(assertion && savedCred)"
-          @click="exit"
+          class="uk-button uk-button-default uk-width-1-1"
+          type="button"
+          :disabled="!this.$vuepress.user.is"
+          uk-toggle="target: #my-profile"
+          uk-tooltip="برای نمایش اطلاعات کاربری خود کلیک کنید"
+        >
+          پروفایل
+        </button>
+      </div>
+
+      <div class="uk-width-1-4@s" :hidden="!this.$vuepress.user.is">
+        <button
+          :disabled="this.$vuepress.user.is && !inputData.comment"
+          class="uk-button uk-button-default uk-width-1-1"
+          @click="sendComment"
+        >
+          ارسال دیدگاه
+        </button>
+      </div>
+      <div class="uk-width-1-5@s" :hidden="!this.$vuepress.user.is">
+        <button
+          class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
+          :disabled="!this.$vuepress.user.is"
+          @click="gunExit"
         >
           خروج
         </button>
       </div>
     </div>
-
-    <hr />
     <div class="uk-margin">
       <textarea
         v-model="inputData.comment"
-        :disabled__="
-          !(inputData.username && inputData.emailAddress && assertion)
-        "
+        :disabled="!this.$vuepress.user.is"
         class="uk-textarea"
-        rows="5"
+        rows="3"
         placeholder="نظر شما"
       ></textarea>
     </div>
-    <p uk-margin>
-      <button
-        :disabled__="
-          !(inputData.username && inputData.emailAddress && assertion)
-        "
-        class="uk-button uk-button-primary uk-button-large"
-        @click="sendComment"
-      >
-        ارسال دیدگاه
-      </button>
-    </p>
+
     <hr />
-    <ul class="uk-list uk-list-striped">
-      <li v-for="comment in commentList">
-        <span class="uk-text-meta uk-text-small">نظر دهنده :</span>
-        <span class="uk-text-lead uk-text-default">{{ comment.text }}</span>
-        <br />
+    <ul class="uk-list uk-list-hyphen uk-list-divider">
+      <li
+        v-for="comment in commentList"
+        class="uk-visible-toggle"
+        tabindex="-1"
+        v-bind:key="comment.title"
+      >
+        <p class="uk-text-meta uk-text-small">
+          <span>نام نویسنده </span>
+          <span class="uk-hidden-hover uk-text-right">
+            ، کلید عمومی : Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
+          </span>
+        </p>
+        <p class="uk-text-lead uk-text-default">{{ comment.text }}</p>
+        <a
+          class="
+            uk-text-small
+            uk-invisible-hover
+            uk-text-meta
+            uk-text-small
+            uk-text-primary
+          "
+          >پاسخ به این نظر</a
+        >
       </li>
     </ul>
   </div>
@@ -106,7 +162,6 @@ import {
 } from "./helpers";
 
 export default {
-  // change this!
   props: ["title"],
   name: "p2pComment",
   beforeMount() {
@@ -117,7 +172,12 @@ export default {
   },
   mounted() {
     if (this.$vuepress.user.is) {
-      console.log("user is loged in");
+      const pub = this.$vuepress.user.is.pub;
+      let self = this;
+      this.$vuepress.gun.user(pub).once((data, key) => {
+        self.myAlias = data.alias;
+        self.myPub = pub;
+      });
     }
     this.loadComments();
   },
@@ -138,6 +198,10 @@ export default {
     assertion: null,
     comment: null,
     commentList: [],
+    userCreated: null,
+    userAllert: null,
+    myAlias: "",
+    myPub: "",
   }),
   computed: {
     formattedUserDetails() {
@@ -172,28 +236,48 @@ export default {
       console.log(this.commentList);
     },
     async gunRegister() {
+      let self = this;
       this.$vuepress.user.create(
         this.inputData.username,
         "custom pass",
         (cb) => {
-          console.log(cb);
-          console.log("user created");
+          if (cb.err) {
+            self.userAllert = cb.err;
+          } else {
+            self.userCreated = true;
+            self.userAllert = null;
+            self.$forceUpdate();
+          }
         }
       );
     },
     async gunAuthenticate() {
+      let self = this;
       await this.$vuepress.user.auth(
         this.inputData.username,
         "custom pass",
         (cb) => {
-          console.log(cb);
-          console.log("user loged in");
+          if (cb.err) {
+            self.userAllert = cb.err;
+          } else {
+            const pub = this.$vuepress.user.is.pub;
+            let self = this;
+            this.$vuepress.gun.user(pub).once((data, key) => {
+              self.myAlias = data.alias;
+              self.myPub = pub;
+            });
+            self.userAllert = null;
+            self.$forceUpdate();
+          }
         }
       );
     },
     async gunExit() {
+      let self = this;
+
       const user = this.$vuepress.gun.user();
       user.leave();
+      self.$forceUpdate();
     },
     async register() {
       const publicKey = {
@@ -275,10 +359,17 @@ export default {
       this.savedCred = null;
     },
     async sendComment() {
+      let self = this;
+
       await this.$vuepress.gun
         .get(this.title)
         .get("comments")
-        .set(this.inputData.comment);
+        .set(this.inputData.comment, (cb) => {
+          if (cb.ok) {
+            self.userAllert = "دیدگاه شما ارسال شد .";
+            self.inputData.comment = null;
+          }
+        });
     },
   },
 };
