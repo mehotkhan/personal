@@ -120,7 +120,12 @@
         placeholder="نظر شما"
       ></textarea>
     </div>
-
+    <button
+      class="uk-button uk-button-default uk-width-1-1"
+      @click="customCode"
+    >
+      customCode
+    </button>
     <hr />
     <ul class="uk-list uk-list-hyphen uk-list-divider">
       <li
@@ -172,19 +177,22 @@ export default {
   },
 
   mounted() {
-    if (typeof window !== "undefined") window.global = window;
-    const Gun = require("gun/gun");
-    const SEA = require("gun/sea");
-    this.gun = Gun(["https://gundb.alizemani.ir/gun"]);
-    this.user = this.gun.user().recall({ sessionStorage: true });
+    // if (typeof window !== "undefined") window.global = window;
+    // const Gun = require("gun/gun");
+    // const SEA = require("gun/sea");
+    // this.$gun = Gun(["https://gundb.alizemani.ir/gun"]);
+    this.user = this.$gun.user().recall({ sessionStorage: true });
+    this.sea = SEA;
     if (this.user.is) {
       this.loggedIN = true;
       console.log(this.loggedIN);
       const pub = this.user.is.pub;
       let self = this;
-      this.gun.user(pub).once((data, key) => {
-        self.myAlias = data.alias;
-        self.myPub = pub;
+      this.$gun.user(pub).once((data, key) => {
+        console.log(data);
+        console.log(pub);
+        self.myAlias = data && data.alias ? data.alias : "none";
+        self.myPub = pub ? pub : epub;
       });
     }
     this.loadComments();
@@ -232,7 +240,7 @@ export default {
   methods: {
     async loadComments() {
       var self = this;
-      await this.gun
+      await this.$gun
         .get(this.title)
         .get("comments")
         .map()
@@ -251,7 +259,7 @@ export default {
         } else {
           const pub = this.user.is.pub;
           let self = this;
-          this.gun.user(pub).once((data, key) => {
+          this.$gun.user(pub).once((data, key) => {
             self.myAlias = data.alias;
             self.myPub = pub;
             self.loggedIN = true;
@@ -270,7 +278,7 @@ export default {
         } else {
           const pub = this.user.is.pub;
           let self = this;
-          this.gun.user(pub).once((data, key) => {
+          this.$gun.user(pub).once((data, key) => {
             self.myAlias = data.alias;
             self.myPub = pub;
           });
@@ -281,7 +289,7 @@ export default {
       });
     },
     async gunExit() {
-      this.gun.user().leave();
+      this.$gun.user().leave();
       this.loggedIN = false;
       this.$forceUpdate();
     },
@@ -367,7 +375,7 @@ export default {
     async sendComment() {
       let self = this;
 
-      await this.gun
+      await this.$gun
         .get(this.title)
         .get("comments")
         .set(this.inputData.comment, (cb) => {
@@ -376,6 +384,50 @@ export default {
             self.inputData.comment = null;
           }
         });
+    },
+    async customCode() {
+      // console.log("say hello");
+      // var pair = await this.sea.pair(); // generate a new key pair
+      // console.log(pair);
+      // var alias = "alizemaniddsdsdsdssssd";
+      // var pass = "secresssssssdsdsssssst";
+      // var salt = 1; // random
+      // var proof = await this.sea.work(alias, pass); // don't do this! (pass, salt) instead!
+      // var auth = await this.sea.encrypt(pair, proof);
+      // console.log(auth);
+      // now on another machine...
+      // var login = await this.sea.work(alias, pass);
+      // var keys = await this.sea.decrypt(auth, login); // encrypted auth loaded from graph
+      // console.log(keys); // equal to the original key pair
+      // console.log(this.user.is);
+      // let self = this;
+      // await this.$gun.user().create(alias, pass, (cb) => {
+      //   console.log(cb);
+      // });
+      // this.user.auth(pair, (cb) => {
+      //   console.log(cb);
+      // });
+      // this.$gun.on("auth", (ack) => {
+      //   self.loggedIN = true;
+      //   self.$forceUpdate();
+      //   console.log("Authentication was successful: ", ack);
+      // });
+      console.log("------- start --------");
+      const pub = this.user.is;
+      console.log(pub);
+      // this.$gun.user(pub).once(function (ack) {
+      //   console.log(ack);
+      //   // console.log(pub);
+      //   // self.myAlias = data && data.alias ? data.alias : "none";
+      //   // self.myPub = pub ? pub : epub;
+      // });
+
+      // console.log(this.user.is);
+      // this.user.put("data");
+      // this.$gun.get("user", function (ack) {
+      //   console.log(ack);
+      // });
+      console.log("---------- end -----");
     },
   },
 };

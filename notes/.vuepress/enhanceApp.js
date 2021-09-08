@@ -10,5 +10,13 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
+  if (typeof window !== "undefined") window.global = window;
+  const Gun = require("gun/gun");
+  const VueGun = require("vue-gun");
+  const SEA = require("gun/sea");
+  Vue.use(VueGun, {
+    gun: Gun(["https://gundb.alizemani.ir/gun"]), // must be passed in at `gun` key
+    peers: ['https://gundb.alizemani.ir/gun']
+});
   // ...apply enhancements for the site.
 }
