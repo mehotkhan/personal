@@ -23,6 +23,7 @@
     "gun": "https://github.com/amark/gun.git",
     "text-encoding": "^0.7.0",
     "uikit": "^3.7.2",
-    "vue-gun": "^0.0.3"
+    "vue-gun": "^0.0.3",
+    "wavesurfer.js": "^5.2.0"
   }
 }

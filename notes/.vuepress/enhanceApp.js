@@ -8,7 +8,7 @@ export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
   router, // the router instance for the app
-  siteData // site metadata
+  siteData, // site metadata
 }) => {
   if (typeof window !== "undefined") window.global = window;
   const Gun = require("gun/gun");
@@ -16,7 +16,8 @@ export default ({
   const SEA = require("gun/sea");
   Vue.use(VueGun, {
     gun: Gun(["https://gundb.alizemani.ir/gun"]), // must be passed in at `gun` key
-    peers: ['https://gundb.alizemani.ir/gun']
-});
+    peers: ["https://gundb.alizemani.ir/gun"],
+  });
+
   // ...apply enhancements for the site.
-}
+};

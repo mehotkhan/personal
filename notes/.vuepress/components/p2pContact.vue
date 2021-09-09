@@ -2,8 +2,9 @@
 <template>
   <div>
     <br />
-    <br />
-    <h2>دیدگاه های مخاطبان</h2>
+    <p class="uk-text-meta">
+      برای تماس مستقیم با من می توانید پیام صوتی بگذارید.
+    </p>
     <div class="uk-alert-danger" uk-alert>
       <a class="uk-alert-close" uk-close></a>
       <p>این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!!!</p>
@@ -20,7 +21,6 @@
       <a class="uk-alert-close" uk-close></a>
       <p>{{ this.userAllert }}</p>
     </div>
-
     <div class="uk-grid-small uk-visible-toggle" uk-grid tabindex="-1">
       <!-- login area -->
       <div class="uk-width-1-2@s" :hidden="this.loggedIN">
@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
+      <div class="uk-width-1-3@s" :hidden="!this.loggedIN">
         <button
           class="uk-button uk-button-default uk-width-1-1"
           type="button"
@@ -92,16 +92,7 @@
         </button>
       </div>
 
-      <div class="uk-width-1-4@s" :hidden="!this.loggedIN">
-        <button
-          :disabled="this.loggedIN && !inputData.comment"
-          class="uk-button uk-button-default uk-width-1-1"
-          @click="sendComment"
-        >
-          ارسال دیدگاه
-        </button>
-      </div>
-      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
+      <div class="uk-width-1-3@s" :hidden="!this.loggedIN">
         <button
           class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
           :disabled="!this.loggedIN"
@@ -111,46 +102,25 @@
         </button>
       </div>
     </div>
-    <div class="uk-margin">
-      <textarea
-        v-model="inputData.comment"
-        :disabled="!this.loggedIN"
-        class="uk-textarea"
-        rows="3"
-        placeholder="نظر شما"
-      ></textarea>
-    </div>
+    <div class="uk-margin"></div>
     <button
-      class="uk-button uk-button-default uk-width-1-1"
-      @click="customCode"
+      class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
+      @mousedown="recording = true"
+      @mouseup="sendVoice"
     >
-      customCode
+      نگه دارید
     </button>
+    <br />
+    <p>{{ recording ? "در حال ضبط صدا..." : "" }}</p>
     <hr />
     <ul class="uk-list uk-list-hyphen uk-list-divider">
       <li
-        v-for="comment in commentList"
+        v-for="voice in voiceList"
         class="uk-visible-toggle"
         tabindex="-1"
-        v-bind:key="comment.title"
+        v-bind:key="voice.title"
       >
-        <p class="uk-text-meta uk-text-small">
-          <span>نام نویسنده </span>
-          <span class="uk-hidden-hover uk-text-right">
-            ، کلید عمومی : Qmezm7g8mBpWyuPk6D84CNcfLKJwU6mpXuEN5GJZNkX3XK
-          </span>
-        </p>
-        <p class="uk-text-lead uk-text-default">{{ comment.text }}</p>
-        <a
-          class="
-            uk-text-small
-            uk-invisible-hover
-            uk-text-meta
-            uk-text-small
-            uk-text-primary
-          "
-          >پاسخ به این نظر</a
-        >
+        <p class="uk-text-lead uk-text-default">{{ voice.text }}</p>
       </li>
     </ul>
   </div>
@@ -167,8 +137,7 @@ import {
 } from "./helpers";
 
 export default {
-  props: ["title"],
-  name: "p2pComment",
+  name: "p2pContact",
   beforeMount() {
     const UIkit = require("uikit");
     const Icons = require("uikit/dist/js/uikit-icons");
@@ -195,7 +164,7 @@ export default {
         self.myPub = pub ? pub : epub;
       });
     }
-    this.loadComments();
+    this.loadVoices();
   },
 
   data: () => ({
@@ -212,13 +181,14 @@ export default {
     userDetails: null,
     savedCred: null,
     assertion: null,
-    comment: null,
-    commentList: [],
+    voiceList: [],
     userCreated: null,
     userAllert: null,
     myAlias: "",
     myPub: "",
     loggedIN: false,
+    recording: false,
+    file: "./Olivia Belli - As I Was.mp3",
   }),
   computed: {
     formattedUserDetails() {
@@ -238,14 +208,14 @@ export default {
     },
   },
   methods: {
-    async loadComments() {
+    async loadVoices() {
       var self = this;
       await this.$gun
-        .get(this.title)
-        .get("comments")
+        .get("voice-mail")
+        .get("voice")
         .map()
         .on(function (item, key) {
-          self.commentList.push({
+          self.voiceList.push({
             key: key,
             text: item,
           });
@@ -372,24 +342,25 @@ export default {
       this.assertion = null;
       this.savedCred = null;
     },
-    async sendComment() {
+    async sendVoice() {
+      this.recording = false;
       let self = this;
 
       await this.$gun
-        .get(this.title)
-        .get("comments")
-        .set(this.inputData.comment, (cb) => {
+        .get("voice-mail")
+        .get("voice")
+        .set("test voice", (cb) => {
           if (cb.ok) {
-            self.userAllert = "دیدگاه شما ارسال شد .";
+            self.userAllert = "پیام صوتی شما ارسال شد.";
             self.inputData.comment = null;
           }
         });
     },
     async customCode() {
-      // console.log("say hello");
-      var pair = await this.sea.pair(); // generate a new key pair
-      console.log(pair);
-      var alias = "alizemaniddsdsdsdssssd";
+      console.log("say hello");
+      // var pair = await this.sea.pair(); // generate a new key pair
+      // console.log(pair);
+      // var alias = "alizemaniddsdsdsdssssd";
       // var pass = "secresssssssdsdsssssst";
       // var salt = 1; // random
       // var proof = await this.sea.work(alias, pass); // don't do this! (pass, salt) instead!
@@ -403,18 +374,18 @@ export default {
       // await this.$gun.user().create(alias, pass, (cb) => {
       //   console.log(cb);
       // });
-      this.$gun.user().auth(pair, alias, null, (cb) => {
-        console.log(cb);
-      });
-      let self = this;
-      this.$gun.on("auth", (ack) => {
-        self.loggedIN = true;
-        // self.$forceUpdate();
-        console.log("Authentication was successful: ", ack);
-      });
-      console.log("------- start --------");
-      const pub = this.user.is;
-      console.log(pub);
+      // this.$gun.user().auth(pair, alias, null, (cb) => {
+      //   console.log(cb);
+      // });
+      // let self = this;
+      // this.$gun.on("auth", (ack) => {
+      //   self.loggedIN = true;
+      //   // self.$forceUpdate();
+      //   console.log("Authentication was successful: ", ack);
+      // });
+      // console.log("------- start --------");
+      // const pub = this.user.is;
+      // console.log(pub);
       // this.$gun.user(pub).once(function (ack) {
       //   console.log(ack);
       //   // console.log(pub);
@@ -427,7 +398,7 @@ export default {
       // this.$gun.get("user", function (ack) {
       //   console.log(ack);
       // });
-      console.log("---------- end -----");
+      // console.log("---------- end -----");
     },
   },
 };
