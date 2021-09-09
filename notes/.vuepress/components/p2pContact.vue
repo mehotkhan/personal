@@ -104,23 +104,40 @@
     </div>
     <div class="uk-margin"></div>
     <button
-      class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
-      @mousedown="recording = true"
-      @mouseup="sendVoice"
+      v-bind:class="{
+        'uk-button-primary': !recording,
+        'uk-button-danger': recording,
+      }"
+      class="uk-button uk-button-default uk-width-1-1"
+      @mousedown="countDownTimer"
+      @mouseup="stopRecording"
     >
-      نگه دارید
+      {{
+        recording
+          ? "در حال ضبط صدا..."
+          : "برای ضبط صدا " +
+            this.persian_number(this.counter) +
+            "  ثانیه نگه دارید ."
+      }}
     </button>
     <br />
-    <p>{{ recording ? "در حال ضبط صدا..." : "" }}</p>
+    <p></p>
+    <audio controls v-if="this.file">
+      <source v-bind:src="this.file[0]" type="audio/*" />
+    </audio>
     <hr />
     <ul class="uk-list uk-list-hyphen uk-list-divider">
       <li
         v-for="voice in voiceList"
         class="uk-visible-toggle"
         tabindex="-1"
-        v-bind:key="voice.title"
+        v-bind:key="voice.key"
       >
-        <p class="uk-text-lead uk-text-default">{{ voice.text }}</p>
+        <p class="uk-text-lead uk-text-default">{{ voice.date }}</p>
+
+        <audio controls>
+          <source v-bind:src="voice.data" type="audio/*" />
+        </audio>
       </li>
     </ul>
   </div>
@@ -146,10 +163,6 @@ export default {
   },
 
   mounted() {
-    // if (typeof window !== "undefined") window.global = window;
-    // const Gun = require("gun/gun");
-    // const SEA = require("gun/sea");
-    // this.$gun = Gun(["https://gundb.alizemani.ir/gun"]);
     this.user = this.$gun.user().recall({ sessionStorage: true });
     this.sea = SEA;
     if (this.user.is) {
@@ -164,7 +177,7 @@ export default {
         self.myPub = pub ? pub : epub;
       });
     }
-    this.loadVoices();
+    // this.loadVoices();
   },
 
   data: () => ({
@@ -188,7 +201,10 @@ export default {
     myPub: "",
     loggedIN: false,
     recording: false,
-    file: "./Olivia Belli - As I Was.mp3",
+    recorder: null,
+    counter: 3,
+    file: null,
+    items: [],
   }),
   computed: {
     formattedUserDetails() {
@@ -211,14 +227,12 @@ export default {
     async loadVoices() {
       var self = this;
       await this.$gun
-        .get("voice-mail")
-        .get("voice")
+        .get("voice-contact")
+        .get("test5")
         .map()
-        .on(function (item, key) {
-          self.voiceList.push({
-            key: key,
-            text: item,
-          });
+        .on(function (item) {
+          console.log(item.data);
+          self.voiceList.push(item);
         });
     },
     async gunRegister() {
@@ -342,20 +356,129 @@ export default {
       this.assertion = null;
       this.savedCred = null;
     },
-    async sendVoice() {
-      this.recording = false;
-      let self = this;
+    async startRecording() {
+      console.log("recording");
+      this.recording = true;
 
-      await this.$gun
-        .get("voice-mail")
-        .get("voice")
-        .set("test voice", (cb) => {
-          if (cb.ok) {
-            self.userAllert = "پیام صوتی شما ارسال شد.";
-            self.inputData.comment = null;
-          }
-        });
+      var device = navigator.mediaDevices.getUserMedia({ audio: true });
+      device.then((stream) => {
+        this.items = [];
+        this.recorder = new MediaRecorder(stream);
+
+        this.recorder.ondataavailable = (e) => {
+          console.log("data incoming");
+          this.items.push(e.data);
+          // if (this.recorder.state == "inactive") {
+          //   var blob = new Blob(this.items, { type: "audio/*" });
+          //   this.file = URL.createObjectURL(blob);
+          //   console.log(this.file);
+          //   // console.log(blob);
+          //   // let self = this;
+          //   // this.blobToBase64(blob).then((res) => {
+          //   //   this.file = res;
+          //   //   // this.$gun
+          //   //   //   .get("voice-contact")
+          //   //   //   .get("test5")
+          //   //   //   .set({ data: res, date: Date.now() }, (cb) => {
+          //   //   //     if (cb.ok) {
+          //   //   //       self.userAllert = "پیام صوتی شما ارسال شد.";
+          //   //   //     }
+          //   //   //   });
+          //   //   console.log(res); // res is base64 now
+          //   // });
+          // }
+        };
+        this.recorder.onstop = (e) => {
+          const blob = new Blob(this.items, { type: "audio/ogg; codecs=opus" });
+          this.file = URL.createObjectURL(blob);
+          console.log(this.file);
+          console.log("recorder stopped");
+          var audio = new Audio(this.file);
+          audio.play();
+        };
+        this.recorder.start();
+      });
+      // this.countDownTimer();
+
+      // setTimeout(() => {
+      //   console.log(this.counter);
+      //   this.counter--;
+      // }, 1000);
+      // if (this.recording) {
+      //   console.log("stoping");
+      //   this.recorder.stop();
+      //   this.recording = false;
+      // } else {
+      //   console.log("recording");
+      //   this.recording = true;
+      //   var device = navigator.mediaDevices.getUserMedia({ audio: true });
+      //   device.then((stream) => {
+      //     // use this!
+      //     this.items = [];
+      //     this.recorder = new MediaRecorder(stream);
+      //     this.recorder.start();
+      //     this.recorder.ondataavailable = (e) => {
+      //       console.log("data incoming");
+      //       this.items.push(e.data);
+      //     };
+      //   });
+      // }
+
+      // if (this.recorder && this.recorder.state == "inactive") {
+      //   var blob = new Blob(this.items, { type: "audio/*" });
+      //   console.log(blob);
+      //   let self = this;
+      //   this.blobToBase64(blob).then((res) => {
+      //     // this.$gun
+      //     //   .get("voice-contact")
+      //     //   .get("test5")
+      //     //   .set({ data: res, date: Date.now() }, (cb) => {
+      //     //     if (cb.ok) {
+      //     //       self.userAllert = "پیام صوتی شما ارسال شد.";
+      //     //     }
+      //     //   });
+      //     console.log(res); // res is base64 now
+      //   });
+      // }
     },
+    stopRecording() {
+      this.counter = 3;
+      this.recording = false;
+      console.log("stoping");
+
+      this.recorder.stop();
+    },
+    countDownTimer() {
+      if (this.counter > 0) {
+        setTimeout(() => {
+          this.counter -= 1;
+          this.countDownTimer();
+        }, 1000);
+      }
+      if (this.counter === 0) {
+        this.startRecording();
+      }
+    },
+    blobToBase64(blob) {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      return new Promise((resolve) => {
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+      });
+    },
+    persian_number(number) {
+      console.log(number);
+      let en_number = number.toString();
+      let persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+      let persianMap = persianDigits.split("");
+      let persian_number = en_number.replace(/\d/g, function (m) {
+        return persianMap[parseInt(m)];
+      });
+      return persian_number;
+    },
+
     async customCode() {
       console.log("say hello");
       // var pair = await this.sea.pair(); // generate a new key pair
