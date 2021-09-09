@@ -1262,7 +1262,7 @@
     register-service-worker "^1.7.0"
     workbox-build "^4.3.1"
 
-"@vuepress/plugin-register-components@1.8.2":
+"@vuepress/plugin-register-components@1.8.2", "@vuepress/plugin-register-components@^1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-register-components/-/plugin-register-components-1.8.2.tgz#2fb45a68b0a1efb8822670d95c3b231a2d0eb74d"
   integrity sha512-6SUq3nHFMEh9qKFnjA8QnrNxj0kLs7+Gspq1OBU8vtu0NQmSvLFZVaMV7pzT/9zN2nO5Pld5qhsUJv1g71MrEA==
@@ -1759,6 +1759,13 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
+
+axios@^0.21.1:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
 
 babel-extract-comments@^1.0.0:
   version "1.0.0"
@@ -2633,6 +2640,11 @@ core-js@^3.6.4, core-js@^3.6.5:
   version "3.17.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.17.2.tgz#f960eae710dc62c29cca93d5332e3660e289db10"
   integrity sha512-XkbXqhcXeMHPRk2ItS+zQYliAMilea2euoMsnpRRdDad6b2VY6CQQcwz1K8AnWesfw4p165RzY0bTnr3UrbYiA==
+
+core-js@^3.7.0:
+  version "3.17.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.17.3.tgz#8e8bd20e91df9951e903cabe91f9af4a0895bc1e"
+  integrity sha512-lyvajs+wd8N1hXfzob1LdOCCHFU4bGMbqqmLn1Q4QlCpDqWPpGf+p0nj+LNrvDDG33j0hZXw2nsvvVpHysxyNw==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -3697,6 +3709,11 @@ follow-redirects@^1.0.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
+
+follow-redirects@^1.14.0:
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.3.tgz#6ada78118d8d24caee595595accdc0ac6abd022e"
+  integrity sha512-3MkHxknWMUtb23apkgz/83fDoe+y+qr0TdgacGIA7bew+QLBo3vdgEN2xEsuXNivpFy4CyDhBBZnNZOtalmenw==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -7908,6 +7925,15 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-audio-visual@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vue-audio-visual/-/vue-audio-visual-2.3.0.tgz#b7c63c038b6dd31ead8a4b4a68e26f47fc3260ee"
+  integrity sha512-aWP/MsXNn+y4j2JUaxC89ZnTj3NAhxHfWSRmdsLZE8dZPfO48muYDyWWUIUH7OJ0ROTcUdWwzWhYWDdCSo6QBw==
+  dependencies:
+    axios "^0.21.1"
+    core-js "^3.7.0"
+    vue "^2.6.12"
+
 vue-gun@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/vue-gun/-/vue-gun-0.0.3.tgz#b1d5b7b57cb4920dee9e7e36e330de324709cff2"
@@ -7971,7 +7997,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10:
+vue@^2.6.10, vue@^2.6.12:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
@@ -8048,11 +8074,6 @@ watchpack@^1.7.4:
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
-
-wavesurfer.js@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-5.2.0.tgz#efae107b5b561e9bfe3fffc50e6158136a17643e"
-  integrity sha512-SkPlTXfvKy+ZnEA7f7g7jn6iQg5/8mAvWpVV5vRbIS/FF9TB2ak9J7VayQfzfshOLW/CqccTiN6DDR/fZA902g==
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"

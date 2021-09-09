@@ -122,9 +122,7 @@
     </button>
     <br />
     <p></p>
-    <audio controls v-if="this.file">
-      <source v-bind:src="this.file[0]" type="audio/*" />
-    </audio>
+
     <hr />
     <ul class="uk-list uk-list-hyphen uk-list-divider">
       <li
@@ -134,10 +132,18 @@
         v-bind:key="voice.key"
       >
         <p class="uk-text-lead uk-text-default">{{ voice.date }}</p>
-
-        <audio controls>
-          <source v-bind:src="voice.data" type="audio/*" />
-        </audio>
+        <client-only>
+          <av-line
+            :canv-width="500"
+            :fft-size="128"
+            :audio-controls="true"
+            class="uk-width-1-1"
+            :line-width="2"
+            line-color="#39f"
+            v-bind:audio-src="voice.data"
+            v-if="voice.data"
+          ></av-line>
+        </client-only>
       </li>
     </ul>
   </div>
@@ -161,7 +167,6 @@ export default {
     UIkit.use(Icons);
     window.UIkit = UIkit;
   },
-
   mounted() {
     this.user = this.$gun.user().recall({ sessionStorage: true });
     this.sea = SEA;
@@ -177,7 +182,7 @@ export default {
         self.myPub = pub ? pub : epub;
       });
     }
-    // this.loadVoices();
+    this.loadVoices();
   },
 
   data: () => ({
@@ -228,10 +233,9 @@ export default {
       var self = this;
       await this.$gun
         .get("voice-contact")
-        .get("test5")
+        .get("test6")
         .map()
-        .on(function (item) {
-          console.log(item.data);
+        .once(function (item) {
           self.voiceList.push(item);
         });
     },
@@ -357,6 +361,7 @@ export default {
       this.savedCred = null;
     },
     async startRecording() {
+      this.file = null;
       console.log("recording");
       this.recording = true;
 
@@ -368,78 +373,28 @@ export default {
         this.recorder.ondataavailable = (e) => {
           console.log("data incoming");
           this.items.push(e.data);
-          // if (this.recorder.state == "inactive") {
-          //   var blob = new Blob(this.items, { type: "audio/*" });
-          //   this.file = URL.createObjectURL(blob);
-          //   console.log(this.file);
-          //   // console.log(blob);
-          //   // let self = this;
-          //   // this.blobToBase64(blob).then((res) => {
-          //   //   this.file = res;
-          //   //   // this.$gun
-          //   //   //   .get("voice-contact")
-          //   //   //   .get("test5")
-          //   //   //   .set({ data: res, date: Date.now() }, (cb) => {
-          //   //   //     if (cb.ok) {
-          //   //   //       self.userAllert = "پیام صوتی شما ارسال شد.";
-          //   //   //     }
-          //   //   //   });
-          //   //   console.log(res); // res is base64 now
-          //   // });
-          // }
         };
         this.recorder.onstop = (e) => {
           const blob = new Blob(this.items, { type: "audio/ogg; codecs=opus" });
           this.file = URL.createObjectURL(blob);
-          console.log(this.file);
+          // console.log(this.file);
           console.log("recorder stopped");
-          var audio = new Audio(this.file);
-          audio.play();
+          let self = this;
+          this.blobToBase64(blob).then((res) => {
+            // this.file = res;
+            this.$gun
+              .get("voice-contact")
+              .get("test6")
+              .set({ data: res, date: Date.now() }, (cb) => {
+                if (cb.ok) {
+                  self.userAllert = "پیام صوتی شما ارسال شد.";
+                }
+              });
+            console.log(res); // res is base64 now
+          });
         };
         this.recorder.start();
       });
-      // this.countDownTimer();
-
-      // setTimeout(() => {
-      //   console.log(this.counter);
-      //   this.counter--;
-      // }, 1000);
-      // if (this.recording) {
-      //   console.log("stoping");
-      //   this.recorder.stop();
-      //   this.recording = false;
-      // } else {
-      //   console.log("recording");
-      //   this.recording = true;
-      //   var device = navigator.mediaDevices.getUserMedia({ audio: true });
-      //   device.then((stream) => {
-      //     // use this!
-      //     this.items = [];
-      //     this.recorder = new MediaRecorder(stream);
-      //     this.recorder.start();
-      //     this.recorder.ondataavailable = (e) => {
-      //       console.log("data incoming");
-      //       this.items.push(e.data);
-      //     };
-      //   });
-      // }
-
-      // if (this.recorder && this.recorder.state == "inactive") {
-      //   var blob = new Blob(this.items, { type: "audio/*" });
-      //   console.log(blob);
-      //   let self = this;
-      //   this.blobToBase64(blob).then((res) => {
-      //     // this.$gun
-      //     //   .get("voice-contact")
-      //     //   .get("test5")
-      //     //   .set({ data: res, date: Date.now() }, (cb) => {
-      //     //     if (cb.ok) {
-      //     //       self.userAllert = "پیام صوتی شما ارسال شد.";
-      //     //     }
-      //     //   });
-      //     console.log(res); // res is base64 now
-      //   });
-      // }
     },
     stopRecording() {
       this.counter = 3;

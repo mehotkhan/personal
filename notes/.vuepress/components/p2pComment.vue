@@ -244,7 +244,7 @@ export default {
         .get(this.title)
         .get("comments")
         .map()
-        .on(function (item, key) {
+        .once(function (item, key) {
           self.commentList.push({
             key: key,
             text: item,
