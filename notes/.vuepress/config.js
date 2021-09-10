@@ -1,3 +1,5 @@
+// const SWconfig = require("./sw-config");
+
 module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
@@ -129,12 +131,8 @@ module.exports = {
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
   plugins: [
-    "@vuepress/pwa",
-    {
-      serviceWorker: true,
-      updatePopup: true,
-    },
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
+ 
   ],
 };
