@@ -88,7 +88,7 @@ export default {
 
       this.scene = new Three.Scene();
 
-      let geometry = new Three.BoxGeometry(0.2, 0.2, 0.2);
+      let geometry = new Three.BoxGeometry(0.1, 0.1, 0.1);
       let material = new Three.MeshNormalMaterial();
 
       this.mesh = new Three.Mesh(geometry, material);
@@ -120,9 +120,16 @@ export default {
 
     .three-background {
       // width: 100%;
-      min-height: 50px;
+      min-height: 100px;
       // display: block;
       // margin: 0 auto;
+    }
+
+    .three-background canvas {
+      max-width: 150px !important;
+      max-height: 50px !important;
+      // display: block;
+      margin: 0 auto;
     }
 
     img {
