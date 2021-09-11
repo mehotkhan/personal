@@ -6675,6 +6675,11 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.2
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+postprocessing@^6.22.5:
+  version "6.22.5"
+  resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.22.5.tgz#e1c7fdcf444c2882cb00c371002354db2d8eeb0d"
+  integrity sha512-W0iBLyusk1xUgOdkfqEbVKPcGk4KduMpjEgiTLtj3oA4wS8YhV/7/mrOlMC2zjIGCvZHb7+IUgruWsh7KnZknQ==
+
 prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
@@ -8012,6 +8017,11 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three@^0.132.2:
+  version "0.132.2"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.132.2.tgz#95eb1856147237c03e887cbbe56f964b6fb40b5e"
+  integrity sha512-0wcR7LxxkXMn6Gi58gEs3QvY8WpTVXA31L2VOvpjm4ZPYFRHCZC13UqynheFoS5OXDYgtBneN0dhbaNBE8iLhQ==
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -8597,7 +8607,7 @@ vuepress-plugin-smooth-scroll@^0.0.3:
 
 vuepress-theme-default-rtl@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/vuepress-theme-default-rtl/-/vuepress-theme-default-rtl-1.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-default-rtl/-/vuepress-theme-default-rtl-1.0.1.tgz#2b905ceb2d2436bc1e652f532559c9836b617898"
   integrity sha512-sw56KQviwHaf4kJFA65yXCfwBzpczkPHC8K7fPzmAJrDNMt7nkSme4TjFNeyCKI0lKgU6FLlTBJ+3TI2VcmqzQ==
   dependencies:
     "@vuepress/plugin-active-header-links" "^1.4.0"

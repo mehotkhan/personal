@@ -22,6 +22,7 @@ export default ({
     peers: ["https://gundb.alizemani.ir/gun"],
   });
   Vue.component(AvLine.name, AvLine);
+  
   register("/sw.js", {
     registrationOptions: { scope: "./" },
     ready(registration) {
