@@ -110,6 +110,22 @@
           خروج
         </button>
       </div>
+      <div class="uk-width-1-2@s">
+        <button
+          class="uk-button uk-button-default uk-width-1-1"
+          @click="customCode"
+        >
+          customCode
+        </button>
+      </div>
+      <div class="uk-width-1-2@s">
+        <button
+          class="uk-button uk-button-default uk-width-1-1"
+          @click="pushTest"
+        >
+          PushTest
+        </button>
+      </div>
     </div>
     <div class="uk-margin">
       <textarea
@@ -120,12 +136,7 @@
         placeholder="نظر شما"
       ></textarea>
     </div>
-    <button
-      class="uk-button uk-button-default uk-width-1-1"
-      @click="customCode"
-    >
-      customCode
-    </button>
+
     <hr />
     <ul class="uk-list uk-list-hyphen uk-list-divider">
       <li
@@ -196,6 +207,7 @@ export default {
       });
     }
     this.loadComments();
+    this.loadNotifacions();
   },
 
   data: () => ({
@@ -248,6 +260,17 @@ export default {
           self.commentList.push({
             key: key,
             text: item,
+          });
+        });
+    },
+    async loadNotifacions() {
+      // var self = this;
+      await this.$gun
+        .get("test-notifications")
+        .map()
+        .on(function (notif, key) {
+          navigator.serviceWorker.ready.then(function (serviceWorker) {
+            serviceWorker.showNotification(notif.title, notif.options);
           });
         });
     },
@@ -428,6 +451,30 @@ export default {
       //   console.log(ack);
       // });
       console.log("---------- end -----");
+    },
+    async pushTest() {
+      // let self = this;
+
+      const text = "توضیحات پیام";
+      const title = "شما یک پیام جدید دارید";
+      const options = {
+        body: text,
+        // vibrate: [200, 100, 200],
+        tag: "new-product",
+        badge: "https://alizemani.ir/icons/android-chrome-512x512.png",
+      };
+
+      await this.$gun.get("test-notifications").set(
+        {
+          title: title,
+          options: options,
+        },
+        (cb) => {
+          if (cb.ok) {
+            console.log("notif saved");
+          }
+        }
+      );
     },
   },
 };

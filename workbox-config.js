@@ -6,5 +6,5 @@ module.exports = {
 		/^utm_/,
 		/^fbclid$/
 	],
-	swDest: 'notes/.vuepress/dist/sw.js'
+	swDest: 'notes/.vuepress/public/sw.js'
 };
