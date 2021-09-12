@@ -207,7 +207,7 @@ export default {
       });
     }
     this.loadComments();
-    this.loadNotifacions();
+    // this.loadNotifacions();
   },
 
   data: () => ({
@@ -260,17 +260,6 @@ export default {
           self.commentList.push({
             key: key,
             text: item,
-          });
-        });
-    },
-    async loadNotifacions() {
-      // var self = this;
-      await this.$gun
-        .get("test-notifications")
-        .map()
-        .on(function (notif, key) {
-          navigator.serviceWorker.ready.then(function (serviceWorker) {
-            serviceWorker.showNotification(notif.title, notif.options);
           });
         });
     },
@@ -464,10 +453,11 @@ export default {
         badge: "https://alizemani.ir/icons/android-chrome-512x512.png",
       };
 
-      await this.$gun.get("test-notifications").set(
+      await this.$gun.get("test-notifications-test4").set(
         {
           title: title,
           options: options,
+          date: Date.now(),
         },
         (cb) => {
           if (cb.ok) {

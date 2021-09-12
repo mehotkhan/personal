@@ -23,14 +23,41 @@ export default ({
   });
   Vue.component(AvLine.name, AvLine);
 
+  Vue.mixin({
+    data: () => ({
+      newMessage: [],
+    }),
+    mounted: function() {
+      this.$gun
+        .get("test-notifications-test4")
+        .map()
+        .on(this.sendNotify);
+    },
+    methods: {
+      async sendNotify(notif) {
+        //   // navigator.serviceWorker.ready.then(function(serviceWorker) {
+        //   //   serviceWorker.showNotification(notif.title, notif.options);
+        //   // });
+      },
+    },
+  });
+
   if ("serviceWorker" in navigator && "PushManager" in window) {
     console.log("Service Worker and Push are supported");
     var prm = Notification.permission;
-    if (prm == 'default' || prm == 'denied') {
-          console.log("permission denied or default");
-    }else{
-         console.log("permission granted");
+    if (prm == "default" || prm == "denied") {
+      console.log("permission denied or default");
+      Notification.requestPermission().then(function(permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          var notification = new Notification("Hi there!");
+        }
+      });
+    } else {
+      console.log("permission granted");
     }
+    console.log(options.$gun);
+
     register("/sw.js", {
       registrationOptions: { scope: "./" },
       ready(registration) {
@@ -38,8 +65,6 @@ export default ({
       },
       registered(registration) {
         console.log("Service worker has been registered.");
-        // this.$.push.enable();
-        // registration.pushManager.getSubscription()
       },
       cached(registration) {
         console.log("Content has been cached for offline use.");
@@ -61,6 +86,5 @@ export default ({
     });
   } else {
     console.warn("Push messaging is not supported");
-    pushButton.textContent = "Push Not Supported";
   }
 };
