@@ -21,6 +21,8 @@ xfeatures:
     details:
       - name: Modern Web Development on the JAMstack
         link: /books/Modern-Web-Development-on-the-JAMstack
+      - name: Building Progressive Web Applications with Vue.js
+        link: /books/Building-Progressive-Web-Applications-with-Vuejs
   - title: کارها
     link: /projects/
     details:
