@@ -453,7 +453,7 @@ export default {
         badge: "https://alizemani.ir/icons/android-chrome-512x512.png",
       };
 
-      await this.$gun.get("test-notifications-test4").set(
+      await this.$gun.get("test-notifications-test6").set(
         {
           title: title,
           options: options,

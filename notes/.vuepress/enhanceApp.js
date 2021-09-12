@@ -25,16 +25,49 @@ export default ({
 
   Vue.mixin({
     data: () => ({
-      newMessage: [],
+      sendNewMessage: true,
+      lastMessage: null,
     }),
     mounted: function() {
+      const nowTime = Date.now();
+      let self = this;
       this.$gun
-        .get("test-notifications-test4")
-        .map()
+        .get("test-notifications-test6")
+        .map((notif) => {
+          if (nowTime - notif.date < 500) {
+            return notif;
+          }
+          return;
+        })
         .on(this.sendNotify);
     },
     methods: {
-      async sendNotify(notif) {
+      sendNotify(notif) {
+        console.log(this.lastMessage);
+        // console.log(typeof notif.date);
+        // console.log(typeof this.lastMessage);
+        if (
+          this.lastMessage !== null &&
+          this.lastMessage !== Number(notif.date)
+        ) {
+          console.log("say hello");
+
+          // console.log(notif);
+          this.lastMessage = null;
+        } else {
+          this.lastMessage = Number(notif.date);
+        }
+        // if (!this.sendNewMessage) {
+        // this.newMessage.push(notif);
+        // setTimeout(function() {
+        // console.log("ding");
+        // this.sendNewMessage = true;
+        // }, 1000);
+        // }
+        // notif.set({
+        //   send: false,
+        // });
+        // console.log(notif);
         //   // navigator.serviceWorker.ready.then(function(serviceWorker) {
         //   //   serviceWorker.showNotification(notif.title, notif.options);
         //   // });
