@@ -1,4 +1,5 @@
-// const SWconfig = require("./sw-config");
+// Inside of webpack.config.js:
+const {InjectManifest} = require('workbox-webpack-plugin');
 
 module.exports = {
   /**
@@ -133,6 +134,9 @@ module.exports = {
   plugins: [
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
- 
+    new InjectManifest({
+      swSrc: './sw.js',
+      swDest: "./dist/service-worker.js",
+    })
   ],
 };

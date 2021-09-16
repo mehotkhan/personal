@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vuepress dev notes",
     "build:sw": "workbox generateSW",
-    "build": "vuepress build notes && workbox generateSW"
+    "build": "vuepress build notes  "
   },
   "license": "MIT",
   "devDependencies": {
@@ -31,6 +31,7 @@
     "text-encoding": "^0.7.0",
     "uikit": "^3.7.2",
     "vue-audio-visual": "^2.3.0",
-    "vue-gun": "^0.0.3"
+    "vue-gun": "^0.0.3",
+    "workbox-webpack-plugin": "^6.3.0"
   }
 }
