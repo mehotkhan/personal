@@ -1,12 +1,19 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header class="hero">
-      <div id="3dweb" class="three-background">
+    <header id="canvas-bg" class="hero">
+      <div class="three-background">
         <img
           v-if="data.heroImage"
           :src="$withBase(data.heroImage)"
           :alt="data.heroAlt || 'hero'"
         />
+        <canvas
+          id="image-canvas"
+          ref="imagecanvas"
+          v-bind:width="width"
+          v-bind:height="height"
+        >
+        </canvas>
       </div>
 
       <h1 v-if="data.heroText !== null" id="main-title">
@@ -44,6 +51,7 @@
 <script>
 import NavLink from "@theme/components/NavLink.vue";
 import * as Three from "three";
+import * as POSTPROCESSING from "postprocessing";
 
 export default {
   name: "Home",
@@ -52,15 +60,20 @@ export default {
       camera: null,
       scene: null,
       renderer: null,
+      composer: null,
       mesh: null,
+      height: 455,
+      width: 434,
+      cloudParticles: [],
     };
   },
   components: { NavLink },
 
   mounted() {
-    console.log("say hello");
     this.init();
     this.animate();
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   },
   computed: {
     data() {
@@ -73,37 +86,126 @@ export default {
         text: this.data.actionText,
       };
     },
+    canvas: function () {
+      return this.$refs.imagecanvas;
+    },
   },
   methods: {
+    handleResize: function () {
+      const parentDom = document.getElementById("canvas-bg").clientHeight;
+      this.height = parentDom.clientHeight;
+      this.width = parentDom.clientWidth;
+      // this.camera.aspect = this.width / this.height;
+      // this.camera.updateProjectionMatrix();
+      // this.renderer.setSize(this.width, this.height);
+    },
     init: function () {
-      let container = document.getElementById("3dweb");
-
-      this.camera = new Three.PerspectiveCamera(
-        20,
-        container.clientWidth / container.clientHeight,
-        0.01,
-        10
-      );
-      this.camera.position.z = 1;
-
       this.scene = new Three.Scene();
 
-      let geometry = new Three.BoxGeometry(0.1, 0.1, 0.1);
-      let material = new Three.MeshNormalMaterial();
+      this.camera = new Three.PerspectiveCamera(
+        80,
+        this.width / this.height,
+        1,
+        1000
+      );
 
-      this.mesh = new Three.Mesh(geometry, material);
-      this.scene.add(this.mesh);
+      this.camera.position.z = 10;
+      this.camera.rotation.x = 1.16;
+      this.camera.rotation.y = -0.2;
+      this.camera.rotation.z = 0.27;
 
-      this.renderer = new Three.WebGLRenderer({ alpha: true });
-      this.renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(this.renderer.domElement);
+      let ambient = new Three.AmbientLight(0x555555);
+      this.scene.add(ambient);
+
+      let directionalLight = new Three.DirectionalLight(0xff8c19);
+      directionalLight.position.set(0, 0, 1);
+      this.scene.add(directionalLight);
+
+      // let orangeLight = new Three.PointLight(0x7f7973, 50, 450, 1.7);
+      // orangeLight.position.set(200, 300, 100);
+      // this.scene.add(orangeLight);
+
+      // let redLight = new Three.PointLight(0x7f8161, 50, 450, 1.7);
+      // redLight.position.set(100, 300, 100);
+      // this.scene.add(redLight);
+
+      let blueLight = new Three.PointLight(0x4e6c77, 50, 450, 1.7);
+      blueLight.position.set(300, 300, 100);
+      this.scene.add(blueLight);
+
+      const texture = new Three.TextureLoader().load("/smoke.png");
+      this.cloudParticles = [];
+      if (texture) {
+        let cloudGeo = new Three.PlaneBufferGeometry(700, 700);
+        let cloudMaterial = new Three.MeshLambertMaterial({
+          map: texture,
+          transparent: true,
+        });
+        for (let p = 0; p < 40; p++) {
+          let cloud = new Three.Mesh(cloudGeo, cloudMaterial);
+          cloud.position.set(
+            Math.random() * 200,
+            500,
+            Math.random() * this.width - this.height * 2.3
+          );
+          cloud.rotation.x = 1.16;
+          cloud.rotation.y = -0.12;
+          cloud.rotation.z = Math.random() * 2 * Math.PI;
+          cloud.material.opacity = 0.55;
+          this.cloudParticles.push(cloud);
+          this.scene.add(cloud);
+        }
+      }
+      const textureEffect = new POSTPROCESSING.TextureEffect({
+        blendFunction: POSTPROCESSING.BlendFunction.COLOR_DODGE,
+        texture: texture,
+      });
+
+      textureEffect.blendMode.opacity.value = 0.1;
+
+      const bloomEffect = new POSTPROCESSING.BloomEffect({
+        blendFunction: POSTPROCESSING.BlendFunction.COLOR_DODGE,
+        kernelSize: POSTPROCESSING.KernelSize.SMALL,
+        useLuminanceFilter: true,
+        luminanceThreshold: 0.3,
+        luminanceSmoothing: 0.75,
+      });
+      bloomEffect.blendMode.opacity.value = 1.5;
+
+      let effectPass = new POSTPROCESSING.EffectPass(
+        this.camera,
+        bloomEffect,
+        textureEffect
+      );
+      effectPass.renderToScreen = true;
+
+      this.renderer = new Three.WebGLRenderer({
+        powerPreference: "high-performance",
+        antialias: false,
+        stencil: false,
+        depth: false,
+        alpha: true,
+        canvas: this.$refs.imagecanvas,
+      });
+
+      this.renderer.setClearColor(0x000000, 0);
+      this.renderer.setSize(this.width, this.height);
+      this.composer = new POSTPROCESSING.EffectComposer(this.renderer);
+      this.composer.addPass(
+        new POSTPROCESSING.RenderPass(this.scene, this.camera)
+      );
+      this.composer.addPass(effectPass);
     },
     animate: function () {
+      this.cloudParticles.forEach((p) => {
+        p.rotation.z -= 0.005;
+      });
+      this.composer.render(0.2);
       requestAnimationFrame(this.animate);
-      this.mesh.rotation.x += 0.01;
-      this.mesh.rotation.y += 0.02;
-      this.renderer.render(this.scene, this.camera);
     },
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
   },
 };
 </script>
@@ -120,16 +222,19 @@ export default {
 
     .three-background {
       // width: 100%;
-      min-height: 100px;
-      // display: block;
-      // margin: 0 auto;
+      position: relative;
+      display: block;
     }
 
     .three-background canvas {
-      max-width: 150px !important;
-      max-height: 50px !important;
-      // display: block;
+      position: absolute;
+      right: -9rem;
+      top: -2rem;
+      bottom: -2rem;
       margin: 0 auto;
+      z-index: 2;
+      left: -7rem;
+      z-index: 5;
     }
 
     img {
@@ -137,6 +242,8 @@ export default {
       max-height: 280px;
       display: block;
       margin: 3rem auto 1.5rem;
+      position: relative;
+      z-index: 10;
     }
 
     h1 {
