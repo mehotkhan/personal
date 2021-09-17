@@ -120,26 +120,26 @@ export default {
       this.camera.rotation.y = -0.2;
       this.camera.rotation.z = 0.27;
 
-      let ambient = new Three.AmbientLight(0xa0a4ad);
+      let ambient = new Three.AmbientLight(0x4e6c77);
       this.scene.add(ambient);
 
-      let directionalLight = new Three.DirectionalLight(0x26ace2);
+      let directionalLight = new Three.DirectionalLight(0x8d9291);
       directionalLight.position.set(0, 0, 1);
       this.scene.add(directionalLight);
 
-      // let orangeLight = new Three.PointLight(0x7f7973, 50, 450, 1.7);
-      // orangeLight.position.set(200, 300, 100);
-      // this.scene.add(orangeLight);
+      let orangeLight = new Three.PointLight(0x818e79, 50, 450, 1.7);
+      orangeLight.position.set(200, 300, 100);
+      this.scene.add(orangeLight);
 
       // let redLight = new Three.PointLight(0x7f8161, 50, 450, 1.7);
       // redLight.position.set(100, 300, 100);
-      // this.scene.add(redLight);
+      // // this.scene.add(redLight);
 
       // let blueLight = new Three.PointLight(0x4e6c77, 50, 450, 1.7);
       // blueLight.position.set(200, 300, 100);
       // this.scene.add(blueLight);
 
-      const texture = new Three.TextureLoader().load("/smoke.png");
+      const texture = new Three.TextureLoader().load("/smoke2.png");
 
       if (texture) {
         let cloudGeo = new Three.PlaneBufferGeometry(250, 250);
@@ -157,7 +157,7 @@ export default {
           cloud.rotation.x = 1.16;
           cloud.rotation.y = 0.12;
           cloud.rotation.z = Math.random() * 0.12 * Math.PI;
-          cloud.material.opacity = 0.6;
+          cloud.material.opacity = 0.9;
 
           this.cloudParticles.push(cloud);
           this.scene.add(cloud);
@@ -247,6 +247,8 @@ export default {
 
   .hero {
     text-align: center;
+    z-index: 10;
+    position: relative;
 
     img {
       max-width: 100%;
