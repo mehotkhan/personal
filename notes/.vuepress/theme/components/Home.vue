@@ -120,16 +120,16 @@ export default {
       this.camera.rotation.y = -0.2;
       this.camera.rotation.z = 0.27;
 
-      let ambient = new Three.AmbientLight(0x4e6c77);
+      let ambient = new Three.AmbientLight(0xffffff);
       this.scene.add(ambient);
 
-      let directionalLight = new Three.DirectionalLight(0x8d9291);
-      directionalLight.position.set(0, 0, 1);
+      let directionalLight = new Three.DirectionalLight(0x4e6c77);
+      directionalLight.position.set(500, 20, 100);
       this.scene.add(directionalLight);
 
-      let orangeLight = new Three.PointLight(0x818e79, 50, 450, 1.7);
-      orangeLight.position.set(200, 300, 100);
-      this.scene.add(orangeLight);
+      // let orangeLight = new Three.PointLight(0x818e79, 50, 450, 1.7);
+      // orangeLight.position.set(200, 300, 100);
+      // this.scene.add(orangeLight);
 
       // let redLight = new Three.PointLight(0x7f8161, 50, 450, 1.7);
       // redLight.position.set(100, 300, 100);
@@ -142,7 +142,7 @@ export default {
       const texture = new Three.TextureLoader().load("/smoke2.png");
 
       if (texture) {
-        let cloudGeo = new Three.PlaneBufferGeometry(250, 250);
+        let cloudGeo = new Three.PlaneBufferGeometry(200, 200);
         let cloudMaterial = new Three.MeshLambertMaterial({
           map: texture,
           transparent: true,
@@ -208,7 +208,7 @@ export default {
     animate: function () {
       this.renderer.render(this.scene, this.camera);
       this.cloudParticles.forEach((p) => {
-        p.rotation.z += 0.001;
+        p.rotation.z -= 0.0008;
       });
       // this.composer.render(0.3);
       requestAnimationFrame(this.animate);
