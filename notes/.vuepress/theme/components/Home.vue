@@ -1,9 +1,5 @@
 <template>
-  <main
-    id="canvas-bg"
-    class="home three-background"
-    aria-labelledby="main-title"
-  >
+  <main class="home three-background" aria-labelledby="main-title">
     <canvas
       id="image-canvas"
       ref="imagecanvas"
@@ -11,7 +7,7 @@
       v-bind:height="height"
     >
     </canvas>
-    <header class="hero">
+    <header id="canvas-bg" class="hero">
       <div>
         <img
           v-if="data.heroImage"
@@ -30,6 +26,7 @@
 
       <p v-if="data.actionText && data.actionLink" class="action">
         <NavLink class="action-button" :item="actionLink" />
+        <NavLink class="action-button" :item="actionLink2" />
       </p>
     </header>
 
@@ -67,7 +64,7 @@ export default {
       composer: null,
       mesh: null,
       height: 600,
-      width: 800,
+      width: "100%",
       cloudParticles: [],
     };
   },
@@ -90,6 +87,12 @@ export default {
         text: this.data.actionText,
       };
     },
+    actionLink2() {
+      return {
+        link: this.data.actionLink2,
+        text: this.data.actionText2,
+      };
+    },
     canvas: function () {
       return this.$refs.imagecanvas;
     },
@@ -99,7 +102,7 @@ export default {
       const parentDom = document.getElementById("canvas-bg");
       this.height = parentDom.clientHeight;
       this.width = parentDom.clientWidth;
-      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.aspect = window.innerWidth / this.height;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(window.innerWidth, this.height + 100);
     },
@@ -108,7 +111,7 @@ export default {
 
       this.camera = new Three.PerspectiveCamera(
         100,
-        window.innerWidth / window.innerHeight,
+        window.innerWidth / this.height,
         1,
         1000
       );
@@ -120,10 +123,10 @@ export default {
       this.camera.rotation.y = -0.2;
       this.camera.rotation.z = 0.27;
 
-      let ambient = new Three.AmbientLight(0xffffff);
+      let ambient = new Three.AmbientLight(0x6a92b1);
       this.scene.add(ambient);
 
-      let directionalLight = new Three.DirectionalLight(0x4e6c77);
+      let directionalLight = new Three.DirectionalLight(0x81939f);
       directionalLight.position.set(500, 20, 100);
       this.scene.add(directionalLight);
 
@@ -133,9 +136,9 @@ export default {
 
       // let redLight = new Three.PointLight(0x7f8161, 50, 450, 1.7);
       // redLight.position.set(100, 300, 100);
-      // // this.scene.add(redLight);
+      // this.scene.add(redLight);
 
-      // let blueLight = new Three.PointLight(0x4e6c77, 50, 450, 1.7);
+      // // let blueLight = new Three.PointLight(0x4e6c77, 50, 450, 1.7);
       // blueLight.position.set(200, 300, 100);
       // this.scene.add(blueLight);
 

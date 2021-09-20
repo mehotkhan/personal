@@ -1,6 +1,3 @@
-// Inside of webpack.config.js:
-const {InjectManifest} = require('workbox-webpack-plugin');
-
 module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
@@ -72,9 +69,8 @@ module.exports = {
     editLinks: true,
     docsDir: "notes",
     editLinkText: "ویرایش",
-    persianDate: true, // used in last-update plugin
+    persianDate: true,  
     lastUpdated: "آخرین ویرایش",
-    // logo: "/icons/android-chrome-192x192.png",
     displayAllHeaders: false, // Default: false
     nav: [
       {
@@ -85,17 +81,22 @@ module.exports = {
         text: "کلاس درس آنلاین",
         link: "/online-classroom/",
       },
-      {
-        text: "پیشنهاد همکاری",
-        link: "/offer-cooperation/",
-      },
-      {
-        text: "درباره من",
-        link: "/about-me/",
-      },
+ 
+  
       {
         text: "اطلاعات تماس",
-        link: "/contact-me/",
+        ariaLabel: 'Language Menu',
+
+        items: [
+          {
+            text: "درباره من",
+            link: "/about-me/",
+          },
+          {
+            text: "تماس بامن",
+            link: "/contact-me/",
+          }
+        ]
       },
     ],
     sidebar: [
@@ -118,13 +119,7 @@ module.exports = {
         // sidebarDepth: 1,    // optional, defaults to 1
         children: ["books/Modern-Web-Development-on-the-JAMstack/","books/Building-Progressive-Web-Applications-with-Vuejs/"],
       },
-      {
-        title: "کارها", // required
-        path: "/projects/", // optional, link of the title, which should be an absolute path and must exist
-        collapsable: false, // optional, defaults to true
-        // sidebarDepth: 1,    // optional, defaults to 1
-        children: ["projects/Bandersnatch-Interactive-Player/"],
-      },
+       
     ],
   },
 
@@ -134,9 +129,10 @@ module.exports = {
   plugins: [
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
-    new InjectManifest({
-      swSrc: './sw.js',
-      swDest: "./dist/service-worker.js",
-    })
+    '@vuepress/pwa',
+    {
+      serviceWorker: true,
+      updatePopup: true
+    }
   ],
 };

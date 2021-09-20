@@ -3,8 +3,10 @@ home: true
 heroImage: ./gandalf-the-gray.png
 heroAlt: گندالف
 tagline: یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
-actionText: یادداشت ها ←
+actionText: یادداشت ها
 actionLink: /blogs/
+actionText2: صندوق صوتی
+actionLink2: /contact-me/#صندوق-صوتی
 xfeatures:
   - title: بلاگ
     link: /blogs/
@@ -26,6 +28,10 @@ xfeatures:
   - title: کارها
     link: /projects/
     details:
+      - name: یک خبرخوان ساده و جمع و جور
+        link: /projects/pnews
+      - name: کمی شعر کهن بخوانیم
+        link: /projects/faPoems
       - name: Bandersnatch Interactive Player
         link: /projects/Bandersnatch-Interactive-Player
 
