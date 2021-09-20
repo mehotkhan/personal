@@ -72,9 +72,9 @@ export default {
 
   mounted() {
     this.cloudParticles = [];
-    this.init();
-    this.animate();
-    window.addEventListener("resize", this.handleResize);
+    // this.init();
+    // this.animate();
+    // window.addEventListener("resize", this.handleResize);
   },
   computed: {
     data() {

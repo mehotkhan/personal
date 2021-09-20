@@ -504,4 +504,11 @@ a,
 .uk-link {
   color: #26ace2;
 }
+.uk-input,
+.uk-select,
+.uk-textarea,
+.uk-button,
+.uk-alert {
+  border-radius: 4px;
+}
 </style>
