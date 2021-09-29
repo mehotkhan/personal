@@ -233,7 +233,7 @@ export default {
       var self = this;
       await this.$gun
         .get("voice-contact")
-        .get("test6")
+        .get("test7")
         .map()
         .once(function (item) {
           self.voiceList.push(item);
@@ -384,7 +384,7 @@ export default {
             // this.file = res;
             this.$gun
               .get("voice-contact")
-              .get("test6")
+              .get("test7")
               .set({ data: res, date: Date.now() }, (cb) => {
                 if (cb.ok) {
                   self.userAllert = "پیام صوتی شما ارسال شد.";
