@@ -11,4 +11,4 @@
 
 ## جدیدترین پروژه های انجام شده
 
-<posts  category="پروژه" show_tags="false"/>
+<recentPosts  category="پروژه" show_tags="false"/>

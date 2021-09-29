@@ -21,6 +21,7 @@
 <script>
 export default {
   props: ["category", "show_tags"],
+  name: "recentPosts",
   data() {
     return {
       pages: [],

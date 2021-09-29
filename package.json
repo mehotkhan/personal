@@ -10,7 +10,6 @@
   "repository": "https://github.com/mehotkhan/personal-website",
   "scripts": {
     "dev": "vuepress dev notes",
-    "build:sw": "workbox generateSW",
     "build": "vuepress build notes  "
   },
   "license": "MIT",
@@ -18,21 +17,17 @@
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "@vuepress/plugin-pwa": "^1.8.2",
-    "@vuepress/plugin-register-components": "^1.8.2",
-    "postprocessing": "^6.22.5",
     "three": "^0.132.2",
     "vuepress": "^1.8.2",
-    "vuepress-theme-default-rtl": "^1.0.1",
-    "workbox-cli": "^6.3.0"
+    "vuepress-theme-default-rtl": "^1.0.1"
   },
   "dependencies": {
     "cbor-web": "^8.0.1",
     "gun": "https://github.com/amark/gun.git",
     "register-service-worker": "^1.7.2",
     "text-encoding": "^0.7.0",
-    "uikit": "^3.7.2",
+    "uikit": "^3.7.4",
     "vue-audio-visual": "^2.3.0",
-    "vue-gun": "^0.0.3",
-    "workbox-webpack-plugin": "^6.3.0"
+    "vue-gun": "^0.0.3"
   }
 }

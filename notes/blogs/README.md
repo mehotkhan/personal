@@ -19,6 +19,7 @@
 
 ## آخرین یادداشت ها
 
-<posts  category="یادداشت" />
+<recentPosts  category="یادداشت" />
 
+<p2pLogin />
 <p2pComment title="صفحه یادداشت ها"/>

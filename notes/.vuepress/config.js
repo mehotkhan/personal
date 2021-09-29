@@ -116,10 +116,12 @@ module.exports = {
         title: "کتاب", // required
         path: "/books/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
-        // sidebarDepth: 1,    // optional, defaults to 1
-        children: ["books/Modern-Web-Development-on-the-JAMstack/","books/Building-Progressive-Web-Applications-with-Vuejs/"],
       },
-       
+      {
+        title: "پروژه های شخصی", // required
+        path: "/projects/", // optional, link of the title, which should be an absolute path and must exist
+        collapsable: false, // optional, defaults to true
+      },
     ],
   },
 

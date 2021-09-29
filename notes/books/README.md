@@ -11,4 +11,4 @@
 
 ## جدیدترین کتابهای معرفی شده
 
-<posts  category="کتاب" show_tags="false"/>
+<recentPosts  category="کتاب" show_tags="false"/>
