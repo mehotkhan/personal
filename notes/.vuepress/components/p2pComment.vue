@@ -15,9 +15,9 @@
         placeholder="نظر شما"
       ></textarea>
     </div>
-    <div class="uk-width-1-1@s" :hidden="!this.loggedIN">
+    <div class="uk-width-1-1@s">
       <button
-        :disabled="this.loggedIN && !this.comment"
+        :disabled="this.loggedIN || !comment"
         class="uk-button uk-button-default uk-width-1-1"
         @click="sendComment"
       >

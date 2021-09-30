@@ -9,7 +9,7 @@
   },
   "repository": "https://github.com/mehotkhan/personal-website",
   "scripts": {
-    "dev": "vuepress dev notes",
+    "dev": "DEBUG=true vuepress dev notes",
     "build": "vuepress build notes  "
   },
   "license": "MIT",

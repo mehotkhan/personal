@@ -2,10 +2,7 @@
 <template>
   <div>
     <br />
-    <div class="uk-alert-danger" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p>این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!!!</p>
-    </div>
+
     <div
       class="uk-alert-success"
       uk-alert
@@ -14,6 +11,7 @@
       <a class="uk-alert-close" uk-close></a>
       <p>شما با موفقیت عضو و وارد شدید.</p>
     </div>
+
     <div class="uk-alert-allert" uk-alert v-if="this.userAllert">
       <a class="uk-alert-close" uk-close></a>
       <p>{{ this.userAllert }}</p>
@@ -21,45 +19,91 @@
 
     <div class="uk-grid-small uk-visible-toggle" uk-grid tabindex="-1">
       <!-- login area -->
-      <div class="uk-width-1-2@s" :hidden="this.loggedIN">
+      <div class="uk-width-1-3@s">
         <input
           v-model="inputData.username"
-          class="uk-input uk-width-1-1"
+          v-if="!loggedIN && !loginWithPass"
+          class="
+            uk-input uk-width-1-1 uk-form-small uk-padding-remove-horizontal
+          "
           type="text"
-          placeholder="نام"
-          :disabled="this.loggedIN"
+          placeholder="نام کاربری خود را وارد کنید."
         />
+        <input
+          v-model="inputData.password"
+          v-if="!loggedIN && loginWithPass"
+          class="
+            uk-input uk-width-1-1 uk-form-small uk-padding-remove-horizontal
+          "
+          type="password"
+          placeholder="پسورد خود را وارد کنید."
+        />
+        <p
+          v-if="loggedIN"
+          class="uk-text-right uk-padding-right-small uk-margin-small-top"
+        >
+          سلام {{ myAlias }}
+        </p>
       </div>
-      <div class="uk-width-1-4@s" :hidden="this.loggedIN">
+
+      <div class="uk-width-1-3@s">
         <button
           class="
             uk-button
-            uk-button-default
+            uk-button-small
+            uk-button-text
             uk-width-1-1
             uk-padding-remove-horizontal
           "
-          :disabled="this.loggedIN"
-          @click="gunRegister"
+          v-if="!loggedIN"
+          :disabled="!inputData.username || loginWithPass"
+          @click="webAuthValidate"
         >
-          عضویت و ورود
+          تایید هویت بایومتریک <span uk-icon="500px"></span>
+        </button>
+        <button
+          class="
+            uk-button
+            uk-button-small
+            uk-button-text
+            uk-width-1-1
+            uk-padding-remove-horizontal
+          "
+          type="button"
+          v-if="loggedIN"
+          uk-toggle="target: #my-profile"
+          uk-tooltip="برای نمایش اطلاعات کاربری خود کلیک کنید"
+        >
+          اطلاعات کاربری <span uk-icon="user"></span>
         </button>
       </div>
-      <div class="uk-width-1-4@s" :hidden="this.loggedIN">
+      <div class="uk-width-1-3@s">
         <button
-          class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
-          :disabled="this.loggedIN"
-          @click="gunAuthenticate"
+          class="uk-button uk-button-text uk-button-small uk-width-1-1"
+          v-if="!loggedIN && !loginWithPass"
+          :disabled="!inputData.username && !loginWithPass"
+          @click="loginWithPass = !loginWithPass"
         >
-          ورود
+          تایید هویت با پس‌ورد <span uk-icon="hashtag"></span>
+        </button>
+        <button
+          class="uk-button uk-button-text uk-button-small uk-width-1-1"
+          v-if="!loggedIN && loginWithPass"
+          :disabled="!inputData.username"
+          @click="passwordValidate"
+        >
+          ورود پا پسورد <span uk-icon="hashtag"></span>
+        </button>
+        <button
+          class="uk-button uk-button-text uk-button-small uk-width-1-1"
+          v-if="loggedIN"
+          @click="gunExit"
+        >
+          خروج <span uk-icon="sign-out"></span>
         </button>
       </div>
       <!-- user profile area -->
-      <div class="uk-width-1-3@s" :hidden="!this.loggedIN">
-        <p class="uk-text-right uk-padding-right-small uk-margin-small-top">
-          شما با نام
-          {{ myAlias }}
-          وارد شده اید.
-        </p>
+      <div class="uk-width-1-3@s">
         <!-- This is the profile modal -->
         <div id="my-profile" uk-modal>
           <div class="uk-modal-dialog uk-modal-body">
@@ -78,35 +122,6 @@
           </div>
         </div>
       </div>
-      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
-        <button
-          class="uk-button uk-button-default uk-width-1-1"
-          type="button"
-          :disabled="!this.loggedIN"
-          uk-toggle="target: #my-profile"
-          uk-tooltip="برای نمایش اطلاعات کاربری خود کلیک کنید"
-        >
-          پروفایل
-        </button>
-      </div>
-
-      <div class="uk-width-1-5@s" :hidden="!this.loggedIN">
-        <button
-          class="uk-button uk-button-default uk-width-1-1 uk-button-primary"
-          :disabled="!this.loggedIN"
-          @click="gunExit"
-        >
-          خروج
-        </button>
-      </div>
-      <div class="uk-width-1-1@s">
-        <button
-          class="uk-button uk-button-default uk-width-1-1"
-          @click="customCode"
-        >
-          customCode
-        </button>
-      </div>
     </div>
   </div>
 </template>
@@ -122,7 +137,7 @@ import {
 } from "../libs/helpers";
 
 export default {
-  name: "p2pLogins",
+  name: "p2pLogin",
   mounted() {
     this.user = this.$gun.user().recall({ sessionStorage: true });
     this.sea = SEA;
@@ -143,7 +158,7 @@ export default {
   data: () => ({
     inputData: {
       username: "",
-      emailAddress: "",
+      password: "",
       relyingParty: {
         name: "Ali Zemani Personal Website",
         id: "alizemani.ir",
@@ -159,6 +174,7 @@ export default {
     myAlias: "",
     myPub: "",
     loggedIN: false,
+    loginWithPass: false,
   }),
   computed: {
     formattedUserDetails() {
@@ -178,43 +194,65 @@ export default {
     },
   },
   methods: {
-    async loadComments() {
-      var self = this;
-      await this.$gun
-        .get(this.title)
-        .get("comments")
-        .map()
-        .once(function (item, key) {
-          self.commentList.push({
-            key: key,
-            text: item,
-          });
-        });
-    },
-    async gunRegister() {
-      let self = this;
-      this.user.create(this.inputData.username, "custom pass", (cb) => {
-        if (cb.err) {
-          self.userAllert = cb.err;
+    async webAuthValidate() {
+      // chceck if user exists in Gundb
+      // if exists : validate login
+      // if not : create new , then login
+
+      await this.$gun.get("~@" + this.inputData.username);
+      await this.$gun.get("~@" + this.inputData.username).once((cb) => {
+        if (cb) {
+          console.log(cb);
+          console.log("user exists");
+          this.gunAuthenticate();
         } else {
-          const pub = this.user.is.pub;
-          let self = this;
-          this.$gun.user(pub).once((data, key) => {
-            self.myAlias = data.alias;
-            self.myPub = pub;
-            self.loggedIN = true;
-            self.userCreated = true;
-            self.userAllert = null;
-            self.$forceUpdate();
-          });
+          console.log("user not exists");
+          this.gunRegister();
+        }
+      });
+
+      console.log("hi");
+    },
+    async passwordValidate() {
+      await this.$gun.get("~@" + this.inputData.username);
+      await this.$gun.get("~@" + this.inputData.username).once((cb) => {
+        if (cb) {
+          this.gunAuthenticate();
+        } else {
+          this.gunRegister();
         }
       });
     },
+
+    async gunRegister() {
+      let self = this;
+      this.user.create(
+        this.inputData.username,
+        this.inputData.password,
+        (cb) => {
+          if (cb.err) {
+            self.userAllert = cb.err;
+          } else {
+            const pub = this.user.is.pub;
+            let self = this;
+            this.$gun.user(pub).once((data, key) => {
+              self.myAlias = data.alias;
+              self.myPub = pub;
+              self.loggedIN = true;
+              self.userCreated = true;
+              self.userAllert = null;
+              self.$forceUpdate();
+            });
+          }
+        }
+      );
+    },
     async gunAuthenticate() {
       const self = this;
-      this.user.auth(this.inputData.username, "custom pass", (cb) => {
+      this.user.auth(this.inputData.username, this.inputData.password, (cb) => {
         if (cb.err) {
           self.userAllert = cb.err;
+          self.loginWithPass = false;
         } else {
           const pub = this.user.is.pub;
           let self = this;
@@ -256,7 +294,7 @@ export default {
         // user details from server post account creation
         user: {
           id: generateId(),
-          name: this.inputData.emailAddress,
+          name: this.inputData.username,
           displayName: this.inputData.username,
         },
       };
