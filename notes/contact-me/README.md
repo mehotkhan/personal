@@ -23,5 +23,5 @@ home: false
 
 ## صندوق صوتی
 
-<!-- <p2pLogin /> -->
+<p2pLogin />
 <p2pContact />

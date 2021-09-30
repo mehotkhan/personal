@@ -1,34 +1,74 @@
 
 <template>
   <div>
-    <br />
+    <div class="uk-margin">
+      <select class="uk-select">
+        <option>سفارش کار</option>
+        <option>درخواست مشاوره</option>
+        <option>عمومی</option>
+      </select>
+    </div>
+    <div class="uk-margin">
+      <button
+        v-bind:class="{
+          'uk-button-primary': !recording,
+          'uk-button-danger': recording,
+        }"
+        class="uk-button uk-button-default uk-width-1-1"
+        @mousedown="countDownTimer"
+        @mouseup="stopRecording"
+      >
+        {{
+          recording
+            ? "در حال ضبط صدا..."
+            : "برای ضبط صدا " +
+              this.persian_number(this.counter) +
+              "  ثانیه نگه دارید ."
+        }}
+      </button>
+    </div>
     <p class="uk-text-meta">
       برای تماس مستقیم با من می توانید پیام صوتی بگذارید.
     </p>
 
-    <div class="uk-margin"></div>
-    <button
-      v-bind:class="{
-        'uk-button-primary': !recording,
-        'uk-button-danger': recording,
-      }"
-      class="uk-button uk-button-default uk-width-1-1"
-      @mousedown="countDownTimer"
-      @mouseup="stopRecording"
+    <hr />
+
+    <div
+      class="uk-grid-collapse uk-child-width-expand@s uk-text-center"
+      uk-grid
+      v-for="voice in voiceList"
+      v-bind:class="'voice_' + voice.date"
+      tabindex="-1"
+      v-bind:key="voice.date"
     >
-      {{
-        recording
-          ? "در حال ضبط صدا..."
-          : "برای ضبط صدا " +
-            this.persian_number(this.counter) +
-            "  ثانیه نگه دارید ."
-      }}
-    </button>
-    <br />
-    <p></p>
+      <div class="uk-width-1-5@s">
+        <div>
+          <span>
+            {{ new Date(voice.date).toISOString().substring(0, 10) }}</span
+          >
+          <span @click="playVoice('voice_' + String(voice.date))">
+            {{ "voice_" + String(voice.date) !== playingItem ? "پخش" : "توقف" }}
+          </span>
+        </div>
+      </div>
+      <div class="uk-width-expand@s">
+        <div>
+          <av-line
+            :canv-width="600"
+            :fft-size="128"
+            :audio-controls="false"
+            class="uk-width-1-1"
+            :line-width="3"
+            line-color="#39f"
+            v-bind:audio-src="voice.data"
+            v-if="voice.data"
+          ></av-line>
+        </div>
+      </div>
+    </div>
 
     <hr />
-    <ul class="uk-list uk-list-divider">
+    <ul class="uk-list uk-list-divider" :hidden="true">
       <li
         v-for="voice in voiceList"
         class="uk-visible-toggle"
