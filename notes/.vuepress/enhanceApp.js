@@ -1,6 +1,4 @@
-import AvLine from "../../node_modules/vue-audio-visual/src/components/AvLine";
-import { register } from "register-service-worker";
-
+import AvWaveform from "../../node_modules/vue-audio-visual/src/components/AvWaveform";
 import("uikit/dist/css/uikit-rtl.css");
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -17,7 +15,7 @@ export default ({
     gun: Gun(["https://gundb.alizemani.ir/gun"]), // must be passed in at `gun` key
     peers: ["https://gundb.alizemani.ir/gun"],
   });
-  Vue.component(AvLine.name, AvLine);
+  Vue.component(AvWaveform.name, AvWaveform);
 
   Vue.mixin({
     beforeMount() {

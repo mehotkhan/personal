@@ -32,79 +32,82 @@
     </p>
 
     <hr />
-
-    <div
-      class="uk-grid-collapse uk-child-width-expand@s uk-text-center"
-      uk-grid
-      v-for="voice in voiceList"
-      v-bind:class="'voice_' + voice.date"
-      tabindex="-1"
-      v-bind:key="voice.date"
-    >
-      <div class="uk-width-1-5@s">
-        <div>
-          <span>
-            {{ new Date(voice.date).toISOString().substring(0, 10) }}</span
-          >
-          <span @click="playVoice('voice_' + String(voice.date))">
-            {{ "voice_" + String(voice.date) !== playingItem ? "پخش" : "توقف" }}
-          </span>
-        </div>
-      </div>
-      <div class="uk-width-expand@s">
-        <div>
-          <av-line
-            :canv-width="600"
-            :fft-size="128"
-            :audio-controls="false"
-            class="uk-width-1-1"
-            :line-width="3"
-            line-color="#39f"
-            v-bind:audio-src="voice.data"
-            v-if="voice.data"
-          ></av-line>
-        </div>
-      </div>
-    </div>
-
-    <hr />
-    <ul class="uk-list uk-list-divider" :hidden="true">
-      <li
-        v-for="voice in voiceList"
-        class="uk-visible-toggle"
+    <div class="uk-margin-small-top uk-timeline">
+      <div
+        class="uk-timeline-item"
+        v-for="voice in orderBydate"
         v-bind:class="'voice_' + voice.date"
         tabindex="-1"
         v-bind:key="voice.date"
       >
-        <button
-          class="uk-button uk-button-default uk-button-small"
-          @click="playVoice('voice_' + String(voice.date))"
-        >
-          {{ "voice_" + String(voice.date) !== playingItem ? "پخش" : "توقف" }}
-        </button>
-
-        <av-line
-          :canv-width="500"
-          :fft-size="128"
-          :audio-controls="false"
-          class="uk-width-1-1"
-          :line-width="3"
-          line-color="#39f"
-          v-bind:audio-src="voice.data"
-          v-if="voice.data"
-        ></av-line>
-      </li>
-    </ul>
+        <div class="uk-timeline-content">
+          <div
+            class="
+              uk-card
+              uk-card-small
+              uk-card-default
+              uk-margin-small-bottom
+              uk-overflow-auto
+            "
+          >
+            <div class="uk-card-header">
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <span class="uk-label uk-label-success uk-margin-auto-left"
+                  >درخواست مشاوره</span
+                >
+                <span class="uk-card-title uk-text-meta">
+                  {{ persian_number(persian_date(voice.date)) }}
+                </span>
+              </div>
+            </div>
+            <div
+              class="
+                uk-card
+                uk-card-small
+                uk-card-default
+                uk-card-body
+                uk-padding-small
+              "
+            >
+              <av-waveform
+                :canv-width="500"
+                :audio-controls="false"
+                class="uk-width-1-1"
+                :line-width="4"
+                noplayed-line-color="#39f"
+                :playtime-line-width="5"
+                :playtime-clickable="true"
+                v-bind:audio-src="voice.data"
+                v-if="voice.data"
+              ></av-waveform>
+            </div>
+          </div>
+        </div>
+        <div class="uk-timeline-icon">
+          <span class="uk-badge" @click="playVoice(voice.date)">
+            <span uk-icon="play" v-if="playingItem !== voice.date"></span>
+            <span uk-icon="close" v-if="playingItem == voice.date"></span>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+const moment = require("moment-jalaali");
+moment.locale("fa-IR"); // fa
+import _ from "lodash";
 export default {
   name: "p2pContact",
   mounted() {
     this.loadVoices();
   },
-
+  computed: {
+    orderBydate: function () {
+      return _.orderBy(this.voiceList, "date", ["desc"]);
+    },
+  },
   data: () => ({
     voiceList: [],
     loggedIN: false,
@@ -129,7 +132,7 @@ export default {
         });
     },
     async playVoice(item) {
-      var audio = document.querySelector("." + item + " audio");
+      var audio = document.querySelector(".voice_" + item + " audio");
       if (audio.paused) {
         this.playingItem = item;
         audio.play();
@@ -202,7 +205,6 @@ export default {
       });
     },
     persian_number(number) {
-      console.log(number);
       let en_number = number.toString();
       let persianDigits = "۰۱۲۳۴۵۶۷۸۹";
       let persianMap = persianDigits.split("");
@@ -211,6 +213,38 @@ export default {
       });
       return persian_number;
     },
+    persian_date(timestamp) {
+      return moment(timestamp).fromNow();
+    },
   },
 };
 </script>
+<style scoped>
+.uk-timeline .uk-timeline-item::before {
+  background: #1e87f02e;
+  content: "";
+  height: 100%;
+  left: 19px;
+  position: absolute;
+  top: 20px;
+  width: 2px;
+  z-index: 1;
+}
+.uk-timeline .uk-timeline-item {
+  display: flex;
+  position: relative;
+}
+.uk-timeline .uk-timeline-item .uk-timeline-icon .uk-badge {
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 2;
+}
+.uk-timeline .uk-timeline-item .uk-timeline-content {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 0 0 0 1rem;
+  margin-bottom: 2rem;
+}
+</style>

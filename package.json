@@ -24,7 +24,6 @@
   "dependencies": {
     "cbor-web": "^8.0.1",
     "gun": "https://github.com/amark/gun.git",
-    "register-service-worker": "^1.7.2",
     "text-encoding": "^0.7.0",
     "uikit": "^3.7.4",
     "vue-audio-visual": "^2.3.0",
