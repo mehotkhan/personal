@@ -28,26 +28,31 @@
     <p></p>
 
     <hr />
-    <ul class="uk-list uk-list-hyphen uk-list-divider">
+    <ul class="uk-list uk-list-divider">
       <li
         v-for="voice in voiceList"
         class="uk-visible-toggle"
+        v-bind:class="'voice_' + voice.date"
         tabindex="-1"
-        v-bind:key="voice.key"
+        v-bind:key="voice.date"
       >
-        <p class="uk-text-lead uk-text-default">{{ voice.date }}</p>
-        <client-only>
-          <av-line
-            :canv-width="500"
-            :fft-size="128"
-            :audio-controls="true"
-            class="uk-width-1-1"
-            :line-width="2"
-            line-color="#39f"
-            v-bind:audio-src="voice.data"
-            v-if="voice.data"
-          ></av-line>
-        </client-only>
+        <button
+          class="uk-button uk-button-default uk-button-small"
+          @click="playVoice('voice_' + String(voice.date))"
+        >
+          {{ "voice_" + String(voice.date) !== playingItem ? "پخش" : "توقف" }}
+        </button>
+
+        <av-line
+          :canv-width="500"
+          :fft-size="128"
+          :audio-controls="false"
+          class="uk-width-1-1"
+          :line-width="3"
+          line-color="#39f"
+          v-bind:audio-src="voice.data"
+          v-if="voice.data"
+        ></av-line>
       </li>
     </ul>
   </div>
@@ -68,6 +73,8 @@ export default {
     counter: 3,
     file: null,
     items: [],
+    playingItem: null,
+    currentTime: null,
   }),
 
   methods: {
@@ -75,13 +82,22 @@ export default {
       var self = this;
       await this.$gun
         .get("voice-contact")
-        .get("test7")
+        .get("test6")
         .map()
         .once(function (item) {
           self.voiceList.push(item);
         });
     },
-
+    async playVoice(item) {
+      var audio = document.querySelector("." + item + " audio");
+      if (audio.paused) {
+        this.playingItem = item;
+        audio.play();
+      } else {
+        this.playingItem = null;
+        audio.pause();
+      }
+    },
     async startRecording() {
       this.file = null;
       console.log("recording");
@@ -106,7 +122,7 @@ export default {
             // this.file = res;
             this.$gun
               .get("voice-contact")
-              .get("test7")
+              .get("test6")
               .set({ data: res, date: Date.now() }, (cb) => {
                 if (cb.ok) {
                   self.userAllert = "پیام صوتی شما ارسال شد.";
