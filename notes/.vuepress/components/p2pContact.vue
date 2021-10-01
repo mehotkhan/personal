@@ -143,7 +143,6 @@ export default {
     },
     async startRecording() {
       this.file = null;
-      console.log("recording");
       this.recording = true;
 
       var device = navigator.mediaDevices.getUserMedia({ audio: true });
@@ -152,14 +151,11 @@ export default {
         this.recorder = new MediaRecorder(stream);
 
         this.recorder.ondataavailable = (e) => {
-          console.log("data incoming");
           this.items.push(e.data);
         };
         this.recorder.onstop = (e) => {
           const blob = new Blob(this.items, { type: "audio/ogg; codecs=opus" });
           this.file = URL.createObjectURL(blob);
-          // console.log(this.file);
-          console.log("recorder stopped");
           let self = this;
           this.blobToBase64(blob).then((res) => {
             // this.file = res;
@@ -171,7 +167,6 @@ export default {
                   self.userAllert = "پیام صوتی شما ارسال شد.";
                 }
               });
-            console.log(res); // res is base64 now
           });
         };
         this.recorder.start();
@@ -180,8 +175,6 @@ export default {
     stopRecording() {
       this.counter = 3;
       this.recording = false;
-      console.log("stoping");
-
       this.recorder.stop();
     },
     countDownTimer() {

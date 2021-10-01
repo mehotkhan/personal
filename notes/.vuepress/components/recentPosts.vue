@@ -41,9 +41,6 @@ export default {
       if (keyA > keyB) return -1;
       return 0;
     });
-
-    console.log(this.category);
-    console.log(this.pages);
   },
 };
 </script>

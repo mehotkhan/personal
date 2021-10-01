@@ -143,12 +143,9 @@ export default {
     this.sea = SEA;
     if (this.user.is) {
       this.loggedIN = true;
-      console.log(this.loggedIN);
       const pub = this.user.is.pub;
       let self = this;
       this.$gun.user(pub).once((data, key) => {
-        console.log(data);
-        console.log(pub);
         self.myAlias = data && data.alias ? data.alias : "none";
         self.myPub = pub ? pub : epub;
       });
@@ -202,16 +199,11 @@ export default {
       await this.$gun.get("~@" + this.inputData.username);
       await this.$gun.get("~@" + this.inputData.username).once((cb) => {
         if (cb) {
-          console.log(cb);
-          console.log("user exists");
           this.gunAuthenticate();
         } else {
-          console.log("user not exists");
           this.gunRegister();
         }
       });
-
-      console.log("hi");
     },
     async passwordValidate() {
       await this.$gun.get("~@" + this.inputData.username);
@@ -261,8 +253,9 @@ export default {
             self.myPub = pub;
           });
           self.userAllert = null;
-          this.loggedIN = true;
+          self.loggedIN = true;
           self.$forceUpdate();
+          // this.$gun.user().recall({ sessionStorage: true });
         }
       });
     },

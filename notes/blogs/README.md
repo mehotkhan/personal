@@ -21,5 +21,7 @@
 
 <recentPosts  category="یادداشت" />
 
+# دیدگاه ها
+
 <p2pLogin />
 <p2pComment title="صفحه یادداشت ها"/>

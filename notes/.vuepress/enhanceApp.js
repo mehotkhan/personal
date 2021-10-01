@@ -12,8 +12,7 @@ export default ({
   const VueGun = require("vue-gun");
   const SEA = require("gun/sea");
   Vue.use(VueGun, {
-    gun: Gun(["https://gundb.alizemani.ir/gun"]), // must be passed in at `gun` key
-    peers: ["https://gundb.alizemani.ir/gun"],
+    gun: Gun(["https://gundb.alizemani.ir/gun"])
   });
   Vue.component(AvWaveform.name, AvWaveform);
 
