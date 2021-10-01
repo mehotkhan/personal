@@ -50,29 +50,59 @@
               uk-overflow-auto
             "
           >
-            <div class="uk-card-header">
+            <div class="uk-card-header uk-background-muted">
               <div class="uk-grid-small uk-flex-middle" uk-grid>
-                <span class="uk-label uk-label-success uk-margin-auto-left"
-                  >درخواست مشاوره</span
-                >
                 <span class="uk-card-title uk-text-meta">
                   {{ persian_number(persian_date(voice.date)) }}
                 </span>
+                <span class="uk-card-title uk-text-meta"> محمد ابراهیمی </span>
+
+                <span class="uk-label uk-label-success uk-margin-auto-right"
+                  >درخواست مشاوره</span
+                >
+                <span class="uk-label uk-label-alert uk-margin-small-right"
+                  >جدید</span
+                >
+                <span class="uk-label uk-label-alert uk-margin-small-right"
+                  >پاسخ دادن</span
+                >
               </div>
             </div>
-            <div
-              class="
-                uk-card
-                uk-card-small
-                uk-card-default
-                uk-card-body
-                uk-padding-small
-              "
-            >
+
+            <div class="uk-card-body uk-padding-small">
               <av-waveform
                 :canv-width="500"
                 :audio-controls="false"
                 class="uk-width-1-1"
+                :line-width="4"
+                noplayed-line-color="#39f"
+                :playtime-line-width="5"
+                :playtime-clickable="true"
+                v-bind:audio-src="voice.data"
+                v-if="voice.data"
+              ></av-waveform>
+            </div>
+            <div class="uk-card-footer">
+              <span class="uk-card-title uk-text-meta">
+                {{ persian_number(persian_date(voice.date)) }} پاسخ داده شد.
+              </span>
+              <span
+                class="
+                  uk-label
+                  uk-label-alert
+                  uk-margin-small-right
+                  uk-padding-small-top
+                "
+                @click="playVoice(voice.date)"
+              >
+                <span uk-icon="play" v-if="playingItem !== voice.date"></span>
+                <span uk-icon="close" v-if="playingItem == voice.date"></span>
+              </span>
+
+              <av-waveform
+                :canv-width="500"
+                :audio-controls="false"
+                class="uk-padding-small uk-margin-small-top"
                 :line-width="4"
                 noplayed-line-color="#39f"
                 :playtime-line-width="5"
