@@ -27,6 +27,16 @@
         }}
       </button>
     </div>
+    <div class="uk-margin">
+      <button @click="sendME" class="uk-button uk-button-default uk-width-1-1">
+        Send ME
+      </button>
+    </div>
+    <div class="uk-margin">
+      <button @click="getME" class="uk-button uk-button-default uk-width-1-1">
+        get ME
+      </button>
+    </div>
     <p class="uk-text-meta">
       برای تماس مستقیم با من می توانید پیام صوتی بگذارید.
     </p>
@@ -128,10 +138,12 @@
 const moment = require("moment-jalaali");
 moment.locale("fa-IR"); // fa
 import _ from "lodash";
+
 export default {
   name: "p2pContact",
-  mounted() {
-    this.loadVoices();
+  async mounted() {
+    this.user = this.$gun.user().recall({ sessionStorage: true });
+    // this.loadVoices();
   },
   computed: {
     orderBydate: function () {
@@ -143,21 +155,69 @@ export default {
     loggedIN: false,
     recording: false,
     recorder: null,
+    user: null,
     counter: 3,
     file: null,
     items: [],
     playingItem: null,
     currentTime: null,
+    owner_pub:
+      "QIINQ6PZfnG7mGQwyGkJ7J2WJWfLeCA2i_y5JNGsKC4.u1K4aFgVftus73Zk6Ps93jNWNxDlTJgEfBL2sgITI40",
   }),
 
   methods: {
+    async getME() {
+      var SEA = Gun.SEA;
+      const user = this.$gun.user();
+      const pair = user._.sea;
+
+      await this.user
+        .get("profile")
+        .get("voice-mail6")
+        .map()
+        .once(function (enc) {
+          (async () => {
+            var msg = await SEA.verify(enc, pair.pub);
+            var dec = await SEA.decrypt(msg, pair);
+            console.log(dec);
+            // var msg = await SEA.verify(enc, user._.sea.pub);
+            // var dec = await SEA.decrypt(msg, user._.sea);
+            // console.log(dec);
+          })();
+        });
+    },
+    async sendME() {
+      var SEA = Gun.SEA;
+
+      const user = this.$gun.user();
+
+      var enc = await SEA.encrypt("hello self", user._.sea);
+      var data = await SEA.sign(enc, user._.sea);
+      // var msg = await SEA.verify(data, user._.sea.pub);
+      // var dec = await SEA.decrypt(msg, user._.sea);
+      // var proof = await SEA.work(dec, user._.sea);
+      // var check = await SEA.work("hello self", user._.sea);
+      // console.log(dec);
+      // console.log(proof === check);
+
+      // console.log(data);
+      await user
+        .get("profile")
+        .get("voice-mail6")
+        // .secret({ data: res, date: Date.now() }, (cb) => {
+        .set(data, (cb) => {
+          if (cb.ok) {
+            console.log("پیام صوتی شما ارسال شد.");
+          }
+        });
+    },
     async loadVoices() {
       var self = this;
-      await this.$gun
-        .get("voice-contact")
-        .get("test6")
-        .map()
+      this.user
+        .get("profile")
+        .get("voice-mail2")
         .once(function (item) {
+          // console.log(item);
           self.voiceList.push(item);
         });
     },
@@ -179,6 +239,7 @@ export default {
       device.then((stream) => {
         this.items = [];
         this.recorder = new MediaRecorder(stream);
+        window.localStream = stream;
 
         this.recorder.ondataavailable = (e) => {
           this.items.push(e.data);
@@ -188,12 +249,13 @@ export default {
           this.file = URL.createObjectURL(blob);
           let self = this;
           this.blobToBase64(blob).then((res) => {
-            // this.file = res;
-            this.$gun
-              .get("voice-contact")
-              .get("test6")
-              .set({ data: res, date: Date.now() }, (cb) => {
+            this.user
+              .get("profile")
+              .get("voice-mail2")
+              // .secret({ data: res, date: Date.now() }, (cb) => {
+              .secret("say hello", (cb) => {
                 if (cb.ok) {
+                  console.log("پیام صوتی شما ارسال شد.");
                   self.userAllert = "پیام صوتی شما ارسال شد.";
                 }
               });
@@ -206,6 +268,7 @@ export default {
       this.counter = 3;
       this.recording = false;
       this.recorder.stop();
+      window.localStream.getTracks()[0].stop();
     },
     countDownTimer() {
       if (this.counter > 0) {

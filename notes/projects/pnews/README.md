@@ -1,5 +1,7 @@
 ---
 category: پروژه
+date: 2021/07/02
+
 # icon: creative
 # category: یادداشت
 sidebar: auto

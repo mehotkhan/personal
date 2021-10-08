@@ -1,5 +1,6 @@
 ---
 category: پروژه
+date: 2020/08/02
 # icon: creative
 # category: یادداشت
 # sidebar: auto

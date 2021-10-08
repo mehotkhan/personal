@@ -2,7 +2,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: "علی زِمانی",
+  title: "علی زِمانی://طراح و توسعه دهنده وب",
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -69,56 +69,50 @@ module.exports = {
     editLinks: true,
     docsDir: "notes",
     editLinkText: "ویرایش",
-    persianDate: true,  
+    persianDate: true,
     lastUpdated: "آخرین ویرایش",
     displayAllHeaders: false, // Default: false
     nav: [
       {
-        text: "یادداشت ها",
-        link: "/blogs/",
+        text: "درباره من",
+        link: "/about-me/",
       },
       {
-        text: "کلاس درس آنلاین",
-        link: "/online-classroom/",
-      },
- 
-  
-      {
-        text: "اطلاعات تماس",
-        ariaLabel: 'Language Menu',
-
+        text: "درباره اینجا",
         items: [
           {
-            text: "درباره من",
-            link: "/about-me/",
+            text: "اطلاعات نرم افزار",
+            link: "/about-platform/",
+          },
+          {
+            text: "پیشنهاد همکاری",
+            link: "/cooperation-offer/",
+          },
+          {
+            text: "آموزش طراحی وب",
+            link: "/webdeveloper-teaching/",
           },
           {
             text: "تماس بامن",
             link: "/contact-me/",
-          }
-        ]
+          },
+        ],
       },
     ],
     sidebar: [
       {
-        title: "بلاگ", // required
-        path: "/blogs/", // optional, link of the title, which should be an absolute path and must exist
+        title: "یادداشت‌‌ها", // required
+        path: "/notes/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
-        sidebarDepth: 2, // optional, defaults to 1
-        children: [
-          // 'blogs/',
-          "blogs/jamstack-intro",
-          "blogs/etools-tuts-preface",
-          "blogs/self-learning-physics",
-        ],
+      
       },
       {
-        title: "کتاب", // required
+        title: "کتاب‌ها", // required
         path: "/books/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
       },
       {
-        title: "پروژه های شخصی", // required
+        title: "پروژه‌ها", // required
         path: "/projects/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
       },
@@ -131,10 +125,10 @@ module.exports = {
   plugins: [
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
-    '@vuepress/pwa',
+    "@vuepress/pwa",
     {
       serviceWorker: true,
-      updatePopup: true
-    }
+      updatePopup: true,
+    },
   ],
 };

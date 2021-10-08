@@ -18,6 +18,3 @@ home: false
 STEM education is an experiential learning pedagogy in which the application of knowledge and skills are integrated through in-context projects or problems focused on learning outcomes tied to the development of important college and career readiness proficiencies.
 
 </div>
-
-<p2pLogin />
-<p2pComment title="کلاس درس آنلاین"/>

@@ -4001,7 +4001,7 @@ gray-matter@^4.0.1:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gun@*, "gun@https://github.com/amark/gun.git":
+gun@*:
   version "0.2020.1234"
   resolved "https://github.com/amark/gun.git#d7282be14bcc61016a952c74f949491ea628c1e1"
   dependencies:
@@ -4010,6 +4010,16 @@ gun@*, "gun@https://github.com/amark/gun.git":
     "@peculiar/webcrypto" "^1.1.1"
     emailjs "^2.2.0"
     text-encoding "^0.7.0"
+
+gun@^0.2020.1235:
+  version "0.2020.1235"
+  resolved "https://registry.yarnpkg.com/gun/-/gun-0.2020.1235.tgz#5b6cdfb383b8e7d5e430f12af8cc59621d0b6191"
+  integrity sha512-aba6s0X/MCCOByt0T3VrMzMMUEblfN2aLV2bAmIQWjkB7SKnm07zAZWigljwI69Rb5sOw7C1G116UyvCM2p9kA==
+  dependencies:
+    ws "^7.2.1"
+  optionalDependencies:
+    "@peculiar/webcrypto" "^1.1.1"
+    emailjs "^2.2.0"
 
 handle-thing@^2.0.0:
   version "2.0.1"
@@ -7511,10 +7521,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.133.0:
-  version "0.133.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.133.0.tgz#41427306c731a89407221b7be48c7a63580400e7"
-  integrity sha512-1p8xTXnJD4hMM2Ktm7+FqOOBoImBoftKnKtAZT/b9AQeL3LhRkVu/HnIJhWA69qIMvUYpjfnunNsO4WdObw1ZQ==
+three@^0.133.1:
+  version "0.133.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.133.1.tgz#5606f4817d67a09d9212d4ccbd6826564774f8f4"
+  integrity sha512-WydohO8ll949B0FTD6MGz59Yv2Lwj8hvObg/0Heh2r42S6+tQC1WByfCNRdmG4D7+odfGod+n8JPV1I2xrboWw==
 
 through2@^2.0.0:
   version "2.0.5"
@@ -7686,10 +7696,10 @@ uglify-js@3.4.x:
     commander "~2.19.0"
     source-map "~0.6.1"
 
-uikit@^3.7.4:
-  version "3.7.4"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.7.4.tgz#e55028abcce17e1e9ed6c404a37ad2c0c1729109"
-  integrity sha512-xm6o7e2nPrWWII4jVWp9t+neT5r4YwcQxZ6wfz4Y9GQSGDyjXkqHvbh+EmWURDhXQFLRAWoQPs2v+wEsFZ5jpw==
+uikit@^3.7.6:
+  version "3.7.6"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.7.6.tgz#b7536bc1aac104fd54bbba13553ca801e16f6e20"
+  integrity sha512-O1ePw9bhNJqSWfOyPTrFNIZUnrwfsoju5GLeXN/Rp7nmgcpqP0r8rBczpVL3NAkaLYqyH7Ga5qfIaDzSnLYK+A==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

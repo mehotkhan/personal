@@ -36,8 +36,10 @@
         :key="index"
         class="feature"
       >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+        <h2>
+          <a v-bind:href="feature.link">{{ feature.title + "‌ها" }}</a>
+        </h2>
+        <recentPosts :category="feature.title" show_tags="false" />
       </div>
     </div>
 
