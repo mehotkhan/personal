@@ -1,16 +1,15 @@
 import AvWaveform from "../../node_modules/vue-audio-visual/src/components/AvWaveform";
 import("uikit/dist/css/uikit-rtl.css");
 
-if (typeof window !== "undefined") window.global = window;
-require("gun/gun.js");
-const SEA = require("gun/sea.js");
-
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
   router, // the router instance for the app
   siteData, // site metadata
 }) => {
+  if (typeof window !== "undefined") window.global = window;
+  const Gun = require("gun/gun.js");
+  const SEA = require("gun/sea.js");
   const VueGun = require("vue-gun");
 
   Vue.use(VueGun, {
