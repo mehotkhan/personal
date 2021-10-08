@@ -9,12 +9,12 @@ actionLink: /notes/
 actionText2: صندوق صوتی
 actionLink2: /contact-me/#صندوق-صوتی
 features:
-  - title: یادداشت
-    link: /notes/
-  - title: کتاب
-    link: /books/
-  - title: پروژه
-    link: /projects/
+  - title: یادداشت‌ها
+    category: یادداشت
+  - title: معرفی کتاب
+    category: کتاب
+  - title: پروژه های شخصی
+    category: پروژه
 
 footer: همه چیز به طور شگفت انگیزی خوب باید باشد ، طراحی و توسعه توسط علی زِمانی ❤️
 ---

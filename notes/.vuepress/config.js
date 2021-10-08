@@ -82,7 +82,7 @@ module.exports = {
         items: [
           {
             text: "اطلاعات نرم افزار",
-            link: "/about-platform/",
+            link: "/projects/p2p-jamstack/",
           },
           {
             text: "پیشنهاد همکاری",

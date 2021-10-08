@@ -1,17 +1,10 @@
 ---
-
 category: پروژه
 date: 2021/10/02
-
-# icon: creative
-
-# category: یادداشت
-
 sidebar: auto
+---
 
-# home : false
-
----# P2P Jamstack
+# P2P Jamstack
 
 معرفی فریم ورک ساخت پلتفرم های آنلاین مبتنی بر
 
@@ -69,6 +62,8 @@ sidebar: auto
 ## مزیت ها
 
 ## تکنولوژی های مورد استفاده
+
+## لیست تغییرات
 
 ## دیدگاه ها
 

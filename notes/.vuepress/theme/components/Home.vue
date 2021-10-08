@@ -37,9 +37,9 @@
         class="feature"
       >
         <h2>
-          <a v-bind:href="feature.link">{{ feature.title + "‌ها" }}</a>
+          {{ feature.title }}
         </h2>
-        <recentPosts :category="feature.title" show_tags="false" />
+        <recentPosts :category="feature.category" show_tags="false" />
       </div>
     </div>
 
