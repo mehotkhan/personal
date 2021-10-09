@@ -81,16 +81,16 @@ module.exports = {
         text: "درباره اینجا",
         items: [
           {
-            text: "اطلاعات نرم افزار",
-            link: "/projects/p2p-jamstack/",
-          },
-          {
             text: "پیشنهاد همکاری",
             link: "/cooperation-offer/",
           },
           {
             text: "آموزش طراحی وب",
             link: "/webdeveloper-teaching/",
+          },
+          {
+            text: "لیست تغییرات",
+            link: "/changelog.html",
           },
           {
             text: "تماس بامن",

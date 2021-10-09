@@ -1,5 +1,5 @@
 ---
-category: پروژه
+# category: پروژه
 date: 2021/07/02
 
 # icon: creative
