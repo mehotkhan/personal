@@ -1,8 +1,10 @@
 ---
 # icon: creative
 category: کتاب
-# sidebar: auto
-# home : false
+tag:
+  - Client-Side Proccesing
+  - PWA
+  - JamStack
 ---
 
 # Modern Web Development on the JAMstack-O’Reilly Media

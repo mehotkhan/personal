@@ -1,8 +1,10 @@
 ---
-# icon: creative
+ 
 category: کتاب
-# sidebar: auto
-# home : false
+tag:
+  - Vue
+  - PWA
+  - JamStack
 ---
 
 # Building Progressive Web Applications with Vue.js : Reliable, Fast, and Engaging Apps with Vue.js
