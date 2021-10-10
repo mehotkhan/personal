@@ -93,7 +93,11 @@ module.exports = {
             link: "/changelog.html",
           },
           {
-            text: "تماس بامن",
+            text: "صندوق صوتی",
+            link: "/voice-mail/",
+          },
+          {
+            text: "اطلاعات تماس",
             link: "/contact-me/",
           },
         ],

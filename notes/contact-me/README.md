@@ -20,8 +20,3 @@ home: false
 - [تویتر](https://www.twitter.com/ZemaniAli/)
 - [لینکداین](https://www.linkedin.com/in/ali-zemani/)
 - [گیت‌هاب](https://github.com/mehotkhan)
-
-## صندوق صوتی
-
-<p2pLogin />
-<p2pContact />

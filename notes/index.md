@@ -7,7 +7,7 @@ tagline: یادداشت های پراکنده از یک تکنولوژیست ج�
 actionText: یادداشت ها
 actionLink: /notes/
 actionText2: صندوق صوتی
-actionLink2: /contact-me/#صندوق-صوتی
+actionLink2: /voice-mail/
 features:
   - title: یادداشت‌ها
     category: یادداشت
