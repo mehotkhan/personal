@@ -28,6 +28,14 @@
       </button>
     </div>
     <div class="uk-margin">
+      <button
+        @click="adminLoad"
+        class="uk-button uk-button-default uk-width-1-1"
+      >
+        admin Load
+      </button>
+    </div>
+    <div class="uk-margin">
       <button @click="sendME" class="uk-button uk-button-default uk-width-1-1">
         Send ME
       </button>
@@ -147,6 +155,7 @@ export default {
   },
   computed: {
     orderBydate: function () {
+      // console.log(this.voiceList);
       return _.orderBy(this.voiceList, "date", ["desc"]);
     },
   },
@@ -162,63 +171,84 @@ export default {
     playingItem: null,
     currentTime: null,
     owner_pub:
-      "QIINQ6PZfnG7mGQwyGkJ7J2WJWfLeCA2i_y5JNGsKC4.u1K4aFgVftus73Zk6Ps93jNWNxDlTJgEfBL2sgITI40",
+      "5nkDFG7Tkj-rAiMBz1ls5vUV9buM_R-E71zm0WPoeiw.uiPPbqeM5q9ZLwIxnTgflWOH3WoJgHQ0Rd_e3D013c4",
   }),
 
   methods: {
     async getME() {
-      var SEA = Gun.SEA;
+      const testUSer =
+        "Wy_J4WC966IkwXeu6sZv4Nc2Y5dPQB7acKVW4sA9HXE.hdkqURPAys78Zq94I_016BYfB8XXSqwRmoXyK3h4gv4";
+      const test = await this.$gun.user(testUSer);
       const user = this.$gun.user();
-      const pair = user._.sea;
-
-      await this.user
-        .get("profile")
-        .get("voice-mail6")
-        .map()
-        .once(function (enc) {
+      await this.$gun
+        .user()
+        .get("voice-mail")
+        .once(function (incoming, key) {
           (async () => {
-            var msg = await SEA.verify(enc, pair.pub);
-            var dec = await SEA.decrypt(msg, pair);
+            console.log(incoming);
+            // console.log(incoming);
+            var dec = await SEA.decrypt(
+              incoming,
+              await SEA.secret(test.epub, user._.sea)
+            );
             console.log(dec);
-            // var msg = await SEA.verify(enc, user._.sea.pub);
-            // var dec = await SEA.decrypt(msg, user._.sea);
-            // console.log(dec);
           })();
         });
     },
     async sendME() {
-      var SEA = Gun.SEA;
-
       const user = this.$gun.user();
-
-      var enc = await SEA.encrypt("hello self", user._.sea);
-      var data = await SEA.sign(enc, user._.sea);
-      // var msg = await SEA.verify(data, user._.sea.pub);
-      // var dec = await SEA.decrypt(msg, user._.sea);
-      // var proof = await SEA.work(dec, user._.sea);
-      // var check = await SEA.work("hello self", user._.sea);
-      // console.log(dec);
-      // console.log(proof === check);
-
-      // console.log(data);
-      await user
-        .get("profile")
-        .get("voice-mail6")
-        // .secret({ data: res, date: Date.now() }, (cb) => {
-        .set(data, (cb) => {
-          if (cb.ok) {
-            console.log("پیام صوتی شما ارسال شد.");
-          }
-        });
+      const pair = user._.sea;
+      const admin = await this.$gun.user(this.owner_pub);
+      const adminEpub = admin.epub;
+      var enc = await SEA.encrypt(
+        "shared data",
+        await SEA.secret(adminEpub, pair)
+      );
+      // console.log(enc);
+      const certificate = await this.$gun
+        .get("global-config")
+        .get("inbox")
+        .get("cert")
+        .then();
+      await this.$gun
+        .get("~" + this.owner_pub)
+        .get("inbox")
+        .get(pair.epub)
+        .set(enc, console.log, { opt: { cert: certificate } });
+    },
+    async adminLoad() {
+      const admin = this.$gun.user();
+      var certificate = await SEA.certify(
+        "*", // everyone
+        { "*": "voice-mail", ".": "*" },
+        admin._.sea
+      );
+      await this.$gun
+        .get("global-config")
+        .get("voice-mail")
+        .get("cert")
+        .put(certificate);
     },
     async loadVoices() {
+      const testUSer =
+        "an1fr61SYFeEpFnwbHHpN-Xdos8qBXSv5rUQOQ6H3z4.phpIpA6RNEflE3s35Oiiqmu9QBOObAxVygby4ChDjLE";
+      const test = await this.$gun.user(testUSer);
+      const user = this.$gun.user();
+
       var self = this;
-      this.user
-        .get("profile")
-        .get("voice-mail2")
-        .once(function (item) {
-          // console.log(item);
-          self.voiceList.push(item);
+      await this.user
+        .get("voice-mail-test1")
+        .map()
+        .once(function (enc) {
+          (async () => {
+            var dec = await SEA.decrypt(
+              enc,
+              await SEA.secret(test.epub, user._.sea)
+            );
+            if (dec && dec.date && dec.data) {
+              self.voiceList.push(dec);
+            }
+          })();
         });
     },
     async playVoice(item) {
@@ -232,6 +262,17 @@ export default {
       }
     },
     async startRecording() {
+      const certificate = await this.$gun
+        .get("global-config")
+        .get("voice-mail")
+        .get("cert")
+        .then();
+
+      const user = this.$gun.user();
+      const pair = user._.sea;
+      const admin = await this.$gun.user(this.owner_pub);
+      const adminEpub = admin.epub;
+
       this.file = null;
       this.recording = true;
 
@@ -244,21 +285,33 @@ export default {
         this.recorder.ondataavailable = (e) => {
           this.items.push(e.data);
         };
+
         this.recorder.onstop = (e) => {
           const blob = new Blob(this.items, { type: "audio/ogg; codecs=opus" });
           this.file = URL.createObjectURL(blob);
           let self = this;
           this.blobToBase64(blob).then((res) => {
-            this.user
-              .get("profile")
-              .get("voice-mail2")
-              // .secret({ data: res, date: Date.now() }, (cb) => {
-              .secret("say hello", (cb) => {
-                if (cb.ok) {
-                  console.log("پیام صوتی شما ارسال شد.");
-                  self.userAllert = "پیام صوتی شما ارسال شد.";
-                }
-              });
+            (async () => {
+              var enc = await SEA.encrypt(
+                { data: res, date: Date.now() },
+                await SEA.secret(adminEpub, pair)
+              );
+
+              await this.$gun
+                .get("~" + this.owner_pub)
+                .get("voice-mail")
+                .get(pair.epub)
+                .set(
+                  enc,
+                  (cb) => {
+                    if (cb.ok) {
+                      console.log("پیام صوتی شما ارسال شد.");
+                      self.userAllert = "پیام صوتی شما ارسال شد.";
+                    }
+                  },
+                  { opt: { cert: certificate } }
+                );
+            })();
           });
         };
         this.recorder.start();
