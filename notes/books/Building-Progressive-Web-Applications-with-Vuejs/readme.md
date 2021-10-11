@@ -1,5 +1,6 @@
 ---
- 
+date: 2021/09/11
+sidebar: auto
 category: کتاب
 tag:
   - Vue

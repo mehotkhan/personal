@@ -1,5 +1,7 @@
 ---
-# icon: creative
+date: 2021/08/11
+
+sidebar: auto
 category: کتاب
 tag:
   - Client-Side Proccesing
