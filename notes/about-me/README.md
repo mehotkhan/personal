@@ -5,17 +5,26 @@ sidebar: auto
 home: false
 ---
 
+
 # درباره من
 
+## من که هستم 
+<br />
+ <img style="float: left;width:200px;margin-righ:20px;display:block" src="./cv_avatar_512x512.jpg">
+
+سلام
+من علی زِمانی هستم ،‌متولد ۸ اردیبهشت سال ۱۳۶۹ 
+ترک تحصیل کرده کارشناسی فیزیک و طراح و توسعه دهنده وب تجربی 
+<br />
+<br />
+<br />
+ 
+
+## توانایی های فنی
+
+
 <div class="ltr">
-
-## OBJECTIVE
-
-Ali is an accomplished individual with a strong back-ground in software systems, software management, professional programming and software developing.
-
-Ali has contributed in about 100 software projects during thelast 10 years and he is continually evaluating and upgrading his skills so that he stays at the cutting edge of web development. Ali is a quick learner who can generate new ideas and can communicate clearly and effectively. He has a great interest in open source technologies and dedicates his leisure time to study and research in this field.Currently looking for an opportunity to join a dynamic and ambitious company that offers a unique work environment within which its staff can thrive and grow.
-
-## TECHNOLOGY SKILLS
+<br/>
 
 **Programming Languages**: Python, JavaScript, Golang, PHP
 
@@ -42,7 +51,12 @@ managment platform , docker , k8s ,Nginx ,kafka ,EMQ (Mqtt broker) ,RabbitMQ
 **Social Data Analysis**: Experience working in Twiter Api , Telegram APi , Insta-
 gram Api
 
-## **EXPERIENCE**
+</div>
+
+## **تجربه های کاری**
+
+<div class="ltr">
+<br/>
 
 1. **Full Stack Developer**
    Jun 2019 , September 2019
