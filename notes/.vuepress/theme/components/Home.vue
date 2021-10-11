@@ -29,6 +29,7 @@
         <NavLink class="action-button" :item="actionLink2" />
       </p>
     </header>
+    <Content class="theme-default-content custom" />
 
     <div v-if="data.features && data.features.length" class="features">
       <div
@@ -42,8 +43,6 @@
         <recentPosts :category="feature.category" show_tags="false" />
       </div>
     </div>
-
-    <Content class="theme-default-content custom" />
 
     <div v-if="data.footer" class="footer">
       {{ data.footer }}

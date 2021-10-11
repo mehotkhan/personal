@@ -108,7 +108,6 @@ module.exports = {
         title: "یادداشت‌‌ها", // required
         path: "/notes/", // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
-      
       },
       {
         title: "کتاب‌ها", // required
@@ -132,7 +131,10 @@ module.exports = {
     "@vuepress/pwa",
     {
       serviceWorker: true,
-      updatePopup: true,
+      updatePopup: {
+        message: "محتوای جدید افزوده شده است .",
+        buttonText: "به روز رسانی",
+      },
     },
   ],
 };
