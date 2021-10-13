@@ -8329,6 +8329,11 @@ vuepress-plugin-container@^2.0.2:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
 
+vuepress-plugin-reading-progress@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-reading-progress/-/vuepress-plugin-reading-progress-1.0.10.tgz#0b9d44e27d583ff20e0307993aa4cbda49f3bdca"
+  integrity sha512-7OxcjNEDf9gqFTns0YnXrqPnTRlX6wvxWFr7D8tlfyMPpsZwJkh/MkJveRrEaKcU0gk8QGmPHnXLAZ3soTThVg==
+
 vuepress-plugin-seo@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-seo/-/vuepress-plugin-seo-0.1.4.tgz#be8e5577491c1fc317a7ad4abe3ae51ff317be1e"

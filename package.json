@@ -29,6 +29,7 @@
     "uikit": "^3.7.6",
     "vue-audio-visual": "^2.3.0",
     "vue-gun": "^0.0.3",
+    "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-seo": "^0.1.4"
   }
 }
