@@ -6,6 +6,7 @@ tag:
   - Vue
   - PWA
   - JamStack
+description: Building Progressive Web Applications with Vue.js
 ---
 
 # Building Progressive Web Applications with Vue.js : Reliable, Fast, and Engaging Apps with Vue.js

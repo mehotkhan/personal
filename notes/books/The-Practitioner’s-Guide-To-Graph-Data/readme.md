@@ -5,6 +5,7 @@ category: کتاب
 tag:
   - Graph Data
   - Graph Database
+description: The Practitioner’s Guide to Graph Data
 ---
 
 # The Practitioner’s Guide to Graph Data

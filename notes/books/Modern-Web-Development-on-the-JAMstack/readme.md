@@ -7,6 +7,7 @@ tag:
   - Client-Side Proccesing
   - PWA
   - JamStack
+description: Modern Web Development on the JAMstack-O’Reilly Media
 ---
 
 # Modern Web Development on the JAMstack-O’Reilly Media

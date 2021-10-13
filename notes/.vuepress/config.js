@@ -65,6 +65,7 @@ module.exports = {
    */
   theme: "default-rtl",
   themeConfig: {
+    hostname: "https://alizemani.ir",
     repo: "https://github.com/mehotkhan/personal-website",
     editLinks: true,
     docsDir: "notes",
@@ -128,6 +129,10 @@ module.exports = {
   plugins: [
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
+    "@mr-hope/sitemap",
+    {
+      urls: ["notes", "projects", "books"],
+    },
     "@vuepress/pwa",
     {
       serviceWorker: true,
@@ -135,6 +140,30 @@ module.exports = {
         message: "محتوای جدید افزوده شده است .",
         buttonText: "به روز رسانی",
       },
+    },
+    "seo",
+    {
+      siteTitle: (_, $site) => $site.title,
+      title: ($page) => $page.title,
+      description: ($page) => $page.frontmatter.description,
+      author: (_, $site) => $site.themeConfig.author,
+      tags: ($page) => $page.frontmatter.tags,
+      twitterCard: (_) => "summary_large_image",
+      type: ($page) =>
+        ["books", "projects", "notes"].some((folder) =>
+          $page.regularPath.startsWith("/" + folder)
+        )
+          ? "article"
+          : "page",
+      url: (_, $site, path) => ($site.themeConfig.domain || "") + path,
+      image: ($page, $site) =>
+        $page.frontmatter.image &&
+        (($site.themeConfig.domain &&
+          !$page.frontmatter.image.startsWith("http")) ||
+          "") + $page.frontmatter.image,
+      publishedAt: ($page) =>
+        $page.frontmatter.date && new Date($page.frontmatter.date),
+      modifiedAt: ($page) => $page.lastUpdated && new Date($page.lastUpdated),
     },
   ],
 };
