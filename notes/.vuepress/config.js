@@ -166,5 +166,7 @@ module.exports = {
         $page.frontmatter.date && new Date($page.frontmatter.date),
       modifiedAt: ($page) => $page.lastUpdated && new Date($page.lastUpdated),
     },
+    "minimal-analytics",
+    { ga: "UA-149591828-1" },
   ],
 };
