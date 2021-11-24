@@ -232,16 +232,16 @@ export default {
 
   .hero {
     text-align: center;
-    z-index: 10;
-    position: relative;
 
+    // z-index: 10;
+    // position: relative;
     img {
       max-width: 100%;
       max-height: 280px;
       display: block;
       margin: 3rem auto 1.5rem;
       position: relative;
-      z-index: 10;
+      // z-index: 10;
     }
 
     h1 {

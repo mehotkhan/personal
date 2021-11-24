@@ -1,8 +1,8 @@
 ---
 home: true
 heroText: علی زِمانی
-heroImage: ./front-poster/gandolf2.png
-heroAlt: گندالف
+heroImage: ./front-poster/tom-bombadil-and-goldberry.gif
+heroAlt: تام بامبادیل و گلدبری
 tagline: یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
 actionText: یادداشت ها
 actionLink: /notes/
@@ -21,4 +21,5 @@ footer: همه چیز به طور شگفت انگیزی خوب باید باشد
 
 ---
 
-- **توضیحات تصویر** : **گندالف** (Gandalf)، شخصیتی افسانه‌ای با نقشی اصلی در داستان‌های [هابیت، یا آن‌جا و بازگشت دوباره](<https://fa.wikipedia.org/wiki/%D9%87%D8%A7%D8%A8%DB%8C%D8%AA_(%D8%B1%D9%85%D8%A7%D9%86)>) و [ارباب حلقه‌ها](https://fa.wikipedia.org/wiki/%D8%A7%D8%B1%D8%A8%D8%A7%D8%A8_%D8%AD%D9%84%D9%82%D9%87%E2%80%8C%D9%87%D8%A7) از [جان رونالد روئل تالکین](https://fa.wikipedia.org/wiki/%D8%AC%DB%8C._%D8%A2%D8%B1._%D8%A2%D8%B1._%D8%AA%D8%A7%D9%84%DA%A9%DB%8C%D9%86) است. او یکی از پنج [ایستاری](<https://en.wikipedia.org/wiki/Wizards_(Middle-earth)>) بود که در [دوران سوم](https://fa.wikipedia.org/wiki/%D9%BE%DB%8C%D8%B4%DB%8C%D9%86%D9%87_%D8%A2%D8%B1%D8%AF%D8%A7#%D8%AF%D9%88%D8%B1%D8%A7%D9%86_%D8%B3%D9%88%D9%85) توسط [والار](https://fa.wikipedia.org/wiki/والار) به [سرزمین میانه](<https://fa.wikipedia.org/wiki/%D9%88%D8%A7%D9%84%D8%A7_(%D8%B3%D8%B1%D8%B2%D9%85%DB%8C%D9%86_%D9%85%DB%8C%D8%A7%D9%86%D9%87)>) فرستاده شد. او در [والینور](https://fa.wikipedia.org/wiki/والینور) به نام اولورین معروف است.
+- **توضیحات تصویر** : [**تام بامبادیل**](https://fa.wikipedia.org/wiki/%D8%AA%D8%A7%D9%85_%D8%A8%D8%A7%D9%85%D8%A8%D8%A7%D8%AF%DB%8C%D9%84) نام شخصیتی است در رشته داستان‌های [تالکین](https://fa.wikipedia.org/wiki/تالکین). در جلد اول [سه‌گانهٔ ارباب حلقه‌ها](https://fa.wikipedia.org/wiki/ارباب_حلقه‌ها)، [فرودو](https://fa.wikipedia.org/wiki/فرودو) و همراهانش او را در [جنگل کهن](https://fa.wikipedia.org/w/index.php?title=جنگل_کهن&action=edit&redlink=1) ملاقات می‌کنند. این‌طور به نظر می‌آید که قدرت [حلقه یگانه](https://fa.wikipedia.org/wiki/حلقه_یگانه) بر روی او اثری ندارد.
+- او به همراه همسرش گلدبری، دختر رودخانه، در ویتی‌ویندل زندگی می‌کنند. در کتاب او با نام «ارباب درختان، آب‌ها و تپه‌ها» معرفی شده‌است. در پشت ظاهر سادهٔ تام بامبادیل دانش و قدرتی عظیم قرار دارد ولی در محدوده قلمرو خودش.
