@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: علی زِمانی
-heroImage: ./front-poster/tom-bombadil-and-goldberry.gif
+heroImage: ./front-poster/tom-bombadil-and-goldberry.png
 heroAlt: تام بامبادیل و گلدبری
 tagline: یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
 actionText: یادداشت ها

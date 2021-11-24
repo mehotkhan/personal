@@ -142,6 +142,9 @@ module.exports = {
           message: "محتوای جدید افزوده شده است .",
           buttonText: "به روز رسانی",
         },
+        generateSWConfig: {
+          importWorkboxFrom: "local",
+        },
       },
     ],
     [
