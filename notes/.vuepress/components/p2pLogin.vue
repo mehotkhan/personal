@@ -1,6 +1,10 @@
 
 <template>
   <div>
+    <div class="uk-alert-primary" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد !!!.</p>
+    </div>
     <br />
 
     <div
