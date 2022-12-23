@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Regular.eot");
+  src: url("~/assets/fonts/FarhangDot1-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Regular.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Bold.eot");
+  src: url("~/assets/fonts/FarhangDot1-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Bold.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Black.eot");
+  src: url("~/assets/fonts/FarhangDot1-Black.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Black.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-DemiBold.eot");
+  src: url("~/assets/fonts/FarhangDot1-DemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-DemiBold.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-DemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-ExtraBold.eot");
+  src: url("~/assets/fonts/FarhangDot1-ExtraBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-ExtraBold.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-ExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-ExtraLight.eot");
+  src: url("~/assets/fonts/FarhangDot1-ExtraLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-ExtraLight.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Light.eot");
+  src: url("~/assets/fonts/FarhangDot1-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Light.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Regular.eot");
+  src: url("~/assets/fonts/FarhangDot1-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Regular.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Medium.eot");
+  src: url("~/assets/fonts/FarhangDot1-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Medium.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FarhangDot1";
+  src: url("~/assets/fonts/FarhangDot1-Thin.eot");
+  src: url("~/assets/fonts/FarhangDot1-Thin.eot?#iefix")
+      format("embedded-opentype"),
+    url("~/assets/fonts/FarhangDot1-Thin.woff2") format("woff2"),
+    url("~/assets/fonts/FarhangDot1-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  overflow-x: hidden;
+}
+
+// components
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.100');
+}
+::-webkit-scrollbar-thumb {
+  border: 4px solid theme('colors.gray.100');
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: theme('colors.slate.300');
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: theme('colors.slate.400');
+}
+ 
