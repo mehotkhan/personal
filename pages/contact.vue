@@ -1,12 +1,16 @@
 <script setup>
 useHead({
-  title: "تماس با من",
+  title: " تماس با من",
 });
 </script>
 <template>
-  <div class="hero-body">
-    <p>تماس</p>
-  </div>
+  <section class="flex flex-col justify-center content-center">
+    <div>
+      <h2 class="text-4xl pb-1 border-b font-semibold text-right">
+        تماس با من
+      </h2>
+    </div>
+  </section>
 </template>
 <script>
 export default {
