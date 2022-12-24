@@ -5,7 +5,7 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <h2 class="text-4xl pb-1 border-b font-semibold text-right">درباره من</h2>
+    <ContentDoc class="text-2xl" path="/about" />
   </section>
 </template>
 <script>

@@ -6,9 +6,8 @@ useHead({
 <template>
   <section class="flex flex-col justify-center content-center">
     <div>
-      <h2 class="text-4xl pb-1 border-b font-semibold text-right">
-        تماس با من
-      </h2>
+      <ContentDoc class="text-2xl" path="/contact" />
+
     </div>
   </section>
 </template>

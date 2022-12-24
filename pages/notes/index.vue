@@ -1,13 +1,13 @@
 <script setup>
 useHead({
-  title: "علی زِمانی://طراح و توسعه دهنده وب",
+  title: "یادداشت‌ها",
 });
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
     <div class="content">
       <div class="w-full mb-3 blur-sm">
-        <ContentDoc class="text-2xl" path="/intro" />
+        <ContentDoc class="text-2xl" path="/notes" />
 
       </div>
       <div class="latest my-10">
@@ -45,15 +45,3 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-.latest {
-  ol {
-    list-style-type: persian;
-  }
-}
-img{
-  max-width: 300px;
-  margin: 0 auto;
-  display: block;
-}
-</style>

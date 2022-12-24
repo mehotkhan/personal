@@ -1,11 +1,12 @@
 <script setup>
 useHead({
-  title: "کتاب‌خانه",
+  title: "علی زِمانی://طراح و توسعه دهنده وب",
 });
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <h2 class="text-4xl pb-1 border-b font-semibold text-right">کتاب‌خانه</h2>
+    <ContentDoc class="text-2xl" />
+
   </section>
 </template>
 <script>
@@ -15,3 +16,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.latest {
+  ol {
+    list-style-type: persian;
+  }
+}
+</style>
