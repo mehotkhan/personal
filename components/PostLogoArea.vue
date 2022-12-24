@@ -1,0 +1,18 @@
+<template>
+  <div class="flex justify-start mb-10">
+    <div class="grid justify-start logo">
+      <h1 class="">
+        <span class="text-9xl font-normal block"> علـی </span>
+        <span class="text-9xl font-extrabold"> زِمـــانی </span>
+      </h1>
+      <p class="text-xl mt-10 bg-black p-3 text-white">
+        یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
+      </p>
+    </div>
+  </div>
+</template>
+<style>
+.logo {
+  zoom: .6
+}
+</style>
