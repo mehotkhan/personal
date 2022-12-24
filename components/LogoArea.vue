@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between mb-10">
+  <div class="flex justify-start mb-10">
     <div class="grid justify-start">
       <h1 class="">
         <span class="text-9xl font-normal block"> علـی </span>

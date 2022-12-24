@@ -6,7 +6,7 @@ const menuItems = [
   },
   {
     title: "یادداشت‌ها",
-    to: "notes",
+    to: "/notes",
   },
   {
     title: "کتاب‌خانه",
