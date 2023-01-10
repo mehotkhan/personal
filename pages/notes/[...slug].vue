@@ -9,6 +9,7 @@ useHead({
 <template>
   <section class="flex flex-col justify-center content-center">
     <ContentDoc class="text-2xl" />
+    <Comments />
 
   </section>
 </template>

@@ -9,7 +9,7 @@
       </div>
 
       <div class="w-2/8 bg-gray-100 px-30 flex flex-col justify-start relative">
-        <Breadcrumb />
+        <OnlineStatus />
         <div class="pt-50">
           <PostLogoArea />
           <div class="h-1 w-full mb-10 border-2 border-dashed border-gray-200"></div>

@@ -24,7 +24,7 @@ const menuItems = [
 </script>
 
 <template>
-  <ul class="flex text-xl justify-between">
+  <ul class="flex text-xl justify-between ">
     <li v-for="(menu, index) in menuItems" key="index">
       <NuxtLink :to="menu.to" class="text-gray-500 hover:text-black">{{
         menu.title
@@ -52,3 +52,10 @@ const menuItems = [
     </li> -->
   </ul>
 </template>
+<style lang="scss" scoped>
+.router-link-active{
+  background: black;
+    color: white;
+    padding: 3px 4px;
+}
+</style>
