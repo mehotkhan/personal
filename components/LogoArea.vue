@@ -13,7 +13,7 @@
           </span>
         </NuxtLink>
       </h1>
-      <p class="text-xl mt-10 bg-black p-3 text-white hidden md:block">
+      <p class="text-xl mt-10 bg-black rounded p-3 text-white hidden md:block">
         یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند
       </p>
     </div>

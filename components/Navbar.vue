@@ -5,6 +5,10 @@ const menuItems = [
     to: "/",
   },
   {
+    title: "پیشنهاد‌همکاری",
+    to: "/offer",
+  },
+  {
     title: "یادداشت‌ها",
     to: "/notes",
   },
@@ -12,6 +16,7 @@ const menuItems = [
     title: "کتاب‌خانه",
     to: "/books",
   },
+
   {
     title: "درباره‌من",
     to: "/about",
@@ -60,6 +65,7 @@ const menuItems = [
 .router-link-active {
   background: black;
   color: white;
-  padding: 3px 4px;
+  padding: 2px 5px;
+  border-radius: 2px;
 }
 </style>

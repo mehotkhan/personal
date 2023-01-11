@@ -29,22 +29,24 @@ const open = () => {
           @click="close"
           class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
         />
-        <div class="rtl prose">
+        <div class="rtl prose-xl lg:prose-2xl">
           <slot />
         </div>
       </div>
 
       <div
-        class="bg-gray-100 px-0 md:p-10 flex flex-col justify-start relative transition-all overflow-hidden"
+        class="bg-gray-200 px-0 md:p-10 flex flex-col justify-start relative transition-all"
         :class="sideMenu ? 'w-1/6 md:w-2/6' : 'w-0 md:w-0 md:p-0'"
       >
-        <OnlineStatus />
-        <div class="pt-10 h-150 md:h-auto md:pt-20 sticky top-8">
-          <LogoArea />
-          <div
-            class="h-1 w-full mb-10 border-2 xsm border-1 border-dashed border-gray-200"
-          ></div>
-          <Navbar />
+        <div v-if="sideMenu" class="h-full" >
+          <OnlineStatus />
+          <div class="pt-10 h-150 md:h-auto md:pt-20 sticky top-5 overflow-hidden">
+            <LogoArea />
+            <div
+              class="h-1 w-full mb-10 border-2 xsm border-1 border-dashed border-gray-200"
+            ></div>
+            <Navbar />
+          </div>
         </div>
       </div>
       <slot name="app-after" />
