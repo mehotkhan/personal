@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+const sideMenu = ref(true);
+const close = () => {
+  sideMenu.value = false;
+};
+const open = () => {
+  sideMenu.value = true;
+};
+</script>
+
 <template>
   <div class="p-3 md:p-10 min-w-screen">
     <slot name="app-before" />
@@ -5,14 +15,28 @@
     <main
       class="border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
     >
-      <div class="w-5/6 md:w-5/6 p-10 md:p-20 w-content overflow-x-hidden">
+      <div
+        class="p-10 md:p-20 w-content overflow-x-hidden relative transition-all"
+        :class="sideMenu ? 'w-5/6 md:w-5/6 ' : 'w-full'"
+      >
+        <IconIcBaselineMenu
+          v-if="!sideMenu"
+          @click="open"
+          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-4xl"
+        />
+        <IconIcRoundMenuOpen
+          v-if="sideMenu"
+          @click="close"
+          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-4xl"
+        />
         <div class="rtl prose">
           <slot />
         </div>
       </div>
 
       <div
-        class="w-1/6 md:w-2/6 bg-gray-100 px-0 md:p-10 flex flex-col justify-start relative"
+        class="bg-gray-100 px-0 md:p-10 flex flex-col justify-start relative transition-all overflow-hidden"
+        :class="sideMenu ? 'w-1/6 md:w-2/6' : 'w-0 md:w-0 md:p-0'"
       >
         <OnlineStatus />
         <div class="pt-10 h-150 md:h-auto md:pt-20 sticky top-8">
