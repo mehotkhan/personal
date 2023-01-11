@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const menuItems = [
   {
-    title: "صفحه نخست",
+    title: "صفحه‌نخست",
     to: "/",
   },
   {
@@ -24,8 +24,12 @@ const menuItems = [
 </script>
 
 <template>
-  <ul class="flex text-xl justify-between ">
-    <li v-for="(menu, index) in menuItems" key="index">
+  <ul class="flex flex-col h-full text-xl justify-start text-center">
+    <li
+      v-for="(menu, index) in menuItems"
+      key="index"
+      class="transform -rotate-90 mb-20 md:rotate-0 md:mb-5 md:ml-5"
+    >
       <NuxtLink :to="menu.to" class="text-gray-500 hover:text-black">{{
         menu.title
       }}</NuxtLink>
@@ -53,9 +57,9 @@ const menuItems = [
   </ul>
 </template>
 <style lang="scss" scoped>
-.router-link-active{
+.router-link-active {
   background: black;
-    color: white;
-    padding: 3px 4px;
+  color: white;
+  padding: 3px 4px;
 }
 </style>

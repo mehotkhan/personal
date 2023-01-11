@@ -51,6 +51,8 @@ export default {
 img {
   max-width: 300px;
   margin: 0 auto;
+  margin-bottom: 30px;
   display: block;
+  width: 90%;
 }
 </style>

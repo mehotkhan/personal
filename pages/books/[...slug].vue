@@ -1,7 +1,4 @@
 <script setup>
-definePageMeta({
-  layout: "post",
-});
 useHead({
   title: "علی زِمانی://طراح و توسعه دهنده وب",
 });

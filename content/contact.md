@@ -1,16 +1,14 @@
 ## چت خصوصی
+
 <hr />
-<br />
 
 این بخش در حال توسعه است !
 
-<br />
 <br />
 
 ## تماس مستقیم
 
 <hr />
-<br />
 
 - برای تماس با من می توانید از طریق ایمیل `mehot1 [at] gmail.com` تماس بگیرید.
 
@@ -23,7 +21,6 @@
 ## شبکه های اجتماعی
 
 <hr />
-<br />
 
 - [تویتر](https://www.twitter.com/ZemaniAli/)
 - [لینکداین](https://www.linkedin.com/in/ali-zemani/)

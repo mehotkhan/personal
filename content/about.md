@@ -1,17 +1,16 @@
 ## درباره من
+
 <hr />
-<br />
 سلام
 من علی زِمانی هستم ،‌متولد ۸ اردیبهشت سال ۱۳۶۹
 ترک تحصیل کرده کارشناسی فیزیک و طراح و توسعه دهنده وب تجربی
 <br />
 <br />
-<br />
 
 ## توانایی های فنی
+
 <hr />
 <div class="ltr">
-<br/>
 
 **Programming Languages**: Python, JavaScript, Golang, PHP
 
@@ -43,6 +42,7 @@ gram Api
 <br />
 
 ## **تجربه های کاری**
+
 <hr />
 <div class="ltr">
 <br/>

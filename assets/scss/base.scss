@@ -137,7 +137,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: theme("colors.slate.400");
 }
-.ltr {
-  direction: ltr;
-  font-family: sans-serif;
+.rtl * {
+  direction: rtl;
+}
+.ltr *{
+  direction: ltr!important;
+  // font-family: sans-serif;
 }

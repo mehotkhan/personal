@@ -11,7 +11,7 @@ notes.value = await queryContent("notes").find();
       <h2 class="text-4xl bold border-b-1 pb-1">جدیدترین یادداشت ها</h2>
 
       <div class="latest my-10">
-        <ol class="list-decimal text-xl mt-10">
+        <ul class="list-decimal text-xl mt-10">
           <li
             v-for="{ _path: slug, title, date } in notes"
             :key="slug"
@@ -22,7 +22,7 @@ notes.value = await queryContent("notes").find();
               <span class="font-thin"> / {{ date }} </span>
             </NuxtLink>
           </li>
-        </ol>
+        </ul>
       </div>
       <div class="w-full mb-3 blur-sm">
         <ContentDoc class="text-2xl" path="/index-notes" />
