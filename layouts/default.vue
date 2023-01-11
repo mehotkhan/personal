@@ -22,12 +22,12 @@ const open = () => {
         <IconIcBaselineMenu
           v-if="!sideMenu"
           @click="open"
-          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-4xl"
+          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
         />
         <IconIcRoundMenuOpen
           v-if="sideMenu"
           @click="close"
-          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-4xl"
+          class="absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
         />
         <div class="rtl prose">
           <slot />

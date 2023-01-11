@@ -2,7 +2,7 @@ import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
 export default defineNuxtConfig({
-  // ssr: false,
+  ssr: false,
   target: "static",
 
   css: ["@/assets/scss/base.scss"],
@@ -16,13 +16,10 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
   ],
   components: true,
-  // router: {
-  //   prefetchLinks: true,
-  // },
-  experimental: {
-    reactivityTransform: false,
-    payloadExtraction: false,
+  router: {
+    prefetchLinks: true,
   },
+
   app: {
     // global transition
     pageTransition: { name: "page", mode: "in-out" },
