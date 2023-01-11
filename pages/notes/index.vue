@@ -25,9 +25,8 @@ notes.value = await queryContent("notes").find();
         </ul>
       </div>
       <div class="w-full mb-3 blur-sm">
-        <ContentDoc class="text-2xl" path="/index-notes" />
+        <ContentDoc path="/index-notes" />
         <Comments />
-
       </div>
     </div>
   </section>

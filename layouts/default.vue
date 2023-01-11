@@ -15,7 +15,7 @@
         class="w-1/6 md:w-2/6 bg-gray-100 px-0 md:p-10 flex flex-col justify-start relative"
       >
         <OnlineStatus />
-        <div class="pt-10 h-150 md:h-auto md:pt-20">
+        <div class="pt-10 h-150 md:h-auto md:pt-20 sticky top-8">
           <LogoArea />
           <div
             class="h-1 w-full mb-10 border-2 xsm border-1 border-dashed border-gray-200"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start mb-10 flex-col">
+  <div class="flex justify-start mb-10 flex-col ">
     <div class="grid justify-center">
       <h1 class="mt-3">
         <NuxtLink to="/" class="text-3xl md:text-7xl lg:text-8xl xl:text-9xl">

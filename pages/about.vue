@@ -5,7 +5,7 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <ContentDoc class="text-2xl" path="/about" />
+    <ContentDoc path="/about" />
   </section>
 </template>
 <script>
@@ -15,4 +15,3 @@ export default {
   },
 };
 </script>
-

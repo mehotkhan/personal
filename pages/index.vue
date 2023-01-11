@@ -2,34 +2,30 @@
 useHead({
   title: "علی زِمانی://طراح و توسعه دهنده وب",
 });
-const books = ref()
-const notes = ref()
-notes.value = await queryContent('notes').find()
-books.value = await queryContent('books').find()
-
+const books = ref();
+const notes = ref();
+notes.value = await queryContent("notes").find();
+books.value = await queryContent("books").find();
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
     <div class="content">
       <div class="w-full mb-3 blur-sm">
-        <ContentDoc class="text-2xl" path="/intro" />
-
+        <ContentDoc path="/intro" />
       </div>
 
       <div class="latest my-10">
-        <li v-for="{
-          _path: slug,
-          title,
-          date,
-          category
-        } in [...books, ...notes]" :key="slug" class="mb-2">
+        <li
+          v-for="{ _path: slug, title, date, category } in [...books, ...notes]"
+          :key="slug"
+          class="mb-2"
+        >
           <NuxtLink :to="slug">
             {{ title }}
             <span class="font-thin"> / {{ category }} </span>
             <span class="font-thin"> / {{ date }} </span>
           </NuxtLink>
         </li>
-
       </div>
     </div>
   </section>
