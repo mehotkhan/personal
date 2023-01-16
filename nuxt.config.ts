@@ -5,7 +5,12 @@ export default defineNuxtConfig({
   ssr: false,
   target: "static",
 
-  css: ["@/assets/scss/base.scss"],
+  css: [
+    "virtual:windi-base.css",
+    "virtual:windi-components.css",
+    "virtual:windi-utilities.css",
+    "@/assets/scss/base.scss",
+  ],
   build: {
     transpile: ["@headlessui/vue"],
   },
@@ -14,11 +19,10 @@ export default defineNuxtConfig({
     "nuxt-windicss",
     "@nuxt/content",
     "@vueuse/nuxt",
+    "@pinia/nuxt",
+    "@nuxtjs/turnstile",
   ],
   components: true,
-  router: {
-    prefetchLinks: true,
-  },
 
   app: {
     // global transition
@@ -58,5 +62,8 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
     typeCheck: false,
+  },
+  turnstile: {
+    siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
   },
 });

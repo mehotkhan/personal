@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: " تماس با من",
+  title: "پیشنهاد همکاری",
 });
 </script>
 <template>

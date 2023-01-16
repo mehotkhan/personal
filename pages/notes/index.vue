@@ -1,4 +1,7 @@
 <script setup>
+import moment from "moment-jalaali";
+import * as _ from "lodash";
+
 useHead({
   title: "یادداشت‌ها",
 });
@@ -13,13 +16,13 @@ notes.value = await queryContent("notes").find();
       <div class="latest my-10">
         <ul class="list-decimal text-xl mt-10">
           <li
-            v-for="{ _path: slug, title, date } in notes"
+            v-for="{ _path: slug, title, date } in orderByDate(notes)"
             :key="slug"
             class="mb-2"
           >
             <NuxtLink :to="slug">
               {{ title }}
-              <span class="font-thin"> / {{ date }} </span>
+              <span class="font-thin"> / {{ JalaliDate(date) }} </span>
             </NuxtLink>
           </li>
         </ul>

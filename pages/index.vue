@@ -1,14 +1,19 @@
 <script setup>
+import moment from "moment-jalaali";
+import * as _ from "lodash";
+
 useHead({
   title: "علی زِمانی://طراح و توسعه دهنده وب",
 });
 const books = ref();
 const notes = ref();
+const tuts = ref();
 notes.value = await queryContent("notes").find();
 books.value = await queryContent("books").find();
+tuts.value = await queryContent("tuts").find();
 </script>
 <template>
-  <section class="flex flex-col justify-center content-center">
+  <section class="intro flex flex-col justify-center content-center">
     <div class="content">
       <div class="w-full mb-3 blur-sm">
         <ContentDoc path="/intro" />
@@ -16,14 +21,18 @@ books.value = await queryContent("books").find();
 
       <div class="latest my-10">
         <li
-          v-for="{ _path: slug, title, date, category } in [...books, ...notes]"
+          v-for="{ _path: slug, title, date, category } in orderByDate([
+            ...books,
+            ...notes,
+            ...tuts,
+          ])"
           :key="slug"
           class="mb-2"
         >
           <NuxtLink :to="slug">
             {{ title }}
             <span class="font-thin"> / {{ category }} </span>
-            <span class="font-thin"> / {{ date }} </span>
+            <span class="font-thin"> / {{ JalaliDate(date) }} </span>
           </NuxtLink>
         </li>
       </div>
@@ -44,11 +53,16 @@ export default {
   }
 }
 
-img {
-  max-width: 300px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  display: block;
-  width: 90%;
+.intro {
+  img {
+    max-width: 300px !important;
+    margin: -30px auto !important;
+    margin-bottom: 30px !important;
+    display: block !important;
+    width: 90% !important;
+  }
+  h2 {
+    text-align: center;
+  }
 }
 </style>

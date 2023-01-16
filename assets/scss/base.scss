@@ -1,126 +1,17 @@
 @font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Regular.eot");
-  src: url("~/assets/fonts/FarhangDot1-Regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Regular.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Regular.woff") format("woff");
-  font-weight: normal;
+  font-family: "Farhang";
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Bold.eot");
-  src: url("~/assets/fonts/FarhangDot1-Bold.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Bold.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Black.eot");
-  src: url("~/assets/fonts/FarhangDot1-Black.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Black.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-DemiBold.eot");
-  src: url("~/assets/fonts/FarhangDot1-DemiBold.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-DemiBold.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-DemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-ExtraBold.eot");
-  src: url("~/assets/fonts/FarhangDot1-ExtraBold.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-ExtraBold.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-ExtraBold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-ExtraLight.eot");
-  src: url("~/assets/fonts/FarhangDot1-ExtraLight.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-ExtraLight.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-ExtraLight.woff") format("woff");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Light.eot");
-  src: url("~/assets/fonts/FarhangDot1-Light.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Light.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Regular.eot");
-  src: url("~/assets/fonts/FarhangDot1-Regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Regular.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Medium.eot");
-  src: url("~/assets/fonts/FarhangDot1-Medium.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Medium.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FarhangDot1";
-  src: url("~/assets/fonts/FarhangDot1-Thin.eot");
-  src: url("~/assets/fonts/FarhangDot1-Thin.eot?#iefix")
-      format("embedded-opentype"),
-    url("~/assets/fonts/FarhangDot1-Thin.woff2") format("woff2"),
-    url("~/assets/fonts/FarhangDot1-Thin.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 100 900; // range of weight
+  src: url("~/assets/fonts/FarhangVariable.woff");
 }
 body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* this pixel should match fixed header height */
+}
 // components
 ::-webkit-scrollbar {
   width: 16px;
@@ -140,7 +31,72 @@ body {
 .rtl * {
   direction: rtl;
 }
-.ltr *{
-  direction: ltr!important;
+.ltr * {
+  direction: ltr !important;
   // font-family: sans-serif;
+}
+.logo-area {
+  overflow: clip;
+}
+.prose-xl {
+  a {
+    text-decoration: none;
+  }
+  hr {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  img {
+    max-width: 489px;
+    margin: 0 auto !important;
+    width: 100%;
+    display: block;
+  }
+}
+.rtl .prose blockquote {
+  border-right-width: 0.25rem;
+  border-left-width: 0;
+}
+.rtl .prose ul > li,
+.rtl .prose ol > li {
+  padding-right: 1.75em;
+  padding-left: 0;
+}
+.rtl .prose ol > li:before {
+  right: 0.25em;
+  left: auto;
+}
+.rtl .prose ol > li:before,
+.rtl .prose ul > li:before {
+  right: 0.25em;
+  left: auto;
+}
+
+.rtl .prose thead td:first-child,
+.rtl .prose thead th:first-child {
+  padding-right: 0;
+}
+
+.rtl .prose thead td:last-child,
+.rtl .prose thead th:last-child {
+  padding-left: 0;
+}
+blockquote {
+  text-align: justify;
+  background: #f9f9f9;
+  border-right: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
 }

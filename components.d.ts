@@ -7,19 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    'IconCil:hamburgerMenu': typeof import('~icons/cil/hamburger-menu')['default']
-    'IconCil:HamburgerMenu': typeof import('~icons/cil/-hamburger-menu')['default']
-    IconCilHamburgerMenu: typeof import('~icons/cil/hamburger-menu')['default']
-    'IconIc:baselineMenu': typeof import('~icons/ic/baseline-menu')['default']
-    'IconIc:BaselineMenu': typeof import('~icons/ic/-baseline-menu')['default']
-    'IconIc:menu': typeof import('~icons/ic/menu')['default']
     IconIcBaselineMenu: typeof import('~icons/ic/baseline-menu')['default']
-    'IconMdi:close': typeof import('~icons/mdi/close')['default']
-    'IconMdi:menu': typeof import('~icons/mdi/menu')['default']
-    'IconMdi:open': typeof import('~icons/mdi/open')['default']
-    IconMdiClose: typeof import('~icons/mdi/close')['default']
-    'IconSimpleIcons:nuxtdotjs': typeof import('~icons/simple-icons/nuxtdotjs')['default']
-    'IconUil:sun': typeof import('~icons/uil/sun')['default']
+    IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
+    'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
+    'IconMdi:send': typeof import('~icons/mdi/send')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

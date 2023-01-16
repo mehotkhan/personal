@@ -1,9 +1,7 @@
-<script setup>
+<script lang="ts" setup>
 useHead({
   title: "علی زِمانی://طراح و توسعه دهنده وب",
   titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-  charset: "utf-8",
   meta: [
     {
       name: "fontiran.com:license",
@@ -49,16 +47,12 @@ useHead({
 </script>
 <template>
   <Html dir="rtl">
-
-  <Body class="flex justify-center content-center bg-gray-400">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </Body>
-
+    <Body class="flex justify-center content-center bg-gray-400">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </Body>
   </Html>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
