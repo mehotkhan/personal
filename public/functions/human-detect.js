@@ -10,8 +10,7 @@ export async function onRequest(context) {
   const body = await request.json()
   const token = body.token;
   const ip = request.headers.get('CF-Connecting-IP');
-  const SECRET_KEY = '0x4AAAAAAAB-JGPx3yaSsXw1XaJ8NVdI5jQ'
-  // Validate the token by calling the "/siteverify" API.
+  const SECRET_KEY = env.TURNSTILE_SECRET_KEY
   let formData = new FormData();
   formData.append('secret', SECRET_KEY);
   formData.append('response', token);
