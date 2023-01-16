@@ -37,7 +37,11 @@ onUnmounted(() => {
   <section class="flex flex-col justify-center content-center">
     <ContentRenderer :value="data" class="nuxt-content">
       <h1 class="pt-20 text-center">{{ data?.title }}</h1>
-      <img class="poster-image" :src="data?.thumbnail" />
+      <img class="poster-single" :src="data?.thumbnail" />
+      <p class="bg-gray-200 my-auto text-justify p-10 border-r-gray-300 border-5">
+        {{ data?.description }}
+      </p>
+
       <ContentRendererMarkdown :value="data" />
     </ContentRenderer>
     <Comments />

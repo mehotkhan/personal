@@ -107,10 +107,13 @@ blockquote p {
   }
 }
 
-img.poster {
-  max-width: 300px !important;
-  margin: -30px auto !important;
-  margin-bottom: 30px !important;
-  display: block !important;
-  width: 90% !important;
+img.poster-front {
+  max-width: 300px;
+  margin: -30px auto;
+  margin-bottom: 30px;
+  display: block;
+  width: 90%;
+}
+img.poster-single {
+  max-width: inherit;
 }

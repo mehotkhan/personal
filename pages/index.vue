@@ -13,7 +13,7 @@ const { data: bannerPost }: any = await useAsyncData("page-data", () =>
     <div class="content">
       <div class="w-full mb-3 blur-sm">
         <ContentRenderer :value="bannerPost" class="nuxt-content">
-          <img class="poster" :src="bannerPost?.thumbnail" />
+          <img class="poster-front" :src="bannerPost?.thumbnail" />
           <ContentRendererMarkdown :value="bannerPost" />
         </ContentRenderer>
       </div>
