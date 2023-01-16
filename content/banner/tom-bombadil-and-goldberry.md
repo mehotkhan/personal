@@ -1,6 +1,7 @@
 ---
 title: تام بامبادیل
 thumbnail: "/content/tom-bombadil-and-goldberry.png"
+date: 2021/09/11
 ---
 
 ## تام بامبادیل

@@ -164,3 +164,6 @@ issues, such as
 - Download From libgen (PDF): [The Practitioner’s Guide To Graph Data: Applying Graph Thinking And Graph Technologies To Solve Complex Problems](http://libgen.is/book/index.php?md5=2F852C74D4139268D520CB3E4B1662D3)
 
 </div>
+
+## دیدگاه ها
+<hr />

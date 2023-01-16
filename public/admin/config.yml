@@ -29,7 +29,7 @@ collections:
   - name: "page"
     label: "صفحه"
     folder: "content/pages"
-    create: true
+    create: false
     slug: "{{slug}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }

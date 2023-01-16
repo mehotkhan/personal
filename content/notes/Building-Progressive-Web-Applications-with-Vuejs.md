@@ -60,3 +60,6 @@ in Chapter 9, we polish the details of our app and make it available to the worl
 - Download From libgen (PDF): [Building Progressive Web Applications with Vue.js : Reliable, Fast, and Engaging Apps with Vue.js](http://libgen.is/book/index.php?md5=20A804EDBC4C98A4D5B9EE3AEB49C83C)
 
 </div>
+
+## دیدگاه ها
+<hr />

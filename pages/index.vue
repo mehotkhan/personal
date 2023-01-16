@@ -5,16 +5,17 @@ useHead({
 const notes = ref();
 notes.value = await queryContent("notes").find();
 const { data: bannerPost }: any = await useAsyncData("page-data", () =>
-  queryContent("banner/intro").findOne()
+  queryContent("banner").limit(1).find()
 );
+console.log(bannerPost);
 </script>
 <template>
   <section class="intro flex flex-col justify-center content-center">
     <div class="content">
       <div class="w-full mb-3 blur-sm">
-        <ContentRenderer :value="bannerPost" class="nuxt-content">
-          <img class="poster-front" :src="bannerPost?.thumbnail" />
-          <ContentRendererMarkdown :value="bannerPost" />
+        <ContentRenderer :value="bannerPost[0]" class="nuxt-content">
+          <img class="poster-front" :src="bannerPost[0]?.thumbnail" />
+          <ContentRendererMarkdown :value="bannerPost[0]" />
         </ContentRenderer>
       </div>
 
