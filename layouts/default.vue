@@ -62,13 +62,19 @@ watch(route, (newRoute, oldRoute) => {
         <div v-if="sideMenu" class="h-full">
           <OnlineStatus v-if="!singleMode" />
           <div v-if="singleMode">
+            <NuxtLink
+              to="/"
+              class="text-center text-xl md:text-2xl text-thin border-b border-gray-400 w-full bg-black text-white rounded p-3 block mb-10"
+            >
+              علی زِمانی:// طراح و توسعه دهنده وب
+            </NuxtLink>
             <h4
-              class="text-xl md:text-3xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
+              class="text-xl md:text-2xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
             >
               فهرست‌اصلی
             </h4>
             <Navbar
-              class="mt-10 flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-right"
+              class="mt-10 flex flex-col h-full text-xl md:text-xl justify-start text-gray-500 text-right"
             />
           </div>
           <div

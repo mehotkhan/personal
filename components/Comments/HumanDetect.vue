@@ -8,11 +8,11 @@
     />
     <button
       @click="reRender()"
-      class="flex mr-3 text-xl h-auto cursor-pointer items-center"
+      class="flex mr-3 text-sm h-auto cursor-pointer items-center"
       :class="validated ? 'text-green-400' : 'text-red-400'"
     >
+    <IconMdi:reload class="ml-2"/>
     من ربات نیستم؟
-    <IconMdi:reload class="mr-1"/>
     </button>
    
   </div>

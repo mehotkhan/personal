@@ -29,7 +29,7 @@ const onClick = (id: string) => {
 <template>
   <div class="px-3 md:p-0 mb-5">
     <h4
-      class="text-xl md:text-3xl text-bold pb-2 mb-5 border-b border-dashed border-gray-400"
+      class="text-xl md:text-2xl text-bold pb-2 mb-5 border-b border-dashed border-gray-400"
     >
       سرفصل‌ها
     </h4>
@@ -46,7 +46,7 @@ const onClick = (id: string) => {
           :id="`toc-${id}`"
           :key="id"
           ref="tocLinksH2"
-          class="font-thin cursor-pointer text-md md:text-2xl list-none ml-0 mb-2 last:mb-0"
+          class="font-regular cursor-pointer text-md md:text-xl list-none ml-0 mb-2 last:mb-0"
           :class="{
             'font-normal':
               id ===
@@ -63,7 +63,7 @@ const onClick = (id: string) => {
               :id="`toc-${childId}`"
               :key="childId"
               ref="tocLinksH3"
-              class="cursor-pointer font-thin text-sm md:text-xl list-none ml-0 mb-2 last:mb-0"
+              class="cursor-pointer font-thin text-sm md:text-lg list-none ml-0 mb-2 last:mb-0"
               :class="{
                 'font-normal':
                   childId ===
@@ -80,12 +80,12 @@ const onClick = (id: string) => {
       </ul>
     </nav>
     <h4
-      class="text-xl md:text-3xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
+      class="text-xl md:text-2xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
     >
       برچسب‌ها
     </h4>
     <ol class="flex mb-10">
-      <li v-for="tag in tocTags" class="text-md md:text-2xl pb-3 ml-5">
+      <li v-for="tag in tocTags" class="text-md md:text-xl pb-3 ml-5">
         #{{ tag }}
       </li>
     </ol>
