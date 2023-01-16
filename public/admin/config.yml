@@ -33,3 +33,14 @@ collections:
       - { label: "عنوان", name: "title", widget: "string" }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "محتوا", name: "body", widget: "markdown" }
+      
+  - name: "banner"
+    label: "بنر"
+    folder: "content/banner"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
+      - { label: "پوستر", name: "thumbnail", widget: "image" }
+      - { label: "محتوا", name: "body", widget: "markdown" }

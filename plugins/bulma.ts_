@@ -1,6 +1,0 @@
-import BulmaVue from "bulma-vue";
-import "bulma-vue/css/bulma-vue.css";
-import "../assets/scss/base.scss";
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(BulmaVue);
-});

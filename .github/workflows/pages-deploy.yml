@@ -16,6 +16,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: alizemani # e.g. 'my-project'
-          directory: .output/public # e.g. 'dist'
+          projectName: alizemani
+          directory: .output/public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
