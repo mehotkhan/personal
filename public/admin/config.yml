@@ -6,15 +6,24 @@ backend:
 media_folder: /public/content
 public_folder: /content
 collections:
-  - name: "blog"
+  - name: "notes"
     label: "یادداشت ها"
     folder: "content/notes"
     create: true
     slug: "{{slug}}"
-    editor:
-      preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
+      - { label: "پوستر", name: "thumbnail", widget: "image" }
+      - { label: "خلاصه", name: "description", widget: "string" }
+      - { label: "محتوا", name: "body", widget: "markdown" }
+
+  - name: "page"
+    label: "صفحه ها"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
+      - { label: "محتوا", name: "body", widget: "markdown" }
