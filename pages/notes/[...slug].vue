@@ -10,7 +10,7 @@ const observerOptions = reactive({
   threshold: 0.5,
 });
 const content = useContent();
-const { data }:any = await useAsyncData("page-data", () =>
+const { data }: any = await useAsyncData("page-data", () =>
   queryContent(route.path).findOne()
 );
 
