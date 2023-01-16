@@ -32,16 +32,12 @@ onMounted(() => {
 onUnmounted(() => {
   observer.value?.disconnect();
 });
-
-useHead({
-  title: "علی زِمانی://طراح و توسعه دهنده وب",
-});
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
     <ContentRenderer :value="data" class="nuxt-content">
-      <h1>{{ data?.title }}</h1>
-      <img :src="data?.thumbnail" />
+      <h1 class="pt-20 text-center">{{ data?.title }}</h1>
+      <img class="poster-image" :src="data?.thumbnail" />
       <ContentRendererMarkdown :value="data" />
     </ContentRenderer>
     <Comments />

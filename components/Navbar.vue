@@ -12,14 +12,6 @@ const menuItems = [
     to: "/notes",
   },
   {
-    title: "کتـاب‌خانــه",
-    to: "/books",
-  },
-  {
-    title: "دوره‌های‌آموزشی",
-    to: "/tuts",
-  },
-  {
     title: "پیشنهاد‌همکاری",
     to: "/offer",
   },

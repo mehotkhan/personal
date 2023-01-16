@@ -51,7 +51,7 @@ watch(route, (newRoute, oldRoute) => {
           class="z-100 absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
         />
         <div
-          class="content-area rtl prose-xl lg:prose-2xl w-full font-normal py-30"
+          class="content-area rtl prose-xl lg:prose-2xl w-full font-normal py-10"
         >
           <slot />
         </div>

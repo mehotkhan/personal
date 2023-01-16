@@ -100,3 +100,17 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+.latest {
+  ul {
+    list-style-type: persian;
+  }
+}
+
+img.poster {
+  max-width: 300px !important;
+  margin: -30px auto !important;
+  margin-bottom: 30px !important;
+  display: block !important;
+  width: 90% !important;
+}

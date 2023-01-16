@@ -5,15 +5,12 @@ tag:
   - Graph Database
 title: The Practitioner’s Guide to Graph Data
 category: کتاب
+thumbnail: "/content/The-Practitioners-Guide-To-Graph-Data.png"
 ---
-
-# The Practitioner’s Guide to Graph Data
-
-Applying Graph Thinking and Graph Technologies to Solve Complex Problems
 
 <div class="ltr">
 
-![The Practitioner’s Guide to Graph Data](/content/The-Practitioners-Guide-To-Graph-Data.png)
+Applying Graph Thinking and Graph Technologies to Solve Complex Problems
 
 ## Preface
 

@@ -1,8 +1,7 @@
 ---
-title: صفحه نخست
+title: تام بامبادیل
+thumbnail: "/content/tom-bombadil-and-goldberry.png"
 ---
-
-![تام بامبادیل](/content/tom-bombadil-and-goldberry.png)
 
 ## تام بامبادیل
 
@@ -16,7 +15,3 @@ title: صفحه نخست
 
 <br />
 <br />
-
-## جدیدترین ورودی‌ها
-
-<hr/>

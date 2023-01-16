@@ -5,13 +5,6 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <ContentDoc path="/about" />
+    <ContentDoc path="/pages/about" />
   </section>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>

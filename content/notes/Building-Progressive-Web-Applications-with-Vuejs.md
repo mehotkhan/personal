@@ -5,14 +5,11 @@ tag:
   - Vue
   - PWA
   - JamStack
-category :  کتاب
+category: کتاب
+thumbnail: "/content/Building-Progressive-Web-Applications-with-Vuejs.png"
 ---
 
-# Building Progressive Web Applications with Vue.js : Reliable, Fast, and Engaging Apps with Vue.js
-
 <div class="ltr">
-
-![Building Progressive Web Applications with Vue.js : Reliable, Fast, and Engaging Apps with Vue.js](/content/Building-Progressive-Web-Applications-with-Vuejs.png)
 
 ## Introduction
 

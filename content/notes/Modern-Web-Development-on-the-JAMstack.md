@@ -5,15 +5,11 @@ tag:
   - PWA
   - JamStack
 title: Modern Web Development on the JAMstack-O’Reilly Media
-category :  کتاب
-
+category: کتاب
+thumbnail: "/content/Modern-Web-Development-on-the-JAMstack.png"
 ---
 
-# Modern Web Development on the JAMstack-O’Reilly Media
-
 <div class="ltr">
-
-![Modern Web Development on the JAMstack-O’Reilly Media](/content/Modern-Web-Development-on-the-JAMstack.png)
 
 ## Introduction
 
