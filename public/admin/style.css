@@ -1,0 +1,10 @@
+body * {
+  font-family: Vazir;
+}
+.frame-content {
+  direction: rtl;
+  font-family: Vazir;
+}
+.frame-content .ltr {
+  direction: ltr;
+}

@@ -1,13 +1,19 @@
+# backend:
+#   name: proxy
+#   proxy_url: http://localhost:8081/api/v1
+#   branch: master # optional, defaults to master
+
 backend:
   name: github
   repo: mehotkhan/front
   base_url: https://alizemani.ir
   auth_endpoint: /auth
+
 media_folder: /public/content
 public_folder: /content
 collections:
   - name: "notes"
-    label: "یادداشت ها"
+    label: "یادداشت"
     folder: "content/notes"
     create: true
     slug: "{{slug}}"
@@ -19,7 +25,7 @@ collections:
       - { label: "محتوا", name: "body", widget: "markdown" }
 
   - name: "page"
-    label: "صفحه ها"
+    label: "صفحه"
     folder: "content/pages"
     create: true
     slug: "{{slug}}"
