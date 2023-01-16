@@ -9,19 +9,17 @@ const open = () => {
   sideMenu.value = true;
 };
 
-const isSingle = (path: string) =>
-  ["/tuts/", "/notes/", "/books/"].some((word) => path.startsWith(word)) ??
-  false;
+const isSingle = (path: string) => /\/notes\/[a-zA-Z]/.test(path);
 
 onMounted(() => {
-  if (isSingle(route.fullPath)) {
+  if (isSingle(route.path)) {
     singleMode.value = true;
   } else {
     singleMode.value = false;
   }
 });
 watch(route, (newRoute, oldRoute) => {
-  if (isSingle(newRoute.fullPath)) {
+  if (isSingle(newRoute.path)) {
     singleMode.value = true;
   } else {
     singleMode.value = false;
@@ -58,13 +56,23 @@ watch(route, (newRoute, oldRoute) => {
       </div>
 
       <div
-        class="bg-gray-200 px-0  flex flex-col justify-start relative transition-all"
+        class="bg-gray-200 px-0 flex flex-col justify-start relative transition-all"
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
           <OnlineStatus v-if="!singleMode" />
+          <div v-if="singleMode">
+            <h4
+              class="text-xl md:text-3xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
+            >
+              فهرست‌اصلی
+            </h4>
+            <Navbar
+              class="mt-10 flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-right"
+            />
+          </div>
           <div
-            class="pt-10 h-auto md:h-auto md:pt-10 sticky top-3 md:top-0 logo-area"
+            class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-3 md:top-0"
           >
             <LogoArea v-if="!singleMode" />
             <ContentToc v-if="singleMode" />

@@ -33,8 +33,8 @@ const onClick = (id: string) => {
     >
       سرفصل‌ها
     </h4>
-    <nav class="flex ">
-      <div class="relative bg-secondary w-0.5 overflow-hidden rounded">
+    <nav class="flex">
+      <div class="relative bg-secondary w-0.5 rounded">
         <div
           class="absolute left-0 w-full transition-all duration-200 rounded bg-red-500"
           :style="{ height: `${sliderHeight}px`, top: `${sliderTop}px` }"
@@ -84,16 +84,10 @@ const onClick = (id: string) => {
     >
       برچسب‌ها
     </h4>
-    <ol class="list-disc">
-      <li v-for="tag in tocTags" class="text-md md:text-2xl pb-3">#{{ tag }}</li>
+    <ol class="flex mb-10">
+      <li v-for="tag in tocTags" class="text-md md:text-2xl pb-3 ml-5">
+        #{{ tag }}
+      </li>
     </ol>
-    <h4
-      class="text-xl md:text-3xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
-    >
-      فهرست‌اصلی
-    </h4>
-    <Navbar
-      class="mt-10 flex flex-col h-full text-md md:text-2xl justify-start text-gray-500 text-right"
-    />
   </div>
 </template>

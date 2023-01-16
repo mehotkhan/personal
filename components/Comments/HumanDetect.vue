@@ -55,7 +55,6 @@ const onSubmit = async () => {
       emit("passed", false);
     }
   } catch (error) {
-    console.log(api);
     emit("passed", false);
   }
 };
