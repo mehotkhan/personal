@@ -1,11 +1,17 @@
 ---
 date: 2021/10/11
-tag:
+tags:
   - Graph Data
   - Graph Database
 title: The Practitioner’s Guide to Graph Data
 category: کتاب
 thumbnail: "/content/The-Practitioners-Guide-To-Graph-Data.png"
+description:
+  Think about the last time you searched for someone on a social media platform.
+  What did you look at on the results page?
+  Most likely, you started scanning down the names in the list of profile results. And
+  you probably spent most of your time inspecting the “shared friends” section to
+  understand how you knew someone.
 ---
 
 <div class="ltr">

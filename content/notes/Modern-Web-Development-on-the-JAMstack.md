@@ -1,12 +1,18 @@
 ---
+title: Modern Web Development on the JAMstack-O’Reilly Media
 date: 2021/08/11
-tag:
+category: کتاب
+tags:
   - Client-Side Proccesing
   - PWA
   - JamStack
-title: Modern Web Development on the JAMstack-O’Reilly Media
-category: کتاب
-thumbnail: "/content/Modern-Web-Development-on-the-JAMstack.png"
+thumbnail: /content/Modern-Web-Development-on-the-JAMstack.png
+description: In just the past few years, a flurry of advancements has greatly
+  strengthened the web as a content and application platform. Brows‐ ers are
+  much more powerful. JavaScript has matured. WebAssembly is on the horizon. It
+  certainly feels like the beginning of a new chap‐ ter for the web. You’ve
+  likely felt this as you’ve witnessed the explo‐ sion of new frontend
+  frameworks and API-based services.
 ---
 
 <div class="ltr">

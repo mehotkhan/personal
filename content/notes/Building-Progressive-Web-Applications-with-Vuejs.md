@@ -1,12 +1,17 @@
 ---
 title: Building Progressive Web Applications with Vue.js
 date: 2021/09/11
-tag:
+category: کتاب
+tags:
   - Vue
   - PWA
   - JamStack
-category: کتاب
-thumbnail: "/content/Building-Progressive-Web-Applications-with-Vuejs.png"
+thumbnail: /content/Building-Progressive-Web-Applications-with-Vuejs.png
+description:
+  Progressive web apps (PWAs) were initially introduced by Google in 2015
+  and proved to bring many advantages to the web platform. In this book, we
+  are going to examine how to empower our web apps to be fast and reliable,
+  and to provide an immersive user experience with offline support.
 ---
 
 <div class="ltr">

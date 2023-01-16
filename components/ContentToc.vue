@@ -15,7 +15,7 @@ const { data: blogPost } = await useAsyncData(`blogToc`, () =>
   queryContent(route.path).findOne()
 );
 const tocLinks = computed(() => blogPost.value?.body.toc.links ?? []);
-const tocTags = computed(() => blogPost.value?.tag ?? []);
+const tocTags = computed(() => blogPost.value?.tags ?? []);
 
 const onClick = (id: string) => {
   const el = document.getElementById(id);
