@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   // content
   content: {
-    documentDriven: false,
+    documentDriven: true,
     experimental: {
       clientDB: true,
       stripQueryParameters: true,
@@ -65,5 +65,16 @@ export default defineNuxtConfig({
   },
   turnstile: {
     siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/notes"],
+    },
+  },
+  experimental: {
+    reactivityTransform: true,
+    payloadExtraction: true,
+    treeshakeClientOnly: false,
   },
 });
