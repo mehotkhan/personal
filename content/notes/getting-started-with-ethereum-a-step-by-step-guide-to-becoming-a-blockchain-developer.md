@@ -1,6 +1,5 @@
 ---
-title: "\tGetting Started with Ethereum: A Step-by-Step Guide to Becoming a
-  Blockchain Developer"
+title: آشنایی با اتریوم - راهنمای قدم به قدم برای توسعه دهنده بلاک چین شدن
 date: 2023-01-18T19:14:50.978Z
 category: کتاب
 tags:
