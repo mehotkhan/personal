@@ -1,6 +1,22 @@
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
+import fs from "fs";
+
+const GenerateContentPaths = (path: string, files_: string[] = []) => {
+  files_= files_ || [];
+  const files = fs.readdirSync(path);
+  for (var i in files) {
+    var name = path + "/" + files[i];
+    if (fs.statSync(name).isDirectory()) {
+      GenerateContentPaths(name, files_);
+    } else {
+      files_.push(name.replace("content", "").replace(".md", ""));
+    }
+  }
+  return files_;
+};
+
 export default defineNuxtConfig({
   ssr: false,
   target: "static",
@@ -69,7 +85,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/notes", "/notes/self-learning-physics"],
+      routes: GenerateContentPaths("content/notes"),
     },
   },
   experimental: {
