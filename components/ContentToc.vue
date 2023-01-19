@@ -84,9 +84,9 @@ const onClick = (id: string) => {
     >
       برچسب‌ها
     </h4>
-    <ol class="flex mb-10">
+    <ol class="mb-10">
       <li v-for="tag in tocTags" class="text-md md:text-xl pb-3 ml-5">
-        #{{ tag }}
+        {{ tag }}#
       </li>
     </ol>
   </div>

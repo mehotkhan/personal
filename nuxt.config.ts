@@ -2,8 +2,8 @@ import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
 export default defineNuxtConfig({
-  ssr: false,
-  target: "static",
+  // ssr: false,
+  // target: "static",
 
   css: [
     "virtual:windi-base.css",
@@ -73,8 +73,8 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    reactivityTransform: true,
-    payloadExtraction: true,
+    reactivityTransform: false,
+    payloadExtraction: false,
     treeshakeClientOnly: false,
   },
 });
