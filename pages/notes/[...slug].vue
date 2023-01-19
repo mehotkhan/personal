@@ -49,7 +49,7 @@ console.log(data);
       </p>
 
       <ContentRendererMarkdown :value="data" />
-      <!-- <Comments /> -->
+      <Comments />
     </section>
   </ContentRenderer>
 </template>
