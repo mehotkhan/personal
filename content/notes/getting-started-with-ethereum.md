@@ -21,7 +21,8 @@ description: Get started with blockchain development with this step-by-step
   Ethereum-related technologies broadly and not just focusing on Solidity.
 ---
 <div class="ltr">
-## Preface
+
+
 
 ## Introduction
 
@@ -63,12 +64,10 @@ everywhere. Next, you will learn how to migrate the contract to different
 environments such as a local blockchain using Ganache and testnets using
 Infura. Finally, you will learn how to sell your own NFT on OpenSea.
 
-
 **In Chapter 6**, we will cover different ways to fund your wallet using
 faucets. This part is important because you will need some ether in your
 wallet in order to pay for the transaction. Most of the examples will be
 deployed on testnets so you won’t need real money to execute them.
-
 
 **In Chapter 7,** you will learn how to create and save files on a
 decentralized file system. I also cover some tools such as a browser
@@ -80,29 +79,28 @@ idea behind Filecoin is the same of IPFS, with the difference that Filecoin
 has an incentive mechanism and incentive nodes to preserve files. Filecoin
 was built on top of IPFS.
 
-
 **In Chapter 9,** you will learn how to register a custom domain on the
 Ethereum Name System. You can use it to host a site under this domain
 name or even as a domain for your wallet to receive cryptos, tokens,
 or NFTs.
 
-
 **In Chapter 10**, I will cover use cases where you need to pull data from
 off-chain using oracles. You will learn how to use price feeds and then
 crypto prices inside smart contracts.
-
 
 **In Chapter 11**, you will learn how to create a simple project to connect
 to Web3 using the .NET platform and how to retrieve data from the
 blockchain to display wallet balances.
 
-
 **Chapter 12** concludes the book.
+
+
 
 ## How to Get
 
 * Oreilly (Buy): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](https://www.oreilly.com/library/view/getting-started-with/9781484280454/)
 * Download From libgen (PDF): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](http://libgen.is/book/index.php?md5=6C2B5BFC492AB5D2C7BD898863C7A4DB)
+*
 
 </div>
 
