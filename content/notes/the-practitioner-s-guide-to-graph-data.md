@@ -4,6 +4,7 @@ tags:
   - Graph Data
   - Graph Database
 title: The Practitioner’s Guide to Graph Data
+url: the-practitioner-s-guide-to-graph-data
 category: کتاب
 thumbnail: "/content/The-Practitioners-Guide-To-Graph-Data.png"
 description:

@@ -1,11 +1,11 @@
 ---
 title: Modern Web Development on the JAMstack-O’Reilly Media
-url: building-progressive-web-Applications-with-vuejs
+url: modern-web-development-on-the-jamstack
 dir: ltr
 date: 2021/08/11
 category: کتاب
 tags:
-  - Client-Side Proccesing
+  - Client-Side Processing
   - PWA
   - JamStack
 thumbnail: /content/Modern-Web-Development-on-the-JAMstack.png

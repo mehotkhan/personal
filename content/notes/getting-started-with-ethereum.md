@@ -100,3 +100,5 @@ blockchain to display wallet balances.
 
 
 ## Comments
+
+<hr />
