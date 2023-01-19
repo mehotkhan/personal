@@ -19,10 +19,9 @@ description: Get started with blockchain development with this step-by-step
   including deploying and verifying them. This book approaches blockchain in a
   way that allows you to focus on the topic that most interests you, covering
   Ethereum-related technologies broadly and not just focusing on Solidity.
+
+dir: ltr
 ---
-<div class="ltr">
-
-
 
 ## Introduction
 
@@ -94,16 +93,12 @@ blockchain to display wallet balances.
 
 **Chapter 12** concludes the book.
 
-
-
 ## How to Get
 
-* ### Oreilly (Buy): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](https://www.oreilly.com/library/view/getting-started-with/9781484280454/)
-* ### Download From libgen (PDF): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](http://libgen.is/book/index.php?md5=6C2B5BFC492AB5D2C7BD898863C7A4DB)
-*
+- ### Oreilly (Buy): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](https://www.oreilly.com/library/view/getting-started-with/9781484280454/)
+- ### Download From libgen (PDF): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](http://libgen.is/book/index.php?md5=6C2B5BFC492AB5D2C7BD898863C7A4DB)
+-
 
 </div>
 
-## دیدگاه ها
-
-<hr />
+## Comments

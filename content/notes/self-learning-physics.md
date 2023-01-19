@@ -8,6 +8,8 @@ tags:
 category: یادداشت
 thumbnail: /content/physics.jpg
 description: فیزیک؛ یکی از قدیمی‌ترین و پایه‌ای‌ترین علوم طبیعی است و شاید قدیمی‌ترین مبحث آن را بتوان اخترشناسی نامید. مدارکی وجود دارد که نشان می‌دهد هزاران سال پیش از میلاد مسیح، اقوامی همچون سومری‌ها و همچنین اقوامی در مصر باستان و اطراف سند تحقیقات و درک پیشگویانه‌ای (گمانه‌زنی‌هایی) از حرکت خورشید، ماه و ستارگان داشته‌اند.(ویکی‌پدیا)
+
+dir: rtl
 ---
 
 ## پیشگفتار
@@ -41,6 +43,7 @@ description: فیزیک؛ یکی از قدیمی‌ترین و پایه‌ای�
 ## سکانس موج بزرگ فیلم بین ستاره‌ای Interstellar 2014
 
 <div id="7461294362"><script type="text/JavaScript" src="https://www.aparat.com/embed/NEnj8?data[rnddiv]=7461294362&data[responsive]=yes&data[title]=%D8%B3%DA%A9%D8%A7%D9%86%D8%B3%20%D9%85%D9%88%D8%AC%20%D8%A8%D8%B2%D8%B1%DA%AF%20%D9%81%DB%8C%D9%84%D9%85%20%D8%A8%DB%8C%D9%86%20%D8%B3%D8%AA%D8%A7%D8%B1%D9%87%E2%80%8C%D8%A7%DB%8C%20Interstellar%202014&&recom=none"></script></div>
+
 
 <div class="ltr">
 
@@ -335,6 +338,6 @@ The graduate curriculum can be split into several categories: (i) the core cours
 - **String Theory:** [String Theory: Volume 1, An Introduction to the Bosonic String](https://www.amazon.com/gp/product/B00AKE1RLW?language=en_US&linkCode=ll1&linkId=f9dfb7bf40a0d71fa3fdd619c5ba240c&ref_=as_li_ss_tl&storeType=ebooks&tag=susanfowler-20) and [String Theory: Volume 2, Superstring Theory and Beyond](https://www.amazon.com/gp/product/B00AKE1ROO?language=en_US&linkCode=ll1&linkId=bd5385577fe6167771edf2b3f216950b&ref_=as_li_ss_tl&storeType=ebooks&tag=susanfowler-20), by the late [Joe Polchinski](https://www.quantamagazine.org/joe-polchinski-physicist-who-developed-deep-ideas-and-paradoxes-dies-at-63-20180220/); and [String Theory and M-Theory: A Modern Introduction](https://www.amazon.com/String-Theory-M-Theory-Modern-Introduction-ebook/dp/B00AKE1SA2?language=en_US&linkCode=ll1&linkId=cf6cb87bcf439b832507b213cb1c3625&pd_rd_i=B00AKE1SA2&pd_rd_r=2f8b30eb-52e9-4d68-be57-85266802700e&pd_rd_w=nnUNY&pd_rd_wg=OznzN&pf_rd_p=78971f67-4c78-4f07-b5c1-ee9acd72068c&pf_rd_r=XSE51QVTY28WEJEM35GP&psc=1&ref_=as_li_ss_tl&tag=susanfowler-20). I found it really enjoyable to pair Polchinski’s books with Becker Becker Schwarz when I was learning string theory — they complement each other well.
 
 </div>
-
 ## دیدگاه ها
+
 <hr />

@@ -12,9 +12,9 @@ description:
   Most likely, you started scanning down the names in the list of profile results. And
   you probably spent most of your time inspecting the “shared friends” section to
   understand how you knew someone.
+  
+dir: ltr
 ---
-
-<div class="ltr">
 
 Applying Graph Thinking and Graph Technologies to Solve Complex Problems
 
@@ -163,7 +163,6 @@ issues, such as
 
 - Download From libgen (PDF): [The Practitioner’s Guide To Graph Data: Applying Graph Thinking And Graph Technologies To Solve Complex Problems](http://libgen.is/book/index.php?md5=2F852C74D4139268D520CB3E4B1662D3)
 
-</div>
+## Comments
 
-## دیدگاه ها
 <hr />

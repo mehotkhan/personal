@@ -32,7 +32,7 @@ watch(route, (newRoute, oldRoute) => {
     <slot name="app-before" />
     <div id="app-before"></div>
     <main
-      class="border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
+      class="rtl border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
     >
       <div
         class="px-10 md:px-20 pb-0 w-content overflow-x-hidden relative transition-all"
@@ -49,7 +49,7 @@ watch(route, (newRoute, oldRoute) => {
           class="z-100 absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
         />
         <div
-          class="content-area rtl prose-md lg:prose-2xl w-full font-normal py-10"
+          class="content-area prose-md lg:prose-2xl w-full font-normal py-10"
         >
           <slot />
         </div>

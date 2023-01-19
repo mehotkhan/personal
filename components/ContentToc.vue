@@ -15,6 +15,7 @@ const { data: blogPost } = await useAsyncData(`blogToc`, () =>
   queryContent(route.path).findOne()
 );
 const tocLinks = computed(() => blogPost.value?.body.toc.links ?? []);
+const dir = computed(() => blogPost.value?.dir);
 const tocTags = computed(() => blogPost.value?.tags ?? []);
 
 const onClick = (id: string) => {
@@ -33,20 +34,20 @@ const onClick = (id: string) => {
     >
       سرفصل‌ها
     </h4>
-    <nav class="flex">
+    <nav class="flex" :class="dir === 'ltr' ? 'ltr' : 'rtl'">
       <div class="relative bg-secondary w-0.5 rounded">
         <div
           class="absolute left-0 w-full transition-all duration-200 rounded bg-red-500"
           :style="{ height: `${sliderHeight}px`, top: `${sliderTop}px` }"
         ></div>
       </div>
-      <ul class="ml-0 pl-4 max-h-150 overflow-auto">
+      <ul class="max-h-150 overflow-auto">
         <li
           v-for="{ id, text, children } in tocLinks"
           :id="`toc-${id}`"
           :key="id"
           ref="tocLinksH2"
-          class="font-regular cursor-pointer text-md md:text-xl list-none ml-0 mb-2 last:mb-0"
+          class="font-regular cursor-pointer text-md md:text-xl mb-2 last:mb-0 mx-10"
           :class="{
             'font-normal':
               id ===
@@ -84,9 +85,9 @@ const onClick = (id: string) => {
     >
       برچسب‌ها
     </h4>
-    <ol class="mb-10">
-      <li v-for="tag in tocTags" class="text-md md:text-xl pb-3 ml-5">
-        {{ tag }}#
+    <ol class="mb-10" :class="dir === 'ltr' ? 'ltr text-left' : 'rtl'">
+      <li v-for="tag in tocTags" class="text-md md:text-xl pb-3 mx-5">
+        <span class="font-thin text-2xl">#</span> {{ tag }}
       </li>
     </ol>
   </div>

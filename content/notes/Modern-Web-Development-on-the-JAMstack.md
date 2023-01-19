@@ -13,9 +13,8 @@ description: In just the past few years, a flurry of advancements has greatly
   certainly feels like the beginning of a new chap‐ ter for the web. You’ve
   likely felt this as you’ve witnessed the explo‐ sion of new frontend
   frameworks and API-based services.
+dir: ltr
 ---
-
-<div class="ltr">
 
 ## Introduction
 
@@ -107,7 +106,6 @@ ing for the web has become fun and fearless all over again.
 
 Download From Netlify (PDF): [oreilly-modern-web-development-on-the-jamstack.pdf](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf)
 
-</div>
+## Comments
 
-## دیدگاه ها
 <hr />

@@ -32,18 +32,24 @@ onMounted(() => {
 onUnmounted(() => {
   observer.value?.disconnect();
 });
+console.log(data);
 </script>
 <template>
-  <section class="flex flex-col justify-center content-center">
-    <ContentRenderer :value="data" class="nuxt-content">
+  <ContentRenderer :value="data" class="nuxt-content">
+    <section
+      class="flex flex-col justify-center content-center"
+      :class="data?.dir === 'ltr' ? 'ltr' : 'rtl'"
+    >
       <h1 class="pt-20 text-center">{{ data?.title }}</h1>
       <img class="poster-single" :src="data?.thumbnail" />
-      <p class="bg-gray-200 my-auto text-justify p-10 border-r-gray-300 border-5">
+      <p
+        class="bg-gray-200 my-auto text-justify p-10 border-r-gray-300 border-5"
+      >
         {{ data?.description }}
       </p>
 
       <ContentRendererMarkdown :value="data" />
-    </ContentRenderer>
-    <Comments />
-  </section>
+      <!-- <Comments /> -->
+    </section>
+  </ContentRenderer>
 </template>
