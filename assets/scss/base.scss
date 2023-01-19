@@ -30,14 +30,16 @@ html {
 }
 .rtl {
   direction: rtl;
+  ul {
+    list-style: persian;
+  }
 }
 .ltr {
   direction: ltr;
-  // font-family: sans-serif;
+  ul {
+    list-style: auto;
+  }
 }
-// ul {
-//   list-style: persian;
-// }
 .logo-area {
   overflow: clip;
 }

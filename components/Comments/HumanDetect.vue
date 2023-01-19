@@ -11,14 +11,12 @@
       class="flex mr-3 text-sm h-auto cursor-pointer items-center"
       :class="validated ? 'text-green-400' : 'text-red-400'"
     >
-    <IconMdi:reload class="ml-2"/>
-    من ربات نیستم؟
+      <IconMdi:reload class="ml-2" />
+      من ربات نیستم؟
     </button>
-   
   </div>
 </template>
 <script lang="ts" setup>
-
 const emit = defineEmits({
   passed: (pass: boolean) => pass,
 });
