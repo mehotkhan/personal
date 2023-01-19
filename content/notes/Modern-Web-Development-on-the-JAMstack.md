@@ -1,5 +1,7 @@
 ---
 title: Modern Web Development on the JAMstack-O’Reilly Media
+url: building-progressive-web-Applications-with-vuejs
+dir: ltr
 date: 2021/08/11
 category: کتاب
 tags:
@@ -13,7 +15,6 @@ description: In just the past few years, a flurry of advancements has greatly
   certainly feels like the beginning of a new chap‐ ter for the web. You’ve
   likely felt this as you’ve witnessed the explo‐ sion of new frontend
   frameworks and API-based services.
-dir: ltr
 ---
 
 ## Introduction
