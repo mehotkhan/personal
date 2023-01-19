@@ -98,8 +98,8 @@ blockchain to display wallet balances.
 
 ## How to Get
 
-* Oreilly (Buy): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](https://www.oreilly.com/library/view/getting-started-with/9781484280454/)
-* Download From libgen (PDF): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](http://libgen.is/book/index.php?md5=6C2B5BFC492AB5D2C7BD898863C7A4DB)
+* ### Oreilly (Buy): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](https://www.oreilly.com/library/view/getting-started-with/9781484280454/)
+* ### Download From libgen (PDF): [Getting Started with Ethereum: A Step-by-Step Guide to Becoming a Blockchain Developer](http://libgen.is/book/index.php?md5=6C2B5BFC492AB5D2C7BD898863C7A4DB)
 *
 
 </div>
