@@ -1,6 +1,6 @@
 ---
 title: Modern Web Development on the JAMstack-O’Reilly Media
-url: building-progressive-web-Applications-with-vuejs__
+url: building-progressive-web-Applications-with-vuejs
 dir: ltr
 date: 2021/08/11
 category: کتاب
