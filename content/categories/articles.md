@@ -1,0 +1,4 @@
+---
+name: یادداشت
+url: articles
+---

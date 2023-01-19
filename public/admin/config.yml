@@ -16,11 +16,21 @@ collections:
     label: "یادداشت"
     folder: "content/notes"
     create: true
-    slug: "{{slug}}"
+    slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "آدرس", name: "url", widget: "string" }
+      - { label: "جهت نوشتار", name: "dir", widget: "string" }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
-      - { label: "سرویس", name: "category", widget: "string" }
+
+      - name: category
+        label: سرویس
+        widget: relation
+        collection: "category"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+
       - { label: "برچسب‌ها", name: "tags", widget: "list" }
       - { label: "پوستر", name: "thumbnail", widget: "image" }
       - { label: "خلاصه", name: "description", widget: "string" }
@@ -30,19 +40,31 @@ collections:
     label: "صفحه"
     folder: "content/pages"
     create: false
-    slug: "{{slug}}"
+    slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "آدرس", name: "url", widget: "string" }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "محتوا", name: "body", widget: "markdown" }
-      
+
   - name: "banner"
     label: "بنر"
     folder: "content/banner"
     create: true
-    slug: "{{slug}}"
+    slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "آدرس", name: "url", widget: "string" }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "پوستر", name: "thumbnail", widget: "image" }
       - { label: "محتوا", name: "body", widget: "markdown" }
+
+  - name: category
+    label: سرویس‌ها
+    folder: content/categories/
+    create: true
+    slug: "{{url}}"
+    identifier_field: name
+    fields:
+      - { name: name, label: نام }
+      - { name: url, label: آدرس }
