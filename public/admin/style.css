@@ -1,10 +1,14 @@
 body * {
   font-family: Vazir;
 }
-.frame-content {
+#preview-pane .frame-content p {
   direction: rtl;
   font-family: Vazir;
 }
 .frame-content .ltr {
   direction: ltr;
+}
+
+.css-t5h4ts-Editor p {
+  font-size: 2rem;
 }

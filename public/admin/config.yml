@@ -1,13 +1,13 @@
-# backend:
-#   name: proxy
-#   proxy_url: http://localhost:8081/api/v1
-#   branch: master # optional, defaults to master
-
 backend:
-  name: github
-  repo: mehotkhan/front
-  base_url: https://alizemani.ir
-  auth_endpoint: /auth
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+  branch: master # optional, defaults to master
+
+# backend:
+#   name: github
+#   repo: mehotkhan/front
+#   base_url: https://alizemani.ir
+#   auth_endpoint: /auth
 
 media_folder: /public/content
 public_folder: /content
@@ -19,8 +19,9 @@ collections:
     slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "محتوا", name: "body", widget: "markdown" }
       - { label: "آدرس", name: "url", widget: "string" }
-      - { label: "جهت نوشتار", name: "dir", widget: "string" }
+      - { label: "جهت نوشتار", name: "dir", widget: "string", required: false }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
 
       - name: category
@@ -30,11 +31,16 @@ collections:
         searchFields: ["name"]
         valueField: "name"
         displayFields: ["name"]
+        required: false
 
-      - { label: "برچسب‌ها", name: "tags", widget: "list" }
-      - { label: "پوستر", name: "thumbnail", widget: "image" }
-      - { label: "خلاصه", name: "description", widget: "string" }
-      - { label: "محتوا", name: "body", widget: "markdown" }
+      - { label: "برچسب‌ها", name: "tags", widget: "list", required: false }
+      - { label: "پوستر", name: "thumbnail", widget: "image", required: false }
+      - {
+          label: "خلاصه",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
 
   - name: "page"
     label: "صفحه"
@@ -43,8 +49,12 @@ collections:
     slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
-      - { label: "آدرس", name: "url", widget: "string" }
-      - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
+      - {
+          label: "تاریخ انتشار",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
       - { label: "محتوا", name: "body", widget: "markdown" }
 
   - name: "banner"
@@ -54,7 +64,7 @@ collections:
     slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
-      - { label: "آدرس", name: "url", widget: "string" }
+      - { label: "آدرس", name: "url", widget: "string" ,required: false}
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "پوستر", name: "thumbnail", widget: "image" }
       - { label: "محتوا", name: "body", widget: "markdown" }
