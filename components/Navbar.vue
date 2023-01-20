@@ -12,6 +12,10 @@ const menuItems = [
     to: "/notes",
   },
   {
+    title: "فروشگاه",
+    to: "/shop",
+  },
+  {
     title: "پیشنهاد‌همکاری",
     to: "/offer",
   },
