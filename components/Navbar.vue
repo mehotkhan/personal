@@ -11,10 +11,10 @@ const menuItems = [
     title: "یادداشت‌ها",
     to: "/notes",
   },
-  {
-    title: "فروشگاه",
-    to: "/shop",
-  },
+  // {
+  //   title: "فروشگاه",
+  //   to: "/shop",
+  // },
   {
     title: "پیشنهاد‌همکاری",
     to: "/offer",
