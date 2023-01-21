@@ -49,33 +49,38 @@ const closeEditModal = () => {
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
-              <button
+              <NuxtLink
+                to="/"
+                v-if="route?.path?.startsWith('/dashboard')"
+                class="flex"
                 :class="[
                   active ? 'bg-gray-200 text-black' : 'text-black',
                   'group flex w-full items-center rounded-sm px-2 py-2 text-md ',
                 ]"
               >
-                <NuxtLink
-                  to="/"
-                  v-if="route?.path?.startsWith('/dashboard')"
-                  class="flex"
-                >
-                  <IconUil:home
-                    :active="active"
-                    class="ml-2 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                  بازگشت به خانه
-                </NuxtLink>
-                <NuxtLink class="flex" to="/dashboard" v-else>
-                  <IconUil:dashboard
-                    :active="active"
-                    class="ml-2 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                  داشبورد
-                </NuxtLink>
-              </button>
+                <IconUil:home
+                  :active="active"
+                  class="ml-2 h-5 w-5"
+                  aria-hidden="true"
+                />
+                بازگشت به خانه
+              </NuxtLink>
+              <NuxtLink
+                class="flex"
+                :class="[
+                  active ? 'bg-gray-200 text-black' : 'text-black',
+                  'group flex w-full items-center rounded-sm px-2 py-2 text-md ',
+                ]"
+                to="/dashboard"
+                v-else
+              >
+                <IconUil:dashboard
+                  :active="active"
+                  class="ml-2 h-5 w-5"
+                  aria-hidden="true"
+                />
+                داشبورد
+              </NuxtLink>
             </MenuItem>
             <MenuItem v-slot="{ active }">
               <button
