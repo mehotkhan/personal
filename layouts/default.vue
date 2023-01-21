@@ -32,35 +32,17 @@ watch(route, (newRoute, oldRoute) => {
     <slot name="app-before" />
     <div id="app-before"></div>
     <main
-      class="rtl border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
+      class="border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
     >
-      <div
-        class="px-10 md:px-20 pb-0 w-content overflow-x-hidden relative transition-all"
-        :class="sideMenu ? 'w-5/6 md:w-5/6 ' : 'w-full'"
-      >
-        <IconIcBaselineMenu
-          v-if="!sideMenu"
-          @click="open"
-          class="z-100 absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
-        />
-        <IconIcRoundMenuOpen
-          v-if="sideMenu"
-          @click="close"
-          class="z-100 absolute top-10 left-10 cursor-pointer text-black text-xl md:text-3xl"
-        />
-        <div
-          class="content-area prose-md lg:prose-2xl w-full font-normal py-10"
-        >
-          <slot />
-        </div>
-      </div>
-
       <div
         class="bg-gray-200 px-0 flex flex-col justify-start relative transition-all"
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <OnlineStatus v-if="!singleMode" />
+          <UserMenu
+            class="absolute top-6 right-0 rounded-md w-full hidden md:block z-100"
+          />
+          <!-- <OnlineStatus v-if="!singleMode" /> -->
           <div v-if="singleMode">
             <NuxtLink
               to="/"
@@ -87,6 +69,30 @@ watch(route, (newRoute, oldRoute) => {
               class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"
             />
           </div>
+        </div>
+      </div>
+      <div
+        class="px-10 md:px-20 pb-0 w-content relative transition-all"
+        :class="sideMenu ? 'w-5/6 md:w-5/6 ' : 'w-full'"
+      >
+        <div
+          class="z-100 absolute top-5 right-0 cursor-pointer text-black text-xl md:text-3xl"
+        >
+          <IconIcRoundMenuOpen
+            v-if="!sideMenu"
+            @click="open"
+            class="absolute right-5"
+          />
+          <IconIcRoundMenuOpen
+            v-if="sideMenu"
+            @click="close"
+            class="transform rotate-180 absolute -right-15"
+          />
+        </div>
+        <div
+          class="content-area prose-md lg:prose-2xl w-full font-normal py-10"
+        >
+          <slot />
         </div>
       </div>
       <slot name="app-after" />

@@ -11,6 +11,12 @@ declare module '@vue/runtime-core' {
     IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']
+    'IconUil:angleDown': typeof import('~icons/uil/angle-down')['default']
+    'IconUil:dashboard': typeof import('~icons/uil/dashboard')['default']
+    'IconUil:edit': typeof import('~icons/uil/edit')['default']
+    'IconUil:enter': typeof import('~icons/uil/enter')['default']
+    'IconUil:exit': typeof import('~icons/uil/exit')['default']
+    'IconUil:home': typeof import('~icons/uil/home')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

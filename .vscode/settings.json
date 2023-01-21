@@ -2,6 +2,7 @@
     "nuxt.isNuxtApp": false,
     "cSpell.words": [
         "jamstack",
+        "Nuxt",
         "treeshake"
     ]
 }
