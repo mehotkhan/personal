@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    IconIcBaselineMenu: typeof import('~icons/ic/baseline-menu')['default']
     IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']

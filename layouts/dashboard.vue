@@ -42,7 +42,8 @@ watch(route, (newRoute, oldRoute) => {
           <UserMenu
             class="absolute top-5 right-0 rounded-md w-full hidden md:block z-100"
           />
-          <div class="pt-10 h-auto md:h-auto md:pt-10">
+           
+          <div class="mt-10 pt-3 border-t-gray-400 border-1">
             <DashboardNavbar
               class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"
             />

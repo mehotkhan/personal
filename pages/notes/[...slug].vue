@@ -3,6 +3,10 @@ import { useContent } from "~/stores/content";
 import { Ref } from "vue";
 const route = useRoute();
 
+definePageMeta({
+  layout: "content",
+});
+
 const nuxtContent = ref(null);
 const observer: Ref<IntersectionObserver | null | undefined> = ref(null);
 const observerOptions = reactive({
@@ -29,10 +33,10 @@ onMounted(() => {
       observer.value?.observe(section);
     });
 });
+
 onUnmounted(() => {
   observer.value?.disconnect();
 });
-console.log(data);
 </script>
 <template>
   <ContentRenderer :value="data" class="nuxt-content">
@@ -49,7 +53,7 @@ console.log(data);
       </p>
 
       <ContentRendererMarkdown :value="data" />
-      <Comments />
+      <!-- <Comments /> -->
     </section>
   </ContentRenderer>
 </template>

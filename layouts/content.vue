@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const route = useRoute();
+
 const sideMenu = ref(true);
 const close = () => {
   sideMenu.value = false;
@@ -23,14 +25,26 @@ const open = () => {
           <UserMenu
             class="absolute top-6 right-0 rounded-md w-full hidden md:block z-100"
           />
-
+          <div>
+            <NuxtLink
+              to="/"
+              class="mt-15 text-center text-xl md:text-2xl text-thin border-b border-gray-400 w-full bg-black text-white rounded p-3 block mb-10"
+            >
+              علی زِمانی:// طراح و توسعه دهنده وب
+            </NuxtLink>
+            <h4
+              class="text-xl md:text-2xl text-bold pb-2 my-5 border-b border-dashed border-gray-400"
+            >
+              فهرست‌اصلی
+            </h4>
+            <Navbar
+              class="mt-10 flex flex-col h-full text-xl md:text-xl justify-start text-gray-500 text-right"
+            />
+          </div>
           <div
             class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-3 md:top-0"
           >
-            <LogoArea />
-            <Navbar
-              class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"
-            />
+            <ContentToc :key="route?.path" />
           </div>
         </div>
       </div>
