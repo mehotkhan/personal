@@ -3,6 +3,10 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "strict": true,
+    "target": "es2020",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "types": ["nuxt-windicss", "@vueuse/nuxt", "unplugin-icons/types/vue"]
   }
