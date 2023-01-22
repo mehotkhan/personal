@@ -52,9 +52,7 @@ const open = () => {
             class="transform rotate-180 absolute -right-15"
           />
         </div>
-        <div
-          class="content-area prose-md lg:prose-2xl w-full font-normal py-10"
-        >
+        <div class="w-full py-10">
           <slot />
         </div>
       </div>

@@ -5,6 +5,8 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <ContentDoc path="/pages/about" />
+    <div class="content-area prose-md lg:prose-2xl w-full font-normal">
+      <ContentDoc path="/pages/about" />
+    </div>
   </section>
 </template>

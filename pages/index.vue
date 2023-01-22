@@ -10,7 +10,7 @@ const { data: bannerPost }: any = await useAsyncData("page-data", () =>
 </script>
 <template>
   <section class="intro flex flex-col justify-center content-center">
-    <div class="content">
+    <div class="content content-area prose-md lg:prose-2xl w-full font-normal">
       <div class="w-full mb-3 blur-sm">
         <ContentRenderer :value="bannerPost[0]" class="nuxt-content">
           <img class="poster-front" :src="bannerPost[0]?.thumbnail" />

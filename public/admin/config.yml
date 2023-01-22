@@ -42,6 +42,29 @@ collections:
           required: false,
         }
 
+  - name: "product"
+    label: "محصول"
+    folder: "content/market"
+    create: true
+    slug: "{{url}}"
+    fields:
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "آدرس", name: "url", widget: "string" }
+      - {
+          label: "تاریخ انتشار",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - { label: "پوستر", name: "thumbnail", widget: "image", required: false }
+      - {
+          label: "خلاصه",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
+      - { label: "محتوا", name: "body", widget: "markdown" }
+
   - name: "page"
     label: "صفحه"
     folder: "content/pages"
@@ -64,7 +87,7 @@ collections:
     slug: "{{url}}"
     fields:
       - { label: "عنوان", name: "title", widget: "string" }
-      - { label: "آدرس", name: "url", widget: "string" ,required: false}
+      - { label: "آدرس", name: "url", widget: "string", required: false }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "پوستر", name: "thumbnail", widget: "image" }
       - { label: "محتوا", name: "body", widget: "markdown" }

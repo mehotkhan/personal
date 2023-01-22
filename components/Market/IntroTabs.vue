@@ -1,0 +1,114 @@
+<script lang="ts" setup>
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+import { ref } from "vue";
+
+const products = ref();
+products.value = await queryContent("market").find();
+</script>
+
+<template>
+  <h2 class="text-4xl bold border-b-1 py-8">نمایی کلی</h2>
+  <br />
+  <TabGroup>
+    <TabList class="flex w-full">
+      <Tab as="template" key="latest" v-slot="{ selected }">
+        <button
+          :class="[
+            'w-full py-2.5 text-xl',
+            selected
+              ? 'bg-gray-300 text-black-300 rounded-sm '
+              : 'hover:bg-gray-200 hover:text-black',
+          ]"
+        >
+          جدیدترین محصولات
+        </button>
+      </Tab>
+      <Tab as="template" key="most-selling" v-slot="{ selected }">
+        <button
+          :class="[
+            'w-full py-2.5 text-xl',
+            selected
+              ? 'bg-gray-300 text-black-300 rounded-sm '
+              : 'hover:bg-gray-200 hover:text-black',
+          ]"
+        >
+          پرفروش ترین محصولات
+        </button>
+      </Tab>
+      <Tab as="template" key="latest-comment" v-slot="{ selected }">
+        <button
+          :class="[
+            'w-full py-2.5 text-xl',
+            selected
+              ? 'bg-gray-300 text-black-300 rounded-sm '
+              : 'hover:bg-gray-200 hover:text-black',
+          ]"
+        >
+          جدیدترین نظرات
+        </button>
+      </Tab>
+    </TabList>
+
+    <TabPanels class="mt-2">
+      <TabPanel key="latest" :class="['rounded-xl bg-white p-3']">
+        <div class="latest my-10 text-2xl">
+          <ul>
+            <li
+              v-for="{ _path: slug, title, date, category } in orderByDate(
+                products
+              )"
+              :key="slug"
+              class="mb-2"
+            >
+              <NuxtLink :to="slug">
+                {{ title }}
+                <span class="font-thin"> / {{ category }} </span>
+                <span class="font-thin"> / {{ JalaliDate(date) }} </span>
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </TabPanel>
+      <TabPanel key="most-selling" :class="['rounded-xl bg-white p-3']">
+        <div class="latest my-10 text-2xl">
+          <ul>
+            <li
+              v-for="{ _path: slug, title, date, category } in orderByDate(
+                products
+              )"
+              :key="slug"
+              class="mb-2"
+            >
+              <NuxtLink :to="slug">
+                {{ title }}
+                <span class="font-thin"> / {{ category }} </span>
+                <span class="font-thin"> / {{ JalaliDate(date) }} </span>
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </TabPanel>
+      <TabPanel key="latest-comment" :class="['rounded-xl bg-white p-3']">
+        <div class="latest my-10 text-2xl">
+          <ul>
+            <li
+              v-for="{ _path: slug, title, date, category } in orderByDate(
+                products
+              )"
+              :key="slug"
+              class="mb-2"
+            >
+              <NuxtLink :to="slug">
+                {{ title }}
+                <span class="font-thin"> / {{ category }} </span>
+                <span class="font-thin"> / {{ JalaliDate(date) }} </span>
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </TabPanel>
+    </TabPanels>
+  </TabGroup>
+  <br />
+  <br />
+</template>

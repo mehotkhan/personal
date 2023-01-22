@@ -13,19 +13,15 @@ const menuItems = [
   },
   // {
   //   title: "فروشگاه",
-  //   to: "/shop",
+  //   to: "/market",
   // },
   {
-    title: "پیشنهاد‌همکاری",
-    to: "/offer",
+    title: "تماس‌با‌من",
+    to: "/contact",
   },
   {
     title: "درباره‌من",
     to: "/about",
-  },
-  {
-    title: "تماس‌با‌من",
-    to: "/contact",
   },
 ];
 </script>
