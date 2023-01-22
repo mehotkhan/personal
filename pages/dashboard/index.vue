@@ -7,20 +7,30 @@ definePageMeta({
 });
 </script>
 <template>
-  <section class="flex flex-col justify-center content-center">
+  <section class="flex flex-col justify-center content-center pb-20">
     <h2>داشبورد</h2>
     <hr />
     <div class="flex flex-row">
-      <div class="basis-2/12 flex items-center	"><DashboardSellingStats /></div>
-      <div class="basis-5/12 m-1 p-5"><DashboardCommentsChart /></div>
-      <div class="basis-5/12 m-1 p-5"><DashboardSellingChart /></div>
+      <div class="basis-2/12 flex items-center">
+        <DashboardGlobalSellingStats />
+      </div>
+      <div class="basis-5/12 m-1 p-5"><DashboardChartsComments /></div>
+      <div class="basis-5/12 m-1 p-5"><DashboardChartsSelling /></div>
     </div>
     <div class="flex">
       <div class="basis-1/2 m-1 p-1">
-        <DashboardComments />
+        <DashboardTablesLatestOffer />
       </div>
       <div class="basis-1/2 m-1 p-1">
-        <DashboardProducts />
+        <DashboardTablesLatestTasks />
+      </div>
+    </div>
+    <div class="flex">
+      <div class="basis-1/2 m-1 p-1">
+        <DashboardTablesLatestComments />
+      </div>
+      <div class="basis-1/2 m-1 p-1">
+        <DashboardTablesLatestSelling />
       </div>
     </div>
   </section>

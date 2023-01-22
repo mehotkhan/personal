@@ -39,12 +39,12 @@ watch(route, (newRoute, oldRoute) => {
         :class="sideMenu ? 'w-1/6 md:w-2/12' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <UserMenu
+          <FrontUserMenu
             class="absolute top-5 right-0 rounded-md w-full hidden md:block z-100"
           />
            
           <div class="mt-10 pt-3 border-t-gray-400 border-1">
-            <DashboardNavbar
+            <DashboardGlobalNavbar
               class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"
             />
           </div>

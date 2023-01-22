@@ -22,7 +22,7 @@ const open = () => {
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <UserMenu
+          <FrontUserMenu
             class="absolute top-6 right-0 rounded-md w-full hidden md:block z-100"
           />
           <div>
@@ -37,14 +37,14 @@ const open = () => {
             >
               فهرست‌اصلی
             </h4>
-            <Navbar
+            <FrontNavbar
               class="mt-10 flex flex-col h-full text-xl md:text-xl justify-start text-gray-500 text-right"
             />
           </div>
           <div
             class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-3 md:top-0"
           >
-            <ContentToc :key="route?.path" />
+            <FrontContentToc :key="route?.path" />
           </div>
         </div>
       </div>
