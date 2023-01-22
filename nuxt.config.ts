@@ -4,7 +4,7 @@ import Components from "unplugin-vue-components/vite";
 import fs from "fs";
 
 const GenerateContentPaths = (path: string, files_: string[] = []) => {
-  files_= files_ || [];
+  files_ = files_ || [];
   const files = fs.readdirSync(path);
   for (var i in files) {
     var name = path + "/" + files[i];
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   app: {
     // global transition
     pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: 'layout', mode: 'out-in' },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   vite: {
     plugins: [
@@ -85,7 +85,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: GenerateContentPaths("content/notes"),
+      routes: [
+        ...GenerateContentPaths("content/notes"),
+        ...GenerateContentPaths("content/market"),
+      ],
     },
   },
   experimental: {
