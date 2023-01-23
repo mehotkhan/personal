@@ -23,7 +23,7 @@ const closeEditModal = () => {
 </script>
 
 <template>
-  <div>
+  <div class="hidden">
     <Menu as="div" class="relative inline-block">
       <div>
         <MenuButton

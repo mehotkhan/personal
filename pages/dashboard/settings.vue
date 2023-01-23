@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: "چارت ها",
+  title: "تنظیمات کلی",
 });
 definePageMeta({
   layout: "dashboard",
@@ -8,7 +8,7 @@ definePageMeta({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <h2>مشاهده چارت‌ها</h2>
+    <h2>تنظیمات کلی</h2>
     <hr />
   </section>
 </template>

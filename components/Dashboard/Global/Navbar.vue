@@ -7,6 +7,10 @@ const menuItems = [
     to: "/dashboard",
   },
   {
+    title: "فروشگاه",
+    to: "/dashboard/shop",
+  },
+  {
     title: "تماس‌ها",
     to: "/dashboard/inbox",
   },
@@ -18,17 +22,10 @@ const menuItems = [
     title: "تسک‌ها",
     to: "/dashboard/tasks",
   },
+
   {
-    title: "کارها",
-    to: "/dashboard/jobs",
-  },
-  {
-    title: "فروشگاه",
-    to: "/dashboard/shop",
-  },
-  {
-    title: "آمار",
-    to: "/dashboard/charts",
+    title: "تنظیمات کلی",
+    to: "/dashboard/settings",
   },
 ];
 </script>
