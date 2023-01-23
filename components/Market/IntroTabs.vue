@@ -7,14 +7,14 @@ products.value = await queryContent("market").find();
 </script>
 
 <template>
-  <h2 class="text-4xl bold border-b-1 py-8">نمایی کلی</h2>
+  <h3 class="text-4xl bold border-b-1 py-8">نمایی کلی</h3>
   <br />
   <TabGroup>
     <TabList class="flex w-full">
       <Tab as="template" key="latest" v-slot="{ selected }">
         <button
           :class="[
-            'w-full py-2.5 text-xl',
+            'w-full py-2.5 text-2xl',
             selected
               ? 'bg-gray-300 text-black-300 rounded-sm '
               : 'hover:bg-gray-200 hover:text-black',
@@ -26,7 +26,7 @@ products.value = await queryContent("market").find();
       <Tab as="template" key="most-selling" v-slot="{ selected }">
         <button
           :class="[
-            'w-full py-2.5 text-xl',
+            'w-full py-2.5 text-2xl',
             selected
               ? 'bg-gray-300 text-black-300 rounded-sm '
               : 'hover:bg-gray-200 hover:text-black',
@@ -38,7 +38,7 @@ products.value = await queryContent("market").find();
       <Tab as="template" key="latest-comment" v-slot="{ selected }">
         <button
           :class="[
-            'w-full py-2.5 text-xl',
+            'w-full py-2.5 text-2xl',
             selected
               ? 'bg-gray-300 text-black-300 rounded-sm '
               : 'hover:bg-gray-200 hover:text-black',
@@ -62,7 +62,6 @@ products.value = await queryContent("market").find();
             >
               <NuxtLink :to="slug">
                 {{ title }}
-                <span class="font-thin"> / {{ category }} </span>
                 <span class="font-thin"> / {{ JalaliDate(date) }} </span>
               </NuxtLink>
             </li>
@@ -81,7 +80,6 @@ products.value = await queryContent("market").find();
             >
               <NuxtLink :to="slug">
                 {{ title }}
-                <span class="font-thin"> / {{ category }} </span>
                 <span class="font-thin"> / {{ JalaliDate(date) }} </span>
               </NuxtLink>
             </li>
@@ -89,23 +87,11 @@ products.value = await queryContent("market").find();
         </div>
       </TabPanel>
       <TabPanel key="latest-comment" :class="['rounded-xl bg-white p-3']">
-        <div class="latest my-10 text-2xl">
-          <ul>
-            <li
-              v-for="{ _path: slug, title, date, category } in orderByDate(
-                products
-              )"
-              :key="slug"
-              class="mb-2"
-            >
-              <NuxtLink :to="slug">
-                {{ title }}
-                <span class="font-thin"> / {{ category }} </span>
-                <span class="font-thin"> / {{ JalaliDate(date) }} </span>
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
+        <br />
+        <p class="text-xl">
+
+          آخرین نظرات و دیدگاه های فروشگاه
+        </p>
       </TabPanel>
     </TabPanels>
   </TabGroup>

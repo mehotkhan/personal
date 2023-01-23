@@ -8,7 +8,10 @@ description: لورم ایپسوم متن ساختگی با تولید سادگ�
   سطرآنچنان که لازم است،
 notes:
   - name: آشنایی با اتریوم - راهنمای قدم به قدم برای توسعه دهنده بلاک چین شدن
-    url: getting-start-with-ethereum
+    url: notes/getting-started-with-ethereum
+
+  - name: Modern Web Development on the JAMstack-O’Reilly Media
+    url: notes/modern-web-development-on-the-jamstack
 ---
 
 ## مقدمه

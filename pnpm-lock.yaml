@@ -1,28 +1,28 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ethersproject/abi': ^5.4.7
-  '@ethersproject/providers': ^5.4.7
+  '@ethersproject/abi': ^5.7.0
+  '@ethersproject/bytes': ^5.7.0
+  '@ethersproject/providers': ^5.7.2
   '@headlessui/vue': ^1.7.7
-  '@iconify/json': ^2.2.5
-  '@nomicfoundation/hardhat-chai-matchers': ^1.0.0
-  '@nomicfoundation/hardhat-network-helpers': ^1.0.0
-  '@nomicfoundation/hardhat-toolbox': ^2.0.0
+  '@iconify/json': ^2.2.11
+  '@nomicfoundation/hardhat-chai-matchers': ^1.0.5
+  '@nomicfoundation/hardhat-network-helpers': ^1.0.7
+  '@nomicfoundation/hardhat-toolbox': ^2.0.1
   '@nomiclabs/hardhat-ethers': ^2.2.2
-  '@nomiclabs/hardhat-etherscan': ^3.0.0
+  '@nomiclabs/hardhat-etherscan': ^3.1.5
   '@nomiclabs/hardhat-waffle': ^2.0.3
   '@nuxt/content': ^2.3.0
   '@nuxtjs/dayjs': ^1.4.1
   '@nuxtjs/turnstile': ^0.1.2
   '@openzeppelin/contracts': ^4.8.1
   '@pinia/nuxt': ^0.4.6
-  '@typechain/ethers-v5': ^10.1.0
-  '@typechain/hardhat': ^6.1.2
-  '@types/chai': ^4.2.0
-  '@types/mocha': '>=9.1.0'
-  '@types/node': '>=12.0.0'
-  '@vueup/vue-quill': ^1.0.1
-  '@vueuse/nuxt': 9.10.0
+  '@typechain/ethers-v5': ^10.2.0
+  '@typechain/hardhat': ^6.1.5
+  '@types/chai': ^4.3.4
+  '@types/mocha': '>=10.0.1'
+  '@types/node': '>=18.11.18'
+  '@vueuse/nuxt': 9.11.1
   bowser: ^2.11.0
   chai: ^4.3.7
   chart.js: ^4.2.0
@@ -31,7 +31,7 @@ specifiers:
   fuse.js: ^6.6.2
   gun: ^0.2020.1239
   hardhat: ^2.12.6
-  hardhat-gas-reporter: ^1.0.8
+  hardhat-gas-reporter: ^1.0.9
   hark: ^1.2.3
   jalaliday: ^2.3.0
   localforage: ^1.10.0
@@ -40,24 +40,25 @@ specifiers:
   moment-jalaali: ^0.9.6
   nuxt: 3.0.0
   nuxt-windicss: ^2.6.0
-  pinia: ^2.0.28
+  pinia: ^2.0.29
   postcss: 8.4.21
   postcss-loader: ^7.0.2
   sass: ^1.57.1
-  solidity-coverage: ^0.8.0
-  ts-node: '>=8.0.0'
-  typechain: ^8.1.0
+  solidity-coverage: ^0.8.2
+  ts-node: '>=10.9.1'
+  typechain: ^8.1.1
   typescript: ^4.9.4
   unplugin-icons: v0.15.1
   unplugin-vue-components: ^0.22.12
-  vite: ^2.0.1 || ^3.0.0 || ^4.0.0
-  vue: ' >=3.0.0 ||  <4.0.0'
+  vite: ^4.0.4
+  vue: ^3.2.45
   vue-chartjs: ^5.2.0
   vue-tsc: ^1.0.24
   web3modal: ^1.9.11
   webpack: ^5.75.0
 
 dependencies:
+  '@ethersproject/bytes': 5.7.0
   '@nomiclabs/hardhat-waffle': 2.0.3_p5hpgn33z2ucigjpijq6gczsha
   '@openzeppelin/contracts': 4.8.1
   bowser: 2.11.0
@@ -76,7 +77,7 @@ devDependencies:
   '@ethersproject/abi': 5.7.0
   '@ethersproject/providers': 5.7.2
   '@headlessui/vue': 1.7.7_vue@3.2.45
-  '@iconify/json': 2.2.5
+  '@iconify/json': 2.2.11
   '@nomicfoundation/hardhat-chai-matchers': 1.0.5_6lwdgb6qfbcwwoa4qxnor6tsvi
   '@nomicfoundation/hardhat-network-helpers': 1.0.7_hardhat@2.12.6
   '@nomicfoundation/hardhat-toolbox': 2.0.1_q3fjbcqwjl2o3nhw3a4sg7i7fi
@@ -86,13 +87,12 @@ devDependencies:
   '@nuxtjs/dayjs': 1.4.1
   '@nuxtjs/turnstile': 0.1.2
   '@pinia/nuxt': 0.4.6_prq2uz4lho2pwp6irk4cfkrxwu
-  '@typechain/ethers-v5': 10.2.0_k6bdrczrdxrxopgjlr5kov2hw4
+  '@typechain/ethers-v5': 10.2.0_uvzrz6if4akbrktgtw2vfdalai
   '@typechain/hardhat': 6.1.5_flitjyqkwkdrfmvmmkefmykn34
   '@types/chai': 4.3.4
   '@types/mocha': 10.0.1
   '@types/node': 18.11.18
-  '@vueup/vue-quill': 1.0.1_vue@3.2.45
-  '@vueuse/nuxt': 9.10.0_nuxt@3.0.0+vue@3.2.45
+  '@vueuse/nuxt': 9.11.1_nuxt@3.0.0+vue@3.2.45
   chai: 4.3.7
   ethers: 5.7.2
   gun: 0.2020.1239
@@ -101,7 +101,7 @@ devDependencies:
   mermaid: 9.3.0
   nuxt: 3.0.0_ioktduybr2jspktim3ccubij3y
   nuxt-windicss: 2.6.0_vite@4.0.4
-  pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+  pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
   postcss: 8.4.21
   postcss-loader: 7.0.2_6jdsrmfenkuhhw3gx4zvjlznce
   sass: 1.57.1
@@ -1090,8 +1090,8 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@iconify/json/2.2.5:
-    resolution: {integrity: sha512-AIbJTRF9HJz7FJ8t7058huwDXHaFEY4a4f6uuPtctEQ8/I3ybrX66iZMgoLD1kLaamU4tzZPlZ6tSpA3pM8LZg==}
+  /@iconify/json/2.2.11:
+    resolution: {integrity: sha512-LlFrpRAOFq4zW7tbw3GZPB3GRjtwpXQJIb7bHyFjAQb43FdkOWM01A5tB1WpXDYBq1C4FMIbGusCbrSHlX9jHQ==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.0.0
@@ -1416,7 +1416,7 @@ packages:
       '@nomicfoundation/hardhat-network-helpers': 1.0.7_hardhat@2.12.6
       '@nomiclabs/hardhat-ethers': 2.2.2_n3rx3kkfcos7o3ij5m4a4n7ngq
       '@nomiclabs/hardhat-etherscan': 3.1.5_hardhat@2.12.6
-      '@typechain/ethers-v5': 10.2.0_k6bdrczrdxrxopgjlr5kov2hw4
+      '@typechain/ethers-v5': 10.2.0_uvzrz6if4akbrktgtw2vfdalai
       '@typechain/hardhat': 6.1.5_flitjyqkwkdrfmvmmkefmykn34
       '@types/chai': 4.3.4
       '@types/mocha': 10.0.1
@@ -1863,7 +1863,7 @@ packages:
     resolution: {integrity: sha512-HjrYEfLdFpmsjhicPJgL36jVhzHWukIQPFFHGTSF84Cplu+f2nY2XHKqe9ToHzE9rLee2RjLOwAzOnXa/I/u6A==}
     dependencies:
       '@nuxt/kit': 3.0.0
-      pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+      pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
     transitivePeerDependencies:
       - '@vue/composition-api'
       - rollup
@@ -2191,7 +2191,7 @@ packages:
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
 
-  /@typechain/ethers-v5/10.2.0_k6bdrczrdxrxopgjlr5kov2hw4:
+  /@typechain/ethers-v5/10.2.0_uvzrz6if4akbrktgtw2vfdalai:
     resolution: {integrity: sha512-ikaq0N/w9fABM+G01OFmU3U3dNnyRwEahkdvi9mqy1a3XwKiPZaF/lu54OcNaEWnpvEYyhhS0N7buCtLQqC92w==}
     peerDependencies:
       '@ethersproject/abi': ^5.0.0
@@ -2202,6 +2202,7 @@ packages:
       typescript: '>=4.3.0'
     dependencies:
       '@ethersproject/abi': 5.7.0
+      '@ethersproject/bytes': 5.7.0
       '@ethersproject/providers': 5.7.2
       ethers: 5.7.2
       lodash: 4.17.21
@@ -2232,7 +2233,7 @@ packages:
     dependencies:
       '@ethersproject/abi': 5.7.0
       '@ethersproject/providers': 5.7.2
-      '@typechain/ethers-v5': 10.2.0_k6bdrczrdxrxopgjlr5kov2hw4
+      '@typechain/ethers-v5': 10.2.0_uvzrz6if4akbrktgtw2vfdalai
       ethers: 5.7.2
       fs-extra: 9.1.0
       hardhat: 2.12.6_z6wznmtyb6ovnulj6iujpct7um
@@ -2682,22 +2683,12 @@ packages:
   /@vue/shared/3.2.45:
     resolution: {integrity: sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==}
 
-  /@vueup/vue-quill/1.0.1_vue@3.2.45:
-    resolution: {integrity: sha512-/VJHwUxH2BAms7gwIlNhHb0KfCqn/58onOK1H0ZZX9juEha4nrb32yZbv2xLsqLxf+JKsNbJgQ8Ne6VF8ACNGw==}
-    peerDependencies:
-      vue: ^3.2.41
-    dependencies:
-      quill: 1.3.7
-      quill-delta: 4.2.2
-      vue: 3.2.45
-    dev: true
-
-  /@vueuse/core/9.10.0_vue@3.2.45:
-    resolution: {integrity: sha512-CxMewME07qeuzuT/AOIQGv0EhhDoojniqU6pC3F8m5VC76L47UT18DcX88kWlP3I7d3qMJ4u/PD8iSRsy3bmNA==}
+  /@vueuse/core/9.11.1_vue@3.2.45:
+    resolution: {integrity: sha512-E/cizD1w9ILkq4axYjZrXLkKaBfzloaby2n3NMjUfd6yI/jkfTVgc6iwy/Cw2e++Ld4LphGbO+3MhzizvwUslQ==}
     dependencies:
       '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.10.0
-      '@vueuse/shared': 9.10.0_vue@3.2.45
+      '@vueuse/metadata': 9.11.1
+      '@vueuse/shared': 9.11.1_vue@3.2.45
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2716,18 +2707,18 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@vueuse/metadata/9.10.0:
-    resolution: {integrity: sha512-G5VZhgTCapzU9rv0Iq2HBrVOSGzOKb+OE668NxhXNcTjUjwYxULkEhAw70FtRLMZc+hxcFAzDZlKYA0xcwNMuw==}
+  /@vueuse/metadata/9.11.1:
+    resolution: {integrity: sha512-ABjkrG+VXggNhjfGyw5e/sekxTZfXTwjrYXkkWQmQ7Biyv+Gq9UD6IDNfeGvQZEINI0Qzw6nfuO2UFCd3hlrxQ==}
     dev: true
 
-  /@vueuse/nuxt/9.10.0_nuxt@3.0.0+vue@3.2.45:
-    resolution: {integrity: sha512-Re63RiUzsEbYGGrES+2YY3Elqblu0XVIVogBJydLBgK4sINDbfnqX0MHDpBuV8MC2SZ/3ojQPMOaJdYIIidJeg==}
+  /@vueuse/nuxt/9.11.1_nuxt@3.0.0+vue@3.2.45:
+    resolution: {integrity: sha512-hiiRzLgsH5nTAb2TChyFc6nykIyTB3MnCEhILg44Ug9ILC3vG/qnHnv3zRtIu4bXNOhDQN5shfnchgGPJFf8PA==}
     peerDependencies:
       nuxt: ^3.0.0
     dependencies:
       '@nuxt/kit': 3.0.0
-      '@vueuse/core': 9.10.0_vue@3.2.45
-      '@vueuse/metadata': 9.10.0
+      '@vueuse/core': 9.11.1_vue@3.2.45
+      '@vueuse/metadata': 9.11.1
       local-pkg: 0.4.2
       nuxt: 3.0.0_ioktduybr2jspktim3ccubij3y
       vue-demi: 0.13.11_vue@3.2.45
@@ -2738,8 +2729,8 @@ packages:
       - vue
     dev: true
 
-  /@vueuse/shared/9.10.0_vue@3.2.45:
-    resolution: {integrity: sha512-vakHJ2ZRklAzqmcVBL38RS7BxdBA4+5poG9NsSyqJxrt9kz0zX3P5CXMy0Hm6LFbZXUgvKdqAS3pUH1zX/5qTQ==}
+  /@vueuse/shared/9.11.1_vue@3.2.45:
+    resolution: {integrity: sha512-UTZYGAjT96hWn4buf4wstZbeheBVNcKPQuej6qpoSkjF1atdaeCD6kqm9uGL2waHfisSgH9mq0qCRiBOk5C/2w==}
     dependencies:
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
@@ -4676,6 +4667,7 @@ packages:
   /clone/2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+    dev: false
 
   /cluster-key-slot/1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
@@ -5582,6 +5574,7 @@ packages:
       object-is: 1.1.5
       object-keys: 1.1.1
       regexp.prototype.flags: 1.4.3
+    dev: false
 
   /deep-extend/0.6.0:
     resolution: {integrity: sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==}
@@ -6893,10 +6886,6 @@ packages:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
     engines: {node: '>=6'}
 
-  /eventemitter3/2.0.3:
-    resolution: {integrity: sha512-jLN68Dx5kyFHaePoXWPsCGW5qdyZQtLYHkxkg02/Mz6g0kYpDx4FyP6XfArhQdlOC4b8Mv+EMxPo/8La7Tzghg==}
-    dev: true
-
   /eventemitter3/4.0.4:
     resolution: {integrity: sha512-rlaVLnVxtxvoyLsQQFBx53YmXHDxRIzzTLbdfxqi4yocpSjAxXwkU0cScM5JgSKMqEhrZpnvQ2D9gjylR0AimQ==}
     dev: false
@@ -7056,14 +7045,6 @@ packages:
 
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
-
-  /fast-diff/1.1.2:
-    resolution: {integrity: sha512-KaJUt+M9t1qaIteSvjc6P3RbMdXsNhK61GRftR6SNxqmhthcd9MGIi4T+o0jD8LUSpSnSKXE20nLtJ3fOHxQig==}
-    dev: true
-
-  /fast-diff/1.2.0:
-    resolution: {integrity: sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==}
-    dev: true
 
   /fast-glob/3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
@@ -8462,6 +8443,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       has-tostringtag: 1.0.0
+    dev: false
 
   /is-array-buffer/3.0.1:
     resolution: {integrity: sha512-ASfLknmY8Xa2XtB4wmbz13Wu202baeA18cJBCeCy0wXUHZF0IPyVEXqKEcd+t2fNSLLL1vC6k7lxZEojNbISXQ==}
@@ -9334,10 +9316,6 @@ packages:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: true
 
-  /lodash.clonedeep/4.5.0:
-    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
-    dev: true
-
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
@@ -9356,10 +9334,6 @@ packages:
 
   /lodash.isarguments/3.1.0:
     resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
-    dev: true
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
     dev: true
 
   /lodash.isplainobject/4.0.6:
@@ -10852,6 +10826,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.1.4
+    dev: false
 
   /object-keys/0.4.0:
     resolution: {integrity: sha512-ncrLw+X55z7bkl5PnUvHwFK9FcGuFYo9gtjws2XtSzL+aZ8tm830P60WJ0dSmFVaSalWieW5MD7kEdnXda9yJw==}
@@ -11086,10 +11061,6 @@ packages:
   /p-try/2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
-    dev: true
-
-  /parchment/1.1.4:
-    resolution: {integrity: sha512-J5FBQt/pM2inLzg4hEWmzQx/8h8D0CiDxaG3vyp9rKrQRSDgBlhjdP5jQGgosEajXPSQouXGHOmVdgo7QmJuOg==}
     dev: true
 
   /parent-module/1.0.1:
@@ -11340,8 +11311,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pinia/2.0.28_prq2uz4lho2pwp6irk4cfkrxwu:
-    resolution: {integrity: sha512-YClq9DkqCblq9rlyUual7ezMu/iICWdBtfJrDt4oWU9Zxpijyz7xB2xTwx57DaBQ96UGvvTMORzALr+iO5PVMw==}
+  /pinia/2.0.29_prq2uz4lho2pwp6irk4cfkrxwu:
+    resolution: {integrity: sha512-5z/KpFecq/cIgfeTnulJXldiLcTITRkTe3N58RKYSj0Pc1EdR6oyCdnf5A9jLoVwBqX5LtHhd0kGlpzWvk9oiQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -11943,34 +11914,6 @@ packages:
     engines: {node: '>=10'}
     dev: false
     optional: true
-
-  /quill-delta/3.6.3:
-    resolution: {integrity: sha512-wdIGBlcX13tCHOXGMVnnTVFtGRLoP0imqxM696fIPwIf5ODIYUHIvHbZcyvGlZFiFhK5XzDC2lpjbxRhnM05Tg==}
-    engines: {node: '>=0.10'}
-    dependencies:
-      deep-equal: 1.1.1
-      extend: 3.0.2
-      fast-diff: 1.1.2
-    dev: true
-
-  /quill-delta/4.2.2:
-    resolution: {integrity: sha512-qjbn82b/yJzOjstBgkhtBjN2TNK+ZHP/BgUQO+j6bRhWQQdmj2lH6hXG7+nwwLF41Xgn//7/83lxs9n2BkTtTg==}
-    dependencies:
-      fast-diff: 1.2.0
-      lodash.clonedeep: 4.5.0
-      lodash.isequal: 4.5.0
-    dev: true
-
-  /quill/1.3.7:
-    resolution: {integrity: sha512-hG/DVzh/TiknWtE6QmWAF/pxoZKYxfe3J/d/+ShUWkDvvkZQVTPeVmUJVu1uE6DDooC4fWTiCLh84ul89oNz5g==}
-    dependencies:
-      clone: 2.1.2
-      deep-equal: 1.1.1
-      eventemitter3: 2.0.3
-      extend: 3.0.2
-      parchment: 1.1.4
-      quill-delta: 3.6.3
-    dev: true
 
   /radix3/1.0.0:
     resolution: {integrity: sha512-6n3AEXth91ASapMVKiEh2wrbFJmI+NBilrWE0AbiGgfm0xet0QXC8+a3K19r1UVYjUjctUgB053c3V/J6V0kCQ==}
