@@ -132,6 +132,6 @@ const closeEditModal = () => {
         </MenuItems>
       </transition>
     </Menu>
-    <UpdateProfile :is-open="editIsOpen" @closeModal="closeEditModal" />
+    <FrontUpdateProfile :is-open="editIsOpen" @closeModal="closeEditModal" />
   </div>
 </template>

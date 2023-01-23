@@ -56,7 +56,7 @@ onUnmounted(() => {
       </p>
 
       <ContentRendererMarkdown :value="data" />
-      <Comments />
     </section>
+    <Comments />
   </ContentRenderer>
 </template>
