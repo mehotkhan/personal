@@ -8,7 +8,7 @@ definePageMeta({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <div class="flex justify-between align-middle">
+    <div class="flex justify-between items-center	">
       <h2 class="flex">مدیریت پیام‌ها</h2>
       <div class="absolute top-15 left-5 flex">
         <span class="block text-gray-700">

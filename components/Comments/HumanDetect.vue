@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start align-middle">
+  <div class="flex justify-start items-center	">
     <Turnstile
       class="flex w-75 h-15 bg-gray"
       :key="key"

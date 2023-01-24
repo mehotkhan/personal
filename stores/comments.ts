@@ -23,13 +23,14 @@ export const useComment = defineStore("commentStream", {
     },
 
     send(comment: string, path: string) {
-      const { $irisPublic } = useNuxtApp();
+      const { $irisPublic, $irisSession } = useNuxtApp();
+      const sender = $irisSession.getKey();
       const commentKey = "comments." + appConfig.name + path;
       const commentPath = commentKey.replace(/-|\/|\./gi, ".");
       $irisPublic()
         .get(commentPath)
         .get(new Date().toISOString())
-        .put({ text: comment });
+        .put({ text: comment, sender: sender.pub });
     },
   },
 });

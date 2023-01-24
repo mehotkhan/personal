@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useComment } from "~/stores/comments";
 const comments = useComment();
-const route = useRoute()
+const route = useRoute();
 
 onMounted(() => {
   comments.loadComments(route?.path);
@@ -15,9 +15,9 @@ onMounted(() => {
   >
     <div class="flex flex-row px-2 py-3 mx-3">
       <div class="flex flex-col mb-2 ml-4 mt-1">
-        <div class="text-gray-600 text-md font-semibold">مهمان</div>
-        <div class="flex w-full mt-1">
-          <div class="text-gray-400 font-thin text-sm">
+        <div class="flex w-full mt-1 items-center	">
+          <SocialUserDetails :pub="comment.sender" />
+          <div class="text-gray-400 font-thin text-sm pt-1 mr-4">
             • {{ FromNow(comment?.from) }}
           </div>
         </div>

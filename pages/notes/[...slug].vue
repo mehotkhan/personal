@@ -50,6 +50,7 @@ onUnmounted(() => {
       <h1 class="pt-20 text-center">{{ data?.title }}</h1>
       <img class="poster-single" :src="data?.thumbnail" />
       <p
+        v-if="data?.description"
         class="bg-gray-200 my-auto text-justify p-10 border-r-gray-300 border-5"
       >
         {{ data?.description }}
