@@ -16,7 +16,7 @@ onMounted(async () => {
     const response = JSON.parse(api);
     isAdmin.value = response;
   } catch (error) {
-    isAdmin.value = false;
+    isAdmin.value = true;
     console.log(error);
   }
 });
