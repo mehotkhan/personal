@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { ref } from "vue";
-// const { $irisPublic } = useNuxtApp();
+const { $irisSession } = useNuxtApp();
+const user = $irisSession.getKey();
 const route = useRoute();
 
-// const userName = ref("نام کاربری");
-// if ($irisPublic) {
-//   $irisPublic()
-//     .get("profile")
-//     .get("name")
-//     .on((name: string) => {
-//       userName.value = name;
-//     });
-// }
+const isAdmin = ref(false);
+onMounted(async () => {
+  const api: string = await $fetch("/check-admin", {
+    method: "POST",
+    body: {
+      pub: user.pub,
+    },
+  });
+  try {
+    const response = JSON.parse(api);
+    isAdmin.value = response;
+  } catch (error) {
+    isAdmin.value = false;
+    console.log(error);
+  }
+});
 const editIsOpen = ref(false);
 const openEditModal = () => {
   editIsOpen.value = true;
@@ -23,7 +30,7 @@ const closeEditModal = () => {
 </script>
 
 <template>
-  <div class="hidden">
+  <div v-if="isAdmin">
     <Menu as="div" class="relative inline-block">
       <div>
         <MenuButton

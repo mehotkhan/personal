@@ -31,5 +31,6 @@ cache
 artifacts
 
 
-*.js
-*.md
+
+test.js
+content/notes/test.md
