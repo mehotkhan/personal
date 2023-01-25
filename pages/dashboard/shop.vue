@@ -3,6 +3,7 @@ useHead({
   title: "مدیریت محصولات",
 });
 definePageMeta({
+  middleware: ["owner-auth"],
   layout: "dashboard",
 });
 </script>

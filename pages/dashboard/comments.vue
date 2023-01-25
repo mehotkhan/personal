@@ -3,6 +3,7 @@ useHead({
   title: "مدیریت دیدگاه‌ها",
 });
 definePageMeta({
+  middleware: ["owner-auth"],
   layout: "dashboard",
 });
 </script>

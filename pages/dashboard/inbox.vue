@@ -3,12 +3,13 @@ useHead({
   title: "پیام‌ها",
 });
 definePageMeta({
+  middleware: ["owner-auth"],
   layout: "dashboard",
 });
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <div class="flex justify-between items-center	">
+    <div class="flex justify-between items-center">
       <h2 class="flex">مدیریت پیام‌ها</h2>
       <div class="absolute top-15 left-5 flex">
         <span class="block text-gray-700">
@@ -377,9 +378,7 @@ definePageMeta({
                   </span>
                 </div>
                 <div class="flex-1">
-                  <button
-                    class="bg-blue-400 w-10 h-10 rounded-sm inline-block"
-                  >
+                  <button class="bg-blue-400 w-10 h-10 rounded-sm inline-block">
                     <span class="inline-block align-text-bottom">
                       <svg
                         fill="none"

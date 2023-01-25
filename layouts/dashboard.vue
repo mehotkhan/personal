@@ -1,30 +1,11 @@
 <script lang="ts" setup>
-const route = useRoute();
 const sideMenu = ref(true);
-const singleMode = ref(true);
 const close = () => {
   sideMenu.value = false;
 };
 const open = () => {
   sideMenu.value = true;
 };
-
-const isSingle = (path: string) => /\/notes\/[a-zA-Z]/.test(path);
-
-onMounted(() => {
-  if (isSingle(route.path)) {
-    singleMode.value = true;
-  } else {
-    singleMode.value = false;
-  }
-});
-watch(route, (newRoute, oldRoute) => {
-  if (isSingle(newRoute.path)) {
-    singleMode.value = true;
-  } else {
-    singleMode.value = false;
-  }
-});
 </script>
 
 <template>
@@ -42,7 +23,7 @@ watch(route, (newRoute, oldRoute) => {
           <DashboardGlobalUserMenu
             class="absolute top-5 right-0 rounded-md w-full hidden md:block z-100"
           />
-           
+
           <div class="mt-10 pt-3 border-t-gray-400 border-1">
             <DashboardGlobalNavbar
               class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"

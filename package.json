@@ -28,7 +28,7 @@
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@headlessui/vue": "^1.7.7",
-    "@iconify/json": "^2.2.11",
+    "@iconify/json": "^2.2.12",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.7",
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",

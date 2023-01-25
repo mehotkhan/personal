@@ -3,6 +3,7 @@ useHead({
   title: "تنظیمات کلی",
 });
 definePageMeta({
+  middleware: ["owner-auth"],
   layout: "dashboard",
 });
 </script>

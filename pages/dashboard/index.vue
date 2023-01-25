@@ -3,6 +3,7 @@ useHead({
   title: "دفتر کار من",
 });
 definePageMeta({
+  middleware: ["owner-auth"],
   layout: "dashboard",
 });
 </script>
