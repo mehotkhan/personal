@@ -9,7 +9,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     },
   });
 
-  if (process.env.NODE_ENV === "production") {
+  if (!isDev()) {
     try {
       const response = JSON.parse(api);
       if (to.fullPath.startsWith("/dashboard") && !response) {

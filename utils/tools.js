@@ -32,3 +32,4 @@ export const OrderByFrom = (input) => _.orderBy(
 )
 
 export const FromNow = (time) => (dayjs ? dayjs(time).fromNow() : "...");
+export const isDev = () => process.env.NODE_ENV !== "production"

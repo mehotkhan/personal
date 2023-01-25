@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-
 const { $irisPublic } = useNuxtApp();
 const userName = ref("نام کاربری");
 if ($irisPublic) {
@@ -21,16 +20,12 @@ const closeEditModal = () => {
 </script>
 
 <template>
-  <Menu as="div" class="h-10 flex items-center	relative">
+  <Menu as="div" class="h-10 flex items-center relative">
     <div>
       <MenuButton class="inline-flex">
         <div class="flex items-center justify-center">
-          <img
-            class="w-6 h-6 rounded-full"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-            alt="Avatar of Jonathan Reinink"
-          />
-          <span class="mr-2 text-sm font-normal">{{ userName }} </span>
+          <IconMdi:user class="text-lg" />
+          <span class="mr-2 text-sm font-normal pt-1">{{ userName }} </span>
           <IconUil:angle-down class="mr-2 text-sm" />
         </div>
       </MenuButton>

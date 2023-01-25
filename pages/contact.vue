@@ -51,7 +51,7 @@ useHead({
       </div>
     </div>
     <hr />
-    <div class="main flex-1 flex flex-col p-4 mt-3">
+    <div class="main flex-1 flex flex-col p-4 mt-3" v-if="!isDev()">
       <div class="flex-1 flex h-full">
         <div class="chat-area flex-1 flex flex-col">
           <div class="flex-3">

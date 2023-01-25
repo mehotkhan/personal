@@ -8,8 +8,11 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
+    'IconMdi:avatar': typeof import('~icons/mdi/avatar')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']
+    'IconMdi:user': typeof import('~icons/mdi/user')['default']
+    'IconMdi:userCircle': typeof import('~icons/mdi/user-circle')['default']
     'IconUil:angleDown': typeof import('~icons/uil/angle-down')['default']
     'IconUil:commentShare': typeof import('~icons/uil/comment-share')['default']
     'IconUil:dashboard': typeof import('~icons/uil/dashboard')['default']

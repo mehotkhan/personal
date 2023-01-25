@@ -36,7 +36,7 @@ const sendComment = () => {
       class="w-full rounded-lg p-2 text-md bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"
     ></textarea>
     <footer class="flex justify-between mt-2 items-center">
-      <CommentsHumanDetect @passed="passHuman" />
+      <CommentsHumanDetect @passed="passHuman" v-if="!isDev()" />
       <button
         :class="isHuman && commentMessage?.length >= 3 ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-black text-white h-10"

@@ -16,8 +16,8 @@ onMounted(async () => {
     const response = JSON.parse(api);
     isAdmin.value = response;
   } catch (error) {
-    isAdmin.value = true;
-    console.log(error);
+    isAdmin.value = false;
+    // console.log(error);
   }
 });
 const editIsOpen = ref(false);
@@ -30,7 +30,7 @@ const closeEditModal = () => {
 </script>
 
 <template>
-  <div v-if="isAdmin">
+  <div v-if="isDev() || isAdmin">
     <Menu as="div" class="relative inline-block">
       <div>
         <MenuButton
