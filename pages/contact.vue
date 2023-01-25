@@ -5,7 +5,7 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <div class="flex justify-between items-center p-4">
+    <div class="flex justify-between items-center p-4" v-if="isDev()">
       <h2 class="flex text-5xl">چت خصوصی</h2>
       <div class="absolute top-15 left-5 flex">
         <span class="block text-gray-700">
@@ -50,8 +50,8 @@ useHead({
         </span>
       </div>
     </div>
-    <hr />
-    <div class="main flex-1 flex flex-col p-4 mt-3" v-if="!isDev()">
+    <hr v-if="isDev()" />
+    <div class="main flex-1 flex flex-col p-4 mt-3" v-if="isDev()">
       <div class="flex-1 flex h-full">
         <div class="chat-area flex-1 flex flex-col">
           <div class="flex-3">
