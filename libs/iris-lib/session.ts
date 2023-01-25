@@ -25,7 +25,7 @@ const searchableItems: any = {};
 const getExtendedFollowsCalled = new Map<string, number>();
 
 const DEFAULT_FOLLOW =
-  "jKMQGc0YIMtm-3FbcrKiCB7FowrK5ZObcEFfBhoIKao.PDktIugDPz4-TTG5xDqbbLJieKcZ6JbhUxfk0YdMrs0";
+  "RUVSGFr6FpQeYljGgaTDDrMy3fIo21y-JP9cVzjTnH8.1WXaMGk4534n6rGAMhGRMdvO20Yz799OiBIWXjQx2j4";
 
 const DEFAULT_SETTINGS = {
   // electron: {
