@@ -30,6 +30,11 @@ export const OrderByFrom = (input) => _.orderBy(
     ['from'],
     ['desc', 'asc']
 )
+export const OrderByFromReverse = (input) => _.orderBy(
+    input,
+    ['from'],
+    ['desc']
+)
 
 export const FromNow = (time) => (dayjs ? dayjs(time).fromNow() : "...");
 export const isDev = () => process.env.NODE_ENV !== "production"
