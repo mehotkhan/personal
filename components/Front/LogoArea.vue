@@ -16,6 +16,8 @@
       <p class="text-2xl mt-10 bg-black rounded p-3 text-white hidden md:block">
         علی زِمانی:// طراح و توسعه دهنده وب
       </p>
+      <FrontSocial />
+
     </div>
   </div>
 </template>

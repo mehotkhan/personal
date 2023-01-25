@@ -12,7 +12,7 @@ specifiers:
   '@nomiclabs/hardhat-ethers': ^2.2.2
   '@nomiclabs/hardhat-etherscan': ^3.1.5
   '@nomiclabs/hardhat-waffle': ^2.0.3
-  '@nuxt/content': ^2.3.0
+  '@nuxt/content': ^2.4.0
   '@nuxtjs/dayjs': ^1.4.1
   '@nuxtjs/turnstile': ^0.1.2
   '@openzeppelin/contracts': ^4.8.1
@@ -85,7 +85,7 @@ devDependencies:
   '@nomicfoundation/hardhat-toolbox': 2.0.1_q3fjbcqwjl2o3nhw3a4sg7i7fi
   '@nomiclabs/hardhat-ethers': 2.2.2_n3rx3kkfcos7o3ij5m4a4n7ngq
   '@nomiclabs/hardhat-etherscan': 3.1.5_hardhat@2.12.6
-  '@nuxt/content': 2.3.0
+  '@nuxt/content': 2.4.0
   '@nuxtjs/dayjs': 1.4.1
   '@nuxtjs/turnstile': 0.1.2
   '@pinia/nuxt': 0.4.6_prq2uz4lho2pwp6irk4cfkrxwu
@@ -1770,10 +1770,10 @@ packages:
       hardhat: 2.12.6_z6wznmtyb6ovnulj6iujpct7um
     dev: false
 
-  /@nuxt/content/2.3.0:
-    resolution: {integrity: sha512-7IudXOiycHXWxRDe7tWFwnIVT6bp0YG5O4wttCYYd7cvyjX3k6d3zD2j1IkjJMhfqU2PWQ/Wd+A2+oeiLNg3gA==}
+  /@nuxt/content/2.4.0:
+    resolution: {integrity: sha512-yqb0Z9Hah5TNV3srLaumHPABHNH/uwx3UT0AL74EnKHS5A+KqB5zYGGwzorrPU/+3g0WR0088VyD9RjDYbJm8A==}
     dependencies:
-      '@nuxt/kit': 3.0.0
+      '@nuxt/kit': 3.1.0
       consola: 2.15.3
       defu: 6.1.2
       destr: 1.2.2
@@ -1781,7 +1781,7 @@ packages:
       html-tags: 3.2.0
       json5: 2.2.3
       knitwork: 1.0.0
-      listhen: 1.0.1
+      listhen: 1.0.2
       mdast-util-to-hast: 12.2.6
       mdurl: 1.0.1
       ohash: 1.0.0
@@ -1799,7 +1799,7 @@ packages:
       remark-rehype: 10.1.0
       remark-squeeze-paragraphs: 5.0.1
       scule: 1.0.0
-      shiki-es: 0.1.2
+      shiki-es: 0.2.0
       slugify: 1.6.5
       socket.io-client: 4.5.4
       ufo: 1.0.1
@@ -9339,6 +9339,19 @@ packages:
       ufo: 1.0.1
     dev: true
 
+  /listhen/1.0.2:
+    resolution: {integrity: sha512-yXz0NIYfVJDBQK2vlCpD/OjSzYkur2mR44boUtlg0eES4holn7oYZf439y5JxP55EOzFtClZ8eZlMJ8a++FwlQ==}
+    dependencies:
+      clipboardy: 3.0.0
+      colorette: 2.0.19
+      defu: 6.1.2
+      get-port-please: 3.0.1
+      http-shutdown: 1.2.2
+      ip-regex: 5.0.0
+      node-forge: 1.3.1
+      ufo: 1.0.1
+    dev: true
+
   /load-json-file/1.1.0:
     resolution: {integrity: sha512-cy7ZdNRXdablkXYNI049pthVeXFurRyb9+hA/dZzerZ0pGTx42z+y+ssxBaVV2l70t1muq5IdKhn4UtcoGUY9A==}
     engines: {node: '>=0.10.0'}
@@ -12921,8 +12934,8 @@ packages:
       rechoir: 0.6.2
     dev: true
 
-  /shiki-es/0.1.2:
-    resolution: {integrity: sha512-eqtfk8idlYlSLAn0gp0Ly2+FbKc2d78IddigHSS4iHAnpXoY2kdRzyFGZOdi6TvemYMnRhZBi1HsSqZc5eNKqg==}
+  /shiki-es/0.2.0:
+    resolution: {integrity: sha512-RbRMD+IuJJseSZljDdne9ThrUYrwBwJR04FvN4VXpfsU3MNID5VJGHLAD5je/HGThCyEKNgH+nEkSFEWKD7C3Q==}
     dev: true
 
   /side-channel/1.0.4:

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start items-center	">
+  <div class="flex justify-start items-center">
     <Turnstile
       class="flex w-75 h-15 bg-gray"
       :key="key"
@@ -56,4 +56,7 @@ const onSubmit = async () => {
     emit("passed", false);
   }
 };
+onMounted(() => {
+  key.value = Date.now();
+});
 </script>

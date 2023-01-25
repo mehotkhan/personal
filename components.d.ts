@@ -17,7 +17,11 @@ declare module '@vue/runtime-core' {
     'IconUil:edit': typeof import('~icons/uil/edit')['default']
     'IconUil:enter': typeof import('~icons/uil/enter')['default']
     'IconUil:exit': typeof import('~icons/uil/exit')['default']
+    'IconUil:github': typeof import('~icons/uil/github')['default']
     'IconUil:home': typeof import('~icons/uil/home')['default']
+    'IconUil:linkedin': typeof import('~icons/uil/linkedin')['default']
+    'IconUil:tweeter': typeof import('~icons/uil/tweeter')['default']
+    'IconUil:twitter': typeof import('~icons/uil/twitter')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

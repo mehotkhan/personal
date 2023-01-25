@@ -34,7 +34,7 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
     "@nomiclabs/hardhat-ethers": "^2.2.2",
     "@nomiclabs/hardhat-etherscan": "^3.1.5",
-    "@nuxt/content": "^2.3.0",
+    "@nuxt/content": "^2.4.0",
     "@nuxtjs/dayjs": "^1.4.1",
     "@nuxtjs/turnstile": "^0.1.2",
     "@pinia/nuxt": "^0.4.6",
