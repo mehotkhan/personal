@@ -1,5 +1,5 @@
 {
-    "nuxt.isNuxtApp": true,
+    "nuxt.isNuxtApp": false,
     "cSpell.words": [
         "jamstack",
         "Nuxt",

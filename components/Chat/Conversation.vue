@@ -63,7 +63,7 @@ onUpdated(() => {
     <div
       ref="conversation"
       
-      class=" py-4 overflow-x-auto max-h-102 min-h-1 flex-col-reverse"
+      class=" py-4 overflow-x-auto max-h-400 min-h-1 flex-col-reverse"
     >
       <!-- message container -->
       <!-- <div class="text-center my-5">

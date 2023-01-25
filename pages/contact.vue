@@ -19,8 +19,8 @@ useHead({
     </div>
 
     <ChatConversation />
-    <div class="content-area prose-md lg:prose-2xl w-full font-normal">
+    <!-- <div class="content-area prose-md lg:prose-2xl w-full font-normal">
       <ContentDoc path="/pages/contact" />
-    </div>
+    </div> -->
   </section>
 </template>
