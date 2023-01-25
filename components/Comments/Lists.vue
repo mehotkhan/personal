@@ -11,23 +11,20 @@ onMounted(() => {
   <div
     v-for="comment in OrderByFrom(Array.from(comments.commentHistory))"
     :key="comment?.from"
-    class="bg-white border-1 rounded-sm mb-6"
+    class="pb-5 mb-6 group"
   >
-    <div class="flex flex-row px-2 py-3 mx-3">
-      <div class="flex flex-col mb-2 ml-4 mt-1">
-        <div class="flex w-full mt-1 items-center	">
-          <SocialUserDetails :pub="comment.sender" />
-          <div class="text-gray-400 font-thin text-sm pt-1 mr-4">
-            • {{ FromNow(comment?.from) }}
-          </div>
-        </div>
+    <div
+      class="flex bg-gray-100 rounded-md w-full mt-1 items-center justify-between h-auto p-2"
+    >
+      <SocialUserDetails :pub="comment.sender" />
+      <div class="text-gray-400 font-thin text-sm pt-1 mr-4">
+        • {{ FromNow(comment?.from) }}
       </div>
     </div>
-    <div class="border-b border-gray-100"></div>
-
     <div
       v-html="comment.text"
-      class="text-gray-500 text-md mb-6 mx-3 px-2 text-right pt-4"
+      class="text-gray-500 text-lg mb-6 text-right pt-4"
     ></div>
+    <button class="float-left text-sm hidden group-hover:block">پاسخ به این دیدگاه</button>
   </div>
 </template>

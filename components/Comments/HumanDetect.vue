@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-start items-center">
+  <div class="flex justify-start items-center ">
     <Turnstile
-      class="flex w-75 h-15 bg-gray"
+      class="flex w-75 h-16 bg-gray rounded-md overflow-hidden"
       :key="key"
       v-model="token"
       :options="{ action: 'vue' }"

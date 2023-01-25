@@ -16,7 +16,7 @@ const sendComment = () => {
 };
 </script>
 <template>
-  <div class="bg-white rounded-sm border-1 mb-6 p-3">
+  <div class="mb-6 p-3 pb-7">
     <header
       class="flex justify-between items-center border-b border-gray-200 pb-2 mb-2"
     >
@@ -33,10 +33,10 @@ const sendComment = () => {
       name="message"
       type="text"
       placeholder="چیزی بنویسید ..."
-      class="w-full rounded-lg p-2 text-md bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"
+      class="w-full min-h-40 rounded-md p-2 text-lg bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"
     ></textarea>
     <footer class="flex justify-between mt-2 items-center">
-      <CommentsHumanDetect @passed="passHuman" v-if="!isDev()" />
+      <CommentsHumanDetect @passed="passHuman" />
       <button
         :class="isHuman && commentMessage?.length >= 3 ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-black text-white h-10"

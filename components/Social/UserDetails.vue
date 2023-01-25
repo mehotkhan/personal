@@ -15,10 +15,12 @@ if ($irisPublic) {
 </script>
 
 <template>
-  <!-- <img
-              class="w-6 h-6 rounded-full"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-              alt="Avatar of Jonathan Reinink"
-            /> -->
-  <span class="mr-2 text-lg font-normal">{{ userName }} </span>
+  <div class="flex items-center group min-w-200">
+    <IconMdi:user class="text-lg mr-2" />
+
+    <span class="mr-2 text-lg font-normal">{{ userName }} </span>
+    <button class="mr-2 text-[12px] font-normal hidden group-hover:block"
+      >دنبال کردن
+    </button>
+  </div>
 </template>
