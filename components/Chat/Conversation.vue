@@ -77,7 +77,7 @@ onUpdated(() => {
       <!-- messages -->
       <ul
         v-if="directMessage.chatHistory.length === 0"
-        class="text-xl pt-10 mt-3 border-t-1 list-disc"
+        class="text-xl pt-5 mt-2 list-disc"
       >
         <li class="mb-3 mr-5">
           پیام ها به صورت رمزگذاری سراسری E2E ارسال می شوند.

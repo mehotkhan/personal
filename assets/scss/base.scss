@@ -109,6 +109,9 @@ blockquote p {
 .latest {
   ul {
     list-style-type: persian;
+    ::marker{
+      font-size: 1.7rem;
+    }
   }
 }
 

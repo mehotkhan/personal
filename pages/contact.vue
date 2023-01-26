@@ -21,27 +21,15 @@ onMounted(async () => {
   <section class="flex flex-col justify-center content-center">
     <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
       <div class="flex items-center">
-        <h2 class="flex text-5xl">گفتگوی آنلاین</h2>
-        <h3 class="flex text-xl font-thin mr-5">
-          <NuxtLink to="/contact/archive"> بایگانی پیام‌ها </NuxtLink>
-        </h3>
+        <h3 class="flex text-5xl">گفتگوی آنلاین</h3>
       </div>
       <div class="flex items-center">
         <SocialGuestProfile class="mb-4 bg-black" />
-        <span class="hidden text-gray-700 mr-5">
-          وضعیت:
-          <b>آنلاین</b>
-          <span
-            class="inline-block align-text-bottom w-3 h-3 bg-green-400 rounded-full border-2 border-white"
-          >
-          </span>
-        </span>
       </div>
     </div>
 
     <ChatConversation />
-    <!-- <div class="content-area prose-md lg:prose-2xl w-full font-normal">
-      <ContentDoc path="/pages/contact" />
-    </div> -->
+    <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
+    <ChatArchive />
   </section>
 </template>

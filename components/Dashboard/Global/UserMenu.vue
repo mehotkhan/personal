@@ -38,7 +38,7 @@ const closeEditModal = () => {
         >
           <div class="flex items-center justify-center">
             <IconUil:angle-down class="mr-2" />
-            <span class="ml-2 text-md font-normal">کاربر عزیز خوش آمدید!</span>
+            <span class="ml-2 text-md font-normal">مدیر عزیز خوش آمدید!</span>
           </div>
         </MenuButton>
       </div>
@@ -144,4 +144,5 @@ const closeEditModal = () => {
       @closeModal="closeEditModal"
     />
   </div>
+  <FrontOnlineStatus v-else />
 </template>

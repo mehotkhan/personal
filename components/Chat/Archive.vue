@@ -1,39 +1,53 @@
 <script setup lang="ts">
-import { useMessage } from "~/stores/directMessage";
 const { $irisLocal } = useNuxtApp();
-const directMessage = useMessage();
 const archive = reactive(new Map());
 
-onMounted(() => {
-  $irisLocal.get("channels").map((chat: any, id: string) => {
-    !archive.has(id) && archive.set(id, { ...chat, id });
-    return chat;
-  });
+// import { useMessage } from "~/stores/directMessage";
+// const directMessage = useMessage();
+
+$irisLocal.get("channels").map((chat: any, id: string) => {
+  if (chat?.latest?.text && !archive.has(id)) {
+    archive.set(id, { ...chat, id });
+  }
 });
 const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
 </script>
 <template>
-  <div class="w-full grid">
-    <ul
-      reverse
-      class="overflow-y-auto overflow-x-hidden max-h-400 flex-col w-full my-3 pl-3"
-    >
+  <div class="mt-10 latest">
+    <ul reverse class="max-h-140 overflow-x-auto">
       <li
         v-for="(chat, id) in sortedChats"
         :key="id"
-        class="flex rounded-md my-5 border-1 h-20 items-center cursor-pointer hover:bg-slate-100"
-        @click="directMessage.startChat(chat.id)"
+        class="h-20 items-center cursor-pointer mr-8 group"
       >
-        <IconMdi:user class="text-lg mr-2" />
-        <div class="mr-4">
-          <p class="text-md font-semibold text-slate-600 m-0 p-0">
-            {{ chat?.name ?? "name" }}
-          </p>
-          <p
-            class="text-xs text-slate-400 -mt-0.5 font-semibold max-h-10 overflow-hidden"
-          >
-            {{ chat?.latest?.text.substring(0, 40) }}
-          </p>
+        <!-- @click="directMessage.startChat(chat.id)" -->
+        <div class="flex items-center justify-between group-hover:font-bold">
+          <div class="flex items-center">
+            <p class="text-xl text-slate-600 m-0 p-0">
+              {{ chat?.name ?? "مهمان" }}
+            </p>
+            <p class="text-xs text-slate-400 mr-10 max-h-10 overflow-hidden">
+              {{ chat?.latest?.text.substring(0, 40) }}
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-slate-400 ml-10">{{
+              FromNow(chat.latestTime)
+            }}</span>
+            <div>
+              <div
+                class="ml-4 text-xs inline-flex items-center font-thin leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full"
+              >
+                پشتیبانی
+              </div>
+
+              <div
+                class="ml-4 text-xs inline-flex items-center font-thin leading-sm uppercase px-3 py-1 bg-orange-200 text-orange-700 rounded-full"
+              >
+                عمومی
+              </div>
+            </div>
+          </div>
         </div>
       </li>
     </ul>

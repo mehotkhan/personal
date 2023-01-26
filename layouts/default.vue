@@ -12,20 +12,16 @@ const open = () => {
   <div class="p-3 md:p-10 min-w-screen">
     <slot name="app-before" />
     <div id="app-before"></div>
-    <main
-      class="border border-gray-300 rounded-sm shadow-lg bg-white flex container min-h-screen p-0"
-    >
+    <main class="rounded-sm shadow-md bg-white flex container min-h-screen p-0">
       <div
         class="bg-gray-200 px-0 flex flex-col justify-start relative transition-all"
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <DashboardGlobalUserMenu
-            class="absolute top-6 right-0 rounded-md w-full hidden md:block z-100"
-          />
+          <DashboardGlobalUserMenu class="absolute top-7 z-100 right-5 hidden md:block" />
 
           <div
-            class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-3 md:top-0"
+            class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-15 md:top-0"
           >
             <FrontLogoArea />
             <FrontNavbar
