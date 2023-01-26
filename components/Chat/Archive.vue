@@ -14,7 +14,10 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
 </script>
 <template>
   <div class="w-full grid">
-    <ul reverse class="overflow-y-auto overflow-x-hidden max-h-400 flex-col w-full my-3 pl-3">
+    <ul
+      reverse
+      class="overflow-y-auto overflow-x-hidden max-h-400 flex-col w-full my-3 pl-3"
+    >
       <li
         v-for="(chat, id) in sortedChats"
         :key="id"
@@ -26,8 +29,10 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
           <p class="text-md font-semibold text-slate-600 m-0 p-0">
             {{ chat?.name ?? "name" }}
           </p>
-          <p class="text-xs text-slate-400 -mt-0.5 font-semibold">
-            {{ chat?.latest?.text }}
+          <p
+            class="text-xs text-slate-400 -mt-0.5 font-semibold max-h-10 overflow-hidden"
+          >
+            {{ chat?.latest?.text.substring(0, 40) }}
           </p>
         </div>
       </li>
