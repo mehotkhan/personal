@@ -1,13 +1,13 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 export interface IMessageState {
-  pub: string | undefined
-  chatInstance: any | null
-  chatHistory: any[]
-  person: any | null
+  pub: string | undefined;
+  chatInstance: any | null;
+  chatHistory: any[];
+  person: any | null;
 }
 
-export const useMessage = defineStore('directMessage', {
+export const useMessage = defineStore("directMessage", {
   state: (): IMessageState => ({
     pub: undefined,
     person: null,
@@ -17,36 +17,36 @@ export const useMessage = defineStore('directMessage', {
   actions: {
     startChat(pub: string | undefined) {
       if (pub) {
-        this.pub = pub
+        this.pub = pub;
       } else {
-        this.pub = undefined
-        this.person = null
+        this.pub = undefined;
+        this.person = null;
         // console.log(this.chatInstance)
       }
-      this.chatHistory = []
+      this.chatHistory = [];
       // this.chatInstance = null
     },
     loadChat() {
-      const { $irisPrivate } = useNuxtApp()
-      this.chatInstance = $irisPrivate(this.pub)
+      const { $irisPrivate } = useNuxtApp();
+      this.chatInstance = $irisPrivate(this.pub);
       this.chatInstance.getMessages((msg: any, meta: any) => {
         if (!this.chatHistory.find((old) => old.time === msg.time)) {
-          this.chatHistory.push({ ...msg, selfAuthored: meta.selfAuthored })
+          this.chatHistory.push({ ...msg, selfAuthored: meta.selfAuthored });
         }
-      })
+      });
     },
     loadPerson() {
-      const { $irisPublic } = useNuxtApp()
+      const { $irisPublic } = useNuxtApp();
       if (this.pub) {
         $irisPublic(this.pub)
-          .get('profile')
+          .get("profile")
           .on((profile: any) => {
-            this.person = profile
-          })
+            this.person = profile;
+          });
       }
     },
     send(message: string) {
-      this.chatInstance.send(message)
+      this.chatInstance.send(message);
     },
   },
-})
+});

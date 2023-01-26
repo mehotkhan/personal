@@ -23,23 +23,26 @@ onUpdated(() => {
 <template>
   <div :key="directMessage?.pub" class="w-full h-full flex flex-col mt-10">
     <div
-      class="mb-5 bg-gray-200 border-1 h-20 flex justify-between px-4 items-center bg-slate-50 focus-within:border-slate-300 rounded-md"
+      class="mb-5 bg-gray-200 border-1 min-h-20 max-h-50 flex justify-between px-4 items-center bg-slate-50 focus-within:border-slate-300 rounded-md"
     >
-      <IconUil:voicemail
-        class="text-gray-400 text-3xl text-green-300 cursor-pointer "
-        aria-hidden="true"
-      />
+      <div class="flex items-center h-full w-full">
+        <IconUil:voicemail
+          class="text-gray-400 text-3xl text-green-300 cursor-pointer"
+          aria-hidden="true"
+        />
 
-      <input
-        v-model="chatMessage"
-        type="text"
-        class="w-full px-3 bg-transparent outline-none placeholder:text-slate-400 text-lg"
-        placeholder="چیزی بنویسید یا پیام صوتی ضبط کنید :)"
-        @keyup.enter="sendMessage"
-        @click="sendMessage"
-      />
+        <input
+          rows="2"
+          v-model="chatMessage"
+          type="text"
+          class="-translate-y-10 w-full p-4 flex items-center h-auto bg-transparent outline-none placeholder:text-slate-400 text-lg"
+          placeholder="چیزی بنویسید یا پیام صوتی ضبط کنید :)"
+          @keyup.enter="sendMessage"
+          @click="sendMessage"
+        />
+      </div>
       <div class="flex items-center justify-around">
-        <IconMdi:send
+        <IconUil:message
           v-if="chatMessage.length > 0"
           class="text-gray-400 text-lg cursor-pointer"
           aria-hidden="true"
@@ -48,22 +51,21 @@ onUpdated(() => {
           class="text-gray-400 text-2xl cursor-pointer mr-2"
           aria-hidden="true"
         />
-        <IconMdi:file
+        <IconUil:file
           v-if="chatMessage.length === 0"
-          class="text-gray-400 text-2xl"
+          class="text-gray-400 text-2xl cursor-pointer mr-2"
           aria-hidden="true"
         />
-        <IconMdi:image
+        <IconUil:image
           v-if="chatMessage.length === 0"
-          class="text-gray-400 text-2xl mr-1"
+          class="text-gray-400 text-2xl cursor-pointer mr-2"
           aria-hidden="true"
         />
       </div>
     </div>
     <div
       ref="conversation"
-      
-      class=" py-4 overflow-x-auto max-h-400 min-h-1 flex-col-reverse"
+      class="py-4 overflow-x-auto max-h-400 min-h-1 flex-col-reverse"
     >
       <!-- message container -->
       <!-- <div class="text-center my-5">
@@ -120,3 +122,9 @@ onUpdated(() => {
     </div>
   </div>
 </template>
+<style scoped>
+textarea::placeholder {
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+</style>

@@ -1,8 +1,8 @@
 export async function onRequest(context) {
   const body = await context.request.json()
-  const task = await context.env.ALIZEMANI.get("admin");
+  const adminPub = await context.env.ALIZEMANI.get("admin");
   const userPub = body.pub;
-  if (task === userPub) {
+  if (adminPub === userPub) {
     return new Response(true);
 
   } else {
