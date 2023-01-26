@@ -21,9 +21,8 @@ const open = () => {
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <DashboardGlobalUserMenu
-            class="absolute top-6 right-0 rounded-md w-full hidden md:block z-100"
-          />
+          <DashboardGlobalUserMenu class="absolute top-7 z-100 right-5 hidden md:flex" />
+
           <div>
             <NuxtLink
               to="/"

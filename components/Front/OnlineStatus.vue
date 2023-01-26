@@ -5,7 +5,7 @@
       <b class="mr-2">آنلاین</b>
     </span>
     <span
-      class="mr-1 align-text-bottom w-3 h-3 bg-green-400 rounded-full border-2 border-green-300"
+      class="block mr-1 align-text-bottom w-3 h-3 bg-green-400 rounded-full border-2 border-green-300"
     >
     </span>
   </span>
