@@ -30,6 +30,13 @@ export const OrderByFrom = (input) => _.orderBy(
     ['from'],
     ['desc', 'asc']
 )
+export const OrderChat = (input) =>
+    _.orderBy(
+        input,
+        ["latestTime", "name"],
+        ["desc", "asc"]
+    )
+
 export const OrderByFromReverse = (input) => _.orderBy(
     input,
     ['from'],

@@ -75,7 +75,20 @@ onUpdated(() => {
         >
       </div> -->
       <!-- messages -->
-
+      <ul
+        v-if="directMessage.chatHistory.length === 0"
+        class="text-xl pt-10 mt-3 border-t-1 list-disc"
+      >
+        <li class="mb-3 mr-5">
+          پیام ها به صورت رمزگذاری سراسری E2E ارسال می شوند.
+        </li>
+        <li class="mb-3 mr-5">
+          برای اطلاع از وضعیت پاسخ گویی می توانید ایمیل خود را وارد کنید.
+        </li>
+        <li class="mb-3 mr-5">
+          برای بایگانی پیام ها می توانید به صفحه بایگانی بروید.
+        </li>
+      </ul>
       <div
         v-for="message in OrderByFromReverse(
           Array.from(directMessage.chatHistory)

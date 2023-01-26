@@ -21,10 +21,8 @@ export const useMessage = defineStore("directMessage", {
       } else {
         this.pub = undefined;
         this.person = null;
-        // console.log(this.chatInstance)
       }
       this.chatHistory = [];
-      // this.chatInstance = null
     },
     loadChat() {
       const { $irisPrivate } = useNuxtApp();

@@ -23,7 +23,7 @@ onMounted(async () => {
       <div class="flex items-center">
         <h2 class="flex text-5xl">گفتگوی آنلاین</h2>
         <h3 class="flex text-xl font-thin mr-5">
-          <NuxtLink to="#"> بایگانی پیام‌ها </NuxtLink>
+          <NuxtLink to="/contact/archive"> بایگانی پیام‌ها </NuxtLink>
         </h3>
       </div>
       <div class="flex items-center">
