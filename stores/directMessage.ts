@@ -2,44 +2,68 @@ import { defineStore } from "pinia";
 
 export interface IMessageState {
   pub: string | undefined;
-  chatInstance: any | null;
   chatHistory: any[];
   person: any | null;
+  chatInstance: any[];
 }
 
 export const useMessage = defineStore("directMessage", {
   state: (): IMessageState => ({
     pub: undefined,
     person: null,
-    chatInstance: null,
     chatHistory: [],
+    chatInstance: [{}],
   }),
   actions: {
     startChat(pub: string) {
       const { $irisPublic, $irisPrivate } = useNuxtApp();
-
-      // new
-      if (!this.pub && pub) {
+      const chatInstance = this.chatInstance.find((chat) => chat.id === pub);
+      console.log("chatInstance", chatInstance);
+      if (!chatInstance) {
         this.pub = pub;
         $irisPublic(this.pub)
           .get("profile")
           .on((profile: any) => {
             this.person = profile;
           });
-        this.chatInstance = $irisPrivate(this.pub);
-        this.chatInstance.getMessages((msg: any, meta: any) => {
+
+        const currentInstance = {
+          id: pub,
+          instance: $irisPrivate(this.pub),
+        };
+        currentInstance.instance.getMessages((msg: any, meta: any) => {
           if (!this.chatHistory.find((old) => old.time === msg.time)) {
-            this.chatHistory.push({ ...msg, selfAuthored: meta.selfAuthored });
+            this.chatHistory.push({
+              ...msg,
+              selfAuthored: meta.selfAuthored,
+            });
           }
         });
-        this.chatHistory = [];
+        this.chatInstance.push(currentInstance);
         console.log("initial new chat");
       } else {
+        this.pub = pub;
+        this.chatHistory = [];
+        console.log(this.chatInstance);
+        chatInstance.instance.getMessages((msg: any, meta: any) => {
+          if (!this.chatHistory.find((old) => old.time === msg.time)) {
+            this.chatHistory.push({
+              ...msg,
+              selfAuthored: meta.selfAuthored,
+            });
+          }
+        });
         console.log("load latest chat");
       }
     },
+
     send(message: string) {
-      this.chatInstance.send(message);
+      const chatInstance = this.chatInstance.find(
+        (chat) => chat.id === this.pub
+      );
+      if (chatInstance) {
+        chatInstance.instance.send(message);
+      }
     },
   },
 });

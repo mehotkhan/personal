@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useMessage } from "~/stores/directMessage";
 const { $irisLocal } = useNuxtApp();
-const archive = reactive(new Map());
 
-// import { useMessage } from "~/stores/directMessage";
-// const directMessage = useMessage();
+const archive = reactive(new Map());
+const directMessage = useMessage();
 
 $irisLocal.get("channels").map((chat: any, id: string) => {
   if (chat?.latest?.text && !archive.has(id)) {
@@ -19,8 +19,9 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
         v-for="(chat, id) in sortedChats"
         :key="id"
         class="h-20 items-center cursor-pointer mr-8 group"
+        @click="directMessage.startChat(chat.id)"
+        :class="directMessage?.pub === chat.id ? 'font-bold':'font-normal'"
       >
-        <!-- @click="directMessage.startChat(chat.id)" -->
         <div class="flex items-center justify-between group-hover:font-bold">
           <div class="flex items-center">
             <p class="text-xl text-slate-600 m-0 p-0">

@@ -11,16 +11,25 @@ useHead({
 const api: string = await $fetch("/get-admin", {
   method: "GET",
 });
-try {
-  const response = JSON.parse(api);
-  directMessage.startChat(response);
-} catch (error) {
-  directMessage.startChat(user.pub);
-  console.log("cant get admin pub , test area");
-}
+onMounted(() => {
+  if (!directMessage.pub) {
+    try {
+      const response = JSON.parse(api);
+      directMessage.startChat(response);
+    } catch (error) {
+      const testPub =
+        "2cWyKC1H_GthZf6E6NnnD-6nE06W2Frucek0UppopNc.IFbtOULFbSTGrxwgvbpt9gKbQDdrqmlezgclljV--84";
+      directMessage.startChat(testPub);
+      console.log("cant get admin pub , test area");
+    }
+  }
+});
 </script>
 <template>
-  <section class="flex flex-col justify-center content-center">
+  <section
+    class="flex flex-col justify-center content-center"
+    :key="directMessage?.pub"
+  >
     <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">گفتگوی آنلاین</h3>

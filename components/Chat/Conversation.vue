@@ -10,14 +10,14 @@ const sendMessage = () => {
   chatMessage.value = "";
 };
 
-onUpdated(() => {
-  if (directMessage.chatHistory.length > 0 && conversation?.value) {
-    conversation.value.scrollTop = conversation?.value?.scrollHeight - 20;
-  }
-});
+// onUpdated(() => {
+//   if (directMessage.chatHistory.length > 0 && conversation?.value) {
+//     // conversation.value.scrollTop = conversation?.value?.scrollHeight - 20;
+//   }
+// });
 </script>
 <template>
-  <div :key="directMessage?.pub" class="w-full h-full flex flex-col mt-10">
+  <div class="w-full h-full flex flex-col mt-10">
     <div
       class="mb-5 bg-gray-200 border-1 min-h-20 max-h-50 flex justify-between px-4 items-center bg-slate-50 focus-within:border-slate-300 rounded-md"
     >
@@ -61,16 +61,9 @@ onUpdated(() => {
     </div>
     <div
       ref="conversation"
-      class="py-4 overflow-x-auto max-h-400 min-h-1 flex-col-reverse"
+      :key="directMessage?.pub"
+      class="py-4 overflow-x-auto max-h-140 min-h-1 flex-col-reverse"
     >
-      <!-- message container -->
-      <!-- <div class="text-center my-5">
-        <hr class="-mb-3" />
-        <span class="text-xs text-slate-300 font-medium bg-white px-3 -mt-3"
-          >Wednesday, Feburary 5</span
-        >
-      </div> -->
-      <!-- messages -->
       <ul
         v-if="directMessage.chatHistory.length === 0"
         class="text-xl pt-5 mt-2 list-disc"
@@ -95,10 +88,14 @@ onUpdated(() => {
       >
         <div class="w-1/2">
           <div
-            class="flex items-center justify-between"
+            class="flex items-center"
             :class="message?.selfAuthored ? 'flex-row' : 'flex-row-reverse'"
           >
-            <IconMdi:user class="text-lg mr-2" />
+            <IconMdi:user
+              class="text-lg"
+              :class="message?.selfAuthored ? 'ml-4' : 'mr-4'"
+            />
+            {{ message?.selfAuthored ? "شما" : directMessage?.person?.name }}
 
             <p
               class="font-semibold text-sm text-slate-600"

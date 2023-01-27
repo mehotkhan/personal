@@ -29,14 +29,11 @@ export const orderByDate = (input: any[]) =>
 export const OrderByFrom = (input: any[]) =>
   _.orderBy(input, ["from"], ["desc", "asc"]);
 export const OrderChat = (input: any[]) =>
-  _.orderBy(
-    input,
-    ["latestTime", "name"],
-    ["desc", "asc"]
-  );
+  _.orderBy(input, ["latestTime", "name"], ["desc", "asc"]);
 
-export const OrderByFromReverse = (input: any[]) =>
-  _.orderBy(input, ["from"], ["desc"]);
+export const OrderByFromReverse = (input: any[]) => {
+  return _.orderBy(input, ["time"], ["desc"]);
+};
 
 export const FromNow = (time: string) =>
   dayjs ? dayjs(time).fromNow() : "...";
