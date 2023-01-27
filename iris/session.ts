@@ -25,8 +25,7 @@ const searchableItems: any = {};
 const getExtendedFollowsCalled = new Map<string, number>();
 
 const DEFAULT_FOLLOW =
-  "RUVSGFr6FpQeYljGgaTDDrMy3fIo21y-JP9cVzjTnH8.1WXaMGk4534n6rGAMhGRMdvO20Yz799OiBIWXjQx2j4";
-
+  "60CRK7XTaI634z8baROhL-HJjJGTA4pECYSgKYUPrV8.4F9yDSPZY__xpXBFdluqQdIDnAY7QSXdWhLNyRiNrs4";
 const DEFAULT_SETTINGS = {
   // electron: {
   //   openAtLogin: true,
