@@ -15,32 +15,27 @@ export const useMessage = defineStore("directMessage", {
     chatHistory: [],
   }),
   actions: {
-    startChat(pub: string | undefined) {
-      if (pub) {
+    startChat(pub: string) {
+      const { $irisPublic, $irisPrivate } = useNuxtApp();
+
+      // new
+      if (!this.pub && pub) {
         this.pub = pub;
-      } else {
-        this.pub = undefined;
-        this.person = null;
-      }
-      this.chatHistory = [];
-    },
-    loadChat() {
-      const { $irisPrivate } = useNuxtApp();
-      this.chatInstance = $irisPrivate(this.pub);
-      this.chatInstance.getMessages((msg: any, meta: any) => {
-        if (!this.chatHistory.find((old) => old.time === msg.time)) {
-          this.chatHistory.push({ ...msg, selfAuthored: meta.selfAuthored });
-        }
-      });
-    },
-    loadPerson() {
-      const { $irisPublic } = useNuxtApp();
-      if (this.pub) {
         $irisPublic(this.pub)
           .get("profile")
           .on((profile: any) => {
             this.person = profile;
           });
+        this.chatInstance = $irisPrivate(this.pub);
+        this.chatInstance.getMessages((msg: any, meta: any) => {
+          if (!this.chatHistory.find((old) => old.time === msg.time)) {
+            this.chatHistory.push({ ...msg, selfAuthored: meta.selfAuthored });
+          }
+        });
+        this.chatHistory = [];
+        console.log("initial new chat");
+      } else {
+        console.log("load latest chat");
       }
     },
     send(message: string) {

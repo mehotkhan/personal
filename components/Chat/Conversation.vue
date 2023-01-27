@@ -10,10 +10,6 @@ const sendMessage = () => {
   chatMessage.value = "";
 };
 
-onMounted(() => {
-  directMessage.loadChat();
-  directMessage.loadPerson();
-});
 onUpdated(() => {
   if (directMessage.chatHistory.length > 0 && conversation?.value) {
     conversation.value.scrollTop = conversation?.value?.scrollHeight - 20;
