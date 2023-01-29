@@ -1,14 +1,27 @@
 <script setup lang="ts">
 import { useMessage } from "~/stores/directMessage";
+const { $irisPrivate } = useNuxtApp();
 
 const directMessage = useMessage();
 const chatMessage = ref("");
-const conversation = ref();
+const conversation = reactive(new Map());
 
 const sendMessage = () => {
-  directMessage.send(chatMessage.value);
+  $irisPrivate(directMessage.pub).send(chatMessage.value);
   chatMessage.value = "";
 };
+
+$irisPrivate(directMessage.pub).getMessages((msg: any, meta: any) => {
+  if (msg?.text && !conversation.has(msg.time)) {
+    conversation.set(msg.time, {
+      ...msg,
+      ...meta,
+    });
+  }
+});
+const sortedMessages = computed(() =>
+  OrderByFromReverse(Array.from(conversation.values()))
+);
 
 // onUpdated(() => {
 //   if (directMessage.chatHistory.length > 0 && conversation?.value) {
@@ -61,11 +74,10 @@ const sendMessage = () => {
     </div>
     <div
       ref="conversation"
-      :key="directMessage?.pub"
       class="py-4 overflow-x-auto max-h-140 min-h-1 flex-col-reverse"
     >
       <ul
-        v-if="directMessage.chatHistory.length === 0"
+        v-if="sortedMessages.length === 0"
         class="text-xl pt-5 mt-2 list-disc"
       >
         <li class="mb-3 mr-5">
@@ -79,9 +91,7 @@ const sendMessage = () => {
         </li>
       </ul>
       <div
-        v-for="message in OrderByFromReverse(
-          Array.from(directMessage.chatHistory)
-        )"
+        v-for="message in sortedMessages"
         :key="message?.time"
         class="w-full flex mt-3"
         :class="message?.selfAuthored ? 'justify-start' : 'justify-end'"

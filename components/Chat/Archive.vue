@@ -7,6 +7,7 @@ const directMessage = useMessage();
 
 $irisLocal.get("channels").map((chat: any, id: string) => {
   if (chat?.latest?.text && !archive.has(id)) {
+    // console.log(chat, id);
     archive.set(id, { ...chat, id });
   }
 });
@@ -20,9 +21,12 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
         :key="id"
         class="h-20 items-center cursor-pointer mr-8 group"
         @click="directMessage.startChat(chat.id)"
-        :class="directMessage?.pub === chat.id ? 'font-bold':'font-normal'"
+        :class="directMessage?.pub === chat.id ? 'font-bold' : 'font-normal'"
       >
-        <div class="flex items-center justify-between group-hover:font-bold">
+        <a
+          :href="`/contact/${chat?.id}`"
+          class="flex items-center justify-between group-hover:font-bold"
+        >
           <div class="flex items-center">
             <p class="text-xl text-slate-600 m-0 p-0">
               {{ chat?.name ?? "مهمان" }}
@@ -49,7 +53,7 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </li>
     </ul>
   </div>

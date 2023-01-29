@@ -1,35 +1,19 @@
 <script lang="ts" setup>
 import { useMessage } from "~/stores/directMessage";
-const { $irisSession } = useNuxtApp();
-const user = $irisSession.getKey();
 const directMessage = useMessage();
+const route = useRoute();
 
+const thisPub: string = String(route?.params?.pub);
+
+if (thisPub && !directMessage.pub) {
+  directMessage.startChat(thisPub);
+}
 useHead({
   title: " تماس با من",
 });
-
-const api: string = await $fetch("/get-admin", {
-  method: "GET",
-});
-onMounted(() => {
-  if (!directMessage.pub) {
-    try {
-      const response = JSON.parse(api);
-      directMessage.startChat(response);
-    } catch (error) {
-      const testPub =
-        "2cWyKC1H_GthZf6E6NnnD-6nE06W2Frucek0UppopNc.IFbtOULFbSTGrxwgvbpt9gKbQDdrqmlezgclljV--84";
-      directMessage.startChat(testPub);
-      console.log("cant get admin pub , test area");
-    }
-  }
-});
 </script>
 <template>
-  <section
-    class="flex flex-col justify-center content-center"
-    :key="directMessage?.pub"
-  >
+  <section class="flex flex-col justify-center content-center">
     <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">گفتگوی آنلاین</h3>
