@@ -7,20 +7,22 @@ const chatMessage = ref("");
 const conversation = reactive(new Map());
 
 const sendMessage = () => {
-  $irisPrivate(directMessage.pub).send(chatMessage.value);
+  $irisPrivate(directMessage.pub).send(chatMessage?.value);
   chatMessage.value = "";
 };
 
-$irisPrivate(directMessage.pub).getMessages((msg: any, meta: any) => {
-  if (msg?.text && !conversation.has(msg.time)) {
-    conversation.set(msg.time, {
-      ...msg,
-      ...meta,
-    });
-  }
+onMounted(async () => {
+  $irisPrivate(directMessage.pub)?.getMessages((msg: any, meta: any) => {
+    if (msg?.text && !conversation.has(msg.time)) {
+      conversation.set(msg.time, {
+        ...msg,
+        ...meta,
+      });
+    }
+  });
 });
 const sortedMessages = computed(() =>
-  OrderByFromReverse(Array.from(conversation.values()))
+  OrderByFromReverse(Array.from(conversation?.values()))
 );
 
 // onUpdated(() => {
@@ -52,7 +54,7 @@ const sortedMessages = computed(() =>
       </div>
       <div class="flex items-center justify-around">
         <IconUil:message
-          v-if="chatMessage.length > 0"
+          v-if="chatMessage?.length > 0"
           class="text-gray-400 text-lg cursor-pointer"
           aria-hidden="true"
         />
@@ -61,21 +63,18 @@ const sortedMessages = computed(() =>
           aria-hidden="true"
         />
         <IconUil:file
-          v-if="chatMessage.length === 0"
+          v-if="chatMessage?.length === 0"
           class="text-gray-400 text-2xl cursor-pointer mr-2"
           aria-hidden="true"
         />
         <IconUil:image
-          v-if="chatMessage.length === 0"
+          v-if="chatMessage?.length === 0"
           class="text-gray-400 text-2xl cursor-pointer mr-2"
           aria-hidden="true"
         />
       </div>
     </div>
-    <div
-      ref="conversation"
-      class="py-4 overflow-x-auto max-h-140 min-h-1 flex-col-reverse"
-    >
+    <div class="py-4 overflow-x-auto max-h-140 min-h-1 flex-col-reverse">
       <ul
         v-if="sortedMessages.length === 0"
         class="text-xl pt-5 mt-2 list-disc"

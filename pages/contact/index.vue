@@ -1,17 +1,13 @@
 <script lang="ts" setup>
 import { useMessage } from "~/stores/directMessage";
-const { $irisSession } = useNuxtApp();
 const directMessage = useMessage();
 
-// console.log(route);
-
-const api: string = await $fetch("/get-admin", {
-  method: "GET",
-});
-
-onMounted(() => {
-  if (!directMessage.pub) {
+onMounted(async () => {
+  if (!directMessage?.pub) {
     try {
+      const api: string = await $fetch("/get-admin", {
+        method: "GET",
+      });
       const response = JSON.parse(api);
       directMessage.startChat(response);
     } catch (error) {

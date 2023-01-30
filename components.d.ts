@@ -8,11 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
-    'IconMdi:chatPlus': typeof import('~icons/mdi/chat-plus')['default']
-    'IconMdi:chevronDoubleDown': typeof import('~icons/mdi/chevron-double-down')['default']
-    'IconMdi:chevronDoubleUp': typeof import('~icons/mdi/chevron-double-up')['default']
-    'IconMdi:file': typeof import('~icons/mdi/file')['default']
-    'IconMdi:image': typeof import('~icons/mdi/image')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']
     'IconMdi:user': typeof import('~icons/mdi/user')['default']
@@ -28,7 +23,6 @@ declare module '@vue/runtime-core' {
     'IconUil:image': typeof import('~icons/uil/image')['default']
     'IconUil:linkedin': typeof import('~icons/uil/linkedin')['default']
     'IconUil:message': typeof import('~icons/uil/message')['default']
-    'IconUil:send': typeof import('~icons/uil/send')['default']
     'IconUil:smile': typeof import('~icons/uil/smile')['default']
     'IconUil:twitter': typeof import('~icons/uil/twitter')['default']
     'IconUil:voicemail': typeof import('~icons/uil/voicemail')['default']
