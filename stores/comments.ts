@@ -12,7 +12,10 @@ export const useComment = defineStore("commentStream", {
   actions: {
     loadComments(path: string) {
       const { $irisGroup } = useNuxtApp();
-      const commentKey = "comments." + appConfig.name + path;
+      const commentKey =
+        "comments." + appConfig.name + path.endsWith("/")
+          ? path.slice(0, -1)
+          : path;
       const commentPath = commentKey.replace(/-|\/|\./gi, ".");
       this.commentHistory = [];
       $irisGroup("everyone").map(commentPath, (msg: any, from: any) => {
@@ -25,7 +28,10 @@ export const useComment = defineStore("commentStream", {
     send(comment: string, path: string) {
       const { $irisPublic, $irisSession } = useNuxtApp();
       const sender = $irisSession.getKey();
-      const commentKey = "comments." + appConfig.name + path;
+      const commentKey =
+        "comments." + appConfig.name + path.endsWith("/")
+          ? path.slice(0, -1)
+          : path;
       const commentPath = commentKey.replace(/-|\/|\./gi, ".");
       $irisPublic()
         .get(commentPath)

@@ -12,7 +12,9 @@ const tocLinksH2: Ref<Array<HTMLElement>> = ref([]);
 const tocLinksH3: Ref<Array<HTMLElement>> = ref([]);
 
 const { data: blogPost } = await useAsyncData(`blogToc`, () =>
-  queryContent(route.path).findOne()
+  queryContent(
+    route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path
+  ).findOne()
 );
 const tocLinks = computed(() => blogPost.value?.body.toc.links ?? []);
 const dir = computed(() => blogPost.value?.dir);
@@ -28,7 +30,7 @@ const onClick = (id: string) => {
 </script>
 
 <template>
-  <div class="px-3 md:p-0 mb-5 ">
+  <div class="px-3 md:p-0 mb-5">
     <h4
       class="text-xl md:text-2xl text-bold pb-2 mb-5 border-b border-dashed border-gray-400"
     >
@@ -47,7 +49,7 @@ const onClick = (id: string) => {
           :id="`toc-${id}`"
           :key="id"
           ref="tocLinksH2"
-          class="font-regular cursor-pointer text-md md:text-xl pb-3  mb-2 last:mb-0 mx-5"
+          class="font-regular cursor-pointer text-md md:text-xl pb-3 mb-2 last:mb-0 mx-5"
           :class="{
             'font-normal':
               id ===

@@ -15,7 +15,9 @@ const observerOptions = reactive({
 });
 const content = useContent();
 const { data }: any = await useAsyncData("page-data", () =>
-  queryContent(route.path).findOne()
+  queryContent(
+    route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path
+  ).findOne()
 );
 
 onMounted(() => {

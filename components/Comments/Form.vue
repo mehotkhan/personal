@@ -23,7 +23,7 @@ const isJoinedConversation = async () => {
     method: "POST",
     body: {
       pub: $irisSession.getKey().pub,
-      path: route?.path,
+      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
     },
   });
   try {
@@ -43,7 +43,7 @@ const joinConversations = async () => {
     method: "POST",
     body: {
       pub: $irisSession.getKey().pub,
-      path: route?.path,
+      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
     },
   });
   try {
@@ -65,7 +65,7 @@ const getMembers = async () => {
   const api: string = await $fetch("/members-conversations", {
     method: "POST",
     body: {
-      path: route?.path,
+      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
     },
   });
   try {
