@@ -12,12 +12,16 @@ const members = ref(0);
 const passHuman = (pass: boolean) => {
   isHuman.value = pass;
 };
-watch(isHuman, async (newJoined, oldJoined) => {
+watch(isHuman, async (newHuman, oldHuman) => {
+  if (newHuman) {
+    isJoinedConversation();
+  }
+});
+watch(isJoined, async (newJoined, oldJoined) => {
   if (newJoined) {
     isJoinedConversation();
   }
 });
-
 const isJoinedConversation = async () => {
   const api: string = await $fetch("/is-joined-conversation", {
     method: "POST",
@@ -49,10 +53,11 @@ const joinConversations = async () => {
   try {
     const response = JSON.parse(api);
     if (response) {
-      response.forEach((newPub: string) => {
+      getMembers();
+      isJoined.value = true;
+      response?.forEach((newPub: string) => {
         $irisPublic().get("follow").get(newPub).put(true);
       });
-      isJoined.value = true;
     } else {
       isJoined.value = false;
     }
