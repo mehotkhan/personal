@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     IconIcRoundMenuOpen: typeof import('~icons/ic/round-menu-open')['default']
+    'IconMdi:join': typeof import('~icons/mdi/join')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']
     'IconMdi:user': typeof import('~icons/mdi/user')['default']
@@ -20,8 +21,10 @@ declare module '@vue/runtime-core' {
     'IconUil:exit': typeof import('~icons/uil/exit')['default']
     'IconUil:file': typeof import('~icons/uil/file')['default']
     'IconUil:github': typeof import('~icons/uil/github')['default']
+    'IconUil:group': typeof import('~icons/uil/group')['default']
     'IconUil:home': typeof import('~icons/uil/home')['default']
     'IconUil:image': typeof import('~icons/uil/image')['default']
+    'IconUil:join': typeof import('~icons/uil/join')['default']
     'IconUil:linkedin': typeof import('~icons/uil/linkedin')['default']
     'IconUil:message': typeof import('~icons/uil/message')['default']
     'IconUil:smile': typeof import('~icons/uil/smile')['default']

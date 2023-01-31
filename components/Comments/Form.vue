@@ -101,6 +101,7 @@ const sendComment = () => {
       </button>
       <button
         v-else=""
+        :class="isJoined ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-green-600 text-white h-10"
         @click="joinConversations"
       >
