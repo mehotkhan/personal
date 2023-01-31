@@ -6,7 +6,7 @@ export async function onRequest(context) {
   if (joinDb) {
     const joinArray = await JSON.parse(joinDb)
     await joinArray.push(pub)
-    await context.env.ALIZEMANI.put(dbKey, JSON.stringify(joinArray));
+    await context.env.ALIZEMANI.put(dbKey, JSON.stringify([...new Set(joinArray)]));
     return new Response(true);
   }
   else {

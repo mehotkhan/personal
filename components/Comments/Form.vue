@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useComment } from "~/stores/comments";
-const { $irisSession } = useNuxtApp();
+const { $irisSession, $irisPublic } = useNuxtApp();
 const route = useRoute();
 
 const comments = useComment();
 const commentMessage = ref("");
 const isHuman = ref(true);
 const isJoined = ref(false);
+const members = ref(0);
 
 const passHuman = (pass: boolean) => {
   isHuman.value = pass;
@@ -48,9 +49,33 @@ const joinConversations = async () => {
   try {
     const response = JSON.parse(api);
     if (response) {
+      response.forEach((newPub: string) => {
+        $irisPublic().get("follow").get(newPub).put(true);
+      });
       isJoined.value = true;
     } else {
       isJoined.value = false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getMembers = async () => {
+  const api: string = await $fetch("/members-conversations", {
+    method: "POST",
+    body: {
+      path: route?.path,
+    },
+  });
+  try {
+    const response: string[] = JSON.parse(api);
+    console.log(response);
+    if (response?.length > 0) {
+      response.forEach((newPub: string) => {
+        $irisPublic().get("follow").get(newPub).put(true);
+      });
+      members.value = response.length;
     }
   } catch (error) {
     console.log(error);
@@ -63,7 +88,12 @@ const sendComment = () => {
     commentMessage.value = "";
   }
 };
+
+onMounted(() => {
+  getMembers();
+});
 </script>
+
 <template>
   <div class="mb-6 p-3 pb-7">
     <header
@@ -71,7 +101,7 @@ const sendComment = () => {
     >
       <div class="flex text-sm items-center">
         <IconUil:commentShare class="ml-2 text-md flex" aria-hidden="true" />
-        <span class="block pt-2"> ۵۰ شرکت کننده </span>
+        <span class="block pt-2"> {{ members }} شرکت کننده </span>
       </div>
       <SocialGuestProfile class="mb-4 bg-black" />
     </header>
@@ -88,7 +118,7 @@ const sendComment = () => {
       <CommentsHumanDetect @passed="passHuman" />
 
       <button
-        v-if="isJoined"
+        v-if="isDev() || isJoined"
         :class="isHuman && commentMessage?.length >= 3 ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-black text-white h-10"
         @click="sendComment"
@@ -101,7 +131,7 @@ const sendComment = () => {
       </button>
       <button
         v-else=""
-        :class="isJoined ? 'flex' : 'disabled'"
+        :class="isHuman ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-green-600 text-white h-10"
         @click="joinConversations"
       >
