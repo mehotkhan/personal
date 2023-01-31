@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     'IconMdi:user': typeof import('~icons/mdi/user')['default']
     'IconUil:angleDown': typeof import('~icons/uil/angle-down')['default']
     'IconUil:commentShare': typeof import('~icons/uil/comment-share')['default']
+    'IconUil:commentVerify': typeof import('~icons/uil/comment-verify')['default']
     'IconUil:dashboard': typeof import('~icons/uil/dashboard')['default']
     'IconUil:edit': typeof import('~icons/uil/edit')['default']
     'IconUil:enter': typeof import('~icons/uil/enter')['default']

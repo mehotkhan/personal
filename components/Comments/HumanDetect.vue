@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start items-center ">
+  <div class="flex justify-start items-center">
     <Turnstile
       class="flex w-75 h-16 bg-gray rounded-md overflow-hidden"
       :key="key"
@@ -11,8 +11,7 @@
       class="flex mr-3 text-sm h-auto cursor-pointer items-center"
       :class="validated ? 'text-green-400' : 'text-red-400'"
     >
-      <IconMdi:reload class="ml-2" />
-      من ربات نیستم؟
+      <IconMdi:reload class="ml-2 text-xl" />
     </button>
   </div>
 </template>

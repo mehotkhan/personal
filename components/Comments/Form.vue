@@ -1,13 +1,62 @@
 <script setup lang="ts">
 import { useComment } from "~/stores/comments";
+const { $irisSession } = useNuxtApp();
 const route = useRoute();
 
 const comments = useComment();
 const commentMessage = ref("");
 const isHuman = ref(true);
+const isJoined = ref(false);
+
 const passHuman = (pass: boolean) => {
   isHuman.value = pass;
 };
+watch(isHuman, async (newJoined, oldJoined) => {
+  if (newJoined) {
+    isJoinedConversation();
+  }
+});
+
+const isJoinedConversation = async () => {
+  const api: string = await $fetch("/is-joined-conversation", {
+    method: "POST",
+    body: {
+      pub: $irisSession.getKey().pub,
+      path: route?.path,
+    },
+  });
+  try {
+    const response = JSON.parse(api);
+    if (response) {
+      isJoined.value = true;
+    } else {
+      isJoined.value = false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const joinConversations = async () => {
+  const api: string = await $fetch("/join-conversations", {
+    method: "POST",
+    body: {
+      pub: $irisSession.getKey().pub,
+      path: route?.path,
+    },
+  });
+  try {
+    const response = JSON.parse(api);
+    if (response) {
+      isJoined.value = true;
+    } else {
+      isJoined.value = false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const sendComment = () => {
   if (isHuman && commentMessage?.value.length >= 3) {
     comments.send(commentMessage.value, route?.path);
@@ -37,13 +86,26 @@ const sendComment = () => {
     ></textarea>
     <footer class="flex justify-between mt-2 items-center">
       <CommentsHumanDetect @passed="passHuman" />
+
       <button
+        v-if="isJoined"
         :class="isHuman && commentMessage?.length >= 3 ? 'flex' : 'disabled'"
         class="flex items-center py-1 px-5 rounded-md text-lg bg-black text-white h-10"
         @click="sendComment"
       >
         ارسال دیدگاه
         <IconMdi:send
+          class="text-white text-lg cursor-pointer mr-2"
+          aria-hidden="true"
+        />
+      </button>
+      <button
+        v-else=""
+        class="flex items-center py-1 px-5 rounded-md text-lg bg-green-600 text-white h-10"
+        @click="joinConversations"
+      >
+        عضویت در این بحث
+        <IconUil:comment-verify
           class="text-white text-lg cursor-pointer mr-2"
           aria-hidden="true"
         />
