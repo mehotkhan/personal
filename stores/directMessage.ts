@@ -14,7 +14,7 @@ export const useMessage = defineStore("directMessage", {
   }),
   actions: {
     startChat(pub: string) {
-      const { $irisPublic, $irisPrivate } = useNuxtApp();
+      const { $irisPublic } = useNuxtApp();
       // if (this.pub !== pub) {
       this.pub = pub;
 

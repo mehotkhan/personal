@@ -104,7 +104,11 @@ const sortedMessages = computed(() =>
               class="text-lg"
               :class="message?.selfAuthored ? 'ml-4' : 'mr-4'"
             />
-            {{ message?.selfAuthored ? "شما" : directMessage?.person?.name }}
+            {{
+              message?.selfAuthored
+                ? $irisSession.getMyName()
+                : directMessage?.person?.name
+            }}
 
             <p
               class="font-semibold text-sm text-slate-600"
@@ -124,11 +128,11 @@ const sortedMessages = computed(() =>
             class="mt-3 w-full p-4 rounded-b-xl"
             :class="
               message?.selfAuthored
-                ? 'bg-blue-500 rounded-tl-xl'
-                : 'bg-orange-500 rounded-tr-xl'
+                ? 'bg-gray-400 rounded-tl-xl text-white'
+                : 'bg-gray-200 rounded-tr-xl text-black'
             "
           >
-            <p class="text-md text-white">
+            <p class="text-md">
               {{ message?.text }}
             </p>
           </div>

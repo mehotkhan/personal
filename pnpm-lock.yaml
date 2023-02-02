@@ -61,11 +61,13 @@ specifiers:
   unplugin-icons: v0.15.2
   unplugin-vue-components: ^0.23.0
   vite: ^4.0.4
+  vite-plugin-windicss: ^1.8.10
   vue: ^3.2.47
   vue-chartjs: ^5.2.0
   vue-tsc: ^1.0.24
   web3modal: ^1.9.12
   webpack: ^5.75.0
+  windicss: ^3.5.6
 
 dependencies:
   '@ensdomains/ens': 0.6.2
@@ -83,8 +85,10 @@ dependencies:
   lodash: 4.17.21
   moment-jalaali: 0.9.6
   react-is: 18.2.0
+  vite-plugin-windicss: 1.8.10_vite@4.0.4
   vue-chartjs: 5.2.0_chart.js@4.2.0+vue@3.2.47
   web3modal: 1.9.12_react-is@18.2.0
+  windicss: 3.5.6
 
 devDependencies:
   '@ethersproject/abi': 5.7.0
@@ -155,7 +159,6 @@ packages:
 
   /@antfu/utils/0.7.2:
     resolution: {integrity: sha512-vy9fM3pIxZmX07dL+VX1aZe7ynZ+YyB0jY+jE6r3hOK6GNY2t6W8rzpFC4tgpbXUYABkFQwgJq2XYXlxbXAI0g==}
-    dev: true
 
   /@babel/code-frame/7.18.6:
     resolution: {integrity: sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q==}
@@ -515,7 +518,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-arm/0.17.5:
@@ -533,7 +535,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-arm64/0.17.5:
@@ -551,7 +552,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-x64/0.17.5:
@@ -569,7 +569,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-arm64/0.17.5:
@@ -587,7 +586,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-x64/0.17.5:
@@ -605,7 +603,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64/0.17.5:
@@ -623,7 +620,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-x64/0.17.5:
@@ -641,7 +637,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm/0.17.5:
@@ -659,7 +654,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm64/0.17.5:
@@ -677,7 +671,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ia32/0.17.5:
@@ -695,7 +688,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-loong64/0.17.5:
@@ -713,7 +705,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-mips64el/0.17.5:
@@ -731,7 +722,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ppc64/0.17.5:
@@ -749,7 +739,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-riscv64/0.17.5:
@@ -767,7 +756,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-s390x/0.17.5:
@@ -785,7 +773,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-x64/0.17.5:
@@ -803,7 +790,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/netbsd-x64/0.17.5:
@@ -821,7 +807,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/openbsd-x64/0.17.5:
@@ -839,7 +824,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/sunos-x64/0.17.5:
@@ -857,7 +841,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-arm64/0.17.5:
@@ -875,7 +858,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-ia32/0.17.5:
@@ -893,7 +875,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-x64/0.17.5:
@@ -1600,12 +1581,10 @@ packages:
     dependencies:
       '@nodelib/fs.stat': 2.0.5
       run-parallel: 1.2.0
-    dev: true
 
   /@nodelib/fs.stat/2.0.5:
     resolution: {integrity: sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==}
     engines: {node: '>= 8'}
-    dev: true
 
   /@nodelib/fs.walk/1.2.8:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
@@ -1613,7 +1592,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
-    dev: true
 
   /@nomicfoundation/ethereumjs-block/4.0.0:
     resolution: {integrity: sha512-bk8uP8VuexLgyIZAHExH1QEovqx0Lzhc9Ntm63nCRKLHXIZkobaFaeCVwTESV7YkPKUk7NiK11s8ryed4CS9yA==}
@@ -3525,7 +3503,6 @@ packages:
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@windicss/plugin-utils/1.8.10:
     resolution: {integrity: sha512-Phqk5OW1w+Mv+ry6t7BzAeDq3aMhbI94gR49j9vQCufFfDGCHndhhjtMK0sBv+NPJUsIAIh6qayb1iwBCXUGrw==}
@@ -3539,7 +3516,6 @@ packages:
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -5738,7 +5714,6 @@ packages:
       '@esbuild/win32-arm64': 0.16.17
       '@esbuild/win32-ia32': 0.16.17
       '@esbuild/win32-x64': 0.16.17
-    dev: true
 
   /esbuild/0.17.5:
     resolution: {integrity: sha512-Bu6WLCc9NMsNoMJUjGl3yBzTjVLXdysMltxQWiLAypP+/vQrf+3L1Xe8fCXzxaECus2cEJ9M7pk4yKatEwQMqQ==}
@@ -6478,7 +6453,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
-    dev: true
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -6491,7 +6465,6 @@ packages:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
     dependencies:
       reusify: 1.0.4
-    dev: true
 
   /fetch-blob/3.2.0:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
@@ -7946,7 +7919,6 @@ packages:
   /jiti/1.16.2:
     resolution: {integrity: sha512-OKBOVWmU3FxDt/UH4zSwiKPuc1nihFZiOD722FuJlngvLz2glX1v2/TJIgoA4+mrpnXxHV6dSAoCvPcYQtoG5A==}
     hasBin: true
-    dev: true
 
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
@@ -8124,7 +8096,6 @@ packages:
 
   /kolorist/1.6.0:
     resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
-    dev: true
 
   /lazystream/1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -8513,7 +8484,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.14
-    dev: true
 
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
@@ -8730,7 +8700,6 @@ packages:
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
-    dev: true
 
   /merkle-patricia-tree/4.2.4:
     resolution: {integrity: sha512-eHbf/BG6eGNsqqfbLED9rIqbsF4+sykEaBn6OLNs71tjclbMcMOk1tEPmJKcNcNCLkvbpY/lwyOlizWsqPNo8w==}
@@ -9013,7 +8982,6 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
-    dev: true
 
   /miller-rabin/4.0.1:
     resolution: {integrity: sha512-115fLhvZVqWwHPbClyntxEVfVDfl9DLLTuJvq3g2O/Oxi8AiNouAHvDSzHS0viUJc+V5vm3eq91Xwqn9dp4jRA==}
@@ -10989,7 +10957,6 @@ packages:
   /reusify/1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
-    dev: true
 
   /rimraf/2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
@@ -11049,7 +11016,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /run-async/2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
@@ -11065,7 +11031,6 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
-    dev: true
 
   /rustbn.js/0.2.0:
     resolution: {integrity: sha512-4VlvkRUuCJvr2J6Y0ImW7NvTCriMi7ErOAqWk1y69vAdoNIzCF3yPmgeNzx+RQTLEDFq5sHfscn1MwHxP9hNfA==}
@@ -11119,7 +11084,6 @@ packages:
       chokidar: 3.5.3
       immutable: 4.2.2
       source-map-js: 1.0.2
-    dev: true
 
   /sc-istanbul/0.4.6:
     resolution: {integrity: sha512-qJFF/8tW/zJsbyfh/iT/ZM5QNHE3CXxtLJbZsL+CzdJLBsPD7SedJZoUA4d8iAcN2IoMp/Dx80shOOd2x96X/g==}
@@ -12698,7 +12662,6 @@ packages:
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /vite/4.0.4_f5vcjb3akvjdur4ffzogu2hewu:
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
@@ -12733,7 +12696,6 @@ packages:
       sass: 1.58.0
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vscode-jsonrpc/6.0.0:
     resolution: {integrity: sha512-wnJA4BnEjOSyFMvjZdpiOwhSq9uDoK8e/kpRJDTaMYzwlkrhG1fwDIZI94CLsLzlCK5cIbMMtFlJlfR57Lavmg==}
@@ -13081,7 +13043,6 @@ packages:
     resolution: {integrity: sha512-P1mzPEjgFMZLX0ZqfFht4fhV/FX8DTG7ERG1fBLiWvd34pTLVReS5CVsewKn9PApSgXnVfPWwvq+qUsRwpnwFA==}
     engines: {node: '>= 12'}
     hasBin: true
-    dev: true
 
   /window-size/0.2.0:
     resolution: {integrity: sha512-UD7d8HFA2+PZsbKyaOCEy8gMh1oDtHgJh1LfgjQ4zVXmYjAT/kvz3PueITKuqDiIXQe7yzpPnxX3lNc+AhQMyw==}

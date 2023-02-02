@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useMessage } from "~/stores/directMessage";
+const { $irisSession } = useNuxtApp();
 const directMessage = useMessage();
 
 onMounted(async () => {
@@ -11,9 +12,8 @@ onMounted(async () => {
       const response = JSON.parse(api);
       directMessage.startChat(response);
     } catch (error) {
-      const testPub =
-        "2cWyKC1H_GthZf6E6NnnD-6nE06W2Frucek0UppopNc.IFbtOULFbSTGrxwgvbpt9gKbQDdrqmlezgclljV--84";
-      directMessage.startChat(testPub);
+      const user = $irisSession.getKey();
+      directMessage.startChat(user.pub);
       console.log("cant get admin pub , test area");
     }
   }

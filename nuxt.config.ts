@@ -1,4 +1,5 @@
 import fs from "fs";
+import WindiCSS from "vite-plugin-windicss";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
@@ -22,9 +23,8 @@ export default defineNuxtConfig({
   target: "static",
 
   css: [
-    "virtual:windi-base.css",
-    "virtual:windi-components.css",
-    "virtual:windi-utilities.css",
+    "virtual:windi.css",
+    "virtual:windi-devtools",
     "@/assets/scss/base.scss",
   ],
   build: {
@@ -55,6 +55,9 @@ export default defineNuxtConfig({
         ],
       }),
       Icons(),
+      WindiCSS({
+        transformGroups: false,
+      }),
     ],
   },
   vueuse: {

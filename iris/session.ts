@@ -24,9 +24,6 @@ let initCalled: boolean;
 const searchableItems: any = {};
 const getExtendedFollowsCalled = new Map<string, number>();
 
-const DEFAULT_FOLLOW =
-  "Ys02RWvz5s-I4l0fdnTC6-xEclkhosd6XM4MNs5BKkE.DMXmH3J753f1adR39aYN1lIV1lhWbtjKmpXr58xJlOc";
-
 const DEFAULT_SETTINGS = {
   // electron: {
   //   openAtLogin: true,
@@ -87,8 +84,6 @@ export default {
   },
 
   DEFAULT_SETTINGS,
-  DEFAULT_FOLLOW,
-
   taskQueue: [] as any[],
 
   updateSearchIndex: _.throttle(
@@ -396,12 +391,6 @@ export default {
       local().get("filters").put({ a: null });
       local().get("filters").get("group").put("follows");
       Channel.createChatLink().then((l) => (latestChatLink = l));
-      setTimeout(() => {
-        if (options.autofollow !== false) {
-          console.log("autofollowing", DEFAULT_FOLLOW);
-          user().get("follow").get(DEFAULT_FOLLOW).put(true);
-        }
-      }, 1000); // maybe wait for login return instead
     });
   },
 

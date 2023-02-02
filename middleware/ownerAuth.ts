@@ -1,7 +1,7 @@
 const { $irisSession } = useNuxtApp();
 const user = $irisSession.getKey();
 
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async (to, _) => {
   const api: string = await $fetch("/check-admin", {
     method: "POST",
     body: {
