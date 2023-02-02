@@ -10,7 +10,7 @@ products.value = await queryContent("market").find();
   <br />
   <TabGroup>
     <TabList class="flex w-full">
-      <Tab as="template" key="nfts" v-slot="{ selected }">
+      <Tab key="nfts" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-xl',
@@ -22,7 +22,7 @@ products.value = await queryContent("market").find();
           محصولات مرتبط
         </button>
       </Tab>
-      <Tab as="template" key="comments" v-slot="{ selected }">
+      <Tab key="comments" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-xl',
@@ -34,7 +34,7 @@ products.value = await queryContent("market").find();
           دیدگاه ‌ها
         </button>
       </Tab>
-      <Tab as="template" key="selling" v-slot="{ selected }">
+      <Tab key="selling" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-xl',

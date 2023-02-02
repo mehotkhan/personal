@@ -6,20 +6,23 @@ export async function onRequest(context) {
     waitUntil, // same as ctx.waitUntil in existing Worker API
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
-  } = context
-  const body = await request.json()
+  } = context;
+  const body = await request.json();
   const token = body.token;
-  const ip = request.headers.get('CF-Connecting-IP');
-  const SECRET_KEY = env.TURNSTILE_SECRET_KEY
-  let formData = new FormData();
-  formData.append('secret', SECRET_KEY);
-  formData.append('response', token);
-  formData.append('remoteip', ip);
+  const ip = request.headers.get("CF-Connecting-IP");
+  const SECRET_KEY = env.TURNSTILE_SECRET_KEY;
+  const formData = new FormData();
+  formData.append("secret", SECRET_KEY);
+  formData.append("response", token);
+  formData.append("remoteip", ip);
 
-  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    body: formData,
-    method: 'POST',
-  });
+  const response = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      body: formData,
+      method: "POST",
+    }
+  );
   const outcome = await response.json();
   if (!outcome.success) {
     return new Response(JSON.stringify(outcome));
@@ -29,4 +32,3 @@ export async function onRequest(context) {
   // For this demo, we just echo the "/siteverify" response:
   return new Response(JSON.stringify(outcome));
 }
-

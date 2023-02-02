@@ -15,7 +15,7 @@ definePageMeta({
       class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8"
     >
       <div
-        class="items-center	 rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12"
+        class="items-center rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12"
       >
         <div class="flex justify-between">
           <div
@@ -61,7 +61,7 @@ definePageMeta({
         </div>
       </div>
       <div
-        class="items-center	 inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg"
+        class="items-center inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg"
       >
         <table class="min-w-full">
           <thead>
@@ -378,7 +378,7 @@ definePageMeta({
                   href="#"
                   class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
                   aria-label="Previous"
-                  v-on:click.prevent="changePage(pagination.current_page - 1)"
+                  @click.prevent="changePage(pagination.current_page - 1)"
                 >
                   <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path

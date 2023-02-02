@@ -57,8 +57,8 @@ const closeEditModal = () => {
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
               <NuxtLink
-                to="/"
                 v-if="route?.path?.startsWith('/dashboard')"
+                to="/"
                 class="flex"
                 :class="[
                   active ? 'bg-gray-200 text-black' : 'text-black',
@@ -73,13 +73,13 @@ const closeEditModal = () => {
                 بازگشت به خانه
               </NuxtLink>
               <NuxtLink
+                v-else
                 class="flex"
                 :class="[
                   active ? 'bg-gray-200 text-black' : 'text-black',
                   'group flex w-full items-center rounded-sm px-2 py-2 text-md ',
                 ]"
                 to="/dashboard"
-                v-else
               >
                 <IconUil:dashboard
                   :active="active"

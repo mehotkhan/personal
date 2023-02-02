@@ -27,7 +27,7 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-right items-center	 shadow-xl transition-all"
+              class="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-right items-center shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
@@ -97,55 +97,55 @@ import {
   Dialog,
   DialogPanel,
   DialogTitle,
-} from '@headlessui/vue'
-import { ref } from 'vue'
-const { $irisPublic, $irisGlobal, $irisSession } = useNuxtApp()
+} from "@headlessui/vue";
+import { ref } from "vue";
+const { $irisPublic, $irisGlobal, $irisSession } = useNuxtApp();
 
 const props = defineProps({
   isOpen: { type: Boolean, required: true, default: false },
-})
+});
 
-const newUsername = ref('')
-const newUserAbout = ref('')
+const newUsername = ref("");
+const newUserAbout = ref("");
 if ($irisPublic) {
   $irisPublic()
-    .get('profile')
-    .get('name')
+    .get("profile")
+    .get("name")
     .on((name: string) => {
-      newUsername.value = name
-    })
+      newUsername.value = name;
+    });
   $irisPublic()
-    .get('profile')
-    .get('about')
+    .get("profile")
+    .get("about")
     .on((about: string) => {
-      newUserAbout.value = about
-    })
+      newUserAbout.value = about;
+    });
 }
 
-const emit = defineEmits(['closeModal'])
+const emit = defineEmits(["closeModal"]);
 
 const closeModal = () => {
-  emit('closeModal')
-}
+  emit("closeModal");
+};
 const updateUsername = () => {
-  $irisPublic().get('profile').get('name').put(newUsername.value)
-  $irisPublic().get('profile').get('about').put(newUserAbout.value)
+  $irisPublic().get("profile").get("name").put(newUsername.value);
+  $irisPublic().get("profile").get("about").put(newUserAbout.value);
   $irisGlobal
-    .get('members')
+    .get("members")
     .get($irisSession.getKey().pub)
-    .get('name')
-    .put(newUsername.value)
+    .get("name")
+    .put(newUsername.value);
   $irisGlobal
-    .get('members')
+    .get("members")
     .get($irisSession.getKey().pub)
-    .get('about')
-    .put(newUserAbout.value)
+    .get("about")
+    .put(newUserAbout.value);
   $irisGlobal
-    .get('members')
+    .get("members")
     .get($irisSession.getKey().pub)
-    .get('pub')
-    .put($irisSession.getKey().pub)
+    .get("pub")
+    .put($irisSession.getKey().pub);
 
-  emit('closeModal')
-}
+  emit("closeModal");
+};
 </script>

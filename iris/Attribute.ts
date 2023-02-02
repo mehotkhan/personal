@@ -19,7 +19,7 @@ const UNIQUE_ID_VALIDATORS = {
   account:
     /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
   uuid: /[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}/,
-}
+};
 
 // TODO this class could perhaps be removed
 
@@ -31,25 +31,25 @@ class Attribute {
           `param1.value must be a string, got ${typeof a.value}: ${JSON.stringify(
             a.value
           )}`
-        )
+        );
       }
       if (typeof a.type !== `string`) {
         throw new TypeError(
           `param1.type must be a string, got ${typeof a.type}: ${JSON.stringify(
             a.type
           )}`
-        )
+        );
       }
-      b = a.value
-      a = a.type
+      b = a.value;
+      a = a.type;
     }
     if (typeof a !== `string`) {
       throw new TypeError(
         `First param must be a string, got ${typeof a}: ${JSON.stringify(a)}`
-      )
+      );
     }
     if (!a.length) {
-      throw new Error(`First param string is empty`)
+      throw new Error(`First param string is empty`);
     }
     if (b) {
       if (typeof b !== `string`) {
@@ -57,22 +57,22 @@ class Attribute {
           `Second parameter must be a string, got ${typeof b}: ${JSON.stringify(
             b
           )}`
-        )
+        );
       }
       if (!b.length) {
-        throw new Error(`Second param string is empty`)
+        throw new Error(`Second param string is empty`);
       }
-      this.type = a
-      this.value = b
+      this.type = a;
+      this.value = b;
     } else {
-      this.value = a
-      const t = Attribute.guessTypeOf(this.value)
+      this.value = a;
+      const t = Attribute.guessTypeOf(this.value);
       if (t) {
-        this.type = t
+        this.type = t;
       } else {
         throw new Error(
           `Type of attribute was omitted and could not be guessed`
-        )
+        );
       }
     }
   }
@@ -81,41 +81,41 @@ class Attribute {
     const b = (a) =>
       a
         ? (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
-        : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, b)
-    return new Attribute(`uuid`, b())
+        : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, b);
+    return new Attribute(`uuid`, b());
   }
 
   static getUniqueIdValidators() {
-    return UNIQUE_ID_VALIDATORS
+    return UNIQUE_ID_VALIDATORS;
   }
 
   static isUniqueType(type) {
-    return Object.keys(UNIQUE_ID_VALIDATORS).includes(type)
+    return Object.keys(UNIQUE_ID_VALIDATORS).includes(type);
   }
 
   isUniqueType() {
-    return Attribute.isUniqueType(this.type)
+    return Attribute.isUniqueType(this.type);
   }
 
   static guessTypeOf(value) {
     for (const key in UNIQUE_ID_VALIDATORS) {
       if (value.match(UNIQUE_ID_VALIDATORS[key])) {
-        return key
+        return key;
       }
     }
   }
 
   static equals(a, b) {
-    return a.equals(b)
+    return a.equals(b);
   }
 
   equals(a) {
-    return a && this.type === a.type && this.value === a.value
+    return a && this.type === a.type && this.value === a.value;
   }
 
   uri() {
-    return `${encodeURIComponent(this.value)}:${encodeURIComponent(this.type)}`
+    return `${encodeURIComponent(this.value)}:${encodeURIComponent(this.type)}`;
   }
 }
 
-export default Attribute
+export default Attribute;

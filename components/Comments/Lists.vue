@@ -22,9 +22,11 @@ onMounted(() => {
       </div>
     </div>
     <div
-      v-html="comment.text"
       class="text-gray-500 text-lg mb-6 text-right pt-4"
+      v-html="comment.text"
     ></div>
-    <button class="float-left text-sm hidden group-hover:block">پاسخ به این دیدگاه</button>
+    <button class="float-left text-sm hidden group-hover:block">
+      پاسخ به این دیدگاه
+    </button>
   </div>
 </template>

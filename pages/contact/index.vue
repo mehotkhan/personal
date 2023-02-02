@@ -24,8 +24,8 @@ useHead({
 </script>
 <template>
   <section
-    class="flex flex-col justify-center content-center"
     :key="directMessage?.pub"
+    class="flex flex-col justify-center content-center"
   >
     <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
       <div class="flex items-start flex-col">

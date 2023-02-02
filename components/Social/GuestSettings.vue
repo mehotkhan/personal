@@ -27,7 +27,7 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-md bg-white p-5 text-right items-center	 shadow-xl transition-all"
+              class="w-full max-w-md transform overflow-hidden rounded-md bg-white p-5 text-right items-center shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
@@ -67,7 +67,6 @@
               </div>
 
               <div class="mt-4">
-     
                 <button
                   type="button"
                   class="mr-3 inline-flex justify-center rounded-md-md border border-transparent bg-black px-4 py-2 ml-2 text-sm text-white float-left"

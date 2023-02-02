@@ -1,5 +1,5 @@
 <template>
-  <span class="text-gray-700 mr-5 flex items-center ">
+  <span class="text-gray-700 mr-5 flex items-center">
     <span class="flex">
       وضعیت:
       <b class="mr-2">آنلاین</b>

@@ -18,7 +18,9 @@ const open = () => {
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <DashboardGlobalUserMenu class="absolute top-7 z-100 right-5 hidden md:flex" />
+          <DashboardGlobalUserMenu
+            class="absolute top-7 z-100 right-5 hidden md:flex"
+          />
 
           <div
             class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-15 md:top-0"
@@ -39,13 +41,13 @@ const open = () => {
         >
           <IconIcRoundMenuOpen
             v-if="!sideMenu"
-            @click="open"
             class="absolute right-5"
+            @click="open"
           />
           <IconIcRoundMenuOpen
             v-if="sideMenu"
-            @click="close"
             class="transform rotate-180 absolute -right-15"
+            @click="close"
           />
         </div>
         <div class="w-full py-10">

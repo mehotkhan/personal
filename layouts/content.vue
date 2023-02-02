@@ -15,13 +15,14 @@ const open = () => {
     <slot name="app-before" />
     <div id="app-before"></div>
     <main class="rounded-sm shadow-md bg-white flex container min-h-screen p-0">
-
       <div
         class="bg-gray-200 px-0 flex flex-col justify-start relative transition-all"
         :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full">
-          <DashboardGlobalUserMenu class="absolute top-7 z-100 right-5 hidden md:flex" />
+          <DashboardGlobalUserMenu
+            class="absolute top-7 z-100 right-5 hidden md:flex"
+          />
 
           <div>
             <NuxtLink
@@ -55,13 +56,13 @@ const open = () => {
         >
           <IconIcRoundMenuOpen
             v-if="!sideMenu"
-            @click="open"
             class="absolute right-5"
+            @click="open"
           />
           <IconIcRoundMenuOpen
             v-if="sideMenu"
-            @click="close"
             class="transform rotate-180 absolute -right-15"
+            @click="close"
           />
         </div>
         <div

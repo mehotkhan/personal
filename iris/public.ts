@@ -1,7 +1,7 @@
-import publicState from './global'
-import session from './session'
+import publicState from "./global";
+import session from "./session";
 
-let currentUser: any
+let currentUser: any;
 
 /**
  * Get a public space where only the specified user (public key) can write. Others can read.
@@ -10,8 +10,8 @@ let currentUser: any
  */
 export default function (pub?: string) {
   if (!currentUser) {
-    currentUser = publicState().user()
-    currentUser.auth(session.getKey())
+    currentUser = publicState().user();
+    currentUser.auth(session.getKey());
   }
-  return pub ? publicState().user(pub) : currentUser
+  return pub ? publicState().user(pub) : currentUser;
 }

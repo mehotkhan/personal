@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useContent } from "~/stores/content";
 import { Ref } from "vue";
+import { useContent } from "~/stores/content";
 
 const content = useContent();
 const route = useRoute();

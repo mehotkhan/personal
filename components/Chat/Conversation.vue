@@ -43,8 +43,8 @@ const sortedMessages = computed(() =>
         />
 
         <input
-          rows="2"
           v-model="chatMessage"
+          rows="2"
           type="text"
           class="-translate-y-10 w-full p-4 flex items-center h-auto bg-transparent outline-none placeholder:text-slate-400 text-lg"
           placeholder="چیزی بنویسید یا پیام صوتی ضبط کنید :)"

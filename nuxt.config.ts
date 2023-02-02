@@ -1,13 +1,13 @@
+import fs from "fs";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
-import fs from "fs";
 
 const GenerateContentPaths = (path: string, files_: string[] = []) => {
   files_ = files_ || [];
   const files = fs.readdirSync(path);
-  for (var i in files) {
-    var name = path + "/" + files[i];
+  for (const i in files) {
+    const name = path + "/" + files[i];
     if (fs.statSync(name).isDirectory()) {
       GenerateContentPaths(name, files_);
     } else {

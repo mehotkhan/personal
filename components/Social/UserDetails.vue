@@ -19,8 +19,8 @@ if ($irisPublic) {
     <IconMdi:user class="text-lg mr-2" />
 
     <span class="mr-2 text-lg font-normal">{{ userName }} </span>
-    <button class="mr-2 text-[12px] font-normal hidden group-hover:block"
-      >دنبال کردن
+    <button class="mr-2 text-[12px] font-normal hidden group-hover:block">
+      دنبال کردن
     </button>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useContent } from "~/stores/content";
 import { Ref } from "vue";
+import { useContent } from "~/stores/content";
 const route = useRoute();
 
 definePageMeta({

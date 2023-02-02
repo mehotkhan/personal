@@ -7,9 +7,9 @@ const directMessage = useMessage();
 
 $irisLocal.get("channels").map((chat: any, id: string) => {
   if (chat?.latest?.text && !archive.has(id)) {
-    // console.log(chat, id);
     archive.set(id, { ...chat, id });
   }
+  return chat;
 });
 const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
 </script>
@@ -20,8 +20,8 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
         v-for="(chat, id) in sortedChats"
         :key="id"
         class="h-20 items-center cursor-pointer mr-8 group"
-        @click="directMessage.startChat(chat.id)"
         :class="directMessage?.pub === chat.id ? 'font-bold' : 'font-normal'"
+        @click="directMessage.startChat(chat.id)"
       >
         <a
           :href="`/contact/${chat?.id}`"

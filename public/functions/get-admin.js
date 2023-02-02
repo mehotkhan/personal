@@ -3,7 +3,6 @@ export async function onRequest(context) {
   if (adminPub) {
     return new Response(JSON.stringify(adminPub));
   } else {
-    return new Response(JSON.stringify(''));
+    return new Response(JSON.stringify(""));
   }
 }
-

@@ -11,7 +11,7 @@ products.value = await queryContent("market").find();
   <br />
   <TabGroup>
     <TabList class="flex w-full">
-      <Tab as="template" key="latest" v-slot="{ selected }">
+      <Tab key="latest" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-2xl',
@@ -23,7 +23,7 @@ products.value = await queryContent("market").find();
           جدیدترین محصولات
         </button>
       </Tab>
-      <Tab as="template" key="most-selling" v-slot="{ selected }">
+      <Tab key="most-selling" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-2xl',
@@ -35,7 +35,7 @@ products.value = await queryContent("market").find();
           پرفروش ترین محصولات
         </button>
       </Tab>
-      <Tab as="template" key="latest-comment" v-slot="{ selected }">
+      <Tab key="latest-comment" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-2xl',
@@ -88,10 +88,7 @@ products.value = await queryContent("market").find();
       </TabPanel>
       <TabPanel key="latest-comment" :class="['rounded-xl bg-white p-3']">
         <br />
-        <p class="text-xl">
-
-          آخرین نظرات و دیدگاه های فروشگاه
-        </p>
+        <p class="text-xl">آخرین نظرات و دیدگاه های فروشگاه</p>
       </TabPanel>
     </TabPanels>
   </TabGroup>

@@ -1,13 +1,13 @@
 // @ts-nocheck
 import Gun from "gun";
+// import notifications from "./notifications";
 import Fuse from "fuse.js";
 import localforage from "localforage";
-import notifications from "./notifications";
 import Channel from "./Channel";
 import util from "./util";
 import _ from "./lodash";
 import local from "./local";
-// import electron from './electron'
+// import electron from "./electron";
 import user from "./public";
 import privateState from "./private";
 import blockedUsers from "./blockedUsers";
@@ -26,13 +26,14 @@ const getExtendedFollowsCalled = new Map<string, number>();
 
 const DEFAULT_FOLLOW =
   "60CRK7XTaI634z8baROhL-HJjJGTA4pECYSgKYUPrV8.4F9yDSPZY__xpXBFdluqQdIDnAY7QSXdWhLNyRiNrs4";
+
 const DEFAULT_SETTINGS = {
   // electron: {
   //   openAtLogin: true,
   //   minimizeOnClose: true,
   // },
   local: {
-    enableWebtorrent: !util.isMobile,
+    enableWebtorrent: false,
     enablePublicPeerDiscovery: true,
     autoplayWebtorrent: true,
     maxConnectedPeers: util.isElectron ? 2 : 1,
@@ -56,9 +57,12 @@ export default {
       return;
     }
     initCalled = true;
-    const localStorageKey = localStorage.getItem("chatKeyPair");
+    let localStorageKey = localStorage.getItem("iris.myKey");
+    if (!localStorageKey) {
+      localStorageKey = localStorage.getItem("chatKeyPair");
+    }
     if (localStorageKey) {
-      this.login(JSON.parse(localStorageKey));
+      this.login(JSON.parse(localStorageKey), options);
     } else if (options.autologin !== false) {
       this.loginAsNewUser(options);
     } else {
@@ -67,6 +71,7 @@ export default {
     setTimeout(() => {
       local()
         .get("block")
+        // eslint-disable-next-line array-callback-return
         .map(() => {
           this.updateSearchIndex();
         });
@@ -89,7 +94,7 @@ export default {
   updateSearchIndex: _.throttle(
     () => {
       const options = {
-        keys: ["name"],
+        keys: ["name", "display_name"],
         includeScore: true,
         includeMatches: true,
         threshold: 0.3,
@@ -125,7 +130,7 @@ export default {
       if (searchableItems[k].followDistance > followDistance) {
         searchableItems[k].followDistance = followDistance;
       }
-      follower && searchableItems[k].followers.add(follower);
+      follower && searchableItems[k].followers?.add(follower);
     } else {
       searchableItems[k] = {
         key: k,
@@ -150,6 +155,11 @@ export default {
     this.updateNoFollowers();
   },
 
+  addToSearchIndex(key: string, item: any) {
+    searchableItems[key] = item;
+    this.updateSearchIndex();
+  },
+
   removeFollow(k: string, followDistance: number, follower: string) {
     if (followDistance === 1) {
       local().get("contacts").get(k).put(false);
@@ -160,7 +170,7 @@ export default {
         this.updateNoFollowers();
       }
     }
-    console.log("removeFollow", k, followDistance, follower);
+    // console.log('removeFollow', k, followDistance, follower);
     if (searchableItems[k] && searchableItems[k].followers.size === 0) {
       delete searchableItems[k];
       local().get("contacts").get(k).put(false);
@@ -265,7 +275,7 @@ export default {
         const chat = activeRoute && privateState(chatId);
         if (chat) {
           chat.setMyMsgsLastSeenTime();
-          notifications.changeChatUnseenCount(chatId, 0);
+          // notifications.changeChatUnseenCount(chatId, 0);
         }
       } else {
         Channel.setActivity((ourActivity = "online"));
@@ -319,7 +329,7 @@ export default {
           myName = name;
         }
       });
-    notifications.init();
+    // notifications.init();
     local().get("loggedIn").put(true);
     local()
       .get("settings")
@@ -355,10 +365,10 @@ export default {
       location.reload();
     }
     // if (electron) {
-    //   electron.get('settings').on((electron) => {
-    //     local().get('settings').get('electron').put(electron)
-    //   })
-    //   electron.get('user').put(key.pub)
+    //   electron.get("settings").on((electron) => {
+    //     local().get("settings").get("electron").put(electron);
+    //   });
+    //   electron.get("user").put(key.pub);
     // }
     local()
       .get("filters")
@@ -379,8 +389,8 @@ export default {
   loginAsNewUser(options: any = {}) {
     const name = options.name || util.generateName();
     console.log("loginAsNewUser name", name);
-    return Gun.SEA.pair().then((k) => {
-      this.login(k);
+    return Gun.SEA.pair().then(async (k) => {
+      await this.login(k, options);
       user().get("profile").put({ a: null });
       user().get("profile").get("name").put(name);
       local().get("filters").put({ a: null });
@@ -401,7 +411,7 @@ export default {
    */
   async logOut() {
     // if (electron) {
-    //   electron.get('user').put(null)
+    //   electron.get("user").put(null);
     // }
     // TODO: remove subscription from your channels
     if (navigator.serviceWorker) {
@@ -410,8 +420,8 @@ export default {
         reg.active?.postMessage({ key: null });
         const sub = await reg.pushManager.getSubscription();
         if (sub) {
-          const hash = await util.getHash(JSON.stringify(sub));
-          notifications.removeSubscription(hash);
+          // const hash = await util.getHash(JSON.stringify(sub));
+          // notifications.removeSubscription(hash);
           sub.unsubscribe && sub.unsubscribe();
         }
       }
@@ -523,11 +533,11 @@ export default {
         chat.getLatestMsg((latest: any, info: any) => {
           this.processMessage(pub, latest, info);
         });
-      notifications.changeChatUnseenCount(pub, 0);
-      chat.notificationSetting = "all";
-      chat.onMy("notificationSetting", (val: any) => {
-        chat.notificationSetting = val;
-      });
+      // notifications.changeChatUnseenCount(pub, 0);
+      // chat.notificationSetting = "all";
+      // chat.onMy("notificationSetting", (val: any) => {
+      //   chat.notificationSetting = val;
+      // });
       // $(".chat-list").append(el);
       chat.theirMsgsLastSeenTime = "";
       chat.getTheirMsgsLastSeenTime((time: any) => {
@@ -538,9 +548,9 @@ export default {
       });
       chat.getMyMsgsLastSeenTime((time: any) => {
         chat.myLastSeenTime = new Date(time);
-        if (chat.latest && chat.myLastSeenTime >= chat.latest.time) {
-          notifications.changeChatUnseenCount(pub, 0);
-        }
+        // if (chat.latest && chat.myLastSeenTime >= chat.latest.time) {
+        //   notifications.changeChatUnseenCount(pub, 0);
+        // }
       });
       chat.isTyping = false;
       chat.getTyping((isTyping) => {
@@ -615,6 +625,7 @@ export default {
           .on((v) => local().get("channels").get(pub).get("name").put(v));
       }
       if (chat.put) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         chat.onTheir("webPushSubscriptions", (s, k, from) => {
           if (!Array.isArray(s)) {
             return;
@@ -622,8 +633,8 @@ export default {
           chat.webPushSubscriptions = chat.webPushSubscriptions || {};
           chat.webPushSubscriptions[from || pub] = s;
         });
-        const arr = Object.values(notifications.webPushSubscriptions);
-        setTimeout(() => chat.put("webPushSubscriptions", arr), 5000);
+        // const arr = Object.values(notifications.webPushSubscriptions);
+        // setTimeout(() => chat.put("webPushSubscriptions", arr), 5000);
         this.shareMyPeerUrl(chat);
       }
       chat.onTheir("call", (call) => {
@@ -645,8 +656,8 @@ export default {
   processMessage(
     chatId: string,
     msg: any,
-    info: any,
-    onClickNotification?: Function
+    info: any
+    // onClickNotification?: Function
   ) {
     const chat = privateState(chatId);
     chat.messageIds = chat.messageIds || {};
@@ -656,7 +667,7 @@ export default {
       msg = Object.assign(msg, info);
     }
     if (msg.invite) {
-      const chatLink = `https://iris.to/?channelId=${msg.invite.group}&inviter=${chatId}`;
+      const chatLink = `https://alizemani.ir/?channelId=${msg.invite.group}&inviter=${chatId}`;
       this.newChannel(msg.invite.group, chatLink);
       return;
     }
@@ -673,7 +684,7 @@ export default {
         window.location.hash !== `#/chat/${chatId}` ||
         document.visibilityState !== "visible"
       ) {
-        notifications.changeChatUnseenCount(chatId, 1);
+        // notifications.changeChatUnseenCount(chatId, 1);
       } else if (ourActivity === "active") {
         chat.setMyMsgsLastSeenTime();
       }
@@ -699,7 +710,7 @@ export default {
         });
     }
     // TODO: onclickNotification should do       route(`/chat/${  pub}`);
-    notifications.notifyMsg(msg, info, chatId, onClickNotification);
+    // notifications.notifyMsg(msg, info, chatId, onClickNotification);
   },
 
   subscribeToMsgs(pub) {

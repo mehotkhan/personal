@@ -2,8 +2,26 @@
     "nuxt.isNuxtApp": false,
     "cSpell.words": [
         "ALIZEMANI",
+        "bowser",
+        "chartjs",
+        "ensdomains",
+        "esbuild",
+        "ethersproject",
+        "headlessui",
+        "iconify",
+        "jalaali",
+        "jalaliday",
         "jamstack",
+        "localforage",
+        "nomicfoundation",
+        "nomiclabs",
         "Nuxt",
-        "treeshake"
+        "nuxtjs",
+        "pinia",
+        "treeshake",
+        "typechain",
+        "unplugin",
+        "vueuse",
+        "windicss"
     ]
 }

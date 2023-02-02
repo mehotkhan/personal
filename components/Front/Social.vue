@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-center w-full mt-20 transform -rotate-90 mb-20 md:rotate-0 md:mb-0 md:ml-5 md:mt-10 md:mb-0">
+  <div
+    class="flex justify-center w-full mt-20 transform -rotate-90 mb-20 md:rotate-0 md:mb-0 md:ml-5 md:mt-10 md:mb-0"
+  >
     <a href="https://github.com/mehotkhan" target="_blank">
       <IconUil:github class="mr-2 text-xl" />
     </a>

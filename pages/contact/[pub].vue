@@ -3,7 +3,7 @@ import { useMessage } from "~/stores/directMessage";
 const directMessage = useMessage();
 const route = useRoute();
 
-const thisPub: string = String(route?.params?.pub);
+const thisPub = String(route?.params?.pub);
 
 if (thisPub && !directMessage.pub) {
   directMessage.startChat(thisPub);

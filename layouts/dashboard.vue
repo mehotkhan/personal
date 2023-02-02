@@ -38,13 +38,13 @@ const open = () => {
         >
           <IconIcRoundMenuOpen
             v-if="!sideMenu"
-            @click="open"
             class="absolute right-5"
+            @click="open"
           />
           <IconIcRoundMenuOpen
             v-if="sideMenu"
-            @click="close"
             class="transform rotate-180 absolute -right-4"
+            @click="close"
           />
         </div>
         <div class="prose-lg w-full font-normal py-0">

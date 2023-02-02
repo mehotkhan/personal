@@ -1,6 +1,6 @@
-import Node from './Node'
+import Node from "./Node";
 
-let local: Node
+let local: Node;
 
 /**
  * Get a state that is only synced in memory and local storage.
@@ -10,7 +10,7 @@ let local: Node
  */
 export default function () {
   if (!local) {
-    local = new Node()
+    local = new Node();
   }
-  return local
+  return local;
 }

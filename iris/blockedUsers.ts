@@ -1,27 +1,27 @@
-import local from './local'
+import local from "./local";
 
-let blockedUsers: { [key: string]: boolean } = {}
+let blockedUsers: { [key: string]: boolean } = {};
 
 export default function () {
   if (!blockedUsers) {
-    blockedUsers = {}
+    blockedUsers = {};
     local()
-      .get('block')
+      .get("block")
       .map((isBlocked: boolean, user: string) => {
         if (isBlocked === blockedUsers[user]) {
-          return
+          return;
         }
         if (isBlocked) {
-          blockedUsers[user] = isBlocked
+          blockedUsers[user] = isBlocked;
           local()
-            .get('groups')
+            .get("groups")
             .map((_v: any, k: string) => {
-              local().get('groups').get(k).get(user).put(false)
-            })
+              local().get("groups").get(k).get(user).put(false);
+            });
         } else {
-          delete blockedUsers[user]
+          delete blockedUsers[user];
         }
-      })
+      });
   }
-  return blockedUsers
+  return blockedUsers;
 }

@@ -1,4 +1,3 @@
 export default defineAppConfig({
-    name: 'alizemani.ir.dev_126',
-  
-  })
+  name: "alizemani.ir.dev_126",
+});

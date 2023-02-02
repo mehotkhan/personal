@@ -112,12 +112,12 @@ onMounted(() => {
     </header>
 
     <textarea
-      @keyup.enter="isHuman && commentMessage?.length >= 3 ? sendComment : null"
       v-model="commentMessage"
       name="message"
       type="text"
       placeholder="چیزی بنویسید ..."
       class="w-full min-h-40 rounded-md p-2 text-lg bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"
+      @keyup.enter="isHuman && commentMessage?.length >= 3 ? sendComment : null"
     ></textarea>
     <footer class="flex justify-between mt-2 items-center">
       <CommentsHumanDetect @passed="passHuman" />

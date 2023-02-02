@@ -1,6 +1,7 @@
 import iris from "../iris";
 iris.session.init();
 console.log(iris.session.getKey());
+
 export default defineNuxtPlugin(() => {
   return {
     provide: {
