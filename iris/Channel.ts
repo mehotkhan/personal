@@ -1,3 +1,6 @@
+/* eslint-disable no-unreachable-loop */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable n/no-callback-literal */
 // @ts-nocheck
 
 import Gun from "gun";
@@ -1142,7 +1145,7 @@ class Channel {
     if (!options.channelOptions) {
       throw new Error("addChatButton missing options.channelOptions param");
     }
-    util.injectCss();
+    // util.injectCss();
     let channel, box;
     const btn = util.createElement(
       "div",
@@ -1282,7 +1285,7 @@ class Channel {
    * Get a channel box element that you can add to your page
    */
   getChatBox() {
-    util.injectCss();
+    // util.injectCss();
     let minimized = false;
 
     const chatBox = util.createElement("div", "iris-chat-box");
