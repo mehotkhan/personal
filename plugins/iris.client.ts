@@ -11,6 +11,7 @@ export default defineNuxtPlugin(() => {
       irisGlobal: iris.global(),
       irisSession: iris.session,
       irisGroup: iris.group,
+      SEA: iris.SEA,
     },
   };
 });

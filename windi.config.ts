@@ -1,6 +1,5 @@
 import { defineConfig } from "windicss/helpers";
 import type { Plugin } from "windicss/types/interfaces";
-// plugins
 import TypographyPlugin from "windicss/plugin/typography";
 import AspectRatioPlugin from "windicss/plugin/aspect-ratio";
 import FiltersPlugin from "windicss/plugin/filters";
@@ -64,6 +63,7 @@ export default defineConfig({
     // filters plugin require for navbar blur
     FiltersPlugin as Plugin,
     TypographyPlugin as Plugin,
+    AspectRatioPlugin as Plugin,
     AspectRatioPlugin as Plugin,
   ] as Plugin[],
 });

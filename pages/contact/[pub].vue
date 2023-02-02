@@ -26,8 +26,8 @@ useHead({
       </div>
     </div>
 
-    <ChatConversation />
+    <ContactConversation />
     <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
-    <ChatArchive />
+    <ContactArchive />
   </section>
 </template>

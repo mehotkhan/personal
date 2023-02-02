@@ -1,32 +1,10 @@
 <script lang="ts" setup>
-import { useMessage } from "~/stores/directMessage";
-const { $irisSession } = useNuxtApp();
-const directMessage = useMessage();
-
-onMounted(async () => {
-  if (!directMessage?.pub) {
-    try {
-      const api: string = await $fetch("/get-admin", {
-        method: "GET",
-      });
-      const response = JSON.parse(api);
-      directMessage.startChat(response);
-    } catch (error) {
-      const user = $irisSession.getKey();
-      directMessage.startChat(user.pub);
-      console.log("cant get admin pub , test area");
-    }
-  }
-});
 useHead({
   title: " تماس با من",
 });
 </script>
 <template>
-  <section
-    :key="directMessage?.pub"
-    class="flex flex-col justify-center content-center"
-  >
+  <section class="flex flex-col justify-center content-center">
     <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">گفتگوی آنلاین</h3>
@@ -38,9 +16,8 @@ useHead({
         <SocialGuestProfile class="mb-4 bg-black" />
       </div>
     </div>
-
-    <ChatConversation />
+    <ContactNewContact />
     <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
-    <ChatArchive />
+    <ContactArchive />
   </section>
 </template>
