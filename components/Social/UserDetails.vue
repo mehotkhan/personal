@@ -15,12 +15,8 @@ if ($irisPublic) {
 </script>
 
 <template>
-  <div class="flex items-center group min-w-200">
+  <div class="flex items-center">
     <IconMdi:user class="text-lg mr-2" />
-
     <span class="mr-2 text-lg font-normal">{{ userName }} </span>
-    <button class="mr-2 text-[12px] font-normal hidden group-hover:block">
-      دنبال کردن
-    </button>
   </div>
 </template>

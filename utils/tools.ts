@@ -28,13 +28,21 @@ export const orderByDate = (input: any[]) =>
 
 export const OrderByFrom = (input: any[]) =>
   _.orderBy(input, ["from"], ["desc", "asc"]);
+
 export const OrderChat = (input: any[]) =>
   _.orderBy(input, ["latestTime", "name"], ["desc", "asc"]);
+
+export const OrderInbox = (input: any[]) => {
+  console.log(input);
+  return _.orderBy(input, "date", "desc");
+};
 
 export const OrderByFromReverse = (input: any[]) => {
   return _.orderBy(input, ["time"], ["desc"]);
 };
 
-export const FromNow = (time: string) =>
-  dayjs ? dayjs(time).fromNow() : "...";
+export const FromNow = (time: string) => {
+  console.log(time);
+  return dayjs ? dayjs(time).fromNow() : "...";
+};
 export const isDev = () => process.env.NODE_ENV !== "production";
