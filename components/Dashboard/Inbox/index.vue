@@ -1,0 +1,62 @@
+<script setup lang="ts">
+const { $irisPublic, $irisPrivate } = useNuxtApp();
+const archive = reactive(new Map());
+$irisPublic()
+  .get("inbox")
+  .map()
+  .once((inbox: any, key: string) => {
+    if (inbox && !archive.has(inbox.date)) {
+      archive.set(inbox.date, { ...inbox, key });
+    }
+  });
+const sortedChats = computed(() => OrderInbox(Array.from(archive.values())));
+
+const AcceptInbox = async (inbox: any) => {
+  const replay = " درخواست شما تایید شد";
+  await $irisPrivate(inbox.pub).send(replay);
+  await $irisPublic().get("inbox").get(inbox.key).put(null);
+  archive.delete(inbox);
+  navigateTo("inbox/" + inbox.pub);
+};
+</script>
+<template>
+  <div class="mt-10 latest">
+    <ul reverse class="max-h-140 overflow-x-auto">
+      <li
+        v-for="item in sortedChats"
+        :key="item.date"
+        class="flex items-center justify-between group-hover:font-bold"
+      >
+        <div class="flex items-center">
+          <SocialUserDetails :pub="item.pub" />
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-slate-400 ml-10">{{
+            FromNow(item.date)
+          }}</span>
+          <div>
+            <div
+              class="ml-4 text-xs inline-flex items-center font-thin px-3 py-1 bg-green-200 text-green-700 rounded-full"
+            >
+              پشتیبانی
+            </div>
+
+            <div
+              class="ml-4 text-xs inline-flex items-center font-thin px-3 py-1 bg-orange-200 text-orange-700 rounded-full"
+            >
+              عمومی
+            </div>
+            <button
+              @click="AcceptInbox(item)"
+              class="ml-4 text-xs inline-flex items-center font-thin px-3 py-1 bg-green-500 text-white rounded-full"
+            >
+              تایید
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
+  <DashboardInboxArchive />
+</template>
