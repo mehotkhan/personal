@@ -1,8 +1,8 @@
-<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script lang="ts" setup>
-const { $irisSession, $irisPrivate } = useNuxtApp();
+const { $irisPublic, $irisPrivate, $irisSession } = useNuxtApp();
 
 const CreateNew = async () => {
+  const user = $irisSession.getKey();
   try {
     const api: string = await $fetch("/create-contact-request", {
       method: "GET",
@@ -12,12 +12,18 @@ const CreateNew = async () => {
     const { certs, pub } = response;
     // send contact request
     // start new chat
-
+    const request = {
+      pub: user.pub,
+      date: new Date().valueOf(),
+    };
+    $irisPublic(pub)
+      .get("inbox")
+      .get(user.pub)
+      .put(request, null, {
+        opt: { cert: certs },
+      });
     $irisPrivate(pub).send("شروع مکالمه");
-    //   directMessage.startChat(response);
   } catch (error) {
-    //   const user = $irisSession.getKey();
-    //   directMessage.startChat(user.pub);
     console.log("cant get admin pub , test area");
   }
 };

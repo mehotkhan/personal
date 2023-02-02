@@ -11,11 +11,10 @@ definePageMeta({
 const GenerateCerts = async () => {
   const user = $irisSession.getKey();
   const certificate = await $SEA.certify(
-    "*",
-    { "*": "profile", "+": "*" }, // to the path that starts with 'profile' and along with the key has the user's pub in it
+    "*", // everyone
+    { "#": { "*": "inbox" } },
     user,
-    null,
-    { expiry: Gun.state() + 60 * 60 * 24 * 1000 }
+    null
   );
 
   console.log(certificate);

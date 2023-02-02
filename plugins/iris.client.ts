@@ -1,3 +1,4 @@
+import Gun from "gun";
 import iris from "../iris";
 iris.session.init();
 console.log(iris.session.getKey());
@@ -12,6 +13,7 @@ export default defineNuxtPlugin(() => {
       irisSession: iris.session,
       irisGroup: iris.group,
       SEA: iris.SEA,
+      Gun,
     },
   };
 });
