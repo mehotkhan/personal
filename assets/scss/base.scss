@@ -28,6 +28,13 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background-color: theme("colors.slate.400");
 }
+ul {
+  list-style: persian;
+  li::marker {
+    background-color: #d1d5db;
+    color: #d1d5db;
+  }
+}
 .rtl {
   direction: rtl;
   ul {
@@ -43,48 +50,14 @@ html {
 .logo-area {
   overflow: clip;
 }
-.prose-xl {
+.prose {
+  max-width: none;
   a {
     text-decoration: none;
   }
-  hr {
-    margin-top: 1em;
-    margin-bottom: 1em;
+  li::before {
+    display: none;
   }
-  img {
-    max-width: 489px;
-    margin: 0 auto;
-    width: 100%;
-    display: block;
-  }
-}
-.rtl .prose blockquote {
-  border-right-width: 0.25rem;
-  border-left-width: 0;
-}
-.rtl .prose ul > li,
-.rtl .prose ol > li {
-  padding-right: 1.75em;
-  padding-left: 0;
-}
-.rtl .prose ol > li:before {
-  right: 0.25em;
-  left: auto;
-}
-.rtl .prose ol > li:before,
-.rtl .prose ul > li:before {
-  right: 0.25em;
-  left: auto;
-}
-
-.rtl .prose thead td:first-child,
-.rtl .prose thead th:first-child {
-  padding-right: 0;
-}
-
-.rtl .prose thead td:last-child,
-.rtl .prose thead th:last-child {
-  padding-left: 0;
 }
 blockquote {
   text-align: justify;

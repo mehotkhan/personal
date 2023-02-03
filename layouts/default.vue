@@ -48,7 +48,7 @@ const open = () => {
         class="px-10 md:px-20 pb-0 w-content relative transition-all"
         :class="sideMenu ? 'w-5/6 md:w-5/6 ' : 'w-full'"
       >
-        <div class="nuxt-content content-area prose-xl w-full font-normal">
+        <div class="nuxt-content content-area prose w-full font-normal">
           <slot />
         </div>
       </div>
