@@ -99,4 +99,10 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     treeshakeClientOnly: false,
   },
+  routeRules: {
+    // Static page generated on-demand, revalidates in background
+    "/contact/**": { swr: true },
+    // Static page generated on-demand once
+    "/notes/**": { static: true },
+  },
 });
