@@ -13,7 +13,7 @@ const sendMessage = () => {
 </script>
 <template>
   <div
-    class="mb-5 bg-gray-200 border-1 min-h-15 max-h-50 flex justify-between px-4 items-center bg-slate-50 focus-within:border-slate-300 rounded-md"
+    class="mb-5 bg-gray-200 border-1 min-h-13 max-h-40 flex justify-between px-4 items-center bg-slate-50 focus-within:border-slate-300 rounded-md"
   >
     <div class="flex items-center h-full w-full">
       <IconUil:voicemail

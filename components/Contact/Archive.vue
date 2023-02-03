@@ -13,7 +13,7 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
 </script>
 <template>
   <div class="mt-10 latest">
-    <ul reverse class="max-h-140 overflow-x-auto">
+    <ul reverse class="max-h-1000 overflow-x-auto">
       <li
         v-for="(chat, id) in sortedChats"
         :key="id"

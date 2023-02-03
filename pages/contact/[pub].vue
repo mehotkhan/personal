@@ -25,7 +25,7 @@ useHead({
         <div class="w-full h-30 sticky top-0 bg-white">
           <ContactConversationForm :pub="thisPub" class="mt-6" />
         </div>
-        <ContactConversationLists :pub="thisPub" class="prose-md" />
+        <ContactConversationLists :pub="thisPub" class="prose-lg" />
       </div>
       <div class="relative basis-1/4">
         <ContactChatTools :pub="thisPub" class="left-0 sticky top-10" />

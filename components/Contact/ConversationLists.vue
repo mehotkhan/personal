@@ -48,16 +48,14 @@ const sortedMessages = computed(() =>
         </div>
 
         <div
-          class="mt-3 w-full px-2 py-1 rounded-b-xl"
+          class="w-full rounded-b-xl px-3 py-1"
           :class="
             message?.selfAuthored
-              ? 'bg-gray-400 rounded-tl-xl text-white'
-              : 'bg-gray-200 rounded-tr-xl text-black'
+              ? 'bg-gray-200 rounded-tl-xl text-gray-600'
+              : 'bg-gray-400 rounded-tr-xl text-gray-100'
           "
         >
-          <p class="text-md">
-            {{ message?.text }}
-          </p>
+          {{ message?.text }}
         </div>
       </div>
     </div>

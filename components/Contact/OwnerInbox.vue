@@ -23,7 +23,7 @@ const AcceptInbox = async (inbox: any) => {
 </script>
 <template>
   <div class="mt-10 latest">
-    <ul reverse class="max-h-140 overflow-x-auto">
+    <ul reverse class="max-h-100 overflow-x-auto">
       <li
         v-for="item in sortedChats"
         :key="item?.date"
