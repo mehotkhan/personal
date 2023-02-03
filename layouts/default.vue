@@ -22,7 +22,7 @@ const open = () => {
       >
         <div v-if="sideMenu" class="h-full text-gray-500">
           <div class="h-auto logo-area sticky top-2">
-            <!-- <FrontLogoArea /> -->
+            <GlobalLogoArea />
             <GlobalMainMenu
               class="flex flex-col h-full text-xl md:text-2xl justify-start"
             />
@@ -34,7 +34,7 @@ const open = () => {
         :class="sideMenu ? 'w-5/6 md:w-5/6 ' : 'w-full'"
       >
         <div
-          class="z-100 absolute top-5 right-0 cursor-pointer text-black text-xl md:text-3xl"
+          class="z-100 absolute top-5 right-0 cursor-pointer text-gray-500 text-xl md:text-3xl"
         >
           <IconIcRoundMenuOpen
             v-if="!sideMenu"

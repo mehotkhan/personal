@@ -82,9 +82,7 @@ try {
 </template>
 <style lang="scss" scoped>
 .router-link-active {
-  z-index: 0;
-  background: black;
+  background: #454545e1;
   color: white;
-  border-radius: 2px;
 }
 </style>
