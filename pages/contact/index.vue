@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+
 useHead({
   title: "پیام‌ها",
 });
@@ -21,18 +23,52 @@ try {
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <div class="flex justify-between items-center border-b-1 pb-5 mt-10">
+    <div class="flex justify-between items-center mt-10">
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">صندوق ورودی</h3>
       </div>
-      <div class="pt-2 px-5 items-center flex min-w-64 h-18 justify-between">
+      <div class="pt-2 px-5 items-center flex min-w-64 justify-between">
         <SocialUserProfile />
       </div>
     </div>
-    <ContactNewRequest />
-    <h3 class="text-5xl border-b-1 pb-5 mt-10">درخواست های جدید</h3>
-    <ContactOwnerInbox />
-    <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
-    <ContactArchive />
+    <div class="flex relative">
+      <TabGroup
+        as="div"
+        class="content basis-3/4 ml-10 rtl p-0 relative flex flex-col"
+      >
+        <TabList class="border-b-1 pb-1 pt-4 w-full h-23 sticky top-0 bg-white">
+          <Tab
+            v-if="isDev() || isAdmin"
+            v-slot="{ selected }"
+            as="template"
+            class="pl-10 cursor-pointer"
+          >
+            <span
+              :class="{
+                'font-bold': selected,
+              }"
+            >
+              پیام های جدید
+            </span>
+          </Tab>
+
+          <Tab v-slot="{ selected }" as="template" class="pl-10 cursor-pointer">
+            <span
+              :class="{
+                'font-bold': selected,
+              }"
+              >بایگانی
+            </span></Tab
+          >
+        </TabList>
+        <TabPanels>
+          <TabPanel v-if="isDev() || isAdmin"> <ContactOwnerInbox /></TabPanel>
+          <TabPanel> <ContactArchive /> </TabPanel>
+        </TabPanels>
+      </TabGroup>
+      <div class="relative basis-1/4">
+        <ContactQuickTools class="left-0 sticky top-10" />
+      </div>
+    </div>
   </section>
 </template>

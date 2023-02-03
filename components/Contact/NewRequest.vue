@@ -30,7 +30,7 @@ const CreateNew = async () => {
 </script>
 
 <template>
-  <ul class="w-full mr-5 list-disc text-2xl mt-10">
+  <ul class="w-full mr-5 list-disc text-xl mt-5">
     <li>
       <button @click="CreateNew()">ایجاد پیام پشتیبانی</button>
     </li>

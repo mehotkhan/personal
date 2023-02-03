@@ -108,7 +108,9 @@ onMounted(() => {
         <IconUil:commentShare class="ml-2 text-md flex" aria-hidden="true" />
         <span class="block pt-2"> {{ members }} شرکت کننده </span>
       </div>
-      <SocialGuestProfile class="mb-4 bg-black" />
+      <div class="pt-2 px-5 items-center flex min-w-64 justify-between">
+        <SocialUserProfile />
+      </div>
     </header>
 
     <textarea

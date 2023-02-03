@@ -20,9 +20,7 @@ try {
 
 <template>
   <Menu v-if="isDev() || isAdmin" as="div" class="relative inline-block">
-    <MenuButton
-      class="inline-flex w-full justify-center hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-    >
+    <MenuButton class="inline-flex w-full justify-center">
       <div class="flex items-center justify-center">
         <IconUil:angle-down class="" />
         <span class="text-md mr-1 flex items-center">

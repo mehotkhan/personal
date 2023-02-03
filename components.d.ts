@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     'IconUil:linkedin': typeof import('~icons/uil/linkedin')['default']
     'IconUil:mail': typeof import('~icons/uil/mail')['default']
     'IconUil:message': typeof import('~icons/uil/message')['default']
+    'IconUil:setting': typeof import('~icons/uil/setting')['default']
     'IconUil:smile': typeof import('~icons/uil/smile')['default']
     'IconUil:status': typeof import('~icons/uil/status')['default']
     'IconUil:twitter': typeof import('~icons/uil/twitter')['default']

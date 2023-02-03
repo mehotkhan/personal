@@ -19,7 +19,7 @@ const open = () => {
       class="rounded-sm relative shadow-md bg-white flex container min-h-screen p-0"
     >
       <div
-        class="z-100 absolute pt-2 px-5 items-center top-0 right-0 flex w-64 h-18 justify-between text-gray-500 bg-gray-200"
+        class="z-10 absolute pt-2 px-5 items-center top-0 right-0 flex w-64 h-18 justify-between text-gray-500 bg-gray-200"
       >
         <GlobalOnlineStatus />
         <div class="cursor-pointer text-2xl">
