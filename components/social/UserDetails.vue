@@ -15,8 +15,5 @@ if ($irisPublic) {
 </script>
 
 <template>
-  <div class="flex items-center">
-    <IconMdi:user class="text-lg mr-2" />
-    <span class="mr-2 text-lg font-normal">{{ userName }} </span>
-  </div>
+  <span>{{ userName }} </span>
 </template>

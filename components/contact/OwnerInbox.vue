@@ -16,7 +16,7 @@ const AcceptInbox = async (inbox: any) => {
   await $irisPrivate(inbox.pub).send(replay);
   await $irisPublic().get("inbox").get(inbox.key).put(null);
   archive.delete(inbox);
-  navigateTo("inbox/" + inbox.pub);
+  navigateTo("contact/" + inbox.pub);
 };
 </script>
 <template>
@@ -24,15 +24,15 @@ const AcceptInbox = async (inbox: any) => {
     <ul reverse class="max-h-140 overflow-x-auto">
       <li
         v-for="item in sortedChats"
-        :key="item.date"
+        :key="item?.date"
         class="flex items-center justify-between group-hover:font-bold"
       >
         <div class="flex items-center">
-          <SocialUserDetails :pub="item.pub" />
+          <SocialUserDetails :pub="item?.pub" />
         </div>
         <div class="flex items-center justify-between">
           <span class="text-xs text-slate-400 ml-10">{{
-            FromNow(item.date)
+            FromNow(item?.date)
           }}</span>
           <div>
             <div
@@ -57,6 +57,4 @@ const AcceptInbox = async (inbox: any) => {
       </li>
     </ul>
   </div>
-  <h3 class="text-5xl border-b-1 pb-5 mt-10">بایگانی پیام‌ها</h3>
-  <DashboardInboxArchive />
 </template>

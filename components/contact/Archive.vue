@@ -20,7 +20,7 @@ const sortedChats = computed(() => OrderChat(Array.from(archive.values())));
         class="h-20 items-center cursor-pointer mr-8 group"
       >
         <a
-          :href="`/dashboard/inbox/${chat?.id}`"
+          :href="`/contact/${chat?.id}`"
           class="flex items-center justify-between group-hover:font-bold"
         >
           <div class="flex items-center">

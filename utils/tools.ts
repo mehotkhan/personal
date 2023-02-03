@@ -33,7 +33,6 @@ export const OrderChat = (input: any[]) =>
   _.orderBy(input, ["latestTime", "name"], ["desc", "asc"]);
 
 export const OrderInbox = (input: any[]) => {
-  console.log(input);
   return _.orderBy(input, "date", "desc");
 };
 
@@ -42,7 +41,6 @@ export const OrderByFromReverse = (input: any[]) => {
 };
 
 export const FromNow = (time: string) => {
-  console.log(time);
-  return dayjs ? dayjs(time).fromNow() : "...";
+  return time && time.length > 3 && dayjs ? dayjs(time).fromNow() : "...";
 };
 export const isDev = () => process.env.NODE_ENV !== "production";
