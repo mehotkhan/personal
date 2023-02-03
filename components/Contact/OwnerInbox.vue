@@ -1,14 +1,16 @@
 <script setup lang="ts">
 const { $irisPublic, $irisPrivate } = useNuxtApp();
 const archive = reactive(new Map());
-$irisPublic()
-  .get("inbox")
-  .map()
-  .once((inbox: any, key: string) => {
-    if (inbox && !archive.has(inbox.date)) {
-      archive.set(inbox.date, { ...inbox, key });
-    }
-  });
+onMounted(() => {
+  $irisPublic()
+    .get("inbox")
+    .map()
+    .once((inbox: any, key: string) => {
+      if (inbox && !archive.has(inbox.date)) {
+        archive.set(inbox.date, { ...inbox, key });
+      }
+    });
+});
 const sortedChats = computed(() => OrderInbox(Array.from(archive.values())));
 
 const AcceptInbox = async (inbox: any) => {
@@ -47,8 +49,8 @@ const AcceptInbox = async (inbox: any) => {
               عمومی
             </div>
             <button
-              @click="AcceptInbox(item)"
               class="ml-4 text-xs inline-flex items-center font-thin px-3 py-1 bg-green-500 text-white rounded-full"
+              @click="AcceptInbox(item)"
             >
               تایید
             </button>
