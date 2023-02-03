@@ -21,11 +21,10 @@ const open = () => {
         :class="sideMenu ? 'w-1/6 md:w-2/12' : 'w-0 md:w-0 md:p-0'"
       >
         <div v-if="sideMenu" class="h-full text-gray-500">
-          <SocialProfile />
           <div class="h-auto logo-area sticky top-2">
             <!-- <FrontLogoArea /> -->
-            <FrontNavbar
-              class="flex flex-col h-full text-xl md:text-2xl justify-start text-center"
+            <GlobalMainMenu
+              class="flex flex-col h-full text-xl md:text-2xl justify-start"
             />
           </div>
         </div>
@@ -48,7 +47,7 @@ const open = () => {
             @click="close"
           />
         </div>
-        <div class="w-full py-10">
+        <div class="nuxt-content content-area prose-xl w-full font-normal">
           <slot />
         </div>
       </div>

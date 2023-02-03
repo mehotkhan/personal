@@ -1,25 +1,25 @@
-<!-- eslint-disable vue/require-v-for-key -->
 <script setup lang="ts">
 import { Ref } from "vue";
-// import { useContent } from "~/stores/content";
+const props = defineProps({
+  post: { type: Object, required: true, default: Function },
+});
 
-const content = useContent();
-const route = useRoute();
+const currentSection = ref<null | string>("");
+const nuxtContent = ref(null);
+const observer: Ref<IntersectionObserver | null | undefined> = ref(null);
+const observerOptions = reactive({
+  root: nuxtContent.value,
+  threshold: 0.5,
+});
 const router = useRouter();
-
 const sliderHeight = useState("sliderHeight", () => 0);
 const sliderTop = useState("sliderTop", () => 0);
 const tocLinksH2: Ref<Array<HTMLElement>> = ref([]);
 const tocLinksH3: Ref<Array<HTMLElement>> = ref([]);
 
-const { data: blogPost } = await useAsyncData(`blogToc`, () =>
-  queryContent(
-    route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path
-  ).findOne()
-);
-const tocLinks = computed(() => blogPost.value?.body.toc.links ?? []);
-const dir = computed(() => blogPost.value?.dir);
-const tocTags = computed(() => blogPost.value?.tags ?? []);
+const tocLinks = computed(() => props?.post?.body.toc.links ?? []);
+const dir = computed(() => props?.post.value?.dir);
+const tocTags = computed(() => props?.post.value?.tags ?? []);
 
 const onClick = (id: string) => {
   const el = document.getElementById(id);
@@ -28,6 +28,25 @@ const onClick = (id: string) => {
     el.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 };
+onMounted(() => {
+  observer.value = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+      if (entry.isIntersecting) {
+        currentSection.value = id;
+      }
+    });
+  }, observerOptions);
+  document
+    .querySelectorAll(".content h2[id], .content h3[id]")
+    .forEach((section) => {
+      observer.value?.observe(section);
+    });
+});
+
+onUnmounted(() => {
+  observer.value?.disconnect();
+});
 </script>
 
 <template>
@@ -50,13 +69,9 @@ const onClick = (id: string) => {
           :id="`toc-${id}`"
           :key="id"
           ref="tocLinksH2"
-          class="font-regular cursor-pointer text-md md:text-xl pb-3 mb-2 last:mb-0 mx-5"
+          class="font-thin cursor-pointer text-md md:text-xl pb-3 mb-2 last:mb-0 mx-5"
           :class="{
-            'font-normal':
-              id ===
-              (content.currentSection.length > 0
-                ? content.currentSection
-                : route.hash.replace('#', '')),
+            'font-bold': id === currentSection,
           }"
           @click="onClick(id)"
         >
@@ -69,11 +84,7 @@ const onClick = (id: string) => {
               ref="tocLinksH3"
               class="cursor-pointer font-thin text-sm md:text-lg list-none ml-0 mb-2 last:mb-0"
               :class="{
-                'font-normal':
-                  childId ===
-                  (content.currentSection.length > 0
-                    ? content.currentSection
-                    : route.hash.replace('#', '')),
+                'font-bold': childId === currentSection,
               }"
               @click.stop="onClick(childId)"
             >

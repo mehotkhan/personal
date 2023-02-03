@@ -95,7 +95,7 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    reactivityTransform: true,
+    reactivityTransform: false,
     payloadExtraction: true,
     treeshakeClientOnly: false,
   },

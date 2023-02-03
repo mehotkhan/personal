@@ -53,7 +53,7 @@ html {
   }
   img {
     max-width: 489px;
-    margin: 0 auto !important;
+    margin: 0 auto;
     width: 100%;
     display: block;
   }
@@ -109,7 +109,7 @@ blockquote p {
 .latest {
   ul {
     list-style-type: persian;
-    ::marker{
+    ::marker {
       font-size: 1.7rem;
     }
   }
@@ -117,7 +117,7 @@ blockquote p {
 
 img.poster-front {
   max-width: 300px;
-  margin: 24px auto -33px;
+  margin: 24px auto 20px;
   display: block;
   width: 90%;
 }

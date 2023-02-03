@@ -6,7 +6,6 @@ useHead({
 });
 definePageMeta({
   middleware: ["owner-auth"],
-  layout: "dashboard",
 });
 const GenerateCerts = async () => {
   const user = $irisSession.getKey();

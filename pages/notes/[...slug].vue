@@ -1,64 +1,55 @@
 <script lang="ts" setup>
-import { Ref } from "vue";
-// import { useContent } from "~/stores/content";
 const route = useRoute();
 
-definePageMeta({
-  layout: "content",
-});
-
-// const nuxtContent = ref(null);
-const observer: Ref<IntersectionObserver | null | undefined> = ref(null);
-// const observerOptions = reactive({
-//   root: nuxtContent.value,
-//   threshold: 0.5,
-// });
-// const content = useContent();
 const { data }: any = await useAsyncData("page-data", () =>
   queryContent(
     route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path
   ).findOne()
 );
-
-// onMounted(() => {
-//   observer.value = new IntersectionObserver((entries) => {
-//     entries.forEach((entry) => {
-//       const id = entry.target.getAttribute("id");
-//       if (entry.isIntersecting) {
-//         content.setSection(id);
-//       }
-//     });
-//   }, observerOptions);
-//   document
-//     .querySelectorAll(".nuxt-content h2[id], .nuxt-content h3[id]")
-//     .forEach((section) => {
-//       observer.value?.observe(section);
-//     });
-// });
-
-onUnmounted(() => {
-  observer.value?.disconnect();
-});
 </script>
 <template>
-  <ContentRenderer
-    :value="data"
-    class="nuxt-content content-area prose-md lg:prose-2xl w-full font-normal"
-  >
-    <section
-      class="flex flex-col justify-center content-center"
-      :class="data?.dir === 'ltr' ? 'ltr' : 'rtl'"
-    >
-      <h1 class="pt-20 text-center">{{ data?.title }}</h1>
-      <img class="poster-single" :src="data?.thumbnail" />
-      <p
-        v-if="data?.description"
-        class="bg-gray-200 my-auto text-justify p-10 border-r-gray-300 border-5"
+  <ContentRenderer :value="data">
+    <section class="flex flex-col justify-center pb-20">
+      <h2 class="">{{ data?.title }}</h2>
+      <hr />
+      <div class="flex justify-between bg-gray-100 my-auto">
+        <img :src="data?.thumbnail" class="w-150 flex" />
+        <div class="px-10 w-full">
+          <span v-if="data?.description" class="flex text-justify mt-10">
+            {{ data?.description }}
+          </span>
+          <ul class="flex flex-row mt-0">
+            <li key="category" class="text-lg text-gray-700 font-bold ml-0">
+              {{ data?.category }}
+            </li>
+            <li
+              v-for="tag in data?.tags"
+              :key="tag"
+              class="text-lg text-gray-700 pr-0"
+            >
+              <span class="-mr-6 font-bold text-sm"> / </span>
+              {{ tag }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="flex relative"
+        :class="data?.dir === 'ltr' ? '  flex-row-reverse' : 'flex-row'"
       >
-        {{ data?.description }}
-      </p>
-
-      <ContentRendererMarkdown :value="data" />
+        <div
+          class="content basis-3/4 ml-10"
+          :class="data?.dir === 'ltr' ? 'ltr ml-10' : 'rtl mr-10'"
+        >
+          <ContentRendererMarkdown :value="data" />
+        </div>
+        <div
+          class="relative basis-1/4"
+          :class="data?.dir === 'ltr' ? 'ml-10' : 'mr-10'"
+        >
+          <GlobalContentToc :post="data" class="left-0 sticky top-10" />
+        </div>
+      </div>
     </section>
     <Comments />
   </ContentRenderer>

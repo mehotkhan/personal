@@ -4,7 +4,6 @@ useHead({
 });
 definePageMeta({
   middleware: ["owner-auth"],
-  layout: "dashboard",
 });
 </script>
 <template>
@@ -13,25 +12,25 @@ definePageMeta({
     <hr />
     <div class="flex flex-row">
       <div class="basis-2/12 flex items-center">
-        <DashboardGlobalSellingStats />
+        <MarketSellingStats />
       </div>
-      <div class="basis-5/12 m-1 p-5"><DashboardChartsComments /></div>
-      <div class="basis-5/12 m-1 p-5"><DashboardChartsSelling /></div>
+      <div class="basis-5/12 m-1 p-5"><ChartsComments /></div>
+      <div class="basis-5/12 m-1 p-5"><ChartsSelling /></div>
     </div>
     <div class="flex">
       <div class="basis-1/2 m-1 p-1">
-        <DashboardTablesLatestOffer />
+        <TablesLatestOffer />
       </div>
       <div class="basis-1/2 m-1 p-1">
-        <DashboardTablesLatestTasks />
+        <TablesLatestTasks />
       </div>
     </div>
     <div class="flex">
       <div class="basis-1/2 m-1 p-1">
-        <DashboardTablesLatestComments />
+        <TablesLatestComments />
       </div>
       <div class="basis-1/2 m-1 p-1">
-        <DashboardTablesLatestSelling />
+        <TablesLatestSelling />
       </div>
     </div>
   </section>

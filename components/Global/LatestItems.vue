@@ -2,7 +2,6 @@
 const { data }: any = await useAsyncData("latest", () =>
   queryContent("notes").where({ _draft: false }).limit(10).find()
 );
-console.log(data);
 </script>
 <template>
   <ContentRenderer :value="data" class="nuxt-content">

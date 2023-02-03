@@ -4,7 +4,6 @@ useHead({
 });
 definePageMeta({
   middleware: ["owner-auth"],
-  layout: "dashboard",
 });
 </script>
 <template>

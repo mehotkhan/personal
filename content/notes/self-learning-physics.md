@@ -39,12 +39,6 @@ banner: false
 
 این جا سعی میکنم این دوره رو برای خواننده فارسی زبان ترجمه و معرفی کنم
 
-قبل از توضیحات بهتون پیشنهاد میکنم این سکانس زیبا رو ببینید .
-
-## سکانس موج بزرگ فیلم بین ستاره‌ای Interstellar 2014
-
-<div id="7461294362"><script type="text/JavaScript" src="https://www.aparat.com/embed/NEnj8?data[rnddiv]=7461294362&data[responsive]=yes&data[title]=%D8%B3%DA%A9%D8%A7%D9%86%D8%B3%20%D9%85%D9%88%D8%AC%20%D8%A8%D8%B2%D8%B1%DA%AF%20%D9%81%DB%8C%D9%84%D9%85%20%D8%A8%DB%8C%D9%86%20%D8%B3%D8%AA%D8%A7%D8%B1%D9%87%E2%80%8C%D8%A7%DB%8C%20Interstellar%202014&&recom=none"></script></div>
-
 <div class="ltr">
 
 ## Before You Begin
