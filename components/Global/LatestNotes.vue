@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-const { data }: any = await useAsyncData("notes", () =>
+const { data }: any = await useAsyncData("latest", () =>
   queryContent("notes").where({ _draft: false }).limit(10).find()
 );
 </script>
 <template>
   <ContentRenderer :value="data" class="nuxt-content">
     <div class="latest my-10">
-      <h3>جدیدترین ورودی‌ها</h3>
+      <h3>جدیدترین یادداشت‌ها</h3>
       <hr />
       <ul>
         <li
