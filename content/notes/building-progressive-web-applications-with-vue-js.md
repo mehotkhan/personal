@@ -14,6 +14,7 @@ description:
   are going to examine how to empower our web apps to be fast and reliable,
   and to provide an immersive user experience with offline support.
 dir: ltr
+banner: false
 ---
 
 ## Introduction

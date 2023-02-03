@@ -10,6 +10,7 @@ thumbnail: /content/physics.jpg
 description: فیزیک؛ یکی از قدیمی‌ترین و پایه‌ای‌ترین علوم طبیعی است و شاید قدیمی‌ترین مبحث آن را بتوان اخترشناسی نامید. مدارکی وجود دارد که نشان می‌دهد هزاران سال پیش از میلاد مسیح، اقوامی همچون سومری‌ها و همچنین اقوامی در مصر باستان و اطراف سند تحقیقات و درک پیشگویانه‌ای (گمانه‌زنی‌هایی) از حرکت خورشید، ماه و ستارگان داشته‌اند.(ویکی‌پدیا)
 
 dir: rtl
+banner: false
 ---
 
 ## پیشگفتار
@@ -43,7 +44,6 @@ dir: rtl
 ## سکانس موج بزرگ فیلم بین ستاره‌ای Interstellar 2014
 
 <div id="7461294362"><script type="text/JavaScript" src="https://www.aparat.com/embed/NEnj8?data[rnddiv]=7461294362&data[responsive]=yes&data[title]=%D8%B3%DA%A9%D8%A7%D9%86%D8%B3%20%D9%85%D9%88%D8%AC%20%D8%A8%D8%B2%D8%B1%DA%AF%20%D9%81%DB%8C%D9%84%D9%85%20%D8%A8%DB%8C%D9%86%20%D8%B3%D8%AA%D8%A7%D8%B1%D9%87%E2%80%8C%D8%A7%DB%8C%20Interstellar%202014&&recom=none"></script></div>
-
 
 <div class="ltr">
 
@@ -336,7 +336,6 @@ The graduate curriculum can be split into several categories: (i) the core cours
 - **Quantum Computing**:[Quantum Computation and Quantum Information by Michael A. Nielsen and Isaac L. Chuang](https://www.amazon.com/Quantum-Computation-Information-10th-Anniversary/dp/1107002176?dchild=1&keywords=quantum%20computing&language=en_US&linkCode=ll1&linkId=6071735407ef7522e21c19395a51322e&qid=1618965299&ref_=as_li_ss_tl&s=books&sr=1-30&tag=susanfowler-20). Also known as “Mike and Ike,” this is _the_ standard introduction to quantum information and computation.
 - **Solid-State Physics:** [Solid-State Physics by Ashcroft and Mermin](https://www.amazon.com/Solid-State-Physics-Neil-Ashcroft/dp/8131500527?crid=2S8RO77XRYDXS&dchild=1&keywords=ashcroft%20and%20mermin%20solid%20state%20physics&language=en_US&linkCode=ll1&linkId=ed543039975467b23595195e55fcdaaf&qid=1618977068&ref_=as_li_ss_tl&sprefix=ashcroft%20and%20mer%2Cdigital-text%2C222&sr=8-1&tag=susanfowler-20). The classic introductory solid-state textbook. Supplement with [Introduction to Solid State Physics by Kittel](https://www.amazon.com/Introduction-Solid-Physics-Charles-Kittel/dp/047141526X?crid=2ZLUATKWBISXC&dchild=1&keywords=kittel%20solid%20state%20physics&language=en_US&linkCode=ll1&linkId=9dc5ed44fcbf10f4ea8624a12feddbfc&qid=1619025990&ref_=as_li_ss_tl&s=books&sprefix=kittel%20%2Cstripbooks%2C227&sr=1-1&tag=susanfowler-20).
 - **String Theory:** [String Theory: Volume 1, An Introduction to the Bosonic String](https://www.amazon.com/gp/product/B00AKE1RLW?language=en_US&linkCode=ll1&linkId=f9dfb7bf40a0d71fa3fdd619c5ba240c&ref_=as_li_ss_tl&storeType=ebooks&tag=susanfowler-20) and [String Theory: Volume 2, Superstring Theory and Beyond](https://www.amazon.com/gp/product/B00AKE1ROO?language=en_US&linkCode=ll1&linkId=bd5385577fe6167771edf2b3f216950b&ref_=as_li_ss_tl&storeType=ebooks&tag=susanfowler-20), by the late [Joe Polchinski](https://www.quantamagazine.org/joe-polchinski-physicist-who-developed-deep-ideas-and-paradoxes-dies-at-63-20180220/); and [String Theory and M-Theory: A Modern Introduction](https://www.amazon.com/String-Theory-M-Theory-Modern-Introduction-ebook/dp/B00AKE1SA2?language=en_US&linkCode=ll1&linkId=cf6cb87bcf439b832507b213cb1c3625&pd_rd_i=B00AKE1SA2&pd_rd_r=2f8b30eb-52e9-4d68-be57-85266802700e&pd_rd_w=nnUNY&pd_rd_wg=OznzN&pf_rd_p=78971f67-4c78-4f07-b5c1-ee9acd72068c&pf_rd_r=XSE51QVTY28WEJEM35GP&psc=1&ref_=as_li_ss_tl&tag=susanfowler-20). I found it really enjoyable to pair Polchinski’s books with Becker Becker Schwarz when I was learning string theory — they complement each other well.
-
 
 ## Comments
 

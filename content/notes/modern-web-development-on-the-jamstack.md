@@ -15,6 +15,7 @@ description: In just the past few years, a flurry of advancements has greatly
   certainly feels like the beginning of a new chap‐ ter for the web. You’ve
   likely felt this as you’ve witnessed the explo‐ sion of new frontend
   frameworks and API-based services.
+banner: false
 ---
 
 ## Introduction

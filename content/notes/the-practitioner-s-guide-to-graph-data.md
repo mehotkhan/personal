@@ -13,8 +13,9 @@ description:
   Most likely, you started scanning down the names in the list of profile results. And
   you probably spent most of your time inspecting the “shared friends” section to
   understand how you knew someone.
-  
+
 dir: ltr
+banner: false
 ---
 
 Applying Graph Thinking and Graph Technologies to Solve Complex Problems

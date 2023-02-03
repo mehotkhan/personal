@@ -21,6 +21,7 @@ collections:
       - { label: "عنوان", name: "title", widget: "string" }
       - { label: "محتوا", name: "body", widget: "markdown" }
       - { label: "آدرس", name: "url", widget: "string" }
+      - { label: "بنر", name: "banner", widget: "boolean", default: false }
       - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
       - { label: "جهت نوشتار", name: "dir", widget: "string", required: false }
 
@@ -78,18 +79,6 @@ collections:
           widget: "datetime",
           required: false,
         }
-      - { label: "محتوا", name: "body", widget: "markdown" }
-
-  - name: "banner"
-    label: "بنر"
-    folder: "content/banner"
-    create: true
-    slug: "{{url}}"
-    fields:
-      - { label: "عنوان", name: "title", widget: "string" }
-      - { label: "آدرس", name: "url", widget: "string", required: false }
-      - { label: "تاریخ انتشار", name: "date", widget: "datetime" }
-      - { label: "پوستر", name: "thumbnail", widget: "image" }
       - { label: "محتوا", name: "body", widget: "markdown" }
 
   - name: category
