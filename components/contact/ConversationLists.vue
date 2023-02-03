@@ -17,7 +17,7 @@ const sortedMessages = computed(() =>
 );
 </script>
 <template>
-  <div class="overflow-x-auto max-h-240 min-h-1 flex-col-reverse">
+  <div class="overflow-x-auto max-h-1000 min-h-1 flex-col-reverse">
     <div
       v-for="message in sortedMessages"
       :key="message?.time"
