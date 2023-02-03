@@ -30,12 +30,12 @@ const menuItems = [
   <ul class="w-full">
     <li
       v-for="(menu, index) in menuItems"
-      key="index"
-      class="transform -rotate-90 mb-20 md:rotate-0 md:mb-5 md:ml-5 block"
+      :key="index"
+      class="grid py-3 w-full"
     >
       <NuxtLink
         :to="menu.to"
-        class="hover:text-black"
+        class="hover:text-black py-2"
         :class="
           menu.to !== '/' && route.path.startsWith(menu.to)
             ? 'router-link-active'
@@ -48,9 +48,9 @@ const menuItems = [
 </template>
 <style lang="scss" scoped>
 .router-link-active {
+  z-index: 0;
   background: black;
   color: white;
-  padding: 2px 5px;
   border-radius: 2px;
 }
 </style>

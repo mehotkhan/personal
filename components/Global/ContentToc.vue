@@ -1,6 +1,7 @@
+<!-- eslint-disable vue/require-v-for-key -->
 <script setup lang="ts">
 import { Ref } from "vue";
-import { useContent } from "~/stores/content";
+// import { useContent } from "~/stores/content";
 
 const content = useContent();
 const route = useRoute();
@@ -89,7 +90,11 @@ const onClick = (id: string) => {
         برچسب‌ها
       </h4>
       <ol class="mb-10" :class="dir === 'ltr' ? 'ltr text-left' : 'rtl'">
-        <li v-for="tag in tocTags" class="text-md md:text-xl pb-3 mx-">
+        <li
+          v-for="tag in tocTags"
+          :key="tag"
+          class="text-md md:text-xl pb-3 mx-"
+        >
           <span class="font-thin text-2xl">#</span> {{ tag }}
         </li>
       </ol>

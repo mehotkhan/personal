@@ -120,7 +120,7 @@ onMounted(() => {
       @keyup.enter="isHuman && commentMessage?.length >= 3 ? sendComment : null"
     ></textarea>
     <footer class="flex justify-between mt-2 items-center">
-      <CommentsHumanDetect @passed="passHuman" />
+      <CommentsHumanDetect v-if="!isDev()" @passed="passHuman" />
 
       <button
         v-if="isDev() || isJoined"

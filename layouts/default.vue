@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-const sideMenu = ref(true);
+import { useStorage } from "@vueuse/core";
+const defaultSideMenu = true;
+const sideMenu = useStorage("sideMenu", defaultSideMenu);
+
 const close = () => {
   sideMenu.value = false;
 };
@@ -14,20 +17,15 @@ const open = () => {
     <div id="app-before"></div>
     <main class="rounded-sm shadow-md bg-white flex container min-h-screen p-0">
       <div
-        class="bg-gray-200 px-0 flex flex-col justify-start relative transition-all"
-        :class="sideMenu ? 'w-1/6 md:w-2/6 md:p-10' : 'w-0 md:w-0 md:p-0'"
+        class="bg-gray-200 pt-15 flex flex-col justify-start relative transition-all py-10"
+        :class="sideMenu ? 'w-1/6 md:w-2/12' : 'w-0 md:w-0 md:p-0'"
       >
-        <div v-if="sideMenu" class="h-full">
-          <DashboardGlobalUserMenu
-            class="absolute top-7 z-100 right-5 hidden md:flex"
-          />
-
-          <div
-            class="pt-10 h-auto md:h-auto md:pt-10 logo-area sticky top-15 md:top-0"
-          >
-            <FrontLogoArea />
+        <div v-if="sideMenu" class="h-full text-gray-500">
+          <SocialProfile />
+          <div class="h-auto logo-area sticky top-2">
+            <!-- <FrontLogoArea /> -->
             <FrontNavbar
-              class="flex flex-col h-full text-xl md:text-2xl justify-start text-gray-500 text-center"
+              class="flex flex-col h-full text-xl md:text-2xl justify-start text-center"
             />
           </div>
         </div>

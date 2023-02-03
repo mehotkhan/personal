@@ -1,40 +1,40 @@
 <script lang="ts" setup>
 import { Ref } from "vue";
-import { useContent } from "~/stores/content";
+// import { useContent } from "~/stores/content";
 const route = useRoute();
 
 definePageMeta({
   layout: "content",
 });
 
-const nuxtContent = ref(null);
+// const nuxtContent = ref(null);
 const observer: Ref<IntersectionObserver | null | undefined> = ref(null);
-const observerOptions = reactive({
-  root: nuxtContent.value,
-  threshold: 0.5,
-});
-const content = useContent();
+// const observerOptions = reactive({
+//   root: nuxtContent.value,
+//   threshold: 0.5,
+// });
+// const content = useContent();
 const { data }: any = await useAsyncData("page-data", () =>
   queryContent(
     route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path
   ).findOne()
 );
 
-onMounted(() => {
-  observer.value = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      if (entry.isIntersecting) {
-        content.setSection(id);
-      }
-    });
-  }, observerOptions);
-  document
-    .querySelectorAll(".nuxt-content h2[id], .nuxt-content h3[id]")
-    .forEach((section) => {
-      observer.value?.observe(section);
-    });
-});
+// onMounted(() => {
+//   observer.value = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
+//       const id = entry.target.getAttribute("id");
+//       if (entry.isIntersecting) {
+//         content.setSection(id);
+//       }
+//     });
+//   }, observerOptions);
+//   document
+//     .querySelectorAll(".nuxt-content h2[id], .nuxt-content h3[id]")
+//     .forEach((section) => {
+//       observer.value?.observe(section);
+//     });
+// });
 
 onUnmounted(() => {
   observer.value?.disconnect();
