@@ -6,7 +6,7 @@ onMounted(() => {
     .get("inbox")
     .map()
     .once((inbox: any, key: string) => {
-      if (inbox && !archive.has(inbox.date)) {
+      if (inbox && inbox?.date && !archive.has(inbox.date)) {
         archive.set(inbox.date, { ...inbox, key });
       }
     });

@@ -31,8 +31,8 @@ html {
 ul {
   list-style: persian;
   li::marker {
-    background-color: #d1d5db;
-    color: #d1d5db;
+    // background-color: #d1d5db;
+    color: rgb(53, 53, 53);
   }
 }
 .rtl {

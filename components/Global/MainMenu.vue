@@ -1,28 +1,13 @@
 <script lang="ts" setup>
 const { $irisSession } = useNuxtApp();
+const appConfig = useAppConfig();
+
 const user = $irisSession.getKey();
 const route = useRoute();
 
 const isAdmin = ref(false);
 
-const menuItems = [
-  {
-    title: "یادداشت‌ها",
-    to: "/notes",
-  },
-  {
-    title: "فروشگاه",
-    to: "/products",
-  },
-  {
-    title: "تماس‌با‌من",
-    to: "/contact",
-  },
-  {
-    title: "درباره‌من",
-    to: "/about",
-  },
-];
+const menuItems = appConfig.menuItems;
 
 const api: string = await $fetch("/check-admin", {
   method: "POST",

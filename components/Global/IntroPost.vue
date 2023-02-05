@@ -5,27 +5,31 @@ const { data }: any = await useAsyncData("banner", () =>
 </script>
 <template>
   <ContentRenderer :value="data" class="nuxt-content">
-    <img class="poster-front" :src="data?.thumbnail" />
-    <h2>
-      <NuxtLink :to="data?._path">
-        {{ data?.title }}
-      </NuxtLink>
-    </h2>
-    <ul class="flex flex-row mt-0">
-      <li key="category" class="text-lg text-gray-700 font-bold ml-0">
-        {{ data?.category }}
-      </li>
-      <li
-        v-for="tag in data?.tags"
-        :key="tag"
-        class="text-lg text-gray-700 pr-0"
-      >
-        <span class="-mr-6 font-bold text-sm"> / </span>
-        {{ tag }}
-      </li>
-    </ul>
-    <p>
-      {{ data?.description }}
-    </p>
+    <div class="flex justify-between">
+      <div class="basis-1/2">
+        <h2>
+          {{ data?.title }}
+        </h2>
+        <p>
+          {{ data?.description }}
+        </p>
+        <ul class="flex flex-row mt-0 list-none items-center">
+          <li key="category" class="text-lg ml-0">
+            {{ data?.category }}
+            <span class="font-bold text-sm">،</span>
+          </li>
+          <li v-for="tag in data?.tags" :key="tag" class="-mr-7 text-lg pl-0">
+            {{ tag }}
+            <span class="font-bold text-sm">،</span>
+          </li>
+          <li key="link" class="text-lg -mr-7">
+            <NuxtLink :to="data?._path" class="underline"> بیشتر </NuxtLink>
+          </li>
+        </ul>
+      </div>
+      <div class="basis-1/2">
+        <img class="w-full max-w-100 mx-auto" :src="data?.thumbnail" />
+      </div>
+    </div>
   </ContentRenderer>
 </template>
