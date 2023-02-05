@@ -53,7 +53,7 @@ try {
       <NuxtLink
         to="/"
         class="hover:text-black py-1 px-3"
-        :class="route.path.startsWith('/') ? 'router-link-active' : ''"
+        :class="route.path === '/' ? 'router-link-active' : ''"
         >صفحه‌نخست</NuxtLink
       >
     </li>

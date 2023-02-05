@@ -17,8 +17,10 @@ const AcceptInbox = async (inbox: any) => {
   const replay = " درخواست شما تایید شد";
   await $irisPrivate(inbox.pub).send(replay);
   await $irisPublic().get("inbox").get(inbox.key).put(null);
-  archive.delete(inbox);
-  navigateTo("contact/" + inbox.pub);
+  await archive.delete(inbox);
+  setTimeout(() => {
+    navigateTo("/contact/" + inbox.pub);
+  }, 500);
 };
 </script>
 <template>
