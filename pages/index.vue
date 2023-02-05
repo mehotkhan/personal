@@ -4,7 +4,7 @@ useHead({
 });
 </script>
 <template>
-  <section class="flex flex-col-reverse">
+  <section class="flex flex-col">
     <GlobalIntroPost />
     <GlobalLatestItems />
   </section>
