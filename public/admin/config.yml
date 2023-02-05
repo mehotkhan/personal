@@ -45,7 +45,7 @@ collections:
 
   - name: "product"
     label: "محصول"
-    folder: "content/market"
+    folder: "content/products"
     create: true
     slug: "{{url}}"
     fields:

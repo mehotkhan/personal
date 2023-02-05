@@ -15,9 +15,6 @@ useHead({
           <SocialUserDetails :pub="thisPub" class="mr-2" />
         </span>
       </h3>
-      <div class="items-center flex min-w-64 h-18 justify-between">
-        <SocialUserProfile />
-      </div>
     </div>
 
     <div class="flex relative">

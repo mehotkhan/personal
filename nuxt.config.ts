@@ -90,7 +90,7 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         ...GenerateContentPaths("content/notes"),
-        ...GenerateContentPaths("content/market"),
+        ...GenerateContentPaths("content/products"),
       ],
     },
   },

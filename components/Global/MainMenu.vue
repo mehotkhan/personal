@@ -7,18 +7,13 @@ const isAdmin = ref(false);
 
 const menuItems = [
   {
-    title: "صفحه‌نخست",
-    to: "/",
-  },
-
-  {
     title: "یادداشت‌ها",
     to: "/notes",
   },
-  // {
-  //   title: "فروشگاه",
-  //   to: "/market",
-  // },
+  {
+    title: "فروشگاه",
+    to: "/products",
+  },
   {
     title: "تماس‌با‌من",
     to: "/contact",
@@ -45,23 +40,27 @@ try {
 </script>
 
 <template>
-  <ul class="w-full">
-    <li v-if="isDev() || isAdmin" key="dashboard" class="grid py-2 w-full">
+  <ul class="list-none contents flex-col mt-8">
+    <li v-if="isDev() || isAdmin" key="dashboard">
       <NuxtLink
         to="/dashboard"
-        class="hover:text-black py-2 px-5"
+        class="hover:text-black py-1 px-3"
         :class="route.path.startsWith('/dashboard') ? 'router-link-active' : ''"
         >داشبورد</NuxtLink
       >
     </li>
-    <li
-      v-for="(menu, index) in menuItems"
-      :key="index"
-      class="grid py-2 w-full"
-    >
+    <li v-else key="index">
+      <NuxtLink
+        to="/"
+        class="hover:text-black py-1 px-3"
+        :class="route.path.startsWith('/') ? 'router-link-active' : ''"
+        >صفحه‌نخست</NuxtLink
+      >
+    </li>
+    <li v-for="(menu, index) in menuItems" :key="index">
       <NuxtLink
         :to="menu.to"
-        class="hover:text-black py-2 px-5"
+        class="hover:text-black py-1 px-5"
         :class="
           menu.to !== '/' && route.path.startsWith(menu.to)
             ? 'router-link-active'
@@ -70,10 +69,10 @@ try {
         >{{ menu.title }}</NuxtLink
       >
     </li>
-    <li v-if="isDev() || isAdmin" key="settings" class="grid py-2 w-full">
+    <li v-if="isDev() || isAdmin" key="settings">
       <NuxtLink
         to="/settings"
-        class="hover:text-black py-2 px-5"
+        class="hover:text-black py-1 px-5"
         :class="route.path.startsWith('/settings') ? 'router-link-active' : ''"
         >تنظیمات</NuxtLink
       >
@@ -84,5 +83,7 @@ try {
 .router-link-active {
   background: #454545e1;
   color: white;
+  border-radius: 3px;
+  // text-decoration: underline;
 }
 </style>

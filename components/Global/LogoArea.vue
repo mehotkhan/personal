@@ -1,20 +1,13 @@
 <template>
   <div class="flex justify-center flex-col w-full px-4">
-    <div class="grid justify-center">
-      <h1 class="mt-3">
-        <NuxtLink to="/" class="text-6xl">
-          <span class="font-thin block  mb-5">
-            علـی
-          </span>
-          <span class="font-black block">
-            زِمـــانی
-          </span>
+    <div class="flex items-center justify-center">
+      <h1 class="flex text-2xl items-center">
+        <NuxtLink to="/">
+          <span class="font-thin"> علـی </span>
+          <span class="font-bold"> زِمـــانی </span>
+          <span class="font-thin text-lg">:// توسعه دهنده وب</span>
         </NuxtLink>
       </h1>
-      <p class="text-md mt-10 p-3 ">
-        علی زِمانی:// توسعه دهنده وب
-      </p>
-      <GlobalSocial />
     </div>
   </div>
 </template>

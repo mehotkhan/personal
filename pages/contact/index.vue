@@ -27,9 +27,6 @@ try {
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">صندوق ورودی</h3>
       </div>
-      <div class="pt-2 px-5 items-center flex min-w-64 justify-between">
-        <SocialUserProfile />
-      </div>
     </div>
     <div class="flex relative">
       <TabGroup

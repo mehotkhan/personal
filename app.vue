@@ -47,7 +47,7 @@ useHead({
 </script>
 <template>
   <Html dir="rtl">
-    <Body class="flex justify-center content-center bg-gray-100">
+    <Body class="flex">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
