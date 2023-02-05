@@ -1,14 +1,48 @@
-body * {
-  font-family: Vazir;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div {
+  font-family: Vazirmatn !important;
 }
-#preview-pane .frame-content p {
-  direction: rtl;
-  font-family: Vazir;
-}
-.frame-content .ltr {
-  direction: ltr;
+body {
+  font-family: Vazirmatn !important;
+  font-weight: 400;
 }
 
 .css-t5h4ts-Editor p {
   font-size: 1rem;
+}
+
+.css-1gj57a0-SidebarContainer-card,
+.css-1iwq7gj-GridCard-card,
+.css-1hvrgvd-CollectionTopContainer-card-cardTop,
+.css-1prcas7-ControlPaneContainer,
+.css-2oej7z-ToolbarContainer,
+.SplitPane,
+.frame-content,
+.css-12b66la-AppHeaderContent {
+  direction: rtl;
+}
+.css-1lv5pus-SidebarNavList {
+  padding-right: 0;
+}
+.css-1f7nhiq-CollectionMain {
+  padding-right: 280px;
+  padding-left: 0;
+}
+ul.css-tsu4ds-DropdownList-dropdownList-DropdownList {
+  padding-right: 0 !important;
+}
+
+.css-pyxbz6-CollectionContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.css-17fei3e-CardHeading {
+  text-align: right;
 }

@@ -11,6 +11,7 @@ backend:
 
 media_folder: /public/content
 public_folder: /content
+locale: fa
 collections:
   - name: "notes"
     label: "یادداشت"

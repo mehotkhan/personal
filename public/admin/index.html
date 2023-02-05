@@ -4,13 +4,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css"
+    rel="stylesheet" type="text/css" />
+
   <link rel="stylesheet" href="style.css">
   <title>مدیریت محتوا</title>
 </head>
 
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script module src="./fa-locale.js"> </script>
   <script>
+    // const fa = require('./locale.js');
+
     CMS.registerEditorComponent({
       // Internal id of the component
       id: "collapsible-note",
@@ -135,8 +141,11 @@
     // }
 
     // CMS.registerWidget('testWidget', CategoriesControl, CategoriesPreview, schema);
-
+    CMS.registerPreviewStyle('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css')
+    CMS.registerPreviewStyle('./style.css')
   </script>
+
+
   <!-- Include the script that builds the page and powers Netlify CMS -->
 </body>
 
