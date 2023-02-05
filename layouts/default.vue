@@ -16,7 +16,7 @@
         </div>
       </div>
     </header>
-    <main class="bg-white flex container min-h-screen md:mt-30">
+    <main class="bg-white flex container min-h-screen md:mt-20">
       <div class="nuxt-content content-area prose-xl w-full font-normal px-20">
         <slot />
       </div>

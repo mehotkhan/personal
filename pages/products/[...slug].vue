@@ -10,28 +10,22 @@ const { data }: any = await useAsyncData("page-data", () =>
 <template>
   <section class="flex flex-col justify-center content-center">
     <ContentRenderer :value="data">
-      <section class="flex flex-col justify-center pt-15">
-        <h2 class="">{{ data?.title }}</h2>
-        <hr />
-        <div class="flex justify-between bg-gray-100 my-auto">
-          <img :src="data?.thumbnail" class="w-150 flex" />
-          <div class="px-10 w-full">
-            <span v-if="data?.description" class="flex text-justify mt-10">
+      <section class="flex flex-col justify-center">
+        <div class="flex justify-between items-center min-h-140">
+          <div class="basis-1/2">
+            <h2>
+              {{ data?.title }}
+            </h2>
+            <p>
               {{ data?.description }}
-            </span>
-            <ul class="flex flex-row mt-0">
-              <li key="category" class="text-lg text-gray-700 font-bold ml-0">
-                {{ data?.category }}
-              </li>
-              <li
-                v-for="tag in data?.tags"
-                :key="tag"
-                class="text-lg text-gray-700 pr-0"
-              >
-                <span class="-mr-6 font-bold text-sm"> / </span>
-                {{ tag }}
-              </li>
+            </p>
+            <ul class="flex flex-col mt-0 items-start mr-10 list-disc">
+              <li>بسته اول</li>
+              <li>بسته دوم</li>
             </ul>
+          </div>
+          <div class="basis-1/2">
+            <img class="w-full max-w-140 mx-auto" :src="data?.thumbnail" />
           </div>
         </div>
         <div
@@ -39,17 +33,17 @@ const { data }: any = await useAsyncData("page-data", () =>
           :class="data?.dir === 'ltr' ? '  flex-row-reverse' : 'flex-row'"
         >
           <div
-            class="content basis-3/4 ml-10"
+            class="basis-3/4 ml-10"
             :class="data?.dir === 'ltr' ? 'ltr ml-10' : 'rtl mr-10'"
           >
-            <ContentRendererMarkdown :value="data" />
+            <ContentRendererMarkdown :value="data" class="content" />
             <Comments />
           </div>
           <div
             class="relative basis-1/4"
             :class="data?.dir === 'ltr' ? 'ml-10' : 'mr-10'"
           >
-            <GlobalContentToc :post="data" class="left-0 sticky top-10" />
+            <GlobalContentToc :post="data" class="left-0 sticky top-30" />
           </div>
         </div>
       </section>

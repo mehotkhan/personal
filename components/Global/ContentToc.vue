@@ -38,7 +38,7 @@ onMounted(() => {
     });
   }, observerOptions);
   document
-    .querySelectorAll(".content h2[id], .content h3[id]")
+    .querySelectorAll(".content h2[id], .content h3[id] , .content h4[id]")
     .forEach((section) => {
       observer.value?.observe(section);
     });
@@ -51,11 +51,7 @@ onUnmounted(() => {
 
 <template>
   <div class="px-3 md:p-0 mb-5">
-    <h4
-      class="text-xl md:text-2xl text-bold pb-2 mb-5 border-b border-dashed border-gray-400"
-    >
-      سرفصل‌ها
-    </h4>
+    <h3 class="text-bold pb-2 mb-5 border-b border-gray-200">سرفصل‌ها</h3>
     <nav class="flex" :class="dir === 'ltr' ? 'ltr' : 'rtl'">
       <div class="relative bg-secondary w-0.5 rounded">
         <div
@@ -69,7 +65,7 @@ onUnmounted(() => {
           :id="`toc-${id}`"
           :key="id"
           ref="tocLinksH2"
-          class="font-thin cursor-pointer text-md md:text-xl pb-3 mb-2 last:mb-0 mx-5"
+          class="cursor-pointer pb-3 mb-2 last:mb-0 mx-5"
           :class="{
             'font-bold': id === currentSection,
           }"
@@ -82,7 +78,7 @@ onUnmounted(() => {
               :id="`toc-${childId}`"
               :key="childId"
               ref="tocLinksH3"
-              class="cursor-pointer font-thin text-sm md:text-lg list-none ml-0 mb-2 last:mb-0"
+              class="cursor-pointer list-none ml-0 mb-2 last:mb-0"
               :class="{
                 'font-bold': childId === currentSection,
               }"
