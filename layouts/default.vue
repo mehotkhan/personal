@@ -2,7 +2,7 @@
   <div class="min-w-screen relative">
     <slot name="app-before" />
     <div id="app-before"></div>
-    <header class="fixed w-full top-0 bg-gray-200">
+    <header class="fixed w-full top-0 bg-gray-200 z-10">
       <div class="flex container justify-between py-5">
         <!-- <GlobalOnlineStatus /> -->
         <div class="flex items-center">
