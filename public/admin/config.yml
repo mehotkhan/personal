@@ -1,13 +1,13 @@
-backend:
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
-  branch: master # optional, defaults to master
-
 # backend:
-#   name: github
-#   repo: mehotkhan/front
-#   base_url: https://alizemani.ir
-#   auth_endpoint: /auth
+#   name: proxy
+#   proxy_url: http://localhost:8081/api/v1
+#   branch: master # optional, defaults to master
+
+backend:
+  name: github
+  repo: mehotkhan/front
+  base_url: https://alizemani.ir
+  auth_endpoint: /auth
 
 media_folder: /public/content
 public_folder: /content
