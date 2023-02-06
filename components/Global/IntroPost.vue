@@ -4,7 +4,7 @@ const { data }: any = await useAsyncData("banner", () =>
 );
 </script>
 <template>
-  <ContentRenderer :value="data" class="nuxt-content">
+  <ContentRenderer :value="data" class="">
     <div class="flex justify-between items-center">
       <div class="basis-1/2">
         <h2>

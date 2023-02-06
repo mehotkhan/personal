@@ -4,6 +4,12 @@
   font-weight: 100 900; // range of weight
   src: url("~/assets/fonts/Farhang.woff");
 }
+@font-face {
+  font-family: "FarhangDot";
+  font-style: normal;
+  font-weight: 100 900; // range of weight
+  src: url("~/assets/fonts/FarhangVariable.woff");
+}
 body {
   overflow-x: hidden;
 }
@@ -96,4 +102,7 @@ img.poster-front {
 }
 img.poster-single {
   max-width: inherit;
+}
+.intro * {
+  font-family: FarhangDot;
 }
