@@ -12,7 +12,6 @@ $irisGlobal
   .get("hardwareKey")
   .get(user.pub)
   .on((item: any) => {
-    console.log(item);
     if (item) {
       webAuthStatus.value = true;
     }
@@ -22,7 +21,6 @@ $irisGlobal
   .get("inbox")
   .get(user.pub)
   .on((item: any) => {
-    console.log(item);
     if (item) {
       certsGenerated.value = true;
     }
@@ -30,17 +28,14 @@ $irisGlobal
 
 const enableWebauth = async () => {
   await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
-
   const formData = new FormData();
   formData.append("user-handle", user.pub);
-  
   const res: any = await $fetch("/webauth/register", {
     method: "POST",
     body: formData,
   });
   if (res) {
     const publicKey = await Structured.fromJSON(res);
-    console.log("pub : ", publicKey);
     const status: boolean = await handleResponse(publicKey);
     if (status) {
       await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
@@ -64,17 +59,39 @@ const GenerateCerts = async () => {
     method: "POST",
     body: formData,
   });
-  console.log("login res: ", res);
   if (res) {
     const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await handleResponse(publicKey);
+    const status: boolean = await setInboxCerts(publicKey, certificate);
+    // console.log(status);
     if (status) {
       await $irisGlobal.get("inbox").get(user.pub).put(true);
     }
   } else {
     console.log("login error", res);
   }
-  console.log("Certs : ", certificate);
+};
+const setInboxCerts = async (publicKey: any, certificate: string) => {
+  if (publicKey) {
+    const cred =
+      "attestation" in publicKey
+        ? await navigator.credentials.create({ publicKey })
+        : await navigator.credentials.get({ publicKey });
+    const body = {
+      cred: await Structured.toJSON(credToJSON(cred)),
+      certificate: `${certificate}`,
+    };
+    try {
+      await $fetch(
+        new JSONRequest("/webauth/set-inbox-certs", { method: "POST", body })
+      );
+      return true;
+    } catch (error) {
+      console.log("err");
+      return false;
+    }
+  } else {
+    return false;
+  }
 };
 const handleResponse = async (publicKey: any) => {
   console.log("handle handleResponse");
@@ -129,13 +146,13 @@ const credToJSON = (x: any = {}) => {
         </span>
         <Switch
           :checked="webAuthStatus"
-          @click="!webAuthStatus ? enableWebauth() : null"
           :class="
             webAuthStatus
               ? 'bg-green-200 cursor-not-allowed'
               : 'bg-gray-200 cursor-pointer'
           "
           class="relative inline-flex h-[40px] px-3 w-40 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          @click="!webAuthStatus ? enableWebauth() : null"
         >
           <span
             aria-hidden="true"
@@ -163,13 +180,13 @@ const credToJSON = (x: any = {}) => {
         </span>
         <Switch
           :checked="certsGenerated"
-          @click="!certsGenerated ? GenerateCerts() : null"
           :class="
             certsGenerated
               ? 'bg-green-200 cursor-not-allowed'
               : 'bg-gray-200 cursor-pointer'
           "
           class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          @click="!certsGenerated ? GenerateCerts() : null"
         >
           <span
             aria-hidden="true"

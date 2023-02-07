@@ -8,10 +8,8 @@ const CreateNew = async () => {
       method: "GET",
     });
     const response = JSON.parse(api);
-    console.log(response);
     const { certs, pub } = response;
-    // send contact request
-    // start new chat
+    const certificate = JSON.stringify(certs);
     const request = {
       pub: user.pub,
       date: new Date().valueOf(),
@@ -20,7 +18,7 @@ const CreateNew = async () => {
       .get("inbox")
       .get(user.pub)
       .put(request, null, {
-        opt: { cert: certs },
+        opt: { cert: certificate },
       });
     $irisPrivate(pub).send("شروع مکالمه");
   } catch (error) {
