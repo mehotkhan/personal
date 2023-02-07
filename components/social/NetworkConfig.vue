@@ -28,7 +28,6 @@ const enableWebauth = async () => {
 
 const handleResponse = async (publicKey: any) => {
   console.log("handle handleResponse");
-  let res: any | null = null;
   if (publicKey) {
     const cred =
       "attestation" in publicKey
@@ -36,10 +35,16 @@ const handleResponse = async (publicKey: any) => {
         : await navigator.credentials.get({ publicKey });
     const body = await Structured.toJSON(credToJSON(cred));
     console.log("incoming from sensor :", body);
-    res = await $fetch(
-      new JSONRequest("/webauth/response", { method: "POST", body })
-    );
-    return res ? true : false;
+    try {
+      const res = await $fetch(
+        new JSONRequest("/webauth/response", { method: "POST", body })
+      );
+      console.log(res);
+      return true;
+    } catch (error) {
+      console.log("err");
+      return false;
+    }
   } else {
     return false;
   }

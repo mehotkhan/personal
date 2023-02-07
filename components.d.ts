@@ -10,7 +10,6 @@ declare module '@vue/runtime-core' {
     'IconLogos:metamaskIcon': typeof import('~icons/logos/metamask-icon')['default']
     'IconMdi:fingerprint': typeof import('~icons/mdi/fingerprint')['default']
     'IconMdi:help': typeof import('~icons/mdi/help')['default']
-    'IconMdi:network': typeof import('~icons/mdi/network')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
     'IconMdi:send': typeof import('~icons/mdi/send')['default']
     'IconMdi:user': typeof import('~icons/mdi/user')['default']
