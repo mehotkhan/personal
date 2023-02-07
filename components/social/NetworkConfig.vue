@@ -8,19 +8,42 @@ const user = $irisSession.getKey();
 const webAuthStatus = ref(false);
 const certsGenerated = ref(false);
 
+$irisGlobal
+  .get("hardwareKey")
+  .get(user.pub)
+  .on((item: any) => {
+    console.log(item);
+    if (item) {
+      webAuthStatus.value = true;
+    }
+  });
+
+$irisGlobal
+  .get("inbox")
+  .get(user.pub)
+  .on((item: any) => {
+    console.log(item);
+    if (item) {
+      certsGenerated.value = true;
+    }
+  });
+
 const enableWebauth = async () => {
+  await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
+
   const formData = new FormData();
   formData.append("user-handle", user.pub);
   const res: any = await $fetch("/webauth/register", {
     method: "POST",
     body: formData,
   });
-  console.log("register res: ", res);
   if (res) {
     const publicKey = await Structured.fromJSON(res);
     console.log("pub : ", publicKey);
     const status: boolean = await handleResponse(publicKey);
-    webAuthStatus.value = status;
+    if (status) {
+      await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
+    }
   } else {
     console.log("error register", res);
   }
@@ -73,8 +96,6 @@ const GenerateCerts = async () => {
     user,
     null
   );
-  await $irisGlobal.get("inbox").get(user.pub).put(true);
-
   const formData = new FormData();
   formData.append("user-handle", user.pub);
   const res: any = await $fetch("/webauth/login", {
@@ -85,12 +106,13 @@ const GenerateCerts = async () => {
   if (res) {
     const publicKey = await Structured.fromJSON(res);
     const status: boolean = await handleResponse(publicKey);
-    certsGenerated.value = status;
+    if (status) {
+      await $irisGlobal.get("inbox").get(user.pub).put(true);
+    }
   } else {
     console.log("login error", res);
   }
-  console.log(certificate);
-  certsGenerated.value = true;
+  console.log("Certs : ", certsGenerated);
 };
 </script>
 <template>
@@ -101,17 +123,18 @@ const GenerateCerts = async () => {
     <div class="flex flex-col w-full py-5">
       <div class="flex items-center justify-between w-full">
         <span class="flex items-center text-mdr">
-          <IconMdi:fingerprint
-            class="ml-3 cursor-pointer flex"
-            aria-hidden="true"
-          />
+          <IconMdi:fingerprint class="ml-3 flex" aria-hidden="true" />
           <span class="flex"> فعال کردن کلید سخت افزاری</span>
         </span>
         <Switch
-          v-model="webAuthStatus"
-          @click="enableWebauth()"
-          :class="webAuthStatus ? 'bg-green-200' : 'bg-gray-200'"
-          class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          :checked="webAuthStatus"
+          @click="!webAuthStatus ? enableWebauth() : null"
+          :class="
+            webAuthStatus
+              ? 'bg-green-200 cursor-not-allowed'
+              : 'bg-gray-200 cursor-pointer'
+          "
+          class="relative inline-flex h-[40px] px-3 w-40 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           <span
             aria-hidden="true"
@@ -138,8 +161,8 @@ const GenerateCerts = async () => {
           <span class="flex"> تولید سرتیفیکیت های ارتباطی</span>
         </span>
         <Switch
-          v-model="certsGenerated"
-          @click="GenerateCerts()"
+          :checked="certsGenerated"
+          @click="!certsGenerated ? GenerateCerts() : null"
           :class="certsGenerated ? 'bg-green-200' : 'bg-gray-200'"
           class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
