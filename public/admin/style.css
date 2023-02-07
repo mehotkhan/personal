@@ -25,24 +25,39 @@ body {
 .css-2oej7z-ToolbarContainer,
 .SplitPane,
 .frame-content,
-.css-12b66la-AppHeaderContent {
+.css-12b66la-AppHeaderContent,
+.css-882a4r-CardsGrid {
   direction: rtl;
 }
 .css-1lv5pus-SidebarNavList {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 .css-1f7nhiq-CollectionMain {
-  padding-right: 280px;
-  padding-left: 0;
+  padding-right: 280px !important;
+  padding-left: 0 !important;
+  width: 100% !important;
 }
 ul.css-tsu4ds-DropdownList-dropdownList-DropdownList {
   padding-right: 0 !important;
 }
 
 .css-pyxbz6-CollectionContainer {
-  display: flex;
-  flex-direction: row-reverse;
+  display: flex !important;
+  flex-direction: row-reverse !important;
 }
 .css-17fei3e-CardHeading {
-  text-align: right;
+  text-align: right !important;
+}
+.css-1hvrgvd-CollectionTopContainer-card-cardTop,
+.css-p5sjac-CollectionControlsContainer {
+  width: auto !important;
+}
+
+.css-5wgw3f-ListCard-card {
+  width: 100% !important;
+}
+.css-882a4r-CardsGrid {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: -13px !important;
 }

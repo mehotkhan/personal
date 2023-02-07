@@ -1,40 +1,17 @@
 <script lang="ts" setup>
-const { $SEA, $irisSession, $irisGlobal, $irisPublic } = useNuxtApp();
-
 useHead({
   title: "تنظیمات کلی",
 });
 definePageMeta({
   middleware: ["owner-auth"],
 });
-const GenerateCerts = async () => {
-  const user = $irisSession.getKey();
-  const certificate = await $SEA.certify(
-    "*", // everyone
-    { "#": { "*": "inbox" } },
-    user,
-    null
-  );
-
-  $irisGlobal.get("inbox").get(user.pub).put(true);
-  console.log(certificate);
-};
-const SendDumpInbox = async () => {
-  const user = $irisSession.getKey();
-
-  const request = {
-    pub: user.pub,
-    date: new Date().valueOf(),
-  };
-  $irisPublic().get("inbox").get("dddddffdd").put(request);
-};
 </script>
 <template>
-  <section class="flex flex-col justify-center content-center">
+  <section class="flex flex-col items-start">
     <h2>تنظیمات کلی</h2>
-
-    <button @click="GenerateCerts()">generate CERTS</button>
-    <button @click="SendDumpInbox()">Send Dump Inbox</button>
+    <div class="border-b-1 mb-4 w-full"></div>
+    <p>پاره ای توضیحات در مورد نحوه کار این صفحه</p>
+    <SocialNetworkConfig />
     <hr />
   </section>
 </template>
