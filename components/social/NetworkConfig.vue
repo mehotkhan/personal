@@ -17,14 +17,14 @@ $irisGlobal
     }
   });
 
-// $irisGlobal
-//   .get("inbox")
-//   .get(user.pub)
-//   .on((item: any) => {
-//     if (item) {
-//       certsGenerated.value = true;
-//     }
-//   });
+$irisGlobal
+  .get("inbox")
+  .get(user.pub)
+  .on((item: any) => {
+    if (item) {
+      certsGenerated.value = true;
+    }
+  });
 
 const enableWebauth = async () => {
   await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
@@ -57,7 +57,6 @@ const GenerateCerts = async () => {
   if (res) {
     const publicKey = await Structured.fromJSON(res);
     const status: boolean = await setInboxCerts(publicKey);
-    // console.log(status);
     if (status) {
       await $irisGlobal.get("inbox").get(user.pub).put(true);
     }
@@ -81,14 +80,12 @@ const setInboxCerts = async (publicKey: any) => {
       cred: await Structured.toJSON(credToJSON(cred)),
       certificate,
     };
-    console.log(body);
     try {
       await $fetch(
         new JSONRequest("/webauth/set-inbox-certs", { method: "POST", body })
       );
       return true;
     } catch (error) {
-      console.log("err");
       return false;
     }
   } else {
