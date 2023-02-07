@@ -112,7 +112,7 @@ const GenerateCerts = async () => {
   } else {
     console.log("login error", res);
   }
-  console.log("Certs : ", certsGenerated);
+  console.log("Certs : ", certificate);
 };
 </script>
 <template>
