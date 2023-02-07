@@ -9,7 +9,6 @@ const CreateNew = async () => {
     });
     const response = JSON.parse(api);
     const { certs, pub } = response;
-    const certificate = JSON.stringify(certs);
     const request = {
       pub: user.pub,
       date: new Date().valueOf(),
@@ -18,7 +17,7 @@ const CreateNew = async () => {
       .get("inbox")
       .get(user.pub)
       .put(request, null, {
-        opt: { cert: certificate },
+        opt: { cert: JSON.stringify(certs) },
       });
     $irisPrivate(pub).send("شروع مکالمه");
   } catch (error) {

@@ -17,14 +17,14 @@ $irisGlobal
     }
   });
 
-$irisGlobal
-  .get("inbox")
-  .get(user.pub)
-  .on((item: any) => {
-    if (item) {
-      certsGenerated.value = true;
-    }
-  });
+// $irisGlobal
+//   .get("inbox")
+//   .get(user.pub)
+//   .on((item: any) => {
+//     if (item) {
+//       certsGenerated.value = true;
+//     }
+//   });
 
 const enableWebauth = async () => {
   await $irisGlobal.get("hardwareKey").get(user.pub).put(true);
@@ -47,12 +47,7 @@ const enableWebauth = async () => {
 
 const GenerateCerts = async () => {
   const user = $irisSession.getKey();
-  const certificate = await $SEA.certify(
-    "*", // everyone
-    { "#": { "*": "inbox" } },
-    user,
-    null
-  );
+
   const formData = new FormData();
   formData.append("user-handle", user.pub);
   const res: any = await $fetch("/webauth/login", {
@@ -61,7 +56,7 @@ const GenerateCerts = async () => {
   });
   if (res) {
     const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await setInboxCerts(publicKey, certificate);
+    const status: boolean = await setInboxCerts(publicKey);
     // console.log(status);
     if (status) {
       await $irisGlobal.get("inbox").get(user.pub).put(true);
@@ -70,7 +65,13 @@ const GenerateCerts = async () => {
     console.log("login error", res);
   }
 };
-const setInboxCerts = async (publicKey: any, certificate: string) => {
+const setInboxCerts = async (publicKey: any) => {
+  const certificate = await $SEA.certify(
+    "*", // everyone
+    { "#": { "*": "inbox" } },
+    user,
+    null
+  );
   if (publicKey) {
     const cred =
       "attestation" in publicKey
@@ -78,8 +79,9 @@ const setInboxCerts = async (publicKey: any, certificate: string) => {
         : await navigator.credentials.get({ publicKey });
     const body = {
       cred: await Structured.toJSON(credToJSON(cred)),
-      certificate: `${certificate}`,
+      certificate,
     };
+    console.log(body);
     try {
       await $fetch(
         new JSONRequest("/webauth/set-inbox-certs", { method: "POST", body })
