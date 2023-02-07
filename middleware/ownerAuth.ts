@@ -2,21 +2,18 @@ const { $irisSession } = useNuxtApp();
 const user = $irisSession.getKey();
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
-  const api: string = await $fetch("/check-admin", {
-    method: "POST",
-    body: {
-      pub: user.pub,
-    },
-  });
-
   if (!isDev()) {
     try {
+      const api: string = await $fetch("/check-admin", {
+        method: "POST",
+        body: {
+          pub: user.pub,
+        },
+      });
       const response = JSON.parse(api);
-      if (to.fullPath.startsWith("/dashboard") && !response) {
+      if (!response) {
         return navigateTo("/");
       }
-    } catch (error) {
-      return navigateTo("/");
-    }
+    } catch (error) {}
   }
 });

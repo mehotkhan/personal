@@ -33,6 +33,7 @@ const enableWebauth = async () => {
 
   const formData = new FormData();
   formData.append("user-handle", user.pub);
+  
   const res: any = await $fetch("/webauth/register", {
     method: "POST",
     body: formData,
@@ -49,6 +50,32 @@ const enableWebauth = async () => {
   }
 };
 
+const GenerateCerts = async () => {
+  const user = $irisSession.getKey();
+  const certificate = await $SEA.certify(
+    "*", // everyone
+    { "#": { "*": "inbox" } },
+    user,
+    null
+  );
+  const formData = new FormData();
+  formData.append("user-handle", user.pub);
+  const res: any = await $fetch("/webauth/login", {
+    method: "POST",
+    body: formData,
+  });
+  console.log("login res: ", res);
+  if (res) {
+    const publicKey = await Structured.fromJSON(res);
+    const status: boolean = await handleResponse(publicKey);
+    if (status) {
+      await $irisGlobal.get("inbox").get(user.pub).put(true);
+    }
+  } else {
+    console.log("login error", res);
+  }
+  console.log("Certs : ", certificate);
+};
 const handleResponse = async (publicKey: any) => {
   console.log("handle handleResponse");
   if (publicKey) {
@@ -87,32 +114,6 @@ const credToJSON = (x: any = {}) => {
     return obj;
   }
   return x;
-};
-const GenerateCerts = async () => {
-  const user = $irisSession.getKey();
-  const certificate = await $SEA.certify(
-    "*", // everyone
-    { "#": { "*": "inbox" } },
-    user,
-    null
-  );
-  const formData = new FormData();
-  formData.append("user-handle", user.pub);
-  const res: any = await $fetch("/webauth/login", {
-    method: "POST",
-    body: formData,
-  });
-  console.log("login res: ", res);
-  if (res) {
-    const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await handleResponse(publicKey);
-    if (status) {
-      await $irisGlobal.get("inbox").get(user.pub).put(true);
-    }
-  } else {
-    console.log("login error", res);
-  }
-  console.log("Certs : ", certificate);
 };
 </script>
 <template>
@@ -163,7 +164,11 @@ const GenerateCerts = async () => {
         <Switch
           :checked="certsGenerated"
           @click="!certsGenerated ? GenerateCerts() : null"
-          :class="certsGenerated ? 'bg-green-200' : 'bg-gray-200'"
+          :class="
+            certsGenerated
+              ? 'bg-green-200 cursor-not-allowed'
+              : 'bg-gray-200 cursor-pointer'
+          "
           class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           <span
