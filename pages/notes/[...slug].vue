@@ -11,7 +11,7 @@ const { data }: any = await useAsyncData("page-data", () =>
   <section class="flex flex-col justify-center content-center">
     <ContentRenderer :value="data">
       <section class="flex flex-col justify-center items-center">
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
           <div class="basis-1/2">
             <h2>
               {{ data?.title }}
@@ -34,7 +34,7 @@ const { data }: any = await useAsyncData("page-data", () =>
             </ul>
           </div>
           <div class="basis-1/2">
-            <img class="w-full max-w-100 mx-auto" :src="data?.thumbnail" />
+            <img class="w-full max-w-100 mx-auto my-0" :src="data?.thumbnail" />
           </div>
         </div>
         <div

@@ -5,7 +5,7 @@ const { data }: any = await useAsyncData("products", () =>
 </script>
 <template>
   <ContentRenderer :value="data" class="nuxt-content">
-    <div class="latest my-10">
+    <div class="latest -mt-4">
       <h3>جدیدترین محصولات</h3>
       <hr />
       <ul>

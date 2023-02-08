@@ -28,7 +28,7 @@ const { data }: any = await useAsyncData("banner", () =>
         </ul>
       </div>
       <div class="basis-1/2">
-        <img class="w-full max-w-100 mx-auto" :src="data?.thumbnail" />
+        <img class="w-full max-w-100 mx-auto my-0" :src="data?.thumbnail" />
       </div>
     </div>
   </ContentRenderer>

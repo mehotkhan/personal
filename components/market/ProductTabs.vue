@@ -50,7 +50,7 @@ products.value = await queryContent("market").find();
 
     <TabPanels class="mt-2">
       <TabPanel key="nft" :class="['rounded-xl bg-white p-3']">
-        <div class="latest my-10 text-2xl">محصولات فروشگاه مربوط</div>
+        <div class="latest -mt-4 text-2xl">محصولات فروشگاه مربوط</div>
       </TabPanel>
       <TabPanel key="comments" :class="['rounded-xl bg-white p-3']">
         <Comments />

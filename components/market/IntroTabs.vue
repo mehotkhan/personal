@@ -11,7 +11,7 @@ products.value = await queryContent("market").find();
   <br />
   <TabGroup>
     <TabList class="flex w-full">
-      <Tab key="latest" v-slot="{ selected }" as="template">
+      <Tab key="latest -mt-4" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-2xl',
@@ -35,7 +35,7 @@ products.value = await queryContent("market").find();
           پرفروش ترین محصولات
         </button>
       </Tab>
-      <Tab key="latest-comment" v-slot="{ selected }" as="template">
+      <Tab key="latest -mt-4-comment" v-slot="{ selected }" as="template">
         <button
           :class="[
             'w-full py-2.5 text-2xl',
@@ -50,8 +50,8 @@ products.value = await queryContent("market").find();
     </TabList>
 
     <TabPanels class="mt-2">
-      <TabPanel key="latest" :class="['rounded-xl bg-white p-3']">
-        <div class="latest my-10 text-2xl">
+      <TabPanel key="latest -mt-4" :class="['rounded-xl bg-white p-3']">
+        <div class="latest -mt-4 text-2xl">
           <ul>
             <li
               v-for="{ _path: slug, title, date, category } in orderByDate(
@@ -69,7 +69,7 @@ products.value = await queryContent("market").find();
         </div>
       </TabPanel>
       <TabPanel key="most-selling" :class="['rounded-xl bg-white p-3']">
-        <div class="latest my-10 text-2xl">
+        <div class="latest -mt-4 text-2xl">
           <ul>
             <li
               v-for="{ _path: slug, title, date, category } in orderByDate(
@@ -86,7 +86,7 @@ products.value = await queryContent("market").find();
           </ul>
         </div>
       </TabPanel>
-      <TabPanel key="latest-comment" :class="['rounded-xl bg-white p-3']">
+      <TabPanel key="latest -mt-4-comment" :class="['rounded-xl bg-white p-3']">
         <br />
         <p class="text-xl">آخرین نظرات و دیدگاه های فروشگاه</p>
       </TabPanel>
