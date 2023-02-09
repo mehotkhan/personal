@@ -44,7 +44,6 @@ const enableWebauth = async () => {
       }
     } catch (error) {
       loading.value = false;
-      console.error(error);
     }
   }
 };
