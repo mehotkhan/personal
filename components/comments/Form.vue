@@ -148,9 +148,3 @@ onMounted(() => {
     </footer>
   </div>
 </template>
-<style lang="scss">
-button.disabled {
-  opacity: 0.4;
-  cursor: no-drop;
-}
-</style>

@@ -5,10 +5,10 @@ export default defineAppConfig({
       title: "یادداشت‌ها",
       to: "/notes",
     },
-//     {
-//       title: "فروشگاه",
-//       to: "/products",
-//     },
+    {
+      title: "فروشگاه",
+      to: "/products",
+    },
     {
       title: "تماس‌با‌من",
       to: "/contact",

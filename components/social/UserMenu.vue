@@ -1,39 +1,36 @@
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 const { $irisSession } = useNuxtApp();
-const editIsOpen = ref(false);
 const user = $irisSession.getKey();
+const editIsOpen = ref(false);
+const webAuthLoginIsOpen = ref(false);
 const isAdmin = ref(false);
 
-const openEditModal = () => {
-  editIsOpen.value = true;
-};
-const closeEditModal = () => {
-  editIsOpen.value = false;
-};
+onMounted(async () => {
+  const api: string = await $fetch("/check-admin", {
+    method: "POST",
+    body: {
+      pub: user.pub,
+    },
+  });
 
-const api: string = await $fetch("/check-admin", {
-  method: "POST",
-  body: {
-    pub: user.pub,
-  },
+  try {
+    const response = JSON.parse(api);
+    isAdmin.value = response;
+  } catch (error) {
+    isAdmin.value = false;
+    // console.log(error);
+  }
 });
-try {
-  const response = JSON.parse(api);
-  isAdmin.value = response;
-} catch (error) {
-  isAdmin.value = false;
-  // console.log(error);
-}
 </script>
 
 <template>
   <div>
     <Menu as="div" class="relative flex">
       <MenuButton
-        class="flex items-center w-full text-md hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        class="flex items-center w-full text-lg hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
-        <IconUil:setting />
+        <IconUil:angle-down />
       </MenuButton>
 
       <transition
@@ -51,14 +48,30 @@ try {
             key="edit-profile"
             v-slot="{ active }"
             class="px-2 py-2 flex items-center"
-            @click="openEditModal"
+            @click="editIsOpen = true"
+          >
+            <nuxt-link
+              to="/settings"
+              class="hover:underline cursor-pointer"
+              :class="[active ? 'bg-gray-200' : 'text-gray-900']"
+            >
+              <IconUil:user class="ml-2 text-md" />
+              تنظیمات حساب کاربری
+            </nuxt-link>
+          </MenuItem>
+          <MenuItem
+            key="logout"
+            v-slot="{ active }"
+            class="px-2 py-2 flex"
+            @click="webAuthLoginIsOpen = true"
           >
             <span
               class="hover:underline cursor-pointer"
               :class="[active ? 'bg-gray-200' : 'text-gray-900']"
             >
-              <IconUil:user class="ml-2 text-md" />
-              ویرایش اطلاعات کاربری
+              <IconMdi:fingerprint class="ml-2 text-sm" />
+
+              ورود به کمک WebAuth
             </span>
           </MenuItem>
           <MenuItem key="logout" v-slot="{ active }" class="px-2 py-2 flex">
@@ -74,6 +87,10 @@ try {
         </MenuItems>
       </transition>
     </Menu>
-    <SocialUpdateProfile :is-open="editIsOpen" @close-modal="closeEditModal" />
+
+    <SocialWebAuthLogin
+      :is-open="webAuthLoginIsOpen"
+      @close-modal="webAuthLoginIsOpen = false"
+    />
   </div>
 </template>

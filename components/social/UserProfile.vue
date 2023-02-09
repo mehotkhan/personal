@@ -9,12 +9,13 @@ const { $irisSession } = useNuxtApp();
 
       {{ $irisSession.getMyName() }}
     </span>
-    <div class="text-sm flex items-center">
-      <IconUil:headphone-slash class="mr-3 cursor-pointer" aria-hidden="true" />
-      <IconUil:at class="mr-3 cursor-pointer" aria-hidden="true" />
-      <IconLogos:metamask-icon class="mr-3 cursor-pointer" aria-hidden="true" />
-      <!-- <SocialWebAuth class="mr-3 cursor-pointer" aria-hidden="true" /> -->
-      <SocialUserMenu class="mr-3 cursor-pointer" aria-hidden="true" />
+    <div class="flex items-center">
+      <IconUil:bell class="text-md mr-3 cursor-pointer" aria-hidden="true" />
+      <IconLogos:metamask-icon
+        class="text-sm mr-3 cursor-pointer"
+        aria-hidden="true"
+      />
+      <SocialUserMenu class="mr-2 cursor-pointer" aria-hidden="true" />
     </div>
   </div>
 </template>

@@ -54,14 +54,6 @@ try {
         >{{ menu.title }}</NuxtLink
       >
     </li>
-    <li v-if="isDev() || isAdmin" key="settings">
-      <NuxtLink
-        to="/settings"
-        class="hover:text-black py-1 px-5"
-        :class="route.path.startsWith('/settings') ? 'router-link-active' : ''"
-        >تنظیمات</NuxtLink
-      >
-    </li>
   </ul>
 </template>
 <style lang="scss" scoped>

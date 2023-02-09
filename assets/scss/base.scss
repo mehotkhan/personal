@@ -103,6 +103,10 @@ img.poster-front {
 img.poster-single {
   max-width: inherit;
 }
-.intro * {
-  font-family: FarhangDot;
+// .intro * {
+//   font-family: FarhangDot;
+// }
+button.disabled {
+  opacity: 0.4;
+  cursor: no-drop;
 }
