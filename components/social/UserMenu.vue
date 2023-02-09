@@ -51,12 +51,12 @@ onMounted(async () => {
             @click="editIsOpen = true"
           >
             <nuxt-link
-              to="/settings"
+              to="/profile"
               class="hover:underline cursor-pointer"
               :class="[active ? 'bg-gray-200' : 'text-gray-900']"
             >
               <IconUil:user class="ml-2 text-md" />
-              تنظیمات حساب کاربری
+              حساب کاربری
             </nuxt-link>
           </MenuItem>
           <MenuItem

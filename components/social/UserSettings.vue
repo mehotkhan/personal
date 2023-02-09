@@ -2,24 +2,26 @@
 import { JSONRequest } from "@worker-tools/json-fetch";
 import * as Structured from "@worker-tools/structured-json";
 import { Switch } from "@headlessui/vue";
-const { $SEA, $irisSession, $irisGlobal } = useNuxtApp();
+const { $irisSession, $irisGlobal } = useNuxtApp();
 const user = $irisSession.getKey();
 
-const certsGenerated = ref(false);
+const webAuthStatus = ref(false);
+const webAuthLogin = ref(false);
 const enableWebauthIsOpen = ref(false);
+const username = ref("");
 
 $irisGlobal
-  .get("inbox")
+  .get("hardwareKey")
   .get(user.pub)
   .on((item: any) => {
     if (item) {
-      certsGenerated.value = true;
+      webAuthStatus.value = true;
+      username.value = item;
     }
   });
 
-const generateCerts = async () => {
-  const user = $irisSession.getKey();
-
+const enableWebAuthLogin = async () => {
+  const user = await $irisSession.getKey();
   const formData = new FormData();
   formData.append("user-handle", user.pub);
   const res: any = await $fetch("/webauth/login", {
@@ -28,21 +30,18 @@ const generateCerts = async () => {
   });
   if (res) {
     const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await setInboxCerts(publicKey);
+    const status: boolean = await backupkeys(publicKey);
     if (status) {
       await $irisGlobal.get("inbox").get(user.pub).put(true);
     }
   } else {
     console.log("login error", res);
   }
+  return null;
 };
-const setInboxCerts = async (publicKey: any) => {
-  const certificate = await $SEA.certify(
-    "*", // everyone
-    { "#": { "*": "inbox" } },
-    user,
-    null
-  );
+const backupkeys = async (publicKey: any) => {
+  const user = await $irisSession.getKey();
+
   if (publicKey) {
     const cred =
       "attestation" in publicKey
@@ -50,11 +49,11 @@ const setInboxCerts = async (publicKey: any) => {
         : await navigator.credentials.get({ publicKey });
     const body = {
       cred: await Structured.toJSON(credToJSON(cred)),
-      certificate,
+      user,
     };
     try {
       await $fetch(
-        new JSONRequest("/webauth/set-inbox-certs", { method: "POST", body })
+        new JSONRequest("/webauth/backupkeys", { method: "POST", body })
       );
       return true;
     } catch (error) {
@@ -64,6 +63,7 @@ const setInboxCerts = async (publicKey: any) => {
     return false;
   }
 };
+
 const credToJSON = (x: any = {}): any => {
   if (x instanceof ArrayBuffer) return x;
   if (Array.isArray(x)) {
@@ -83,7 +83,40 @@ const credToJSON = (x: any = {}): any => {
 <template>
   <div class="w-full flex-col flex items-start">
     <div class="border-b-1 mb-4 w-full">
-      <h3>تنظیمات کلی شبکه</h3>
+      <h3>تنظیمات حساب</h3>
+    </div>
+    <div class="flex flex-col w-full py-5">
+      <div class="flex items-center justify-between w-full">
+        <span class="flex items-center text-mdr">
+          <IconMdi:fingerprint class="ml-3 flex" aria-hidden="true" />
+          <span class="flex"> فعال کردن کلید سخت افزاری</span>
+        </span>
+        <Switch
+          :checked="webAuthStatus"
+          :class="
+            webAuthStatus
+              ? 'bg-green-200 cursor-not-allowed'
+              : 'bg-gray-200 cursor-pointer'
+          "
+          class="relative inline-flex h-[40px] px-3 w-40 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          @click="!webAuthStatus ? (enableWebauthIsOpen = true) : null"
+        >
+          <span
+            aria-hidden="true"
+            :class="webAuthStatus ? 'left-1' : 'right-1'"
+            class="pointer-events-none absolute top-[1px] inline-block h-[32px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
+          />
+          <span class="text-center w-full text-md">
+            {{ webAuthStatus ? "فعال" : "غیر فعال" }}
+          </span>
+        </Switch>
+      </div>
+      <span class="text-gray-600 flex items-center text-lg">
+        <IconMdi:user class="flex ml-3" aria-hidden="true" />
+        <span class="flex mt-1">
+          {{ username?.length ? username : "بدون نام کاربری" }}</span
+        >
+      </span>
     </div>
     <div class="flex flex-col w-full py-5">
       <div class="flex items-center justify-between w-full">
@@ -92,25 +125,25 @@ const credToJSON = (x: any = {}): any => {
             class="ml-3 cursor-pointer flex"
             aria-hidden="true"
           />
-          <span class="flex"> تولید سرتیفیکیت های ارتباطی</span>
+          <span class="flex"> ورود به کمک WebAuth </span>
         </span>
         <Switch
-          :checked="certsGenerated"
+          :checked="webAuthLogin"
           :class="
-            certsGenerated
+            webAuthLogin
               ? 'bg-green-200 cursor-not-allowed'
               : 'bg-gray-200 cursor-pointer'
           "
           class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-          @click="!certsGenerated ? generateCerts() : null"
+          @click="!webAuthLogin ? enableWebAuthLogin() : null"
         >
           <span
             aria-hidden="true"
-            :class="certsGenerated ? 'left-1' : 'right-1'"
+            :class="webAuthLogin ? 'left-1' : 'right-1'"
             class="pointer-events-none absolute top-[1px] inline-block h-[32px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
           />
           <span class="text-center w-full text-md">
-            {{ certsGenerated ? "تولید شد" : "بدون کلید" }}
+            {{ webAuthLogin ? "فعال" : "غیر فعال" }}
           </span>
         </Switch>
       </div>
