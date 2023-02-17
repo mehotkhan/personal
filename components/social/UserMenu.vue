@@ -1,32 +1,18 @@
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 const { $irisSession } = useNuxtApp();
-const user = $irisSession.getKey();
 const editIsOpen = ref(false);
 const webAuthLoginIsOpen = ref(false);
-const isAdmin = ref(false);
 
-onMounted(async () => {
-  const api: string = await $fetch("/check-admin", {
-    method: "POST",
-    body: {
-      pub: user.pub,
-    },
-  });
-
-  try {
-    const response = JSON.parse(api);
-    isAdmin.value = response;
-  } catch (error) {
-    isAdmin.value = false;
-    // console.log(error);
-  }
-});
+const logout = async () => {
+  await $irisSession.logOut();
+  window.location.reload();
+};
 </script>
 
 <template>
   <div>
-    <Menu as="div" class="relative flex">
+    <Menu as="div" class="relative flex items-center">
       <MenuButton
         class="flex items-center w-full text-lg hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
@@ -47,16 +33,16 @@ onMounted(async () => {
           <MenuItem
             key="edit-profile"
             v-slot="{ active }"
-            class="px-2 py-2 flex items-center"
+            class="px-2 py-2"
             @click="editIsOpen = true"
           >
             <nuxt-link
               to="/profile"
-              class="hover:underline cursor-pointer"
+              class="hover:underline cursor-pointer flex items-center"
               :class="[active ? 'bg-gray-200' : 'text-gray-900']"
             >
-              <IconUil:user class="ml-2 text-md" />
-              حساب کاربری
+              <IconUil:user class="ml-2 flex" />
+              پروفایل کاربری
             </nuxt-link>
           </MenuItem>
           <MenuItem
@@ -66,20 +52,25 @@ onMounted(async () => {
             @click="webAuthLoginIsOpen = true"
           >
             <span
-              class="hover:underline cursor-pointer"
+              class="hover:underline cursor-pointer flex items-center"
               :class="[active ? 'bg-gray-200' : 'text-gray-900']"
             >
-              <IconMdi:fingerprint class="ml-2 text-sm" />
+              <IconMdi:fingerprint class="ml-2 flex" />
 
-              ورود به کمک WebAuth
+              ورود به حساب
             </span>
           </MenuItem>
-          <MenuItem key="logout" v-slot="{ active }" class="px-2 py-2 flex">
+          <MenuItem
+            key="logout"
+            v-slot="{ active }"
+            class="px-2 py-2 flex"
+            @click="logout()"
+          >
             <span
-              class="hover:underline cursor-pointer"
+              class="hover:underline cursor-pointer flex items-center"
               :class="[active ? 'bg-gray-200' : 'text-gray-900']"
             >
-              <IconUil:exit class="ml-2 text-sm" />
+              <IconUil:exit class="ml-2 flex" />
 
               خروج
             </span>
@@ -87,10 +78,9 @@ onMounted(async () => {
         </MenuItems>
       </transition>
     </Menu>
-
-    <SocialWebAuthLogin
-      :is-open="webAuthLoginIsOpen"
-      @close-modal="webAuthLoginIsOpen = false"
-    />
   </div>
+  <SocialWebAuthLogin
+    :is-open="webAuthLoginIsOpen"
+    @close-modal="webAuthLoginIsOpen = false"
+  />
 </template>

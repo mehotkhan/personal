@@ -6,6 +6,7 @@ onMounted(() => {
     .get("inbox")
     .map()
     .once((inbox: any, key: string) => {
+      console.log(inbox)
       if (inbox && inbox?.date && !archive.has(inbox.date)) {
         archive.set(inbox.date, { ...inbox, key });
       }
@@ -32,7 +33,7 @@ const AcceptInbox = async (inbox: any) => {
         class="flex items-center justify-between group-hover:font-bold"
       >
         <div class="flex items-center">
-          <SocialUserDetails :pub="item?.pub" />
+          <SocialUserName :pub="item?.pub" />
         </div>
         <div class="flex items-center justify-between">
           <span class="text-xs text-slate-400 ml-10">{{

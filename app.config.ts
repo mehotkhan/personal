@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  name: "alizemani.ir.dev_126",
+  name: "alizemani.ir.dev_129",
   menuItems: [
     {
       title: "یادداشت‌ها",
@@ -7,7 +7,7 @@ export default defineAppConfig({
     },
     {
       title: "فروشگاه",
-      to: "/products",
+      to: "/market",
     },
     {
       title: "تماس‌با‌من",

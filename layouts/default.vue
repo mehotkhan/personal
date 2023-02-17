@@ -12,7 +12,7 @@
           <GlobalMainMenu class="text-md hidden md:text-sm lg:contents" />
         </div>
         <div class="flex">
-          <SocialUserProfile />
+          <SocialUserNav />
         </div>
       </div>
     </header>

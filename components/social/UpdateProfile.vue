@@ -1,6 +1,50 @@
+<script setup lang="ts">
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/vue";
+const { $irisPublic } = useNuxtApp();
+
+const props = defineProps({
+  isOpen: { type: Boolean, required: true, default: false },
+});
+
+const newUsername = ref("");
+const newUserAbout = ref("");
+
+onMounted(() => {
+  if ($irisPublic) {
+    $irisPublic()
+      .get("profile")
+      .get("name")
+      .on((name: string) => {
+        newUsername.value = name;
+      });
+
+    $irisPublic()
+      .get("profile")
+      .get("about")
+      .on((about: string) => {
+        newUserAbout.value = about;
+      });
+  }
+});
+const emit = defineEmits(["closeModal"]);
+
+const updateUsername = async () => {
+  await $irisPublic().get("profile").get("name").put(newUsername.value);
+  await $irisPublic().get("profile").get("about").put(newUserAbout.value);
+
+  emit("closeModal");
+};
+</script>
+
 <template>
   <TransitionRoot appear :show="props.isOpen" as="template">
-    <Dialog as="div" class="relative z-10" @close="closeModal">
+    <Dialog as="div" class="relative z-10" @close="emit('closeModal')">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -33,7 +77,7 @@
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                اطلاعات پروفایل
+                به روز رسانی اطلاعات کاربری
               </DialogTitle>
               <div class="mt-5">
                 <div class="form-group mb-6">
@@ -66,20 +110,22 @@
                 </div>
               </div>
 
-              <div class="mt-4">
+              <div
+                class="flex mt-4 w-full items-center justify-between text-white text-xl"
+              >
                 <button
                   type="button"
-                  class="mr-3 inline-flex justify-center rounded-md-md border border-transparent bg-black px-4 py-2 ml-2 text-sm text-white float-left"
-                  @click="updateUsername"
+                  class="flex justify-center rounded-md-md border border-transparent bg-red-400 px-5 py-1"
+                  @click="emit('closeModal')"
                 >
-                  به روزرسانی
+                  بستن
                 </button>
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md-md border border-transparent px-4 py-2 text-sm bg-red-400 text-white float-left"
-                  @click="closeModal"
+                  class="flex rounded border border-transparent bg-green-400 px-5 py-1"
+                  @click="updateUsername"
                 >
-                  بستن
+                  به روزرسانی
                 </button>
               </div>
             </DialogPanel>
@@ -89,63 +135,3 @@
     </Dialog>
   </TransitionRoot>
 </template>
-
-<script setup lang="ts">
-import {
-  TransitionRoot,
-  TransitionChild,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/vue";
-import { ref } from "vue";
-const { $irisPublic, $irisGlobal, $irisSession } = useNuxtApp();
-
-const props = defineProps({
-  isOpen: { type: Boolean, required: true, default: false },
-});
-
-const newUsername = ref("");
-const newUserAbout = ref("");
-if ($irisPublic) {
-  $irisPublic()
-    .get("profile")
-    .get("name")
-    .on((name: string) => {
-      newUsername.value = name;
-    });
-  $irisPublic()
-    .get("profile")
-    .get("about")
-    .on((about: string) => {
-      newUserAbout.value = about;
-    });
-}
-
-const emit = defineEmits(["closeModal"]);
-
-const closeModal = () => {
-  emit("closeModal");
-};
-const updateUsername = () => {
-  $irisPublic().get("profile").get("name").put(newUsername.value);
-  $irisPublic().get("profile").get("about").put(newUserAbout.value);
-  $irisGlobal
-    .get("members")
-    .get($irisSession.getKey().pub)
-    .get("name")
-    .put(newUsername.value);
-  $irisGlobal
-    .get("members")
-    .get($irisSession.getKey().pub)
-    .get("about")
-    .put(newUserAbout.value);
-  $irisGlobal
-    .get("members")
-    .get($irisSession.getKey().pub)
-    .get("pub")
-    .put($irisSession.getKey().pub);
-
-  emit("closeModal");
-};
-</script>

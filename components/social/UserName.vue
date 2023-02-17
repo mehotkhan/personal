@@ -4,14 +4,16 @@ const props = defineProps({
 });
 const { $irisPublic } = useNuxtApp();
 const userName = ref("نام کاربری");
-if ($irisPublic) {
-  $irisPublic(props.pub)
-    .get("profile")
-    .get("name")
-    .on((name: string) => {
-      userName.value = name;
-    });
-}
+onMounted(() => {
+  if ($irisPublic) {
+    $irisPublic(props.pub)
+      .get("profile")
+      .get("name")
+      .on((name: string) => {
+        userName.value = name;
+      });
+  }
+});
 </script>
 
 <template>

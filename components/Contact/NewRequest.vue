@@ -13,12 +13,15 @@ const CreateNew = async () => {
       pub: user.pub,
       date: new Date().valueOf(),
     };
-    const cleanCerts = certs.replace(/\\/g, "").replace('""', "");
+    const certificate = `SEA${JSON.stringify(certs)
+      .substring(0, JSON.stringify(certs).length - 1)
+      .substring(1)
+      .replace(/\\/g, "")}`;
     $irisPublic(pub)
       .get("inbox")
       .get(user.pub)
       .put(request, null, {
-        opt: { cert: cleanCerts },
+        opt: { cert: certificate },
       });
     $irisPrivate(pub).send("شروع مکالمه");
   } catch (error) {

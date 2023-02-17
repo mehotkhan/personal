@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-const { data }: any = await useAsyncData("products", () =>
-  queryContent("products").where({ _draft: false }).limit(10).find()
+const { data }: any = await useAsyncData("market", () =>
+  queryContent("market").where({ _draft: false }).limit(10).find()
 );
 </script>
 <template>

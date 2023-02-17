@@ -8,36 +8,47 @@ const user = $irisSession.getKey();
 const webAuthStatus = ref(false);
 const webAuthLogin = ref(false);
 const enableWebauthIsOpen = ref(false);
-const username = ref("");
-
-$irisGlobal
-  .get("hardwareKey")
-  .get(user.pub)
-  .on((item: any) => {
-    if (item) {
-      webAuthStatus.value = true;
-      username.value = item;
-    }
-  });
-
+const username = ref<string>("");
+onMounted(() => {
+  $irisGlobal
+    .get("hardwareKey")
+    .get(user.pub)
+    .on((item: any) => {
+      if (item) {
+        webAuthStatus.value = true;
+        username.value = item;
+      }
+    });
+  $irisGlobal
+    .get("webAuthLogin")
+    .get(user.pub)
+    .on((item: any) => {
+      if (item) {
+        webAuthLogin.value = true;
+      }
+    });
+});
 const enableWebAuthLogin = async () => {
-  const user = await $irisSession.getKey();
-  const formData = new FormData();
-  formData.append("user-handle", user.pub);
-  const res: any = await $fetch("/webauth/login", {
-    method: "POST",
-    body: formData,
-  });
-  if (res) {
-    const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await backupkeys(publicKey);
-    if (status) {
-      await $irisGlobal.get("inbox").get(user.pub).put(true);
-    }
-  } else {
-    console.log("login error", res);
+  if (username?.value.length >= 3) {
+    try {
+      const formData = new FormData();
+      formData.append("user-handle", username?.value);
+      const user = await $irisSession.getKey();
+      const res: any = await $fetch("/webauth/login", {
+        method: "POST",
+        body: formData,
+      });
+      if (res) {
+        const publicKey = await Structured.fromJSON(res);
+        const status: boolean = await backupkeys(publicKey);
+        if (status) {
+          await $irisGlobal.get("webAuthLogin").get(user.pub).put(true);
+        }
+      } else {
+        console.log("login error", res);
+      }
+    } catch (error) {}
   }
-  return null;
 };
 const backupkeys = async (publicKey: any) => {
   const user = await $irisSession.getKey();
@@ -49,11 +60,11 @@ const backupkeys = async (publicKey: any) => {
         : await navigator.credentials.get({ publicKey });
     const body = {
       cred: await Structured.toJSON(credToJSON(cred)),
-      user,
+      userKeys: user,
     };
     try {
       await $fetch(
-        new JSONRequest("/webauth/backupkeys", { method: "POST", body })
+        new JSONRequest("/webauth/backup-keys", { method: "POST", body })
       );
       return true;
     } catch (error) {
@@ -129,13 +140,16 @@ const credToJSON = (x: any = {}): any => {
         </span>
         <Switch
           :checked="webAuthLogin"
-          :class="
+          :class="[
             webAuthLogin
               ? 'bg-green-200 cursor-not-allowed'
-              : 'bg-gray-200 cursor-pointer'
-          "
+              : 'bg-gray-200 cursor-pointer',
+            username?.length >= 3 ? 'cursor-pointer' : 'cursor-not-allowed',
+          ]"
           class="relative inline-flex h-[40px] px-3 w-40 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-          @click="!webAuthLogin ? enableWebAuthLogin() : null"
+          @click="
+            !webAuthLogin && username?.length >= 3 ? enableWebAuthLogin() : null
+          "
         >
           <span
             aria-hidden="true"
@@ -152,7 +166,7 @@ const credToJSON = (x: any = {}): any => {
         <span class="text-lg"> پاره ای توضیحات </span>
       </span>
     </div>
-    <SocialEnableWebAuth
+    <SocialWebAuthEnable
       :is-open="enableWebauthIsOpen"
       @close-modal="enableWebauthIsOpen = false"
     />

@@ -118,7 +118,7 @@ const credToJSON = (x: any = {}): any => {
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                ورود به کمک WebAuth
+                فعال سازی WebAuth
               </DialogTitle>
               <div class="mt-5">
                 <div class="form-group mb-6">

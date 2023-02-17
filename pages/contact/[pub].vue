@@ -12,7 +12,7 @@ useHead({
         <NuxtLink to="/contact" class="flex">تماس/</NuxtLink>
         <span class="flex mr-1">
           گفتگو با /
-          <SocialUserDetails :pub="thisPub" class="mr-2" />
+          <SocialUserName :pub="thisPub" class="mr-2" />
         </span>
       </h3>
     </div>

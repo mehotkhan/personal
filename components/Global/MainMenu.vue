@@ -2,26 +2,26 @@
 const { $irisSession } = useNuxtApp();
 const appConfig = useAppConfig();
 
-const user = $irisSession.getKey();
 const route = useRoute();
-
 const isAdmin = ref(false);
-
 const menuItems = appConfig.menuItems;
 
-const api: string = await $fetch("/check-admin", {
-  method: "POST",
-  body: {
-    pub: user.pub,
-  },
+onMounted(async () => {
+  const user = $irisSession?.getKey();
+  const api: string = await $fetch("/check-admin", {
+    method: "POST",
+    body: {
+      pub: user.pub,
+    },
+  });
+  try {
+    const response = JSON.parse(api);
+    isAdmin.value = response;
+  } catch (error) {
+    isAdmin.value = false;
+    // console.log(error);
+  }
 });
-try {
-  const response = JSON.parse(api);
-  isAdmin.value = response;
-} catch (error) {
-  isAdmin.value = false;
-  // console.log(error);
-}
 </script>
 
 <template>

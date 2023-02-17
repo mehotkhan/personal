@@ -3,37 +3,28 @@ import { JSONRequest } from "@worker-tools/json-fetch";
 import * as Structured from "@worker-tools/structured-json";
 import { Switch } from "@headlessui/vue";
 const { $SEA, $irisSession, $irisGlobal } = useNuxtApp();
-const user = $irisSession.getKey();
-
+const user = await $irisSession.getKey();
 const certsGenerated = ref(false);
 const enableWebauthIsOpen = ref(false);
-
-$irisGlobal
-  .get("inbox")
-  .get(user.pub)
-  .on((item: any) => {
-    if (item) {
-      certsGenerated.value = true;
-    }
-  });
+const username = ref<string>("");
 
 const generateCerts = async () => {
-  const user = $irisSession.getKey();
-
-  const formData = new FormData();
-  formData.append("user-handle", user.pub);
-  const res: any = await $fetch("/webauth/login", {
-    method: "POST",
-    body: formData,
-  });
-  if (res) {
-    const publicKey = await Structured.fromJSON(res);
-    const status: boolean = await setInboxCerts(publicKey);
-    if (status) {
-      await $irisGlobal.get("inbox").get(user.pub).put(true);
-    }
-  } else {
-    console.log("login error", res);
+  if (username?.value.length >= 3) {
+    try {
+      const formData = new FormData();
+      formData.append("user-handle", username?.value);
+      const res: any = await $fetch("/webauth/login", {
+        method: "POST",
+        body: formData,
+      });
+      if (res) {
+        const publicKey = await Structured.fromJSON(res);
+        const status: boolean = await setInboxCerts(publicKey);
+        if (status) {
+          await $irisGlobal.get("inbox").get(user.pub).put(true);
+        }
+      }
+    } catch (error) {}
   }
 };
 const setInboxCerts = async (publicKey: any) => {
@@ -43,6 +34,7 @@ const setInboxCerts = async (publicKey: any) => {
     user,
     null
   );
+
   if (publicKey) {
     const cred =
       "attestation" in publicKey
@@ -50,7 +42,7 @@ const setInboxCerts = async (publicKey: any) => {
         : await navigator.credentials.get({ publicKey });
     const body = {
       cred: await Structured.toJSON(credToJSON(cred)),
-      certificate,
+      certificate: JSON.parse(certificate.replace("SEA", "")),
     };
     try {
       await $fetch(
@@ -79,6 +71,24 @@ const credToJSON = (x: any = {}): any => {
   }
   return x;
 };
+onMounted(async () => {
+  await $irisGlobal
+    .get("hardwareKey")
+    .get(user.pub)
+    .on((item: any) => {
+      if (item) {
+        username.value = item;
+      }
+    });
+  await $irisGlobal
+    .get("inbox")
+    .get(user.pub)
+    .on((item: any) => {
+      if (item) {
+        certsGenerated.value = true;
+      }
+    });
+});
 </script>
 <template>
   <div class="w-full flex-col flex items-start">

@@ -26,6 +26,9 @@ try {
     <div class="flex justify-between items-center mt-10">
       <div class="flex items-start flex-col">
         <h3 class="flex text-5xl">صندوق ورودی</h3>
+        <p class="text-red-600 text-md font-bo">
+          این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!
+        </p>
       </div>
     </div>
     <div class="flex relative">

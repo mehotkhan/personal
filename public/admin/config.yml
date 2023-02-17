@@ -44,9 +44,9 @@ collections:
           required: false,
         }
 
-  - name: "product"
+  - name: "market"
     label: "محصول"
-    folder: "content/products"
+    folder: "content/market"
     create: true
     slug: "{{url}}"
     fields:

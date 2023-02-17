@@ -16,7 +16,7 @@ onMounted(() => {
     <div
       class="flex bg-gray-100 rounded-md w-full mt-1 items-center justify-between h-auto p-2"
     >
-      <SocialUserDetails :pub="comment.sender" />
+      <SocialUserName :pub="comment.sender" />
       <div class="text-gray-400 font-thin text-sm pt-1 mr-4">
         • {{ FromNow(comment?.from) }}
       </div>

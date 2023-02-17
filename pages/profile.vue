@@ -2,13 +2,45 @@
 useHead({
   title: "حساب کاربری",
 });
+const { $irisSession } = useNuxtApp();
+const isAdmin = ref(false);
+const editIsOpen = ref(false);
+onMounted(async () => {
+  const api: string = await $fetch("/check-admin", {
+    method: "POST",
+    body: {
+      pub: $irisSession.getKey().pub,
+    },
+  });
+
+  try {
+    const response = JSON.parse(api);
+    isAdmin.value = response;
+  } catch (error) {
+    isAdmin.value = false;
+    // console.log(error);
+  }
+});
 </script>
 <template>
   <section class="flex flex-col items-start">
-    <h2>حساب کاربری</h2>
+    <div class="flex justify-between items-center w-full">
+      <h3 class="flex">سلام {{ $irisSession.getMyName() }} : )</h3>
+      <span
+        class="flex pt-10 text-lg cursor-pointer"
+        @click="editIsOpen = true"
+      >
+        ویرایش اطلاعات کاربری
+        <IconUil:edit class="mr-2 flex" aria-hidden="true" />
+      </span>
+    </div>
     <div class="border-b-1 mb-4 w-full"></div>
     <p>پاره ای توضیحات در مورد نحوه کار این صفحه</p>
     <SocialUserSettings />
-    <SocialNetworkConfig />
+    <SocialNetworkConfig v-if="isDev() || isAdmin" />
+    <SocialUpdateProfile
+      :is-open="editIsOpen"
+      @close-modal="editIsOpen = false"
+    />
   </section>
 </template>
