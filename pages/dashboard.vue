@@ -5,22 +5,12 @@ useHead({
 definePageMeta({
   middleware: ["owner-auth"],
 });
-const addProductsIsOpen = ref(false);
 </script>
 <template>
   <section class="flex flex-col justify-center content-center pb-20">
     <div class="flex justify-between items-center w-full">
       <h3 class="flex">داشبورد</h3>
-      <span
-        class="flex pt-10 text-lg cursor-pointer justify-between items-center"
-        @click="addProductsIsOpen = true"
-      >
-        <IconUil:plus
-          class="ml-2 text-2xl flex text-green-600"
-          aria-hidden="true"
-        />
-        <span class="flex"> افزودن NFT </span>
-      </span>
+      <MarketAddNft />
     </div>
     <div class="border-b-1 mb-4 w-full"></div>
     <div class="flex flex-row">
@@ -46,9 +36,5 @@ const addProductsIsOpen = ref(false);
         <TablesLatestSelling />
       </div>
     </div>
-    <MarketAddNft
-      :is-open="addProductsIsOpen"
-      @close-modal="addProductsIsOpen = false"
-    />
   </section>
 </template>

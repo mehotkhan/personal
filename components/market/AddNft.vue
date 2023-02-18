@@ -12,11 +12,7 @@ import Web3Modal from "web3modal";
 import { marketplaceAddress } from "../../config";
 import NFTMarketplace from "../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 
-const props = defineProps({
-  isOpen: { type: Boolean, required: true, default: false },
-});
-
-const emit = defineEmits(["closeModal"]);
+const isOpen = ref(false);
 const name = ref("test");
 const productUrl = ref("https://alizemani.ir/market/nft-01");
 const price = ref(0.001);
@@ -43,13 +39,27 @@ const addNft = async () => {
     value: listingPrice,
   });
   await transaction.wait();
-  emit("closeModal");
+  isOpen.value = false;
 };
 </script>
 
 <template>
-  <TransitionRoot appear :show="props.isOpen" as="template">
-    <Dialog as="div" class="relative z-10" @close="emit('closeModal')">
+  <span
+    class="flex pt-10 text-lg cursor-pointer justify-between items-center"
+    @click="isOpen = true"
+  >
+    <IconUil:plus
+      class="ml-2 text-2xl flex text-green-600"
+      aria-hidden="true"
+    />
+    <span class="flex"> افزودن NFT </span>
+  </span>
+  <TransitionRoot appear :show="isOpen" as="template">
+    <Dialog
+      as="div"
+      class="relative z-10 overflow-hidden"
+      @close="isOpen = false"
+    >
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -62,7 +72,7 @@ const addNft = async () => {
         <div class="fixed inset-0 bg-black bg-opacity-25" />
       </TransitionChild>
 
-      <div class="fixed inset-0 overflow-y-auto overflow-hidden">
+      <div class="fixed inset-0">
         <div
           class="flex min-h-full items-center justify-center p-4 text-center"
         >
@@ -171,7 +181,7 @@ const addNft = async () => {
                 <button
                   type="button"
                   class="flex justify-center rounded-md-md border border-transparent bg-red-400 px-5 py-1"
-                  @click="emit('closeModal')"
+                  @click="isOpen = false"
                 >
                   بستن
                 </button>

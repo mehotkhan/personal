@@ -8,15 +8,12 @@ import {
 } from "@headlessui/vue";
 import { JSONRequest } from "@worker-tools/json-fetch";
 import * as Structured from "@worker-tools/structured-json";
-const props = defineProps({
-  isOpen: { type: Boolean, required: true, default: false },
-});
+
+const isOpen = ref(false);
 
 const { $irisSession } = useNuxtApp();
 const username = ref<string>("");
 const loading = ref(false);
-
-const emit = defineEmits(["closeModal"]);
 
 const webauthLogin = async () => {
   if (username.value?.length >= 3) {
@@ -32,9 +29,9 @@ const webauthLogin = async () => {
         const publicKey = await Structured.fromJSON(res);
         const loginKeys: any = await getLoginKeys(publicKey);
         if (loginKeys) {
-          await $irisSession.login(loginKeys);
+          $irisSession.login(loginKeys);
           loading.value = false;
-          emit("closeModal");
+          isOpen.value = false;
         }
       }
     } catch (error) {
@@ -79,8 +76,20 @@ const credToJSON = (x: any = {}): any => {
 </script>
 
 <template>
-  <TransitionRoot appear :show="props.isOpen" as="template">
-    <Dialog as="div" class="relative z-10" @close="emit('closeModal')">
+  <span
+    class="hover:underline cursor-pointer flex items-center"
+    @click="isOpen = true"
+  >
+    <IconMdi:fingerprint class="ml-2 flex" />
+
+    ورود به حساب
+  </span>
+  <TransitionRoot appear :show="isOpen" as="template">
+    <Dialog
+      as="div"
+      class="relative z-10 overflow-hidden"
+      @close="isOpen = false"
+    >
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -93,7 +102,7 @@ const credToJSON = (x: any = {}): any => {
         <div class="fixed inset-0 bg-black bg-opacity-25" />
       </TransitionChild>
 
-      <div class="fixed inset-0 overflow-y-auto">
+      <div class="fixed inset-0">
         <div
           class="flex min-h-full items-center justify-center p-4 text-center"
         >
@@ -137,7 +146,7 @@ const credToJSON = (x: any = {}): any => {
                 <button
                   type="button"
                   class="inline-flex justify-center rounded-md border border-transparent bg-red-400 px-5 py-1"
-                  @click="emit('closeModal')"
+                  @click="isOpen = false"
                 >
                   بستن
                 </button>
