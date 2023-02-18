@@ -18,4 +18,6 @@ export default defineAppConfig({
       to: "/about",
     },
   ],
+  testPrivateKey:
+    "2df315b5f48792766f855b4cb4ca1a14043c4102bbb174ad2d4d84b840077411",
 });

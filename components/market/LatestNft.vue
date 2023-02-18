@@ -4,7 +4,11 @@ import { marketplaceAddress } from "../../config";
 import NFTMarketplace from "../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 const items = ref<any[]>([]);
 const loadNFTs = async () => {
-  const provider = new ethers.providers.JsonRpcProvider();
+  // const provider = new ethers.providers.JsonRpcProvider();
+  const provider = new ethers.providers.JsonRpcProvider(
+    "https://rpc-mumbai.maticvigil.com"
+  );
+
   const contract = new ethers.Contract(
     marketplaceAddress,
     NFTMarketplace.abi,
