@@ -19,10 +19,7 @@ const { data }: any = await useAsyncData("page-data", () =>
             <p>
               {{ data?.description }}
             </p>
-            <ul class="flex flex-col mt-0 items-start mr-10 list-disc">
-              <li>بسته اول</li>
-              <li>بسته دوم</li>
-            </ul>
+            <MarketProductRelatedNft />
           </div>
           <div class="basis-1/2">
             <img class="w-full max-w-140 mx-auto" :src="data?.thumbnail" />

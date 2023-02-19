@@ -9,10 +9,10 @@ useHead({
     <p class="text-red-600 text-md font-bo">
       این بخش در حال توسعه است و هنوز قابلیت اجرایی ندارد!
     </p>
-    <MarketLatestNft />
-    <br />
     <MarketLatestMarket />
     <br />
+    <br />
+    <MarketMostSellingNft />
     <br />
   </section>
 </template>

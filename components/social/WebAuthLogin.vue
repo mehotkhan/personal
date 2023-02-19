@@ -8,10 +8,9 @@ import {
 } from "@headlessui/vue";
 import { JSONRequest } from "@worker-tools/json-fetch";
 import * as Structured from "@worker-tools/structured-json";
+const { $irisSession } = useNuxtApp();
 
 const isOpen = ref(false);
-
-const { $irisSession } = useNuxtApp();
 const username = ref<string>("");
 const loading = ref(false);
 

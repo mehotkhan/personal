@@ -21,13 +21,18 @@ const loadNFTs = async () => {
       try {
         const tokenUri = await contract.tokenURI(i.tokenId);
         const price = ethers.utils.formatUnits(i.price.toString(), "ether");
-        items.value.push({
-          price,
-          tokenUri,
-          tokenId: i.tokenId.toNumber(),
-          seller: i.seller,
-          owner: i.owner,
-        });
+        const tokenMetadata = JSON.parse(tokenUri);
+        if (tokenMetadata?.name) {
+          items.value.push({
+            price,
+            name: tokenMetadata.name,
+            product: tokenMetadata.product,
+            description: tokenMetadata.description,
+            tokenId: i.tokenId.toNumber(),
+            seller: i.seller,
+            owner: i.owner,
+          });
+        }
       } catch (error) {}
     })
   ).then(() => {
@@ -41,16 +46,17 @@ onMounted(() => {
 </script>
 <template>
   <div class="latest -mt-4">
-    <h3>جدیدترین NFT ها</h3>
-    <hr />
-    <div v-if="loading" role="status" class="max-w-sm animate-pulse">
-      <div class="h-2 bg-gray-300 rounded-full w-190 mb-7"></div>
-      <div class="h-2 bg-gray-300 rounded-full w-190 mb-7"></div>
+    <h4 class="my-6 border-b-1 border-gray-200 text-md pb-3">فروختنی ها</h4>
+    <div v-if="loading" role="status" class="max-w-full animate-pulse">
+      <div class="h-2 bg-gray-300 rounded-full w-full mb-7"></div>
+      <div class="h-2 bg-gray-300 rounded-full w-full mb-7"></div>
     </div>
-    <ul v-else>
+    <ul v-else class="text-lg">
       <li v-for="item in items" :key="item.tokenId" class="mb-2">
-        {{ item.tokenUri }}
-        <span class="font-thin"> / {{ `${item.price} Eth` }} </span>
+        {{ item.name }}
+        <span class="font-thin mr-2"> / {{ item.description }} </span>
+        <span class="font-thin mr-2"> / {{ `${item.price} Eth` }} </span>
+        <button class="font-thin mr-2">/ خرید</button>
       </li>
     </ul>
   </div>
