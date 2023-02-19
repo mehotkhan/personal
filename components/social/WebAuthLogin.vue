@@ -85,11 +85,7 @@ const credToJSON = (x: any = {}): any => {
     ورود به حساب
   </span>
   <TransitionRoot appear :show="isOpen" as="template">
-    <Dialog
-      as="div"
-      class="relative z-10 overflow-hidden"
-      @close="isOpen = false"
-    >
+    <Dialog as="div" class="relative z-10 overflow-hidden">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"

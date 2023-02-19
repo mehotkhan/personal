@@ -44,7 +44,7 @@ const updateUsername = async () => {
 
 <template>
   <TransitionRoot appear :show="props.isOpen" as="template">
-    <Dialog as="div" class="relative z-10" @close="emit('closeModal')">
+    <Dialog as="div" class="relative z-10">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
