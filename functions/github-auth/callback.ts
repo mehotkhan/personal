@@ -1,4 +1,4 @@
-function renderBody(status, content) {
+function renderBody(status: any, content: any) {
   const html = `
     <script>
       const receiveMessage = (message) => {
@@ -16,18 +16,8 @@ function renderBody(status, content) {
   return blob;
 }
 
-export async function onRequest(context) {
-  const {
-    request, // same as existing Worker API
-    env, // same as existing Worker API
-    params, // if filename includes [id] or [[path]]
-    waitUntil, // same as ctx.waitUntil in existing Worker API
-    next, // used for middleware or to fetch assets
-    data, // arbitrary space for passing data between middlewares
-  } = context;
-
-  const client_id = env.GITHUB_CLIENT_ID;
-  const client_secret = env.GITHUB_CLIENT_SECRET;
+export async function onRequest(context: any) {
+  const { request, env } = context;
 
   try {
     const url = new URL(request.url);
@@ -38,13 +28,17 @@ export async function onRequest(context) {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          "user-agent": "cloudflare-functions-github-oauth-login-demo",
+          "user-agent": "cloudflare-functions-github-oauth-login",
           accept: "application/json",
         },
-        body: JSON.stringify({ client_id, client_secret, code }),
+        body: JSON.stringify({
+          client_id: env.GITHUB_CLIENT_ID,
+          client_secret: env.GITHUB_CLIENT_SECRET,
+          code,
+        }),
       }
     );
-    const result = await response.json();
+    const result: any = await response.json();
     if (result.error) {
       return new Response(renderBody("error", result), {
         headers: {
@@ -66,7 +60,6 @@ export async function onRequest(context) {
       status: 200,
     });
   } catch (error) {
-    console.error(error);
     return new Response(error.message, {
       headers: {
         "content-type": "text/html;charset=UTF-8",

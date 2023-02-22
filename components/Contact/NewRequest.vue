@@ -4,7 +4,7 @@ const { $irisPublic, $irisPrivate, $irisSession } = useNuxtApp();
 const CreateNew = async () => {
   const user = $irisSession.getKey();
   try {
-    const api: string = await $fetch("/create-contact-request", {
+    const api: string = await $fetch("/contact/new-request", {
       method: "GET",
     });
     const response = JSON.parse(api);

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@cloudflare/workers-types': ^4.20230221.0
   '@headlessui/vue': 0.0.0-insiders.c7f6bc6
   '@iconify/json': ^2.2.26
   '@nomiclabs/hardhat-ethers': ^2.2.2
@@ -16,6 +17,7 @@ specifiers:
   '@types/node': ^18.14.0
   '@vueuse/nuxt': 9.13.0
   '@worker-tools/json-fetch': 2.1.0-pre.6
+  '@worker-tools/response-creators': 1.2.0-pre.6
   '@worker-tools/structured-json': 0.1.0-pre.4
   bowser: ^2.11.0
   chart.js: ^4.2.1
@@ -50,6 +52,7 @@ specifiers:
   vue: ^3.2.47
   vue-chartjs: ^5.2.0
   vue-tsc: ^1.1.7
+  web-uuid: 0.1.0-pre.1
   web3modal: ^1.9.12
   webpack: ^5.75.0
   windicss: ^3.5.6
@@ -58,7 +61,6 @@ dependencies:
   '@nomiclabs/hardhat-ethers': 2.2.2_metsxjxup4hfgxkchphssyuv5e
   '@nomiclabs/hardhat-waffle': 2.0.5_x42a5rxoh4op4jfd432c5rbepe
   '@openzeppelin/contracts': 4.8.1
-  '@worker-tools/json-fetch': 2.1.0-pre.6
   '@worker-tools/structured-json': 0.1.0-pre.4
   bowser: 2.11.0
   chart.js: 4.2.1
@@ -78,6 +80,7 @@ dependencies:
   windicss: 3.5.6
 
 devDependencies:
+  '@cloudflare/workers-types': 4.20230221.0
   '@headlessui/vue': 0.0.0-insiders.c7f6bc6_vue@3.2.47
   '@iconify/json': 2.2.26
   '@nuxt/content': 2.4.3
@@ -89,6 +92,8 @@ devDependencies:
   '@types/lodash': 4.14.191
   '@types/node': 18.14.0
   '@vueuse/nuxt': 9.13.0_nuxt@3.2.2+vue@3.2.47
+  '@worker-tools/json-fetch': 2.1.0-pre.6
+  '@worker-tools/response-creators': 1.2.0-pre.6
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-plugin-prettier: 4.2.1_u5wnrdwibbfomslmnramz52buy
@@ -108,6 +113,7 @@ devDependencies:
   vite: 4.1.4_hlkwzk2izwsolfmdrejei4vrty
   vue: 3.2.47
   vue-tsc: 1.1.7_typescript@4.9.5
+  web-uuid: 0.1.0-pre.1
   webpack: 5.75.0
 
 packages:
@@ -442,6 +448,10 @@ packages:
     resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@cloudflare/workers-types/4.20230221.0:
+    resolution: {integrity: sha512-Ge8csuFQMNv3hd8r85PFWv4KV6bHAtKoBaanTkjbbeJS+mizoiBn4OBva0CFQiGfRJklFSGd4OxuCuiK05kogg==}
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:
@@ -3514,7 +3524,11 @@ packages:
 
   /@worker-tools/json-fetch/2.1.0-pre.6:
     resolution: {integrity: sha512-x4aqUMc3gZ9ISx2RUIQSFkflgsEfL6lBbeZpb9Wtzg8EjzifaBAGQPpT5sgEsgy5ZtitA7OQqQpVwnd9eau3bQ==}
-    dev: false
+    dev: true
+
+  /@worker-tools/response-creators/1.2.0-pre.6:
+    resolution: {integrity: sha512-tY9CvyegTXzI0dCmvw25CwmctFa8ojhjmTLZmvPNPF2ETT3U4o4TvgFZd3eHcr9PKB4fF55TYZeHfgIsjCQ6Qw==}
+    dev: true
 
   /@worker-tools/structured-json/0.1.0-pre.4:
     resolution: {integrity: sha512-5Nu0L/1lS9bnui+pqVZn8uRg9HWWQyYfr0zwtO1GVojzom5AFS1l/Zw9UOVILFkNM+HwsOljOv2Q+5VQU/lTTA==}
@@ -3916,6 +3930,10 @@ packages:
     resolution: {integrity: sha512-cPau+CwFZLR/HeQrOCWhbmGcUiyfl8kvnKoazNX9zW/Tn7nKJCRe9Vfz2qOEf/rODgCTCvvCXMf0acV8vB0uOw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
+
+  /base64-encoding/0.15.0-alpha.0:
+    resolution: {integrity: sha512-uqf17NvS+fbYzYj0bVP4SfrzcppvDrGX60fDljhGhSUzKcCwoIRx8vOGGo35D24F+EkzEv4X8WljBu7ZzPZquw==}
+    dev: true
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -11174,6 +11192,10 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
+  /typed-array-utils/0.2.4:
+    resolution: {integrity: sha512-tttiItskXSSYIkbPfnYmSfL4nkcIxjUKyD4pZJCiwstGjpU4UwDBQfE6UR67xxikVFFcGduo3JCds4yKiA0RVQ==}
+    dev: true
+
   /typescript/4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
@@ -11512,6 +11534,12 @@ packages:
   /utils-merge/1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
+    dev: true
+
+  /uuid-class/0.13.0-alpha.1:
+    resolution: {integrity: sha512-uQ2ob9j0ybtr914d6Gh+TgQjtFnn4amJMP5mOJ9y69AbA9KKqK0RANjDOsTuonDffXKW7BlXSMvi+tOytY0WZw==}
+    dependencies:
+      typed-array-utils: 0.2.4
     dev: true
 
   /uuid/3.4.0:
@@ -11861,6 +11889,13 @@ packages:
   /web-streams-polyfill/3.2.1:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /web-uuid/0.1.0-pre.1:
+    resolution: {integrity: sha512-uvN0C9rJ9rn2T3xu8AxbTpsPe+MVb9klspbzxRCPpkLaiYs8pPPLeUiLbUv1v8AJowk+owBeBpqu4+uAuDvNTQ==}
+    dependencies:
+      base64-encoding: 0.15.0-alpha.0
+      uuid-class: 0.13.0-alpha.1
     dev: true
 
   /web3modal/1.9.12_react-is@18.2.0:

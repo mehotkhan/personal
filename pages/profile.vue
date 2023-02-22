@@ -6,19 +6,17 @@ const { $irisSession } = useNuxtApp();
 const isAdmin = ref(false);
 const editIsOpen = ref(false);
 onMounted(async () => {
-  const api: string = await $fetch("/check-admin", {
-    method: "POST",
-    body: {
-      pub: $irisSession.getKey().pub,
-    },
-  });
-
   try {
-    const response = JSON.parse(api);
-    isAdmin.value = response;
+    await $fetch("/owner/check", {
+      method: "POST",
+      body: {
+        pub: $irisSession.getKey().pub,
+      },
+    });
+
+    isAdmin.value = true;
   } catch (error) {
     isAdmin.value = false;
-    // console.log(error);
   }
 });
 </script>

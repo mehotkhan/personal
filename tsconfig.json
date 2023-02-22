@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["nuxt-windicss", "@vueuse/nuxt", "unplugin-icons/types/vue"]
+    "types": ["nuxt-windicss", "@vueuse/nuxt", "unplugin-icons/types/vue"],
+    "exclude": ["functions/**/*"]
   }
 }

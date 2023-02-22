@@ -7,18 +7,16 @@ useHead({
 const { $irisSession } = useNuxtApp();
 const user = $irisSession.getKey();
 const isAdmin = ref(false);
-const api: string = await $fetch("/check-admin", {
-  method: "POST",
-  body: {
-    pub: user.pub,
-  },
-});
 try {
-  const response = JSON.parse(api);
-  isAdmin.value = response;
+  await $fetch("/owner/check", {
+    method: "POST",
+    body: {
+      pub: user.pub,
+    },
+  });
+  isAdmin.value = true;
 } catch (error) {
   isAdmin.value = false;
-  // console.log(error);
 }
 </script>
 <template>

@@ -37,13 +37,13 @@ const reRender = () => {
 };
 
 const onSubmit = async () => {
-  const api: string = await $fetch("/human-detect", {
-    method: "POST",
-    body: {
-      token: token.value,
-    },
-  });
   try {
+    const api: string = await $fetch("/conversation/human-detect", {
+      method: "POST",
+      body: {
+        token: token.value,
+      },
+    });
     const response = JSON.parse(api);
     if (response?.success) {
       emit("passed", true);

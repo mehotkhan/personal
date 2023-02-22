@@ -1,4 +1,5 @@
-export async function onRequest(context) {
+import { ok, badRequest } from "@worker-tools/response-creators";
+export async function onRequestPost(context: any) {
   const body = await context.request.json();
   const { pub, path } = body;
   const dbKey = "comments" + path.replace(/-|\/|\./gi, ".");
@@ -7,11 +8,11 @@ export async function onRequest(context) {
   if (joinDb) {
     const joinArray = JSON.parse(joinDb);
     if (joinArray.includes(pub)) {
-      return new Response(true);
+      return ok();
     } else {
-      return new Response(false);
+      return badRequest();
     }
   } else {
-    return new Response(false);
+    return badRequest();
   }
 }

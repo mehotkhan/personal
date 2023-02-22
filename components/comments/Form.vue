@@ -12,78 +12,68 @@ const members = ref(0);
 const passHuman = (pass: boolean) => {
   isHuman.value = pass;
 };
-watch(isHuman, async (newHuman, oldHuman) => {
+watch(isHuman, async (newHuman, _) => {
   if (newHuman) {
     isJoinedConversation();
   }
 });
-watch(isJoined, async (newJoined, oldJoined) => {
+watch(isJoined, async (newJoined, _) => {
   if (newJoined) {
     isJoinedConversation();
   }
 });
 const isJoinedConversation = async () => {
-  const api: string = await $fetch("/is-joined-conversation", {
-    method: "POST",
-    body: {
-      pub: $irisSession.getKey().pub,
-      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
-    },
-  });
   try {
-    const response = JSON.parse(api);
-    if (response) {
-      isJoined.value = true;
-    } else {
-      isJoined.value = false;
-    }
+    await $fetch("/conversation/is-joined", {
+      method: "POST",
+      body: {
+        pub: $irisSession.getKey().pub,
+        path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
+      },
+    });
+    isJoined.value = true;
   } catch (error) {
-    console.log(error);
+    isJoined.value = false;
   }
 };
 
 const joinConversations = async () => {
-  const api: string = await $fetch("/join-conversations", {
-    method: "POST",
-    body: {
-      pub: $irisSession.getKey().pub,
-      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
-    },
-  });
   try {
-    const response = JSON.parse(api);
-    if (response) {
-      getMembers();
+    await $fetch("/conversation/join", {
+      method: "POST",
+      body: {
+        pub: $irisSession.getKey().pub,
+        path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
+      },
+    });
+    if (await followMembers()) {
       isJoined.value = true;
-      response?.forEach((newPub: string) => {
-        $irisPublic().get("follow").get(newPub).put(true);
-      });
     } else {
       isJoined.value = false;
     }
   } catch (error) {
-    console.log(error);
+    isJoined.value = false;
   }
 };
 
-const getMembers = async () => {
-  const api: string = await $fetch("/members-conversations", {
-    method: "POST",
-    body: {
-      path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
-    },
-  });
+const followMembers = async () => {
   try {
+    const api: string = await $fetch("/conversation/members", {
+      method: "POST",
+      body: {
+        path: route?.path.endsWith("/") ? route.path.slice(0, -1) : route?.path,
+      },
+    });
     const response: string[] = JSON.parse(api);
-    console.log(response);
     if (response?.length > 0) {
       response.forEach((newPub: string) => {
         $irisPublic().get("follow").get(newPub).put(true);
       });
       members.value = response.length;
     }
+    return true;
   } catch (error) {
-    console.log(error);
+    return false;
   }
 };
 
@@ -95,7 +85,7 @@ const sendComment = () => {
 };
 
 onMounted(() => {
-  getMembers();
+  followMembers();
 });
 </script>
 

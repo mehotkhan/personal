@@ -1,4 +1,4 @@
-export async function onRequest(context) {
+export async function onRequest(context: any) {
   const body = await context.request.json();
   const { path } = body;
   const dbKey = "comments" + path.replace(/-|\/|\./gi, ".");
