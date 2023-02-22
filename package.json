@@ -18,7 +18,7 @@
     "bowser": "^2.11.0",
     "chart.js": "^4.2.1",
     "ethereum-waffle": "^4.0.10",
-    "ethers": "6.0.5",
+    "ethers": "5.5.4",
     "fuse.js": "^6.6.2",
     "hardhat": "^2.12.7",
     "hark": "^1.2.3",
