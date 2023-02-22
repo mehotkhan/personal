@@ -9,7 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    'IconLogos:metamaskIcon': typeof import('~icons/logos/metamask-icon')['default']
     'IconMdi:fingerprint': typeof import('~icons/mdi/fingerprint')['default']
     'IconMdi:help': typeof import('~icons/mdi/help')['default']
     'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
