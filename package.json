@@ -47,6 +47,7 @@
     "@vueuse/nuxt": "9.13.0",
     "@worker-tools/json-fetch": "2.1.0-pre.6",
     "@worker-tools/response-creators": "1.2.0-pre.6",
+    "@worker-tools/shed": "0.1.0-pre.10",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",

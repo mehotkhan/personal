@@ -1,16 +1,7 @@
-const { $irisSession } = useNuxtApp();
-const user = $irisSession.getKey();
-
-export default defineNuxtRouteMiddleware(async () => {
-  if (!isDev()) {
-    try {
-      await $fetch("/owner/check", {
-        method: "POST",
-        body: {
-          pub: user.pub,
-        },
-      });
-    } catch (error) {
+export default defineNuxtRouteMiddleware(async (to, _) => {
+  const isOwner = await useOwner();
+  if (!isDev() && to.path === "/dashboard") {
+    if (!isOwner) {
       return navigateTo("/");
     }
   }

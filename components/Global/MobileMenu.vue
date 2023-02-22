@@ -1,27 +1,11 @@
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-const { $irisSession } = useNuxtApp();
 
 const appConfig = useAppConfig();
 const route = useRoute();
-const isAdmin = ref(false);
+const isOwner = await useOwner();
 
 const menuItems = appConfig.menuItems;
-
-onMounted(async () => {
-  const user = $irisSession?.getKey();
-  try {
-    await $fetch("/owner/check", {
-      method: "POST",
-      body: {
-        pub: user.pub,
-      },
-    });
-    isAdmin.value = true;
-  } catch (error) {
-    isAdmin.value = false;
-  }
-});
 </script>
 
 <template>
@@ -44,7 +28,7 @@ onMounted(async () => {
         class="absolute right-0 top-10 p-1 mt-2 w-56 origin-top-right bg-gray-200 z-10 border-b-1 border-gray-200 h"
       >
         <MenuItem
-          v-if="isDev() || isAdmin"
+          v-if="isDev() || isOwner"
           key="dashboard"
           v-slot="{ active }"
           class=""

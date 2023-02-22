@@ -129,7 +129,7 @@ onMounted(async () => {
         <span class="text-lg"> پاره ای توضیحات </span>
       </span>
     </div>
-    <SocialEnableWebAuth
+    <SocialWebAuthEnable
       :is-open="enableWebauthIsOpen"
       @close-modal="enableWebauthIsOpen = false"
     />

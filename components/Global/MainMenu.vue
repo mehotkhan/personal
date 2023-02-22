@@ -1,31 +1,14 @@
 <script lang="ts" setup>
-const { $irisSession } = useNuxtApp();
 const appConfig = useAppConfig();
 
 const route = useRoute();
-const isAdmin = ref(false);
+const isOwner = await useOwner();
 const menuItems = appConfig.menuItems;
-
-onMounted(async () => {
-  const user = $irisSession?.getKey();
-  try {
-    await $fetch("/owner/check", {
-      method: "POST",
-      body: {
-        pub: user.pub,
-      },
-    });
-    isAdmin.value = true;
-  } catch (error) {
-    isAdmin.value = false;
-    // console.log(error);
-  }
-});
 </script>
 
 <template>
   <ul class="list-none contents flex-col mt-8">
-    <li v-if="isDev() || isAdmin" key="dashboard">
+    <li v-if="isDev() || isOwner" key="dashboard">
       <NuxtLink
         to="/dashboard"
         class="hover:text-black py-1 px-3"

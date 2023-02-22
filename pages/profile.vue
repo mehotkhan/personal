@@ -2,23 +2,8 @@
 useHead({
   title: "حساب کاربری",
 });
-const { $irisSession } = useNuxtApp();
-const isAdmin = ref(false);
+const isOwner = await useOwner();
 const editIsOpen = ref(false);
-onMounted(async () => {
-  try {
-    await $fetch("/owner/check", {
-      method: "POST",
-      body: {
-        pub: $irisSession.getKey().pub,
-      },
-    });
-
-    isAdmin.value = true;
-  } catch (error) {
-    isAdmin.value = false;
-  }
-});
 </script>
 <template>
   <section class="flex flex-col items-start">
@@ -35,7 +20,7 @@ onMounted(async () => {
     <div class="border-b-1 mb-4 w-full"></div>
     <p>پاره ای توضیحات در مورد نحوه کار این صفحه</p>
     <SocialUserSettings />
-    <SocialNetworkConfig v-if="isDev() || isAdmin" />
+    <SocialNetworkConfig v-if="isDev() || isOwner" />
     <SocialUpdateProfile
       :is-open="editIsOpen"
       @close-modal="editIsOpen = false"

@@ -1,23 +1,10 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+const isOwner = await useOwner();
 
 useHead({
   title: "پیام‌ها",
 });
-const { $irisSession } = useNuxtApp();
-const user = $irisSession.getKey();
-const isAdmin = ref(false);
-try {
-  await $fetch("/owner/check", {
-    method: "POST",
-    body: {
-      pub: user.pub,
-    },
-  });
-  isAdmin.value = true;
-} catch (error) {
-  isAdmin.value = false;
-}
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
@@ -36,7 +23,7 @@ try {
       >
         <TabList class="border-b-1 pb-1 pt-4 w-full h-23 sticky top-0 bg-white">
           <Tab
-            v-if="isDev() || isAdmin"
+            v-if="isDev() || isOwner"
             v-slot="{ selected }"
             as="template"
             class="pl-10 cursor-pointer"
@@ -60,7 +47,7 @@ try {
           >
         </TabList>
         <TabPanels>
-          <TabPanel v-if="isDev() || isAdmin"> <ContactOwnerInbox /></TabPanel>
+          <TabPanel v-if="isDev() || isOwner"> <ContactOwnerInbox /></TabPanel>
           <TabPanel> <ContactArchive /> </TabPanel>
         </TabPanels>
       </TabGroup>
