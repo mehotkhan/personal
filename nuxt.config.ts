@@ -119,7 +119,7 @@ export default defineNuxtConfig({
       lang: "fa",
     },
     manifest: {
-      name: "علـی زِمـــانی :// توسعه دهنده وب",
+      name: "AliZemani.ir",
       short_name: "علـی زِمـــانی",
       theme_color: "#dee",
       background_color: "#ffffff",
