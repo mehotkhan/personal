@@ -1,8 +1,8 @@
-const { $irisSession } = useNuxtApp();
 
 export default async () => {
-  const user = await $irisSession.getKey();
+  const { $irisSession } = useNuxtApp();
   try {
+    const user = await $irisSession.getKey();
     const api = await $fetch("/owner/check", {
       method: "POST",
       body: {
