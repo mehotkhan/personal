@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@pinia/nuxt",
     "@nuxtjs/turnstile",
+    "@kevinmarrec/nuxt-pwa",
   ],
   components: true,
 
@@ -96,7 +97,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     reactivityTransform: false,
-    payloadExtraction: true,
+    payloadExtraction: false,
     treeshakeClientOnly: false,
   },
   routeRules: {
@@ -104,5 +105,27 @@ export default defineNuxtConfig({
     "/contact/**": { swr: true },
     // Static page generated on-demand once
     "/notes/**": { static: true },
+  },
+  pwa: {
+    workbox: {
+      enabled: true,
+      templatePath: "~/assets/sw.js",
+      workboxUrl: `/workbox/workbox-sw.js?${Date.now()}`,
+    },
+    meta: {
+      name: "علـی زِمـــانی :// توسعه دهنده وب",
+      author: "mehotkhan",
+      description: "یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند",
+      lang: "fa",
+    },
+    manifest: {
+      name: "علـی زِمـــانی :// توسعه دهنده وب",
+      short_name: "علـی زِمـــانی",
+      theme_color: "#dee",
+      background_color: "#ffffff",
+      start_url: "https://alizemani.ir/?source=pwa",
+      display: "standalone",
+      lang: "fa",
+    },
   },
 });

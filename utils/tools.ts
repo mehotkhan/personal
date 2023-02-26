@@ -1,6 +1,5 @@
 import moment from "moment-jalaali";
 import * as _ from "lodash";
-import fa from "moment/src/locale/fa";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import jalaliday from "jalaliday";
@@ -8,7 +7,6 @@ import jalaliday from "jalaliday";
 dayjs.extend(relativeTime);
 dayjs.extend(jalaliday);
 dayjs.locale("fa");
-moment.locale("fa", fa);
 moment.loadPersian({ dialect: "persian-modern", usePersianDigits: true });
 moment().format("jYYYY/jM/jD");
 
