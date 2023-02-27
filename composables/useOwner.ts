@@ -1,4 +1,3 @@
-
 export default async () => {
   const { $irisSession } = useNuxtApp();
   try {

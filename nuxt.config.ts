@@ -20,7 +20,7 @@ const GenerateContentPaths = (path: string, files_: string[] = []) => {
 
 export default defineNuxtConfig({
   ssr: false,
-  target: "static",
+  // target: "static",
 
   css: [
     "virtual:windi.css",
@@ -41,11 +41,11 @@ export default defineNuxtConfig({
   ],
   components: true,
 
-  app: {
-    // global transition
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
-  },
+  // app: {
+  //   // global transition
+  //   pageTransition: { name: "page", mode: "out-in" },
+  //   layoutTransition: { name: "layout", mode: "out-in" },
+  // },
   vite: {
     plugins: [
       Components({
@@ -65,7 +65,6 @@ export default defineNuxtConfig({
     ssrHandlers: false,
   },
 
-  // content
   content: {
     documentDriven: true,
     experimental: {
