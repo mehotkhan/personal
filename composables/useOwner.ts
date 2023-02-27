@@ -2,13 +2,13 @@ export default async () => {
   const { $irisSession } = useNuxtApp();
   try {
     const user = await $irisSession.getKey();
-    const api = await $fetch("/owner/check", {
+    await $fetch("/owner/check", {
       method: "POST",
       body: {
         pub: user.pub,
       },
     });
-    console.log(api);
+    // console.log(api);
     return true;
   } catch (error) {
     console.log("guest");

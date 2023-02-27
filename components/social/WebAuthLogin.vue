@@ -79,7 +79,7 @@ const credToJSON = (x: any = {}): any => {
     class="hover:underline cursor-pointer flex items-center"
     @click="isOpen = true"
   >
-    <IconMdi:fingerprint class="ml-2 flex" />
+    <IconMdi:fingerprint class="mx-2 flex" />
 
     ورود به حساب
   </span>

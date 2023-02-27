@@ -1,26 +1,9 @@
-<script setup lang="ts">
-const { $irisPublic } = useNuxtApp();
-const myName = ref("");
-
-onMounted(() => {
-  $irisPublic()
-    .get("profile")
-    .get("name")
-    .on((name: string) => {
-      myName.value = name;
-    });
-});
-</script>
-
 <template>
   <div class="items-center flex text-md">
-    <span class="ml-2">
-      <span class="text-thin"> :// </span>
-      {{ myName }}
-    </span>
+    <a href="https://github.com/mehotkhan" target="_blank" class="flex "> 
+      <IconUil:github class="text-md cursor-pointer" aria-hidden="true" />
+    </a>
     <IconUil:bell class="text-md mx-2 cursor-pointer" aria-hidden="true" />
-    <div class="flex items-center grayscale">
-      <SocialUserMenu class="cursor-pointer" aria-hidden="true" />
-    </div>
+    <SocialUserMenu class="ml-2 items-center flex" aria-hidden="true" />
   </div>
 </template>
