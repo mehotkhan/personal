@@ -11,9 +11,9 @@ const { data }: any = await useAsyncData("page-data", () =>
   <section class="flex flex-col justify-center content-center">
     <ContentRenderer :value="data">
       <section class="flex flex-col justify-center">
-        <div class="flex justify-between items-center min-h-140">
-          <div class="basis-1/2">
-            <h2>
+        <div class="flex justify-between items-center h-screen-sm">
+          <div class="basis-1/2 flex-col justify-start items-center">
+            <h2 class="mx-2">
               {{ data?.title }}
             </h2>
             <p>
@@ -21,17 +21,17 @@ const { data }: any = await useAsyncData("page-data", () =>
             </p>
             <MarketProductRelatedNft />
           </div>
-          <div class="basis-1/2">
-            <img class="w-full max-w-140 mx-auto" :src="data?.thumbnail" />
+          <div class="basis-1/2 flex justify-end items-center">
+            <img class="flex w-full max-w-140" :src="data?.thumbnail" />
           </div>
         </div>
         <div
-          class="flex relative"
+          class="flex relative justify-between"
           :class="data?.dir === 'ltr' ? '  flex-row-reverse' : 'flex-row'"
         >
           <div
-            class="basis-3/4 ml-10"
-            :class="data?.dir === 'ltr' ? 'ltr ml-10' : 'rtl mr-10'"
+            class="basis-3/4"
+            :class="data?.dir === 'ltr' ? 'ltr mr-10' : 'rtl ml-10'"
           >
             <ContentRendererMarkdown :value="data" class="content" />
             <Comments />

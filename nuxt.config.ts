@@ -21,7 +21,59 @@ const GenerateContentPaths = (path: string, files_: string[] = []) => {
 export default defineNuxtConfig({
   ssr: false,
   // target: "static",
+  app: {
+    head: {
+      titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
+      meta: [
+        {
+          name: "fontiran.com:license",
+          content: "7RP38A",
+        },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "theme-color", content: "#e5e7eb" },
+        {
+          hid: "description",
+          name: "description",
+          content: "یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند",
+        },
+      ],
 
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "192x192",
+          href: "/icons/android-chrome-192x192.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "512x512",
+          href: "/icons/android-chrome-512x512.png",
+        },
+        {
+          rel: "icon",
+          type: "apple-touch-icon",
+          sizes: "256x256",
+          href: "/icons/apple-touch-icon.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/icons/android-chrome-16x16.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/icons/android-chrome-192x192.png",
+        },
+      ],
+    },
+    pageTransition: { name: "page", mode: "out-in" },
+  },
   css: [
     "virtual:windi.css",
     "virtual:windi-devtools",
@@ -41,11 +93,6 @@ export default defineNuxtConfig({
   ],
   components: true,
 
-  // app: {
-  //   // global transition
-  //   pageTransition: { name: "page", mode: "out-in" },
-  //   layoutTransition: { name: "layout", mode: "out-in" },
-  // },
   vite: {
     plugins: [
       Components({
@@ -114,7 +161,6 @@ export default defineNuxtConfig({
     meta: {
       name: "علـی زِمـــانی :// توسعه دهنده وب",
       author: "mehotkhan",
-      description: "یادداشت های پراکنده از یک تکنولوژیست جوان و خردمند",
       lang: "fa",
     },
     manifest: {

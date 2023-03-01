@@ -5,9 +5,9 @@ const { data }: any = await useAsyncData("banner", () =>
 </script>
 <template>
   <ContentRenderer :value="data" class="">
-    <div class="flex justify-between items-center">
-      <div class="basis-1/2">
-        <h2>
+    <div class="flex justify-between items-center h-screen-sm">
+      <div class="basis-1/2 flex-col justify-start items-center">
+        <h2 class="mx-2">
           {{ data?.title }}
         </h2>
         <p>
@@ -27,8 +27,8 @@ const { data }: any = await useAsyncData("banner", () =>
           </li>
         </ul>
       </div>
-      <div class="basis-1/2">
-        <img class="w-full max-w-100 mx-auto my-0" :src="data?.thumbnail" />
+      <div class="basis-1/2 flex justify-end items-center">
+        <img class="flex w-full max-w-100" :src="data?.thumbnail" />
       </div>
     </div>
   </ContentRenderer>

@@ -84,7 +84,11 @@ const credToJSON = (x: any = {}): any => {
     ورود به حساب
   </span>
   <TransitionRoot appear :show="isOpen" as="template">
-    <Dialog as="div" class="relative z-10 overflow-hidden">
+    <Dialog
+      as="div"
+      class="relative z-10 overflow-hidden"
+      @close="isOpen = false"
+    >
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -149,7 +153,7 @@ const credToJSON = (x: any = {}): any => {
                   :class="username?.length >= 3 ? 'flex' : 'disabled'"
                   type="button"
                   class="inline-flex items-center rounded-md border border-transparent bg-green-400 px-5 py-1"
-                  @click="webauthLogin"
+                  @click="webauthLogin()"
                 >
                   ورود
                   <svg
