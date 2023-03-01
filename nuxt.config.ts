@@ -120,8 +120,8 @@ export default defineNuxtConfig({
     manifest: {
       name: "علـی زِمـــانی",
       short_name: "aliZemani.ir",
-      theme_color: "#E5E7EB",
-      background_color: "#ffffff",
+      theme_color: "#e5e7eb",
+      background_color: "#e5e7eb",
       start_url: "https://alizemani.ir/?source=pwa",
       display: "standalone",
       lang: "fa",
