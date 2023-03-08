@@ -11,7 +11,7 @@ export default async () => {
     // console.log(api);
     return true;
   } catch (error) {
-    console.log("guest");
+    // console.log("guest");
     return false;
   }
 };

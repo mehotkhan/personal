@@ -108,9 +108,9 @@ export default defineNuxtConfig({
       }),
     ],
   },
-  vueuse: {
-    ssrHandlers: false,
-  },
+  // vueuse: {
+  //   ssrHandlers: false,
+  // },
 
   content: {
     documentDriven: true,
@@ -142,16 +142,16 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    reactivityTransform: false,
+    // reactivityTransform: false,
     payloadExtraction: false,
     treeshakeClientOnly: false,
   },
-  routeRules: {
-    // Static page generated on-demand, revalidates in background
-    "/contact/**": { swr: true },
-    // Static page generated on-demand once
-    "/notes/**": { static: true },
-  },
+  // routeRules: {
+  //   // Static page generated on-demand, revalidates in background
+  //   "/contact/**": { swr: true },
+  //   // Static page generated on-demand once
+  //   "/notes/**": { static: true },
+  // },
   pwa: {
     workbox: {
       enabled: true,
