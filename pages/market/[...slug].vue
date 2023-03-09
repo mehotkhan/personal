@@ -19,7 +19,7 @@ const { data }: any = await useAsyncData("page-data", () =>
             <p>
               {{ data?.description }}
             </p>
-            <MarketProductRelatedNft />
+            <!-- <MarketProductRelatedNft /> -->
           </div>
           <div class="basis-1/2 flex justify-end items-center">
             <img class="flex w-full max-w-140" :src="data?.thumbnail" />
