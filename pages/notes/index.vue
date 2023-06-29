@@ -6,6 +6,6 @@ useHead({
 <template>
   <section class="flex flex-col justify-center content-center">
     <ContentDoc path="/pages/notes" />
-    <GlobalLatestNotes />
+    <LatestNotes />
   </section>
 </template>

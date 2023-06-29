@@ -1,44 +1,8 @@
 import moment from "moment-jalaali";
-import * as _ from "lodash";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import jalaliday from "jalaliday";
 
-dayjs.extend(relativeTime);
-dayjs.extend(jalaliday);
-dayjs.locale("fa");
 moment.loadPersian({ dialect: "persian-modern", usePersianDigits: true });
 moment().format("jYYYY/jM/jD");
 
-export const JalaliDate = (input: any[]) => {
-  return moment(input, "YYYY-MM-DD").format("jDD jMMMM jYYYY");
+export const JalaliDate = (input: string) => {
+  return moment(new Date(input)).format("jDD jMMMM jYYYY");
 };
-export const orderByDate = (input: any[]) =>
-  _.orderBy(
-    input,
-    [
-      (item: any) => {
-        return moment(item.date).format("YYYY-MM-DD");
-      },
-    ],
-    ["desc"]
-  );
-
-export const OrderByFrom = (input: any[]) =>
-  _.orderBy(input, ["from"], ["desc", "asc"]);
-
-export const OrderChat = (input: any[]) =>
-  _.orderBy(input, ["latestTime", "name"], ["desc", "asc"]);
-
-export const OrderInbox = (input: any[]) => {
-  return _.orderBy(input, "date", "desc");
-};
-
-export const OrderByFromReverse = (input: any[]) => {
-  return _.orderBy(input, ["time"], ["desc"]);
-};
-
-export const FromNow = (time: string) => {
-  return time && time.length > 3 && dayjs ? dayjs(time).fromNow() : "...";
-};
-export const isDev = () => process.env.NODE_ENV !== "production";

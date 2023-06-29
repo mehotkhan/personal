@@ -7,12 +7,9 @@
     >
       <div class="flex container justify-between py-4">
         <div class="flex items-center">
-          <GlobalMobileMenu class="text-md lg:hidden" />
-          <GlobalLogoArea />
-          <GlobalMainMenu class="text-md hidden md:text-sm lg:contents" />
-        </div>
-        <div class="flex">
-          <SocialUserNav />
+          <MobileMenu class="text-md lg:hidden" />
+          <LogoArea />
+          <MainMenu class="text-md hidden md:text-sm lg:contents" />
         </div>
       </div>
     </header>

@@ -1,26 +1,13 @@
 import fs from "fs";
 import WindiCSS from "vite-plugin-windicss";
 import Icons from "unplugin-icons/vite";
-import IconsResolver from "unplugin-icons/resolver";
 import Components from "unplugin-vue-components/vite";
-
-const GenerateContentPaths = (path: string, files_: string[] = []) => {
-  files_ = files_ || [];
-  const files = fs.readdirSync(path);
-  for (const i in files) {
-    const name = path + "/" + files[i];
-    if (fs.statSync(name).isDirectory()) {
-      GenerateContentPaths(name, files_);
-    } else {
-      files_.push(name.replace("content", "").replace(".md", ""));
-    }
-  }
-  return files_;
-};
+import IconsResolver from "unplugin-icons/resolver";
+import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
-  ssr: false,
-  // target: "static",
+  ssr: true,
+  target: "static",
   app: {
     head: {
       titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
@@ -79,20 +66,12 @@ export default defineNuxtConfig({
     "virtual:windi-devtools",
     "@/assets/scss/base.scss",
   ],
-  build: {
-    transpile: ["@headlessui/vue"],
-  },
   modules: [
     "unplugin-icons/nuxt",
     "nuxt-windicss",
     "@nuxt/content",
     "@vueuse/nuxt",
-    "@pinia/nuxt",
-    "@nuxtjs/turnstile",
-    "@kevinmarrec/nuxt-pwa",
   ],
-  components: true,
-
   vite: {
     plugins: [
       Components({
@@ -107,70 +86,30 @@ export default defineNuxtConfig({
         transformGroups: false,
       }),
     ],
+    build: {
+      watch: {},
+      sourcemap: false,
+      minify: true,
+      cleanCssOptions: { sourceMap: false },
+      rollupOptions: { treeshake: false },
+    },
   },
-  // vueuse: {
-  //   ssrHandlers: false,
-  // },
 
   content: {
     documentDriven: true,
-    experimental: {
-      clientDB: true,
-      stripQueryParameters: true,
-    },
-    markdown: {
-      mdc: true,
-    },
-    highlight: {
-      theme: "github-light",
-    },
   },
   typescript: {
     strict: true,
     typeCheck: false,
   },
-  turnstile: {
-    siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
-  },
   nitro: {
     prerender: {
-      crawlLinks: true,
-      routes: [
-        ...GenerateContentPaths("content/notes"),
-        ...GenerateContentPaths("content/market"),
-      ],
+      crawlLinks: false,
+      routes: GenerateRoutes(["notes"]),
     },
   },
   experimental: {
-    // reactivityTransform: false,
     payloadExtraction: false,
     treeshakeClientOnly: false,
-  },
-  // routeRules: {
-  //   // Static page generated on-demand, revalidates in background
-  //   "/contact/**": { swr: true },
-  //   // Static page generated on-demand once
-  //   "/notes/**": { static: true },
-  // },
-  pwa: {
-    workbox: {
-      enabled: true,
-      templatePath: "~/assets/sw.js",
-      workboxUrl: `/workbox/workbox-sw.js?${Date.now()}`,
-    },
-    meta: {
-      name: "علـی زِمـــانی :// توسعه دهنده وب",
-      author: "mehotkhan",
-      lang: "fa",
-    },
-    manifest: {
-      name: "علـی زِمـــانی",
-      short_name: "aliZemani.ir",
-      theme_color: "#e5e7eb",
-      background_color: "#e5e7eb",
-      start_url: "https://alizemani.ir/?source=pwa",
-      display: "standalone",
-      lang: "fa",
-    },
   },
 });
