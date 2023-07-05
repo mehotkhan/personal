@@ -3,7 +3,7 @@ import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
 const query: QueryBuilderParams = {
   path: "/notes",
   limit: 10,
-  sort: [{ order: 1 }],
+  sort: [{ date: -1 }],
 };
 </script>
 <template>

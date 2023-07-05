@@ -7,8 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    'IconUil:github': typeof import('~icons/uil/github')['default']
-    'IconUil:linkedin': typeof import('~icons/uil/linkedin')['default']
+    'IconUil:githubAlt': typeof import('~icons/uil/github-alt')['default']
+    'IconUil:linkedinAlt': typeof import('~icons/uil/linkedin-alt')['default']
+    'IconUil:twitterAlt': typeof import('~icons/uil/twitter-alt')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

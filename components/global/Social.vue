@@ -1,13 +1,13 @@
 <template>
-  <div class="flex justify-center w-full mb-3">
+  <div class="flex items-center">
     <a href="https://github.com/mehotkhan" target="_blank">
-      <IconUil:github class="mr-2 text-xl" />
+      <IconUil:github-alt class="ml-3" />
     </a>
     <a href="https://www.linkedin.com/in/ali-zemani/" target="_blank">
-      <IconUil:linkedin class="mr-2 text-xl" />
+      <IconUil:linkedin-alt class="ml-3" />
     </a>
     <a href="https://www.twitter.com/ZemaniAli/" target="_blank">
-      <IconUil:linkedin /> class="mr-2 text-xl" />
+      <IconUil:twitter-alt class="ml-3" />
     </a>
   </div>
 </template>
