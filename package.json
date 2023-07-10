@@ -30,6 +30,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "3.6.1",
+    "nuxt-gtag": "^0.5.7",
     "nuxt-windicss": "^2.6.1",
     "postcss": "8.4.25",
     "postcss-loader": "^7.3.3",

@@ -58,6 +58,9 @@ devDependencies:
   nuxt:
     specifier: 3.6.1
     version: 3.6.1(@types/node@20.4.1)(eslint@8.44.0)(sass@1.63.6)(typescript@5.1.6)
+  nuxt-gtag:
+    specifier: ^0.5.7
+    version: 0.5.7
   nuxt-windicss:
     specifier: ^2.6.1
     version: 2.6.1(vite@2.9.16)
@@ -1015,8 +1018,8 @@ packages:
     engines: {node: '>= 16'}
     dev: true
 
-  /@intlify/shared@9.3.0-beta.22:
-    resolution: {integrity: sha512-GS+OHgYcHaq7a+zC1dlVvEHUYHVPKPC/tV3OmFyKJ2Lm7qAFmX29MQn9WOG4WtUme86tPp5LRFz6mYL5VQUJqQ==}
+  /@intlify/shared@9.3.0-beta.24:
+    resolution: {integrity: sha512-AKxJ8s7eKIQWkNaf4wyyoLRwf4puCuQgjSChlDJm5JBEt6T8HGgnYTJLRXu6LD/JACn3Qwu6hM/XRX1c9yvjmQ==}
     engines: {node: '>= 16'}
     dev: true
 
@@ -1034,7 +1037,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 7.0.0(vue-i18n@9.2.2)
-      '@intlify/shared': 9.3.0-beta.22
+      '@intlify/shared': 9.3.0-beta.24
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       fast-glob: 3.3.0
@@ -1067,7 +1070,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 7.0.0(vue-i18n@9.2.2)
-      '@intlify/shared': 9.3.0-beta.22
+      '@intlify/shared': 9.3.0-beta.24
       js-yaml: 4.1.0
       json5: 2.2.3
       loader-utils: 2.0.4
@@ -1379,7 +1382,7 @@ packages:
     resolution: {integrity: sha512-7kr2VDirYIXqyTHqaiWCrfQLgUjAa4qAHzykJOspMCFJWalHU9SVfnv+cTOKGqoXQ4TWOCd09tEd7sLlMFTEqw==}
     hasBin: true
     dependencies:
-      '@nuxt/kit': 3.6.1
+      '@nuxt/kit': 3.6.2
       chalk: 5.3.0
       ci-info: 3.8.0
       consola: 3.2.3
@@ -6604,6 +6607,17 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /nuxt-gtag@0.5.7:
+    resolution: {integrity: sha512-Q6NRndEJ0phEfKdS4uLy3hpVBkgWGnG5KJ2dhVyCmbLXcfakkmf19f2WJ5uM2yUOg8rAkYgDjRb9XyAfE+okuA==}
+    dependencies:
+      '@nuxt/kit': 3.6.2
+      defu: 6.1.2
+      pathe: 1.1.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt-windicss@2.6.1(vite@2.9.16):

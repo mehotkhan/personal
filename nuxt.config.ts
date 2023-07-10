@@ -71,6 +71,7 @@ export default defineNuxtConfig({
     "nuxt-windicss",
     "@nuxt/content",
     "@vueuse/nuxt",
+    "nuxt-gtag",
   ],
   vite: {
     plugins: [
@@ -111,5 +112,8 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: false,
     treeshakeClientOnly: false,
+  },
+  gtag: {
+    id: "G-78646PGVN1",
   },
 });
