@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-start items-center">
-    <Turnstile
+    <NuxtTurnstile
       :key="key"
       v-model="token"
       class="flex w-75 h-16 bg-gray rounded-md overflow-hidden"

@@ -36,7 +36,7 @@ const sendComment = () => {
     <UTextarea v-model="commentMessage" color="gray" variant="outline" />
 
     <footer class="flex justify-between mt-2 items-center">
-      <CommentsHumanDetect v-if="isDev()" @passed="passHuman" />
+      <CommentsHumanDetect v-if="!isDev()" @passed="passHuman" />
 
       <UButton
         :disabled="!isHuman"
