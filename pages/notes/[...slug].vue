@@ -11,22 +11,21 @@
               <p>
                 {{ doc?.description }}
               </p>
-              <ul class="flex flex-row mt-0 list-none items-center">
-                <li key="category" class="text-lg ml-0">
+              <ul class="flex flex-row mt-0 list-none items-center gap-1">
+                <li key="category" class="text-lg">
                   {{ doc?.category }}
                 </li>
-                <li
-                  v-for="tag in doc?.tags"
-                  :key="tag"
-                  class="-mr-7 text-lg pl-0"
-                >
+                <li v-for="tag in doc?.tags" :key="tag" class="text-lg pl-0">
                   <span class="font-bold text-sm">،</span>
                   {{ tag }}
                 </li>
               </ul>
             </div>
             <div class="basis-1/2 flex justify-end items-center">
-              <img class="flex w-full max-w-100" :src="doc?.thumbnail" />
+              <nuxt-img
+                class="flex w-full max-w-[30rem]"
+                :src="doc?.thumbnail"
+              />
             </div>
           </div>
           <div
@@ -43,7 +42,7 @@
               class="relative basis-1/4"
               :class="doc?.dir === 'ltr' ? 'ml-10' : 'mr-10'"
             >
-              <ContentToc :post="doc" class="left-0 sticky top-30" />
+              <ContentToc :post="doc" class="left-0 sticky top-[7rem]" />
             </div>
           </div>
         </section>

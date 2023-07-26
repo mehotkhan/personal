@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 <template>
   <Html dir="rtl">
-    <Body class="flex">
+    <Body>
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

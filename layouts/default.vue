@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-screen relative">
+  <div class="">
     <slot name="app-before" />
     <div id="app-before"></div>
     <header
@@ -7,15 +7,15 @@
     >
       <div class="flex container justify-between items-center py-4">
         <div class="flex items-center">
-          <MobileMenu class="text-md lg:hidden" />
+          <!-- <MobileMenu class="text-md lg:hidden" /> -->
           <LogoArea />
           <MainMenu class="text-md hidden md:text-sm lg:contents" />
         </div>
         <Social class="flex items-center" />
       </div>
     </header>
-    <main class="bg-white flex container min-h-screen md:mt-20">
-      <div class="nuxt-content content-area prose-xl w-full font-normal px-20">
+    <main class="bg-white flex min-h-screen md:mt-20 w-full">
+      <div class="container prose-xl w-full font-normal px-20 mx-auto">
         <slot />
       </div>
       <slot name="app-after" />

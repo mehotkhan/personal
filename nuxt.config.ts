@@ -1,13 +1,11 @@
-import fs from "fs";
-import WindiCSS from "vite-plugin-windicss";
 import Icons from "unplugin-icons/vite";
 import Components from "unplugin-vue-components/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
-  ssr: true,
-  target: "static",
+  // ssr: true,
+  // target: "static",
   app: {
     head: {
       titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
@@ -61,14 +59,11 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
-  css: [
-    "virtual:windi.css",
-    "virtual:windi-devtools",
-    "@/assets/scss/base.scss",
-  ],
+  css: ["@/assets/scss/base.scss"],
   modules: [
     "unplugin-icons/nuxt",
-    "nuxt-windicss",
+    "@nuxt/image",
+    "@nuxthq/ui",
     "@nuxt/content",
     "@vueuse/nuxt",
     "nuxt-gtag",
@@ -83,9 +78,6 @@ export default defineNuxtConfig({
         ],
       }),
       Icons(),
-      WindiCSS({
-        transformGroups: false,
-      }),
     ],
     build: {
       watch: {},
@@ -96,9 +88,6 @@ export default defineNuxtConfig({
     },
   },
 
-  content: {
-    documentDriven: true,
-  },
   typescript: {
     strict: true,
     typeCheck: false,
