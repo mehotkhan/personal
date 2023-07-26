@@ -15,7 +15,7 @@
       </div>
     </header>
     <main class="bg-white flex min-h-screen md:mt-20 w-full">
-      <div class="container prose-xl w-full font-normal px-20 mx-auto">
+      <div class="container prose-xl w-full font-normal px-20 mx-auto leading-10 text-justify">
         <slot />
       </div>
       <slot name="app-after" />

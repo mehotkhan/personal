@@ -1,5 +1,8 @@
 export default defineAppConfig({
-  name: "alizemani.ir.dev_129",
+  ui: {
+    primary: "gray",
+    gray: "cool",
+  },
   menuItems: [
     {
       title: "یادداشت‌ها",

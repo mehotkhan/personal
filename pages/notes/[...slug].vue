@@ -2,7 +2,7 @@
   <section class="flex flex-col justify-center content-center">
     <ContentDoc>
       <template #default="{ doc }">
-        <section class="flex flex-col justify-center items-center">
+        <section class="flex flex-col">
           <div class="flex justify-between items-center h-screen-sm">
             <div class="basis-1/2 flex-col justify-start items-center">
               <h2>
@@ -37,6 +37,7 @@
               :class="doc?.dir === 'ltr' ? 'ltr mr-10' : 'rtl ml-10'"
             >
               <ContentRenderer :value="doc" class="content" />
+              <Comments />
             </div>
             <div
               class="relative basis-1/4"

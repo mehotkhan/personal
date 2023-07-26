@@ -67,6 +67,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@vueuse/nuxt",
     "nuxt-gtag",
+    "@nuxtjs/turnstile",
   ],
   vite: {
     plugins: [
@@ -104,5 +105,8 @@ export default defineNuxtConfig({
   },
   gtag: {
     id: "G-78646PGVN1",
+  },
+  turnstile: {
+    siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
   },
 });

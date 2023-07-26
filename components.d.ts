@@ -7,6 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'IconMdi:reload': typeof import('~icons/mdi/reload')['default']
+    'IconMdi:send': typeof import('~icons/mdi/send')['default']
+    'IconUil:commentShare': typeof import('~icons/uil/comment-share')['default']
     'IconUil:githubAlt': typeof import('~icons/uil/github-alt')['default']
     'IconUil:linkedinAlt': typeof import('~icons/uil/linkedin-alt')['default']
     'IconUil:twitterAlt': typeof import('~icons/uil/twitter-alt')['default']
