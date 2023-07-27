@@ -6,12 +6,12 @@ export function onRequest(context: any) {
     redirectUrl.searchParams.set("client_id", env.GITHUB_CLIENT_ID);
     redirectUrl.searchParams.set(
       "redirect_uri",
-      url.origin + "/github-auth/callback"
+      url.origin + "/github-auth/callback",
     );
     redirectUrl.searchParams.set("scope", "repo user");
     redirectUrl.searchParams.set(
       "state",
-      crypto.getRandomValues(new Uint8Array(12)).join("")
+      crypto.getRandomValues(new Uint8Array(12)).join(""),
     );
     return Response.redirect(redirectUrl.href, 301);
   } catch (error) {

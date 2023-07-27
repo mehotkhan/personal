@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { data }: any = useAsyncData("banner", () =>
-  queryContent("notes").where({ banner: true }).findOne()
+  queryContent("notes").where({ banner: true }).findOne(),
 );
 </script>
 <template>

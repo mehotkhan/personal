@@ -1,4 +1,8 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { registerNew } = useUser();
+
+registerNew();
+</script>
 <template>
   <Html dir="rtl">
     <Body>

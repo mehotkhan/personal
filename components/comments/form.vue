@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-
+const { profile } = useUser();
 const commentMessage = ref("");
 const isHuman = ref(false);
 
@@ -27,9 +27,9 @@ const sendComment = () => {
     <header
       class="flex justify-between items-center border-b border-gray-200 pb-2 mb-2"
     >
-      <div class="flex text-sm items-center">
-        <IconUil:commentShare class="ml-2 text-md flex" aria-hidden="true" />
-        <span class="block pt-2"> ۳۰ نظر</span>
+      <div class="flex text-md items-center">
+        <IconUil:user class="ml-2 text-sm flex" aria-hidden="true" />
+        <span class="block pt-2 text-md"> {{ profile.displayName }}</span>
       </div>
     </header>
 

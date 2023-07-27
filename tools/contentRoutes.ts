@@ -1,24 +1,24 @@
-import fs from 'fs'
+import fs from "fs";
 
 export const GenerateRoutes = (routes: string[]) => {
-  let contents: string[] = []
+  let contents: string[] = [];
   for (const i in routes) {
-    contents = contents.concat(Generating(routes[i]))
+    contents = contents.concat(Generating(routes[i]));
   }
-  return contents
-}
+  return contents;
+};
 
 const Generating = (path: string, files_: string[] = []) => {
-  files_ = files_ || []
-  const route = 'content/' + path
-  const files = fs.readdirSync(route)
+  files_ = files_ || [];
+  const route = "content/" + path;
+  const files = fs.readdirSync(route);
   for (const i in files) {
-    const name = route + '/' + files[i]
+    const name = route + "/" + files[i];
     if (fs.statSync(name).isDirectory()) {
-      Generating(name, files_)
+      Generating(name, files_);
     } else {
-      files_.push(name.replace('content', '').replace('.md', ''))
+      files_.push(name.replace("content", "").replace(".md", ""));
     }
   }
-  return files_
-}
+  return files_;
+};

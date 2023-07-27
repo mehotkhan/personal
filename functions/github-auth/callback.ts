@@ -36,7 +36,7 @@ export async function onRequest(context: any) {
           client_secret: env.GITHUB_CLIENT_SECRET,
           code,
         }),
-      }
+      },
     );
     const result: any = await response.json();
     if (result.error) {

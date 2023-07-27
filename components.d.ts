@@ -12,6 +12,7 @@ declare module 'vue' {
     'IconUil:githubAlt': typeof import('~icons/uil/github-alt')['default']
     'IconUil:linkedinAlt': typeof import('~icons/uil/linkedin-alt')['default']
     'IconUil:twitterAlt': typeof import('~icons/uil/twitter-alt')['default']
+    'IconUil:user': typeof import('~icons/uil/user')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

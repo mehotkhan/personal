@@ -68,6 +68,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-gtag",
     "@nuxtjs/turnstile",
+    "@vueuse/nuxt",
   ],
   vite: {
     plugins: [

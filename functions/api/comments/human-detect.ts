@@ -14,7 +14,7 @@ export async function onRequestPost(context: any) {
     {
       body: formData,
       method: "POST",
-    }
+    },
   );
   const outcome: any = await response.json();
   if (!outcome.success) {
