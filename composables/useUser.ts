@@ -37,8 +37,9 @@ export default () => {
       };
       profile.value = newProfile;
       uploadUserDetails(newProfile);
-      // loggedIn.value = true;
+      loggedIn.value = true;
     }
+    await getUserDetails(profile.value.pub);
   };
   const uploadUserDetails = async (details: any) => {
     console.log(details);
@@ -47,6 +48,26 @@ export default () => {
       method: "POST",
       body: details,
     });
+  };
+  const getUserDetails = async (pub: string) => {
+    try {
+      const api: string = await $fetch(
+        baseApiURL() + "members/get-user-details",
+        {
+          method: "GET",
+          params: {
+            pub,
+          },
+        }
+      );
+      const response: string[] = await JSON.parse(api);
+      console.log("server", response);
+
+      // return response;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   };
   // const UpdateUserDetails = async (userDetails: any) => {
   //   const { pub, priv } = profile.value;

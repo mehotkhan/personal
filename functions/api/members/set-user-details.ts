@@ -7,12 +7,6 @@ export async function onRequestPost(context: any) {
     return badRequest();
 
   const dbKey = "user-details/" + body.pub;
-  await env.DEFAULT_KV_NAMESPACE.put(
-    dbKey,
-    JSON.stringify({
-      about: body.about,
-      displayName: body.displayName,
-    }),
-  );
-  return ok();
+  await env.DEFAULT_KV_NAMESPACE.put(dbKey, JSON.stringify(body));
+  return ok(dbKey);
 }

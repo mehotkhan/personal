@@ -7,7 +7,8 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue .",
     "lint:fix": "eslint --fix --ext .ts,.js,.vue .",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "pages:dev": " wrangler pages dev .output/public --kv=DEFAULT_KV_NAMESPACE --local"
   },
   "dependencies": {
     "@noble/curves": "^1.1.0",

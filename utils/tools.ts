@@ -9,4 +9,6 @@ export const JalaliDate = (input: string) => {
 
 export const isDev = () => process.env.NODE_ENV !== "production";
 export const baseApiURL = () =>
-  process.env.NODE_ENV !== "production" ? "https://alizemani.ir/" : "/";
+  process.env.NODE_ENV === "production"
+    ? "https://alizemani.ir/api/"
+    : "http://127.0.0.1:8788/api/";
