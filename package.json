@@ -18,10 +18,11 @@
     "moment-jalaali": "^0.10.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230724.0",
     "@iconify/json": "^2.2.95",
     "@nuxt/content": "^2.7.2",
     "@nuxt/image": "1.0.0-rc.1",
-    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.6.0-28174464.8298b62",
+    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.6.0-28174501.ab2abae",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/turnstile": "^0.5.0",
     "@types/node": "^20.4.5",

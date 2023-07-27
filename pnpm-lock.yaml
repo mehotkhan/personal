@@ -22,6 +22,9 @@ dependencies:
     version: 0.10.0
 
 devDependencies:
+  '@cloudflare/workers-types':
+    specifier: ^4.20230724.0
+    version: 4.20230724.0
   '@iconify/json':
     specifier: ^2.2.95
     version: 2.2.95
@@ -32,8 +35,8 @@ devDependencies:
     specifier: 1.0.0-rc.1
     version: 1.0.0-rc.1
   '@nuxthq/ui':
-    specifier: npm:@nuxthq/ui-edge@2.6.0-28174464.8298b62
-    version: /@nuxthq/ui-edge@2.6.0-28174464.8298b62(vue@3.3.4)(webpack@5.88.2)
+    specifier: npm:@nuxthq/ui-edge@2.6.0-28174501.ab2abae
+    version: /@nuxthq/ui-edge@2.6.0-28174501.ab2abae(vue@3.3.4)(webpack@5.88.2)
   '@nuxtjs/eslint-config-typescript':
     specifier: ^12.0.0
     version: 12.0.0(eslint@8.45.0)(typescript@5.1.6)
@@ -416,6 +419,10 @@ packages:
     resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@cloudflare/workers-types@4.20230724.0:
+    resolution: {integrity: sha512-WuFlsai21oJhRMBHdkM0saIuK1Faitp/GXWj31Zlbe3cCtPNlwYtX5WkojDNWWAxX47LMHBF9wv7wrytNLabYA==}
     dev: true
 
   /@csstools/cascade-layer-name-parser@1.0.4(@csstools/css-parser-algorithms@2.3.1)(@csstools/css-tokenizer@2.2.0):
@@ -1308,8 +1315,8 @@ packages:
       - vue-tsc
     dev: true
 
-  /@nuxthq/ui-edge@2.6.0-28174464.8298b62(vue@3.3.4)(webpack@5.88.2):
-    resolution: {integrity: sha512-fvltLKsepY2YVLJKZ3rVCnEW5WvpOkrVDsi4WrwCA2IJYLr1/+sfw/gx9ccrlHnJbm2cdEJaEcDzgRZx03GXYQ==}
+  /@nuxthq/ui-edge@2.6.0-28174501.ab2abae(vue@3.3.4)(webpack@5.88.2):
+    resolution: {integrity: sha512-OqqB9HY231ple1fg6+mF2wK5ONBcfPCw/tba7GpJMd+i8KM4nqE2lFK8NpfFkgpfPYhkz0dLW2WHBMDsLB2kOQ==}
     engines: {node: '>=v16.14.0'}
     dependencies:
       '@egoist/tailwindcss-icons': 1.1.0(tailwindcss@3.3.3)

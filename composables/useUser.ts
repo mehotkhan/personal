@@ -58,7 +58,7 @@ export default () => {
           params: {
             pub,
           },
-        }
+        },
       );
       const response: string[] = await JSON.parse(api);
       console.log("server", response);
