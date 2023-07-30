@@ -1,5 +1,5 @@
 import { useStorage } from "@vueuse/core";
-import { secp256k1 } from "@noble/curves/secp256k1";
+import { secp256k1, schnorr } from "@noble/curves/secp256k1";
 import { bytesToHex } from "@noble/hashes/utils";
 
 const loggedIn = useStorage("loggedIn", false);
@@ -16,13 +16,12 @@ const profile = useStorage("current-user", {
 });
 
 export default () => {
-  if (typeof window === undefined) return;
   const registerNew = async () => {
+    if (typeof window === undefined) return;
+
     if (!loggedIn.value) {
-      const priv = secp256k1.utils.randomPrivateKey();
-      const privHash = bytesToHex(priv);
-      const pub = secp256k1.getPublicKey(priv);
-      const pubHash = bytesToHex(pub);
+      const priv = generatePrivateKey();
+      const pub = getPublicKey(priv);
       const randomName = SeedNames(pub);
       const guestProfile = "guest";
       const newProfile = {
@@ -33,18 +32,19 @@ export default () => {
         about: `یک ${randomName} تازه وارد :) `,
         email: "guest@guest.guest",
         avatar: null,
-        pub: pubHash,
-        priv: privHash,
+        pub,
+        priv,
       };
       profile.value = newProfile;
       uploadUserDetails(newProfile);
       loggedIn.value = true;
     }
-    await getUserDetails(profile.value.pub);
   };
   const uploadUserDetails = async (details: any) => {
+    if (typeof window === undefined) return;
+
     try {
-      await $fetch(baseApiURL() + "members/set-user-details", {
+      await useFunctions(baseApiURL() + "members/set-user-details", {
         method: "POST",
         body: details,
       });
@@ -52,8 +52,10 @@ export default () => {
   };
 
   const getUserDetails = async (pub: string) => {
+    if (typeof window === undefined) return;
+
     try {
-      const api: string = await $fetch(
+      const api: string = await useFunctions(
         baseApiURL() + "members/get-user-details",
         {
           method: "GET",
@@ -63,9 +65,9 @@ export default () => {
         }
       );
       const response: string[] = await JSON.parse(api);
-      console.log("server", api);
+      console.log("server", response);
 
-      // return response;
+      return response;
     } catch (error) {
       console.log(error);
       return null;
@@ -159,6 +161,14 @@ export default () => {
     // logOut,
     // UpdateUserDetails,
     // profileStream,
-    // getUserDetails,
+    getUserDetails,
   };
+};
+
+const generatePrivateKey = (): string => {
+  return bytesToHex(schnorr.utils.randomPrivateKey());
+};
+
+const getPublicKey = (privateKey: string): string => {
+  return bytesToHex(schnorr.getPublicKey(privateKey));
 };
