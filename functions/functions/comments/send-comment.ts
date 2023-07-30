@@ -18,6 +18,7 @@ export async function onRequestPost(context: any) {
     comment: body.comment,
     date: body.date,
     user: userPub,
+    path: body.path,
     commentId,
   };
   await env.ALIZEMANI.put(dbKey, JSON.stringify(commentBody));

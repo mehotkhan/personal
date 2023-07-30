@@ -4,12 +4,12 @@
   "compilerOptions": {
     "sourceMap": false,
     "strict": true,
-    "module": "es2022",
-    "target": "es2017",
+    "target": "es2020",
+    "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "types": ["@vueuse/nuxt", "unplugin-icons/types/vue"],
-    "exclude": ["functions/**/*"]
+    "exclude": ["functions/**/**"]
   }
 }
