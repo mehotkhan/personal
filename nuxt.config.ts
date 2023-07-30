@@ -4,8 +4,8 @@ import IconsResolver from "unplugin-icons/resolver";
 import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
-  // ssr: true,
-  // target: "static",
+  ssr: true,
+  target: "static",
   app: {
     head: {
       titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",

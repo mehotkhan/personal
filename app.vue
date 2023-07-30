@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 const { registerNew, profile, getUserDetails } = useUser();
-
-registerNew();
-getUserDetails(profile.value.pub);
+onMounted(() => {
+  registerNew();
+  getUserDetails(profile.value.pub);
+});
 </script>
 <template>
   <Html dir="rtl">
