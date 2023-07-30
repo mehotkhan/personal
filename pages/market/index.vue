@@ -1,13 +1,13 @@
 <script setup>
 useHead({
-  title: "یادداشت‌ها",
+  title: "بازارچه",
 });
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <ContentDoc path="/pages/notes" />
+    <ContentDoc path="/pages/market" />
     <h3>جدیدترین ورودی‌ها</h3>
     <hr />
-    <LatestItems service="notes" />
+    <LatestItems service="market" />
   </section>
 </template>

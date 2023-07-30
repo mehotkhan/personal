@@ -6,7 +6,7 @@ export async function onRequestGet(context: any) {
   const pub = searchParams.get("pub");
   if (pub === null) return badRequest();
   const dbKey = "user-details/" + pub;
-  const userDetails = await env.DEFAULT_KV_NAMESPACE.get(dbKey);
+  const userDetails = await env.ALIZEMANI.get(dbKey);
   if (userDetails) {
     return new Response(userDetails);
   } else {

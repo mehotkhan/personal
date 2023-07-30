@@ -1,16 +1,22 @@
 <script lang="ts" setup>
 import type { QueryBuilderParams } from "@nuxt/content/dist/runtime/types";
+const props = defineProps({
+  service: {
+    type: String,
+    required: false,
+    default: undefined,
+  },
+});
 const query: QueryBuilderParams = {
   path: "/notes",
   limit: 10,
   sort: [{ date: -1 }],
+  where: props.service ? [{ service: props.service }] : undefined,
 };
 </script>
 <template>
   <ContentList v-slot="{ list }" :query="query" class="nuxt-content">
     <div class="latest -mt-4">
-      <h3>جدیدترین ورودی‌ها</h3>
-      <hr />
       <ul>
         <li
           v-for="{ _path: slug, title, date, category } in list"

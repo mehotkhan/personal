@@ -16,6 +16,7 @@ const profile = useStorage("current-user", {
 });
 
 export default () => {
+  if (typeof window === undefined) return;
   const registerNew = async () => {
     if (!loggedIn.value) {
       const priv = secp256k1.utils.randomPrivateKey();
@@ -42,13 +43,14 @@ export default () => {
     await getUserDetails(profile.value.pub);
   };
   const uploadUserDetails = async (details: any) => {
-    console.log(details);
-
-    await $fetch(baseApiURL() + "members/set-user-details", {
-      method: "POST",
-      body: details,
-    });
+    try {
+      await $fetch(baseApiURL() + "members/set-user-details", {
+        method: "POST",
+        body: details,
+      });
+    } catch (error) {}
   };
+
   const getUserDetails = async (pub: string) => {
     try {
       const api: string = await $fetch(
@@ -58,10 +60,10 @@ export default () => {
           params: {
             pub,
           },
-        },
+        }
       );
       const response: string[] = await JSON.parse(api);
-      console.log("server", response);
+      console.log("server", api);
 
       // return response;
     } catch (error) {

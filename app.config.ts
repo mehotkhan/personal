@@ -9,8 +9,16 @@ export default defineAppConfig({
       to: "/notes",
     },
     {
+      title: "بازارچه",
+      to: "/market",
+    },
+    {
       title: "درباره‌من",
       to: "/about",
+    },
+    {
+      title: "تماس‌با‌من",
+      to: "/contact",
     },
   ],
 });
