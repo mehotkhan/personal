@@ -6,16 +6,13 @@ const props = defineProps({
     required: true,
   },
 });
-const commentBody = ref();
-onMounted(async () => {
-  commentBody.value = await getCommentData(props.commentKey);
-});
+const commentBody: any = await getCommentData(props.commentKey);
 </script>
 
 <template>
   <li class="border-b pb-3 pt-1">
     <span class="font-normal text-sm">
-      <MembersUserDetails :user-pub="commentBody?.user" />،
+      <UserDetails :pub="commentBody?.user" />
     </span>
     <span class="font-hairline text-xs"
       >{{ JalaliDate(commentBody?.date) }}

@@ -1,20 +1,16 @@
 <script setup lang="ts">
 const { getUserDetails } = useUser();
 const props = defineProps({
-  userPub: {
+  pub: {
     type: String,
     required: true,
   },
 });
-const userDetails = ref();
-
-onMounted(async () => {
-  userDetails.value = await getUserDetails(props.userPub);
-});
+const userDetails = await getUserDetails(props.pub);
 </script>
 
 <template>
-  <span>
+  <span :key="props.pub">
     {{ userDetails?.displayName ?? "بدون نام" }}
   </span>
 </template>

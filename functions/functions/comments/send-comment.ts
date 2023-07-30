@@ -13,7 +13,7 @@ export async function onRequestPost(context: any) {
   )
     return badRequest();
   const commentId = new WebUUID();
-  const dbKey = "comments/pending/" + body.path + "/" + commentId;
+  const dbKey = "comments/pending" + body.path + "/" + commentId;
   const commentBody = {
     comment: body.comment,
     date: body.date,
@@ -21,5 +21,5 @@ export async function onRequestPost(context: any) {
     commentId,
   };
   await env.ALIZEMANI.put(dbKey, JSON.stringify(commentBody));
-  return ok(dbKey);
+  return ok();
 }
