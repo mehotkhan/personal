@@ -11,6 +11,6 @@ export async function onRequestGet(context: any) {
   if (userDetails) {
     return new Response(userDetails);
   } else {
-    return new Response("null");
+    return new Response("");
   }
 }

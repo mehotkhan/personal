@@ -1,23 +1,28 @@
 <script setup lang="ts">
 const route = useRoute();
-const { profile, registerNew } = useUser();
+const { profile } = useUser();
+const { sendComment, getPendingComments } = useComments();
 const commentMessage = ref("");
 const isHuman = ref(false);
+const sending = ref(false);
 
 const passHuman = (pass: boolean) => {
   isHuman.value = pass;
 };
 
-watch(isHuman, async (newHuman, _) => {
-  if (newHuman) {
-    console.log("passed");
-  }
-});
+// watch(isHuman, async (newHuman, _) => {
+//   if (newHuman) {
+//     console.log("passed");
+//   }
+// });
 
-const sendComment = () => {
-  if (isHuman && commentMessage?.value.length >= 3) {
-    console.log(commentMessage.value);
-    commentMessage.value = "";
+const send = async () => {
+  if (isHuman && commentMessage?.value.length >= 5) {
+    // commentMessage.value = "";
+    sending.value = true;
+    await sendComment(commentMessage.value, route.path);
+    await getPendingComments();
+    sending.value = false;
   }
 };
 </script>
@@ -25,28 +30,26 @@ const sendComment = () => {
 <template>
   <div class="">
     <header
-      class="flex justify-between items-center border-b border-gray-200 pb-2 mb-2"
+      class="flex justify-between items-center border-b border-gray-200 pb-5 mb-2"
     >
-      <div
-        class="flex text-md items-center cursor-pointer"
-        @click="registerNew()"
-      >
+      <div class="flex text-md items-center cursor-pointer">
         <IconUil:user class="ml-2 text-sm flex" aria-hidden="true" />
         <span class="block pt-2 text-md"> {{ profile.displayName }}</span>
       </div>
     </header>
+    <UTextarea v-model="commentMessage" color="gray" class="w-full" />
 
-    <UTextarea v-model="commentMessage" color="gray" variant="outline" />
-
-    <footer class="flex justify-between mt-2 items-center">
+    <footer class="flex justify-end mt-2 items-center">
       <CommentsHumanDetect v-if="!isDev()" @passed="passHuman" />
 
       <UButton
-        :disabled="!isHuman"
+        :loading="sending"
+        class="mb-4"
+        size="md"
+        :disabled="commentMessage?.length < 5"
         label="ارسال دیدگاه"
-        variant="outline"
         color="gray"
-        @click="sendComment"
+        @click="send"
       />
     </footer>
   </div>

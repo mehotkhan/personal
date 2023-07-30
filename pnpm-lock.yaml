@@ -20,6 +20,9 @@ dependencies:
   moment-jalaali:
     specifier: ^0.10.0
     version: 0.10.0
+  web-uuid:
+    specifier: 0.1.0-pre.1
+    version: 0.1.0-pre.1
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -2613,6 +2616,10 @@ packages:
 
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+
+  /base64-encoding@0.15.0-alpha.0:
+    resolution: {integrity: sha512-uqf17NvS+fbYzYj0bVP4SfrzcppvDrGX60fDljhGhSUzKcCwoIRx8vOGGo35D24F+EkzEv4X8WljBu7ZzPZquw==}
+    dev: false
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -8987,6 +8994,10 @@ packages:
       is-typed-array: 1.1.12
     dev: true
 
+  /typed-array-utils@0.2.4:
+    resolution: {integrity: sha512-tttiItskXSSYIkbPfnYmSfL4nkcIxjUKyD4pZJCiwstGjpU4UwDBQfE6UR67xxikVFFcGduo3JCds4yKiA0RVQ==}
+    dev: false
+
   /typescript@5.1.6:
     resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
     engines: {node: '>=14.17'}
@@ -9343,6 +9354,12 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
+  /uuid-class@0.13.0-alpha.1:
+    resolution: {integrity: sha512-uQ2ob9j0ybtr914d6Gh+TgQjtFnn4amJMP5mOJ9y69AbA9KKqK0RANjDOsTuonDffXKW7BlXSMvi+tOytY0WZw==}
+    dependencies:
+      typed-array-utils: 0.2.4
+    dev: false
+
   /uuid@9.0.0:
     resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
@@ -9619,6 +9636,13 @@ packages:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
     dev: true
+
+  /web-uuid@0.1.0-pre.1:
+    resolution: {integrity: sha512-uvN0C9rJ9rn2T3xu8AxbTpsPe+MVb9klspbzxRCPpkLaiYs8pPPLeUiLbUv1v8AJowk+owBeBpqu4+uAuDvNTQ==}
+    dependencies:
+      base64-encoding: 0.15.0-alpha.0
+      uuid-class: 0.13.0-alpha.1
+    dev: false
 
   /web-worker@1.2.0:
     resolution: {integrity: sha512-PgF341avzqyx60neE9DD+XS26MMNMoUQRz9NOZwW32nPQrF6p77f1htcnjBSEV8BGMKZ16choqUG4hyI0Hx7mA==}

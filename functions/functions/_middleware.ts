@@ -18,21 +18,21 @@ export const onRequestOptions = async () => {
 
 // Set CORS to all /api responses
 export const onRequestGet = async ({ next, request }) => {
-  const incomingHeader = new Map(request.headers);
-  const ownerPub = incomingHeader.get("ownerpub");
-  const requestSign = incomingHeader.get("requestsign");
-  if (ownerPub === undefined || requestSign === undefined) return forbidden();
-  const payload = JSON.stringify(
-    URLSearchParamsToJson(new URL(request.url).searchParams)
-  );
+  // const incomingHeader = new Map(request.headers);
+  // const ownerPub = incomingHeader.get("ownerpub");
+  // const requestSign = incomingHeader.get("requestsign");
+  // if (ownerPub === undefined || requestSign === undefined) return forbidden();
+  // const payload = JSON.stringify(
+  //   URLSearchParamsToJson(new URL(request.url).searchParams)
+  // );
 
-  const isValid = schnorr.verify(
-    String(requestSign),
-    getEventHash(payload),
-    String(ownerPub)
-  );
+  // const isValid = schnorr.verify(
+  //   String(requestSign),
+  //   getEventHash(payload),
+  //   String(ownerPub)
+  // );
 
-  if (!isValid) return forbidden();
+  // if (!isValid) return forbidden();
   const response = await next();
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Max-Age", "86400");
@@ -40,17 +40,17 @@ export const onRequestGet = async ({ next, request }) => {
 };
 
 export const onRequestPost = async ({ next, request }) => {
-  const incomingHeader = new Map(request.headers);
-  const ownerPub = incomingHeader.get("ownerpub");
-  const requestSign = incomingHeader.get("requestsign");
-  if (ownerPub === undefined || requestSign === undefined) return forbidden();
-  const payload = JSON.stringify(await request.json());
-  const isValid = schnorr.verify(
-    String(requestSign),
-    getEventHash(payload),
-    String(ownerPub)
-  );
-  if (!isValid) return forbidden();
+  // const incomingHeader = new Map(request.headers);
+  // const ownerPub = incomingHeader.get("ownerpub");
+  // const requestSign = incomingHeader.get("requestsign");
+  // if (ownerPub === undefined || requestSign === undefined) return forbidden();
+  // const payload = JSON.stringify(await request.json());
+  // const isValid = schnorr.verify(
+  //   String(requestSign),
+  //   getEventHash(payload),
+  //   String(ownerPub)
+  // );
+  // if (!isValid) return forbidden();
   const response = await next();
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Max-Age", "86400");

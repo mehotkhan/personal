@@ -36,7 +36,7 @@
               class="basis-3/4"
               :class="doc?.dir === 'ltr' ? 'ltr mr-10' : 'rtl ml-10'"
             >
-              <ContentRenderer :value="doc" class="content" />
+              <!-- <ContentRenderer :value="doc" class="content" /> -->
               <Comments />
             </div>
             <div

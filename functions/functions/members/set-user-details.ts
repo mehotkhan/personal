@@ -8,5 +8,5 @@ export async function onRequestPost(context: any) {
 
   const dbKey = "user-details/" + body.pub;
   await env.ALIZEMANI.put(dbKey, JSON.stringify(body));
-  return ok(dbKey);
+  return ok();
 }
