@@ -1,11 +1,10 @@
 import Icons from "unplugin-icons/vite";
 import Components from "unplugin-vue-components/vite";
+import viteCompression from "vite-plugin-compression";
 import IconsResolver from "unplugin-icons/resolver";
 import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
-  ssr: true,
-  target: "static",
   app: {
     head: {
       titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
@@ -72,6 +71,7 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [
+      viteCompression({ algorithm: "brotliCompress" }),
       Components({
         resolvers: [
           IconsResolver({
@@ -85,7 +85,6 @@ export default defineNuxtConfig({
       watch: {},
       sourcemap: false,
       minify: true,
-      cleanCssOptions: { sourceMap: false },
       rollupOptions: { treeshake: false },
     },
   },
@@ -95,6 +94,7 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: false,
       routes: GenerateRoutes(["notes"]),

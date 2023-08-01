@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const { registerNew, profile, getUserDetails } = useUser();
-onMounted(() => {
-  registerNew();
-  getUserDetails(profile.value.pub);
-});
+// const { registerNew, profile, getUserDetails } = useUser();
+// onMounted(() => {
+//   registerNew();
+//   getUserDetails(profile.value.pub);
+// });
 </script>
 <template>
   <Html dir="rtl">

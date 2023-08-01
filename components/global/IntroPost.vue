@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data }: any = useAsyncData("banner", () =>
+const { data }: any = await useAsyncData("banner", () =>
   queryContent("notes").where({ banner: true }).findOne(),
 );
 </script>
