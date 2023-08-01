@@ -36,7 +36,7 @@ export default () => {
         priv,
       };
       profile.value = newProfile;
-      uploadUserDetails(newProfile);
+      // uploadUserDetails(newProfile);
       loggedIn.value = true;
     }
   };
