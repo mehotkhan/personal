@@ -1,28 +1,31 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
-
 const route = useRoute();
-const menuItems = appConfig.menuItems;
 </script>
 
 <template>
-  <ul class="list-none contents flex-col mt-8">
-    <li key="index">
-      <NuxtLink
-        to="/"
-        class="hover:text-black py-1 px-3"
-        :class="route.path === '/' ? 'router-link-active' : ''"
-        >صفحه‌نخست</NuxtLink
-      >
-    </li>
-    <li v-for="(menu, index) in menuItems" :key="index">
+  <ul
+    v-if="!route.path.startsWith('/manage')"
+    class="list-none contents flex-col mt-8"
+  >
+    <li v-for="(menu, index) in appConfig.menuItems" :key="index">
       <NuxtLink
         :to="menu.to"
         class="hover:text-black py-1 px-5"
         :class="
-          menu.to !== '/' && route.path.startsWith(menu.to)
-            ? 'router-link-active'
-            : ''
+          menu.to !== '/' && route.path == menu.to ? 'router-link-active' : ''
+        "
+        >{{ menu.title }}</NuxtLink
+      >
+    </li>
+  </ul>
+  <ul v-else-if="isOwner()" class="list-none contents flex-col mt-8">
+    <li v-for="(menu, index) in appConfig.manageMenuItems" :key="index">
+      <NuxtLink
+        :to="menu.to"
+        class="hover:text-black py-1 px-5"
+        :class="
+          menu.to !== '/' && route.path == menu.to ? 'router-link-active' : ''
         "
         >{{ menu.title }}</NuxtLink
       >

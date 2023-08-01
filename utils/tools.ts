@@ -12,3 +12,7 @@ export const baseApiURL = () =>
   process.env.NODE_ENV === "production"
     ? "https://alizemani.ir/functions/"
     : "http://127.0.0.1:8788/functions/";
+
+export const isOwner = () => {
+  return isDev();
+};

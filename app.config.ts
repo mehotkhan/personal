@@ -5,6 +5,10 @@ export default defineAppConfig({
   },
   menuItems: [
     {
+      title: "صفحه‌نخست",
+      to: "/",
+    },
+    {
       title: "یادداشت‌ها",
       to: "/notes",
     },
@@ -19,6 +23,24 @@ export default defineAppConfig({
     {
       title: "تماس‌با‌من",
       to: "/contact",
+    },
+  ],
+  manageMenuItems: [
+    {
+      title: "داشبورد",
+      to: "/manage",
+    },
+    {
+      title: "دیدگاه‌ها",
+      to: "/manage/comments",
+    },
+    {
+      title: "سفارش‌ها",
+      to: "/manage/orders",
+    },
+    {
+      title: "تیکت‌ها",
+      to: "/manage/tickets",
     },
   ],
 });
