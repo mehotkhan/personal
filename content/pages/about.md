@@ -1,60 +1,59 @@
 ---
 title: درباره من
-date: 2023-01-16T16:35:20.548Z
+tags:
+  - VUE3
+  - Frond end developer
+thumbnail: /content/cv_avatar_512x512.jpg
+description:
+  Ali is an accomplished individual with a strong back-ground in software systems, software management, professional programming and software developing.
+  Ali has contributed in about 100 software projects during thelast 10 years and he is continually evaluating and upgrading his skills so that he stays at the cutting edge of web development. Ali is a quick learner who can generate new ideas and can communicate clearly and effectively. He has a great interest in open source technologies and dedicates his leisure time to study and research in this field.Currently looking for an opportunity to join a dynamic and ambitious company that offers a unique work environment within which its staff can thrive and grow.
+dir: ltr
 ---
 
-## درباره من
+## Programming Languages
 
-<div class="ltr">
-<hr />
-Ali is an accomplished individual with a strong back-ground in software systems, software management, professional programming and software developing.
+Python, JavaScript, Golang, PHP
 
-Ali has contributed in about 100 software projects during thelast 10 years and he is continually evaluating and upgrading his skills so that he stays at the cutting edge of web development. Ali is a quick learner who can generate new ideas and can communicate clearly and effectively. He has a great interest in open source technologies and dedicates his leisure time to study and research in this field.Currently looking for an opportunity to join a dynamic and ambitious company that offers a unique work environment within which its staff can thrive and grow.
-<br />
-<br />
+## Operations Systems
 
-</div>
+Experience working in Unix/Linux server managment ,Debian ,Centos ,Arch ,Ubuntu
 
-## توانایی های فنی
+## Back-end Technologies
 
-<div class="ltr">
-
-<hr />
-
-**Programming Languages**: Python, JavaScript, Golang, PHP
-
-**Operations Systems**: Experience working in Unix/Linux server managment ,De-
-bian ,Centos ,Arch ,Ubuntu
-
-**Back-end Technologies**: Django (v1.11,v2) , DRF (django rest fremwork) ,Django
+Django (v1.11,v2) , DRF (django rest fremwork) ,Django
 Channel ,Flask microframwork ,Celery, ,express.js ,loopback(v3) ,GraphQL
 
-**Front-End Technologies**: React , vue.js ,hexo.js ,Bootstrap (v3,v4) , Material UI
+## Front-End Technologies
+
+React , vue.js ,hexo.js ,Bootstrap (v3,v4) , Material UI
 , redux enverioment , webpack ,SASS, SUSY, Jinja Template Engine.
 
-**Mobile App Technologies**: react-native (android only) , PWA Architecture
+## Mobile App Technologies
 
-**Dev-ops Technologies**: microservise architecture ,messaging platform , cluster
+react-native (android only) , PWA Architecture
+
+## Dev-ops Technologies 
+
+microservise architecture ,messaging platform , cluster
 managment platform , docker , k8s ,Nginx ,kafka ,EMQ (Mqtt broker) ,RabbitMQ
 
-**Team Managements Technologies**: Jira Platform , Git , Trello , Postman
+## Team-Managements Technologies
 
-**CMS Technologies**: Drupal theme and plugins (v7),wordpress theme and plugins
+- Jira Platform , Git , Trello , Postman
 
-**Database Technologies**: Mongodb , Postgresql ,Key-Value (redis), Neo4j
+## CMS Technologies
 
-**Social Data Analysis**: Experience working in Twiter Api , Telegram APi , Insta-
-gram Api
+Drupal theme and plugins (v7),wordpress theme and plugins
 
-</div>
+## Database Technologies
 
-<br />
+Mongodb , Postgresql ,Key-Value (redis), Neo4j
 
-## **تجربه های کاری**
+## Social Data Analysis
 
-<hr />
-<div class="ltr">
-<br/>
+Experience working in Twiter Api , Telegram APi , Instagram Api
+
+## Working Experience
 
 1. **Full Stack Developer**
    Jun 2019 , September 2019
@@ -96,5 +95,3 @@ gram Api
    • Designed Wordpress, Drupal, Bootstrap Theme
    • Designed Drupal/Angular Websites
    Sep 2014 - Jun 2015
-
-</div>
