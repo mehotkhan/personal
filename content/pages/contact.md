@@ -10,7 +10,7 @@ dir: rtl
 
 ## Email
 
-Sallam@alizemni.ir
+Sallam@alizemani.ir
 
 ## Github
 
