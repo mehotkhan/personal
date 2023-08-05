@@ -4,7 +4,6 @@ export default () => {
   const sendComment = async (comment: string, path: string) => {
     const body = {
       comment,
-      date: Date.now(),
       path,
     };
     try {
@@ -15,12 +14,15 @@ export default () => {
     } catch (error) {}
   };
 
-  const getPendingComments = async (): string[] => {
+  const getPendingComments = async (range?: number): string[] => {
     try {
       const api: string = await useFunctions(
         baseApiURL() + "comments/get-pending-comments",
         {
           method: "GET",
+          params: {
+            range: range ?? 12,
+          },
         }
       );
       pendingComments.value = await JSON.parse(api);

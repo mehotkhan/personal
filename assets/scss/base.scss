@@ -35,7 +35,8 @@ html {
   background-color: theme("colors.slate.400");
 }
 ul {
-  list-style: persian;
+  padding-right: 10px;
+  list-style: lower-alpha;
   li::marker {
     // background-color: #d1d5db;
     color: rgb(53, 53, 53);
@@ -43,7 +44,8 @@ ul {
 }
 .rtl {
   direction: rtl;
-  .latest ul {
+  .latest ul,
+  ul {
     list-style: persian;
   }
 }

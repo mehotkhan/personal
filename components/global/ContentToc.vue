@@ -18,7 +18,7 @@ const tocLinksH2: Ref<Array<HTMLElement>> = ref([]);
 const tocLinksH3: Ref<Array<HTMLElement>> = ref([]);
 
 const tocLinks = computed(() => props?.post?.body.toc.links ?? []);
-const dir = computed(() => props?.post.value?.dir);
+const dir = computed(() => props?.post?.dir);
 const tocTags = computed(() => props?.post.value?.tags ?? []);
 
 const onClick = (id: string) => {
@@ -50,9 +50,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="px-3 md:p-0 mb-5">
-    <h3 class="text-bold pb-2 mb-5 border-b border-gray-200">سرفصل‌ها</h3>
-    <nav class="flex" :class="dir === 'ltr' ? 'ltr' : 'rtl'">
+  <div class="px-3 md:p-0 mb-5" :class="dir === 'ltr' ? 'ltr' : 'rtl'">
+    <h3 class="text-bold pb-2 mb-5 border-b border-gray-200">
+      {{ dir === "ltr" ? "Sections" : "سرفصل‌ها" }}
+    </h3>
+    <nav class="flex">
       <div class="relative bg-secondary w-0.5 rounded">
         <div
           class="absolute left-0 w-full transition-all duration-200 rounded bg-red-500"
