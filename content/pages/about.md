@@ -53,6 +53,7 @@ Experience working in Unix/Linux server managment ,
 - Vue3
 - Tailwind CSS
 - Nuxt3
+- Wasm Technology
 - React
 - Hexo.js
 - Bootstrap (v3,v4) ,
@@ -110,6 +111,11 @@ Experience working in Unix/Linux server managment ,
 - Instagram Api
 - LinkedIn API
 
+## Web3 Technologies
+
+- Ethereum smart contract
+- IPFS Data Storage
+
 ## Working Experience
 
 - **Senior Frontend Developer**
@@ -123,12 +129,18 @@ Experience working in Unix/Linux server managment ,
   • Designed and developed webrtc SFU realtime video/audio confernce
   • Exprence with openAi API and Prompt engineering
 
+  • Exprence with Ethereum smart contract
+
+  
+
 - **Senior FullStack Developer**
 
   June 2019 , June 2021
   ITPIran , Bushehr, Iran
-  • Designed and developed React-Native Gomobile IFS Mobile Messenger
+  • Designed and developed React-Native Gomobile IPFS Mobile Messenger
   • Designed and developed Odoo ERP
+
+  
 
 - **Full Stack Developer**
   Jun 2019 , September 2019
