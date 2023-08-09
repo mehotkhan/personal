@@ -10,9 +10,11 @@
           <LogoArea />
           <MainMenu class="text-md hidden md:text-sm lg:contents" />
         </div>
-        <MobileMenu class="text-md lg:hidden" />
-        <ManageMenu v-if="isDev()" class="text-md lg:hidden" />
-        <Social class="items-center hidden md:flex" />
+        <div class="flex gap-3">
+          <MobileMenu class="text-md lg:hidden" />
+          <ManageMenu v-if="isDev()" class="text-md lg:hidden" />
+          <Social class="items-center hidden md:flex" />
+        </div>
       </div>
     </header>
     <main class="bg-white flex min-h-screen mt-20 w-full">

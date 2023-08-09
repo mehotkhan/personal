@@ -5,9 +5,7 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <ContentDoc path="/pages/market" />
-    <h3>جدیدترین ورودی‌ها</h3>
-    <hr />
+    <h3 class="border-b pb-5">جدیدترین محصولات</h3>
     <LatestItems service="market" />
   </section>
 </template>

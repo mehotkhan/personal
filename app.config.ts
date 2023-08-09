@@ -16,10 +16,6 @@ export default defineAppConfig({
       title: "درباره‌من",
       to: "/about",
     },
-    {
-      title: "تماس‌با‌من",
-      to: "/contact",
-    },
   ],
   manageMenuItems: [
     {

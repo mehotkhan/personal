@@ -14,7 +14,7 @@ Ali has contributed in about 100 software projects during the last 10 years and 
 
 - Github : [AliZemani / Github](https://github.com/mehotkhan)
 
-- LinkedIn : [AliZemani / AliZemani](https://www.linkedin.com/in/ali-zemani/)
+- LinkedIn : [AliZemani / LinkedIn](https://www.linkedin.com/in/ali-zemani/)
 
 - Twitter :[AliZemani / Twitter](https://twitter.com/ZemaniAli/)
 
