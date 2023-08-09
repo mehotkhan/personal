@@ -1,19 +1,21 @@
 <script lang="ts" setup>
 const { data }: any = await useAsyncData("banner", () =>
-  queryContent("notes").where({ banner: true }).findOne(),
+  queryContent("notes").where({ banner: true }).findOne()
 );
 </script>
 <template>
   <ContentRenderer :value="data" class="">
-    <div class="flex justify-between items-center h-screen-sm">
-      <div class="basis-1/2 flex-col justify-start items-center">
+    <div
+      class="flex flex-col-reverse md:flex-row justify-between items-center h-screen-sm"
+    >
+      <div class="basis-2/2 md:basis-1/2 flex-col justify-start items-center">
         <h2 class="mx-2">
           {{ data?.title }}
         </h2>
         <p>
           {{ data?.description }}
         </p>
-        <ul class="flex flex-row mt-0 list-none items-center gap-1">
+        <ul class="flex flex-row mt-0 list-none items-center">
           <li key="category" class="text-lg">
             {{ data?.category }}
             <span class="font-bold text-sm">،</span>
@@ -27,7 +29,7 @@ const { data }: any = await useAsyncData("banner", () =>
           </li>
         </ul>
       </div>
-      <div class="basis-1/2 flex justify-end items-center">
+      <div class="basis-2/2 md:basis-1/2 flex justify-end items-center">
         <nuxt-img class="flex w-full max-w-[30rem]" :src="data?.thumbnail" />
       </div>
     </div>

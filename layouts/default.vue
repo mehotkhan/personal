@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="flex-col flex">
     <slot name="app-before" />
     <div id="app-before"></div>
     <header
@@ -7,17 +7,16 @@
     >
       <div class="flex container justify-between items-center py-4">
         <div class="flex items-center">
-          <!-- <MobileMenu class="text-md lg:hidden" /> -->
           <LogoArea />
           <MainMenu class="text-md hidden md:text-sm lg:contents" />
         </div>
-        <Social class="flex items-center" />
+        <MobileMenu class="text-md lg:hidden" />
+        <ManageMenu v-if="isDev()" class="text-md lg:hidden" />
+        <Social class="items-center hidden md:flex" />
       </div>
     </header>
-    <main class="bg-white flex min-h-screen md:mt-20 w-full">
-      <div
-        class="container prose-xl w-full font-normal px-20 mx-auto leading-10 text-justify"
-      >
+    <main class="bg-white flex min-h-screen mt-20 w-full">
+      <div class="container prose-xl leading-10 text-justify">
         <slot />
       </div>
       <slot name="app-after" />
