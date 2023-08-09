@@ -14,7 +14,6 @@ declare module 'vue' {
     'IconUil:cog': typeof import('~icons/uil/cog')['default']
     'IconUil:githubAlt': typeof import('~icons/uil/github-alt')['default']
     'IconUil:linkedinAlt': typeof import('~icons/uil/linkedin-alt')['default']
-    'IconUil:menu': typeof import('~icons/uil/menu')['default']
     'IconUil:trashAlt': typeof import('~icons/uil/trash-alt')['default']
     'IconUil:twitterAlt': typeof import('~icons/uil/twitter-alt')['default']
     'IconUil:user': typeof import('~icons/uil/user')['default']
