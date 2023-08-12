@@ -9,6 +9,7 @@
         <div class="flex items-center">
           <LogoArea />
           <MainMenu class="text-md hidden md:text-sm lg:contents" />
+          <Notifications />
         </div>
         <div class="flex gap-3">
           <MobileMenu class="text-md lg:hidden" />

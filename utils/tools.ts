@@ -13,6 +13,11 @@ export const baseApiURL = () =>
     ? "https://alizemani.ir/functions/"
     : "http://127.0.0.1:8788/functions/";
 
+export const baseWebsocketURL = () =>
+  process.env.NODE_ENV === "production"
+    ? "wss://alizemani.ir/realtime"
+    : "ws://127.0.0.1:8788/realtime";
+
 export const isOwner = () => {
   return isDev();
 };
