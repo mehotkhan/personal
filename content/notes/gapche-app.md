@@ -1,5 +1,5 @@
 ---
-title: میروتالک
+title: گپ‌چه
 url: the-positron
 banner: true
 date: 2023-08-13

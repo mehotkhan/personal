@@ -47,8 +47,10 @@
               class="relative hidden md:block basis-1/4"
               :class="doc?.dir === 'ltr' ? 'ml-10' : 'mr-10'"
             >
-              <Cart v-if="doc?.service == 'market'" />
-              <ContentToc :post="doc" class="left-0 sticky top-[7rem]" />
+              <div class="left-0 sticky top-[7rem]">
+                <Cart v-if="doc?.service == 'market'" />
+                <ContentToc :post="doc" />
+              </div>
             </div>
           </div>
         </section>
