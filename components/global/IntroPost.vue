@@ -1,17 +1,33 @@
 <script lang="ts" setup>
-const { data }: any = await useAsyncData("banner", () =>
-  queryContent("notes").where({ banner: true }).findOne()
+const props = defineProps({
+  service: {
+    type: String,
+    required: true,
+    default: "notes",
+  },
+});
+const { data }: any = useAsyncData("banner", () =>
+  queryContent("notes")
+    .where({ banner: true, service: props.service })
+    .sort({ date: -1 })
+    .findOne()
 );
 </script>
 <template>
   <ContentRenderer :value="data" class="">
     <div
-      class="flex flex-col-reverse md:flex-row justify-between items-center h-screen-sm"
+      class="flex flex-col-reverse md:flex-row justify-between items-center h-screen-md"
     >
       <div class="basis-2/2 md:basis-1/2 flex-col justify-start items-center">
-        <h2 class="mx-2">
-          {{ data?.title }}
-        </h2>
+        <div class="items-center flex gap-3">
+          <h2 class="">
+            <NuxtLink :to="data?._path" class="">
+              {{ data?.title }}
+            </NuxtLink>
+          </h2>
+          <UBadge color="green" variant="solid">برگزیده</UBadge>
+        </div>
+
         <p>
           {{ data?.description }}
         </p>
@@ -30,7 +46,7 @@ const { data }: any = await useAsyncData("banner", () =>
         </ul>
       </div>
       <div class="basis-2/2 md:basis-1/2 flex justify-end items-center">
-        <nuxt-img class="flex w-full max-w-[30rem]" :src="data?.thumbnail" />
+        <nuxt-img class="flex w-full max-w-[35rem]" :src="data?.thumbnail" />
       </div>
     </div>
   </ContentRenderer>

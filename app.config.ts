@@ -13,6 +13,10 @@ export default defineAppConfig({
       to: "/notes",
     },
     {
+      title: "فروشگاه",
+      to: "/market",
+    },
+    {
       title: "درباره‌من",
       to: "/about",
     },

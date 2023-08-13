@@ -1,8 +1,7 @@
-<script setup>
+<script lang="ts" setup>
 useHead({
-  title: "یادداشت‌ها",
+  title: "فروشگاه",
 });
-
 const items = [
   {
     slot: "latest",
@@ -10,7 +9,7 @@ const items = [
   },
   {
     slot: "hottest",
-    label: "پربازدیدترین",
+    label: "پرفروش‌ترین",
   },
   {
     slot: "comments",
@@ -20,17 +19,17 @@ const items = [
 </script>
 <template>
   <section class="flex flex-col">
-    <IntroPost service="notes" />
+    <IntroPost service="market" />
     <UTabs :items="items" class="w-full min-h-[30rem]">
       <template #latest="{ item }">
-        <LatestItems service="notes" />
+        <LatestItems service="market" />
       </template>
 
       <template #hottest="{ item }">
-        <LatestItems service="notes" />
+        <LatestItems service="market" />
       </template>
       <template #comments="{ item }">
-        <LatestItems service="notes" />
+        <LatestItems service="market" />
       </template>
     </UTabs>
   </section>
