@@ -1,0 +1,13 @@
+export default defineNuxtRouteMiddleware(async (to, from) => {
+  const { checkMembers } = useMembers();
+  const isPublic = await checkMembers();
+  if (to.path.startsWith("/social") && !isPublic) {
+    return navigateTo("/auth");
+  }
+  if (to.path.startsWith("/manage") && !isPublic) {
+    return navigateTo("/auth");
+  }
+  if (to.path.startsWith("/auth") && isPublic) {
+    return navigateTo("/social");
+  }
+});

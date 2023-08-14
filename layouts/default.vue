@@ -25,5 +25,6 @@
       <slot name="app-after" />
       <div id="app-after"></div>
     </main>
+    <SupportStart />
   </div>
 </template>

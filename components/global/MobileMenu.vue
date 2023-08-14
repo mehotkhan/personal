@@ -6,7 +6,7 @@ const items = computed(() =>
       label: menu.title,
       click: () => navigateTo(menu.to),
     },
-  ])
+  ]),
 );
 </script>
 

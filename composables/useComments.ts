@@ -23,7 +23,7 @@ export default () => {
           params: {
             range: range ?? 12,
           },
-        }
+        },
       );
       pendingComments.value = await JSON.parse(api);
     } catch (error) {
@@ -41,7 +41,7 @@ export default () => {
           params: {
             commentKey,
           },
-        }
+        },
       );
 
       return await JSON.parse(api);

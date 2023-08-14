@@ -2,6 +2,8 @@ import Icons from "unplugin-icons/vite";
 import Components from "unplugin-vue-components/vite";
 import viteCompression from "vite-plugin-compression";
 import IconsResolver from "unplugin-icons/resolver";
+import { viteCommonjs } from "@originjs/vite-plugin-commonjs";
+
 import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
@@ -80,6 +82,7 @@ export default defineNuxtConfig({
         ],
       }),
       Icons(),
+      viteCommonjs(),
     ],
     build: {
       watch: {},
@@ -110,4 +113,31 @@ export default defineNuxtConfig({
   turnstile: {
     siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
   },
+  // routeRules: {
+  //   // Static page generated on-demand once
+  //   "/**": { static: true },
+  //   // Render these routes with SPA
+  //   "/auth/**": { ssr: false },
+  //   "/manage/**": { ssr: false },
+  //   "/social/**": { ssr: false },
+  // },
+  // pwa: {
+  //   registerType: 'autoUpdate',
+  //   workbox: {
+  //     navigateFallback: '/',
+  //     globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+  //   },
+  //   client: {
+  //     installPrompt: true,
+  //     // you don't need to include this: only for testing purposes
+  //     // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+  //     periodicSyncForUpdates: 20,
+  //   },
+  //   devOptions: {
+  //     enabled: true,
+  //     suppressWarnings: true,
+  //     navigateFallbackAllowlist: [/^\/$/],
+  //     type: 'module',
+  //   },
+  // },
 });

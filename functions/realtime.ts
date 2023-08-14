@@ -1,7 +1,7 @@
 import { WebUUID } from "web-uuid";
 
 export async function onRequest(context: any) {
-  let currentLength = 0;
+  const currentLength = 0;
   const upgradeHeader = context.request.headers.get("Upgrade");
   if (!upgradeHeader || upgradeHeader !== "websocket") {
     return new Response("Expected Upgrade: websocket", { status: 426 });
@@ -14,7 +14,7 @@ export async function onRequest(context: any) {
     const id = new WebUUID();
     server.send("NEW-MESSAGE" + id);
 
-    // await context.env.DEFAULT_KV_NAMESPACE.put(
+    // await context.env.ALIZEMANI.put(
     //   "messages/" + id,
     //   JSON.stringify(data)
     // );

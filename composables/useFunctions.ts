@@ -4,7 +4,7 @@ import { bytesToHex } from "@noble/hashes/utils";
 
 export function useFunctions<T>(
   request: Parameters<typeof $fetch<T>>[0],
-  opts?: Parameters<typeof $fetch<T>>[1]
+  opts?: Parameters<typeof $fetch<T>>[1],
 ) {
   const { profile } = useUser();
   let requestString = "";
@@ -14,7 +14,7 @@ export function useFunctions<T>(
     requestString = JSON.stringify(opts.body);
   }
   const sig = bytesToHex(
-    schnorr.sign(getEventHash(requestString), profile.value.priv)
+    schnorr.sign(getEventHash(requestString), profile.value.priv),
   );
   return $fetch<T, R>(request, {
     ...opts,
