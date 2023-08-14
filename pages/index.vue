@@ -7,6 +7,6 @@ useHead({
   <section class="flex flex-col">
     <IntroPost service="notes" />
     <h3 class="border-b pb-3">جدیدترین ورودی‌ها</h3>
-    <LatestItems />
+    <LatestItems service="notes" />
   </section>
 </template>

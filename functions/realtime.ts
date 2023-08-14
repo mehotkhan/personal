@@ -19,20 +19,20 @@ export async function onRequest(context: any) {
     //   JSON.stringify(data)
     // );
   });
-  setInterval(async () => {
-    const query = await context.env.ALIZEMANI.list({
-      // prefix: "comments/pending/",
-      prefix: "comments/pending/",
-    });
-    const pendingComments = await query.keys.map((item: any) => item.name);
-    if (currentLength === 0) {
-      currentLength = pendingComments.length;
-      server.send("NEW-MESSAGE-ARRAY:" + JSON.stringify(pendingComments));
-    } else if (currentLength !== pendingComments.length) {
-      currentLength = pendingComments.length;
-      server.send("NEW-MESSAGE-ARRAY:" + JSON.stringify(pendingComments));
-    }
-  }, 2000);
+  // setInterval(async () => {
+  //   const query = await context.env.ALIZEMANI.list({
+  //     // prefix: "comments/pending/",
+  //     prefix: "comments/pending/",
+  //   });
+  //   const pendingComments = await query.keys.map((item: any) => item.name);
+  //   if (currentLength === 0) {
+  //     currentLength = pendingComments.length;
+  //     server.send("NEW-MESSAGE-ARRAY:" + JSON.stringify(pendingComments));
+  //   } else if (currentLength !== pendingComments.length) {
+  //     currentLength = pendingComments.length;
+  //     server.send("NEW-MESSAGE-ARRAY:" + JSON.stringify(pendingComments));
+  //   }
+  // }, 2000);
 
   server.addEventListener("close", async (evt: any) => {
     console.log(evt);
