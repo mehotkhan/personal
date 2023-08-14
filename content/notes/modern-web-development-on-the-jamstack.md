@@ -17,7 +17,6 @@ description: In just the past few years, a flurry of advancements has greatly
   frameworks and API-based services.
 banner: false
 service: notes
-
 ---
 
 ## Introduction
@@ -109,7 +108,5 @@ ing for the web has become fun and fearless all over again.
 ## How to Get
 
 Download From Netlify (PDF): [oreilly-modern-web-development-on-the-jamstack.pdf](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf)
-
-
 
 <hr />
