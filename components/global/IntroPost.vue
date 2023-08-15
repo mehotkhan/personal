@@ -25,7 +25,6 @@ const { data }: any = useAsyncData("banner", () =>
               {{ data?.title }}
             </NuxtLink>
           </h2>
-          <UBadge color="green" variant="solid">برگزیده</UBadge>
         </div>
 
         <p>
