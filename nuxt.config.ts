@@ -118,7 +118,7 @@ export default defineNuxtConfig({
   //   "/**": { static: true },
   //   // Render these routes with SPA
   //   "/auth/**": { ssr: false },
-  //   "/manage/**": { ssr: false },
+  //   "/dash/**": { ssr: false },
   //   "/social/**": { ssr: false },
   // },
   // pwa: {

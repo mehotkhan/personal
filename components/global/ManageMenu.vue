@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const appConfig = useAppConfig();
 const items = computed(() =>
-  appConfig.manageMenuItems.map((menu: any) => [
+  appConfig.dashMenuItems.map((menu: any) => [
     {
       label: menu.title,
       click: () => navigateTo(menu.to),
     },
-  ]),
+  ])
 );
 </script>
 

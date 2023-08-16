@@ -12,31 +12,35 @@ export default defineAppConfig({
       title: "یادداشت‌ها",
       to: "/notes",
     },
-    // {
-    //   title: "فروشگاه",
-    //   to: "/market",
-    // },
+    {
+      title: "فروشگاه",
+      to: "/market",
+    },
     {
       title: "درباره‌من",
       to: "/about",
     },
   ],
-  manageMenuItems: [
+  dashMenuItems: [
     {
       title: "داشبورد",
-      to: "/manage",
+      to: "/dash",
+    },
+    {
+      title: "یادداشت‌ها",
+      to: "/dash/notes",
     },
     {
       title: "دیدگاه‌ها",
-      to: "/manage/comments",
+      to: "/dash/comments",
     },
     {
       title: "سفارش‌ها",
-      to: "/manage/orders",
+      to: "/dash/orders",
     },
     {
       title: "تیکت‌ها",
-      to: "/manage/tickets",
+      to: "/dash/tickets",
     },
   ],
 });

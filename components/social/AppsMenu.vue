@@ -69,8 +69,8 @@ const isSuperuser = () => {
       <li v-if="isSuperuser()">
         <NuxtLink
           class="flex items-center justify-start w-full cursor-pointer"
-          to="/manage"
-          :class="route.path.startsWith('/manage') ? 'router-link-active' : ''"
+          to="/dash"
+          :class="route.path.startsWith('/dash') ? 'router-link-active' : ''"
         >
           <IconUil:setting class="text-xl text-orange" aria-hidden="true" />
           <h3 class="text-sm flex mr-5">مدیریت</h3>

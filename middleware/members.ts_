@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   if (to.path.startsWith("/social") && !isPublic) {
     return navigateTo("/auth");
   }
-  if (to.path.startsWith("/manage") && !isPublic) {
+  if (to.path.startsWith("/dash") && !isPublic) {
     return navigateTo("/auth");
   }
   if (to.path.startsWith("/auth") && isPublic) {

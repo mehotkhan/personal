@@ -5,7 +5,7 @@ const route = useRoute();
 
 <template>
   <ul
-    v-if="!route.path.startsWith('/manage')"
+    v-if="!route.path.startsWith('/dash')"
     class="list-none contents flex-col mt-8"
   >
     <li v-for="(menu, index) in appConfig.menuItems" :key="index">
@@ -20,7 +20,7 @@ const route = useRoute();
     </li>
   </ul>
   <ul v-else-if="isOwner()" class="list-none contents flex-col mt-8">
-    <li v-for="(menu, index) in appConfig.manageMenuItems" :key="index">
+    <li v-for="(menu, index) in appConfig.dashMenuItems" :key="index">
       <NuxtLink
         :to="menu.to"
         class="hover:text-black py-1 px-5"

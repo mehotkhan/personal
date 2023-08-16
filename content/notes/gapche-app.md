@@ -1,7 +1,7 @@
 ---
 title: گپ‌چه
 url: the-positron
-banner: true
+banner: false
 date: 2023-08-13
 category: محصول
 tags:

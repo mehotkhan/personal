@@ -59,7 +59,7 @@ const { profile } = useUser();
             <SocialStreamFilters class="w-70" />
           </div>
           <div
-            v-else-if="route.path.startsWith('/manage')"
+            v-else-if="route.path.startsWith('/dash')"
             class="flex relative w-full justify-start"
           >
             <ManageNavbar class="w-full text-xl" />
