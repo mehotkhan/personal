@@ -23,7 +23,9 @@
     "@types/markdown-it": "^13.0.0",
     "@vueuse/rxjs": "^10.3.0",
     "@worker-tools/structured-json": "0.1.0-pre.4",
+    "chart.js": "^4.3.3",
     "dexie": "^3.2.4",
+    "editorjs-html": "^3.4.3",
     "jalaliday": "^2.3.0",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",
@@ -32,6 +34,7 @@
     "nostr-relaypool": "^0.6.28",
     "nostr-tools": "^1.14.0",
     "nuxt": "3.6.5",
+    "vue-chartjs": "^5.2.0",
     "web-uuid": "0.1.0-pre.1"
   },
   "devDependencies": {

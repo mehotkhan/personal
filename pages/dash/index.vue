@@ -5,7 +5,8 @@ useHead({
 </script>
 <template>
   <section class="flex flex-col justify-center content-center">
-    <h3>داشبورد</h3>
-    <hr />
+    <div class="w-full h-[20rem]">
+      <DashboardBasicCharts />
+    </div>
   </section>
 </template>
