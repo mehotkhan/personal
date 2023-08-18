@@ -72,6 +72,9 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
   ],
   vite: {
+    optimizeDeps: {
+      include: ["@editorjs/editorjs"],
+    },
     plugins: [
       viteCompression({ algorithm: "brotliCompress" }),
       Components({

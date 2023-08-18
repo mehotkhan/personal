@@ -13,6 +13,9 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.27.2",
+    "@editorjs/header": "^2.7.0",
+    "@editorjs/list": "^1.8.0",
     "@noble/curves": "^1.1.0",
     "@noble/hashes": "^1.3.1",
     "@nuxt/image-edge": "1.0.0-rc.1-28180077.d51e794",
@@ -21,6 +24,7 @@
     "@vueuse/rxjs": "^10.3.0",
     "@worker-tools/structured-json": "0.1.0-pre.4",
     "dexie": "^3.2.4",
+    "editorjs-html": "^3.4.3",
     "jalaliday": "^2.3.0",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",
@@ -32,13 +36,11 @@
     "web-uuid": "0.1.0-pre.1"
   },
   "devDependencies": {
-    "@blowstack/ckeditor5-full-free-build": "^27.0.1",
-    "@ckeditor/ckeditor5-vue": "^5.1.0",
     "@cloudflare/workers-types": "^4.20230814.0",
-    "@iconify/json": "^2.2.102",
+    "@iconify/json": "^2.2.103",
     "@nuxt/content": "^2.7.2",
     "@nuxt/image": "1.0.0-rc.1",
-    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.7.0-28200741.b8b7d74",
+    "@nuxthq/ui": "npm:@nuxthq/ui-edge@2.7.0-28203683.72b33a4",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/turnstile": "^0.5.1",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -54,7 +56,7 @@
     "nuxt": "3.6.5",
     "nuxt-gtag": "^0.6.1",
     "prettier": "^3.0.2",
-    "sass": "1.65.1",
+    "sass": "1.66.0",
     "sass-loader": "^13.3.2",
     "typescript": "^5.1.6",
     "unplugin-icons": "0.16.5",
