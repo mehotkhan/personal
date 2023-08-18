@@ -10,7 +10,7 @@ export const JalaliDate = (input: string) => {
 export const isDev = () => process.env.NODE_ENV !== "production";
 export const baseApiURL = () =>
   process.env.NODE_ENV === "production"
-    ? "https://alizemani.ir/functions/"
+    ? "/functions/"
     : "http://127.0.0.1:8788/functions/";
 
 export const baseWebsocketURL = () =>
@@ -19,7 +19,7 @@ export const baseWebsocketURL = () =>
     : "ws://127.0.0.1:8788/realtime";
 
 export const isOwner = () => {
-  return isDev();
+  return true;
 };
 
 export const timeFilter = [
@@ -119,7 +119,7 @@ export const resizeImage = async (file: File, size: number): Promise<File> => {
     x,
     y,
     width * ratio,
-    height * ratio,
+    height * ratio
   );
 
   return new Promise((resolve) => {
@@ -128,13 +128,13 @@ export const resizeImage = async (file: File, size: number): Promise<File> => {
         resolve(blob);
       },
       "image/webp",
-      1,
+      1
     );
   });
 };
 
 export const validateEmail = (email: string) => {
   return email.match(
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 };

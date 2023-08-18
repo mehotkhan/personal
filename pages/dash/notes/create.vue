@@ -110,7 +110,7 @@ const save = () => {
       </div>
     </div>
 
-    <client-only><DashboardEditorJs v-model="dat" /></client-only>
+    <DashboardEditorJs v-model="dat" />
   </section>
 </template>
 <style>

@@ -7,6 +7,7 @@ import { viteCommonjs } from "@originjs/vite-plugin-commonjs";
 import { GenerateRoutes } from "./tools/contentRoutes";
 
 export default defineNuxtConfig({
+  ssr: true,
   app: {
     head: {
       titleTemplate: "%s - علی زِمانی://طراح و توسعه دهنده وب",
@@ -72,9 +73,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
   ],
   vite: {
-    optimizeDeps: {
-      include: ["@editorjs/editorjs"],
-    },
     plugins: [
       viteCompression({ algorithm: "brotliCompress" }),
       Components({
@@ -116,14 +114,10 @@ export default defineNuxtConfig({
   turnstile: {
     siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
   },
-  // routeRules: {
-  //   // Static page generated on-demand once
-  //   "/**": { static: true },
-  //   // Render these routes with SPA
-  //   "/auth/**": { ssr: false },
-  //   "/dash/**": { ssr: false },
-  //   "/social/**": { ssr: false },
-  // },
+  routeRules: {
+    "/**": { static: true },
+    "/dash/**": { ssr: false },
+  },
   // pwa: {
   //   registerType: 'autoUpdate',
   //   workbox: {
