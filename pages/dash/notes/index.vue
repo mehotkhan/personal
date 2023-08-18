@@ -28,13 +28,13 @@ const columns = [
 
 const selectedColumns = ref(columns);
 const columnsTable = computed(() =>
-  columns.filter((column) => selectedColumns.value.includes(column))
+  columns.filter((column) => selectedColumns.value.includes(column)),
 );
 
 // Selected Rows
 const selectedRows = ref([]);
 
-function select(row:any) {
+function select(row: any) {
   const index = selectedRows.value.findIndex((item) => item.id === row.id);
   if (index === -1) {
     selectedRows.value.push(row);
@@ -100,7 +100,7 @@ const pageCount = ref(10);
 const pageTotal = ref(200); // This value should be dynamic coming from the API
 const pageFrom = computed(() => (page.value - 1) * pageCount.value + 1);
 const pageTo = computed(() =>
-  Math.min(page.value * pageCount.value, pageTotal.value)
+  Math.min(page.value * pageCount.value, pageTotal.value),
 );
 
 // Data
@@ -123,7 +123,7 @@ const { data: todos, pending } = await useLazyAsyncData(
   {
     default: () => [],
     watch: [page, search, searchStatus, pageCount],
-  }
+  },
 );
 const items = [
   [

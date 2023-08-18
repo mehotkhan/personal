@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { isPublicMember } = useMembers()
+const { isPublicMember } = useMembers();
 
 watch(isPublicMember, (incoming) => {
   if (!incoming) {
-    navigateTo('/auth')
+    navigateTo("/auth");
   }
-})
+});
 </script>
 <template>
   <div>
