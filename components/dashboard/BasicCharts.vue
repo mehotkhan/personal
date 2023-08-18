@@ -22,7 +22,7 @@ ChartJS.register(
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
 );
 
 const data = ref<ChartData<"bar">>({
