@@ -12,7 +12,7 @@
         <IconUil:twitter-alt class="ml-3" />
       </a>
     </div>
-    <div v-if="isDev()" class="flex items-center">
+    <div class="flex items-center">
       <NuxtLink to="/dashboard">
         <IconUil:cog class="ml-3" />
       </NuxtLink>
