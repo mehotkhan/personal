@@ -9,9 +9,7 @@ onMounted(() => {
   <Html dir="rtl">
     <Body>
       <NuxtLayout>
-        <UContainer>
-          <NuxtPage />
-        </UContainer>
+        <NuxtPage />
       </NuxtLayout>
       <UNotifications />
     </Body>

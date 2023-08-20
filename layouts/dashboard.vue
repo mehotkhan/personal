@@ -1,57 +1,34 @@
-<script setup lang="ts">
-const { isPublicMember } = useMembers();
-
-watch(isPublicMember, (incoming) => {
-  if (!incoming) {
-    navigateTo("/auth");
-  }
-});
-</script>
 <template>
-  <div>
+  <div class="flex-col flex">
     <slot name="app-before" />
     <div id="app-before"></div>
-    <slot name="header">
-      <SocialNavbar class="bg-white px-[3rem]" />
-    </slot>
+    <header
+      class="fixed w-full top-0 bg-gray-200 z-10 border-b-1 border-gray-200"
+    >
+      <div class="flex container justify-between items-center py-4">
+        <div class="flex items-center">
+          <LogoArea />
+          <MainMenu class="text-md hidden md:text-sm lg:contents" />
+          <Notifications />
+        </div>
+        <div class="flex gap-3">
+          <MobileMenu class="text-md lg:hidden" />
+          <ManageMenu class="text-md lg:hidden" />
+          <Social class="items-center hidden md:flex" />
+        </div>
+      </div>
+    </header>
     <Suspense>
-      <section
-        class="flex bg-gray-100 pb-[2rem] pt-[7rem] px-[3rem] h-screen overflow-hidden"
-      >
-        <aside v-if="isPublicMember" class="basis-1/12 mx-3">
-          <SocialAppsMenu />
+      <section class="flex bg-gray-100 pb-[2rem] pt-[7rem] px-[3rem]">
+        <aside class="basis-1/12 mx-3">
+          <SocialAppsMenu class="sticky top-[7rem]" />
         </aside>
 
-        <div
-          class="px-4 relative"
-          :class="isPublicMember ? 'mx-0 basis-11/12' : 'mx-auto basis-9/12'"
-        >
+        <div class="basis-11/12 flex min-h-screen">
           <slot />
         </div>
       </section>
     </Suspense>
-
-    <slot name="app-after" />
-    <div id="app-after"></div>
+    <SupportStart />
   </div>
 </template>
-<style>
-::-webkit-scrollbar {
-  width: 17px;
-}
-::-webkit-scrollbar-track {
-  position: absolute;
-  left: 0 !important;
-  background: transparent;
-  border-left: 1px solid transparent;
-}
-::-webkit-scrollbar-thumb {
-  border: 4px solid transparent;
-  background-clip: padding-box;
-  border-radius: 9999px;
-  background-color: #ebebeb;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: #ddd;
-}
-</style>

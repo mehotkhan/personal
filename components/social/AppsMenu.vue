@@ -7,7 +7,7 @@ const isSuperuser = () => {
 </script>
 <template>
   <UCard>
-    <ul class="flex-col items-center justify-start space-y-5 w-full">
+    <ul class="flex-col items-center justify-start space-y-5 w-full list-none">
       <li>
         <NuxtLink
           class="flex items-center justify-start w-full cursor-pointer"
@@ -81,7 +81,7 @@ const isSuperuser = () => {
 </template>
 <style scoped>
 .router-link-active {
-  border-right: 5px solid #dc780a;
+  border-right: 5px solid #ddd;
   margin-right: -10px;
   padding-right: 5px;
 }
