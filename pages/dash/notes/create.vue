@@ -80,8 +80,8 @@ const items = [
   ],
 ];
 const save = () => {
-  const html = edjsParser.parse(dat.value);
-  console.log(html);
+  // const html = edjsParser.parse(dat.value);
+  console.log(dat.value);
 };
 </script>
 <template>
