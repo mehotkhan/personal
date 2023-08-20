@@ -5,17 +5,17 @@ export function parseParagraphToMarkdown(blocks) {
 export function parseMarkdownToParagraph(blocks) {
   let paragraphData = {};
 
-  if (blocks.type === 'paragraph') {
+  if (blocks.type === "paragraph") {
     blocks.children.forEach((item) => {
-      if (item.type === 'text') {
+      if (item.type === "text") {
         paragraphData = {
           data: {
             text: item.value,
           },
-          type: 'paragraph',
+          type: "paragraph",
         };
       }
-      if (item.type === 'image') {
+      if (item.type === "image") {
         paragraphData = {
           data: {
             caption: item.title,
@@ -24,7 +24,7 @@ export function parseMarkdownToParagraph(blocks) {
             withBackground: false,
             withBorder: false,
           },
-          type: 'image',
+          type: "image",
         };
       }
     });

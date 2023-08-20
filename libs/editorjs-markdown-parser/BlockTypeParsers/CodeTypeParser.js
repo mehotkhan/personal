@@ -7,7 +7,7 @@ export function parseMarkdownToCode(blocks) {
     data: {
       code: blocks.value,
     },
-    type: 'code',
+    type: "code",
   };
 
   return codeData;

@@ -1,15 +1,5 @@
 <script lang="ts" setup>
-const navbar = ref(null);
 const route = useRoute();
-const { isPublicMember } = useMembers();
-
-// lifecycle
-onMounted(() => {
-  if (!navbar.value) return;
-
-  const { onScroll } = useSticky(navbar.value, 0);
-  setTimeout(() => onScroll(), 50);
-});
 
 const { profile } = useUser();
 </script>
@@ -45,31 +35,22 @@ const { profile } = useUser();
                     :support="true"
                   />
                 </div>
-                <div class="text-gray-400 text-xs">
-                  {{ `  به شبکه اجتماعی نسل نوین خوش آمدید :)` }}
+                <div class="text-xs">
+                  {{ `  به پنل مدیریت بگ‌چه خوش آمدید:)` }}
                 </div>
               </NuxtLink>
             </div>
           </div>
-          <div
-            v-if="route.path.startsWith('/social')"
-            class="flex relative w-full justify-around"
-          >
+          <!-- <div class="flex relative w-full justify-around">
             <SocialStreamTabs class="w-full text-xl" />
             <SocialStreamFilters class="w-70" />
-          </div>
-          <div
-            v-else-if="route.path.startsWith('/dash')"
-            class="flex relative w-full justify-start"
-          >
-            <ManageNavbar class="w-full text-xl" />
-          </div>
+          </div> -->
         </div>
 
         <div class="flex dark:border-gray-50/[0.2] items-center">
           <!-- <ThemeSwitcher /> -->
 
-          <ProfileUserNav v-if="isPublicMember" />
+          <!-- <ProfileUserNav /> -->
           <!-- <LanguageSwitcher /> -->
         </div>
       </div>

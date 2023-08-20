@@ -1,5 +1,5 @@
-import MarkdownParser from './MarkdownParser';
-import MarkdownImporter from './MarkdownImporter';
+import MarkdownParser from "./MarkdownParser";
+import MarkdownImporter from "./MarkdownImporter";
 
 export const MDParser = MarkdownParser;
 

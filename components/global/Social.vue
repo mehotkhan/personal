@@ -13,7 +13,7 @@
       </a>
     </div>
     <div v-if="isDev()" class="flex items-center">
-      <NuxtLink to="/dash">
+      <NuxtLink to="/dashboard">
         <IconUil:cog class="ml-3" />
       </NuxtLink>
       <IconUil:bell class="ml-3" />

@@ -9,11 +9,10 @@
         <div class="flex items-center">
           <LogoArea />
           <MainMenu class="text-md hidden md:text-sm lg:contents" />
-          <Notifications />
+          <!-- <Notifications /> -->
         </div>
         <div class="flex gap-3">
           <MobileMenu class="text-md lg:hidden" />
-          <ManageMenu v-if="isDev()" class="text-md lg:hidden" />
           <Social class="items-center hidden md:flex" />
         </div>
       </div>

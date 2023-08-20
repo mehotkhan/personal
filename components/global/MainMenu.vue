@@ -19,18 +19,6 @@ const route = useRoute();
       >
     </li>
   </ul>
-  <ul v-else-if="isOwner()" class="list-none contents flex-col mt-8">
-    <li v-for="(menu, index) in appConfig.dashMenuItems" :key="index">
-      <NuxtLink
-        :to="menu.to"
-        class="hover:text-black py-1 px-5"
-        :class="
-          menu.to !== '/' && route.path == menu.to ? 'router-link-active' : ''
-        "
-        >{{ menu.title }}</NuxtLink
-      >
-    </li>
-  </ul>
 </template>
 <style lang="scss" scoped>
 .router-link-active {

@@ -24,23 +24,33 @@ export default defineAppConfig({
   dashMenuItems: [
     {
       title: "داشبورد",
-      to: "/dash",
+      to: "/dashboard",
+      icon: "i-heroicons-home",
     },
     {
-      title: "یادداشت‌ها",
-      to: "/dash/notes",
-    },
-    {
-      title: "دیدگاه‌ها",
-      to: "/dash/comments",
+      title: "بلاگ",
+      to: "/dashboard/notes",
+      icon: "i-heroicons-pencil-square",
     },
     {
       title: "سفارش‌ها",
-      to: "/dash/orders",
+      to: "/dashboard/orders",
+      icon: "i-heroicons-shopping-bag",
+    },
+    {
+      title: "دیدگاه‌ها",
+      to: "/dashboard/comments",
+      icon: "i-heroicons-chat-bubble-left-ellipsis",
     },
     {
       title: "تیکت‌ها",
-      to: "/dash/tickets",
+      to: "/dashboard/tickets",
+      icon: "i-heroicons-chat-bubble-left-right",
+    },
+    {
+      title: "تنظیمات",
+      to: "/dashboard/settings",
+      icon: "i-heroicons-cog-6-tooth",
     },
   ],
 });

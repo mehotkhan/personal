@@ -114,10 +114,10 @@ export default defineNuxtConfig({
   turnstile: {
     siteKey: "0x4AAAAAAAB-JPOdcz31l5yM",
   },
-  routeRules: {
-    "/**": { static: true },
-    "/dash/**": { ssr: false },
-  },
+  // routeRules: {
+  //   "/**": { static: true },
+  //   "/dashboard/**": { ssr: false },
+  // },
   // pwa: {
   //   registerType: 'autoUpdate',
   //   workbox: {

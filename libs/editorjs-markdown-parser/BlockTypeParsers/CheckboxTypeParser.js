@@ -8,5 +8,5 @@ export function parseCheckboxToMarkdown(blocks) {
     return `- [ ] ${item.text}`;
   });
 
-  return items.join('\n');
+  return items.join("\n");
 }

@@ -1,7 +1,7 @@
 export function parseDelimiterToMarkdown() {
-  const delimiter = '---';
+  const delimiter = "---";
 
-  return delimiter.concat('\n');
+  return delimiter.concat("\n");
 }
 
 export function parseMarkdownToDelimiter() {
@@ -11,7 +11,7 @@ export function parseMarkdownToDelimiter() {
     data: {
       items: [],
     },
-    type: 'delimiter',
+    type: "delimiter",
   };
 
   return delimiterData;
