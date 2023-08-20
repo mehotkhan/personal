@@ -2,6 +2,9 @@
 useHead({
   title: "یادداشت‌ها",
 });
+definePageMeta({
+  layout: "dashboard",
+});
 // Columns
 const columns = [
   {
@@ -28,7 +31,7 @@ const columns = [
 
 const selectedColumns = ref(columns);
 const columnsTable = computed(() =>
-  columns.filter((column) => selectedColumns.value.includes(column)),
+  columns.filter((column) => selectedColumns.value.includes(column))
 );
 
 // Selected Rows
@@ -100,7 +103,7 @@ const pageCount = ref(10);
 const pageTotal = ref(200); // This value should be dynamic coming from the API
 const pageFrom = computed(() => (page.value - 1) * pageCount.value + 1);
 const pageTo = computed(() =>
-  Math.min(page.value * pageCount.value, pageTotal.value),
+  Math.min(page.value * pageCount.value, pageTotal.value)
 );
 
 // Data
@@ -123,7 +126,7 @@ const { data: todos, pending } = await useLazyAsyncData(
   {
     default: () => [],
     watch: [page, search, searchStatus, pageCount],
-  },
+  }
 );
 const items = [
   [
@@ -188,7 +191,7 @@ const items = [
   >
     <template #header>
       <div class="flex justify-between w-full items-center">
-        <h3 class="m-0">مدیریت یادداشت‌ها</h3>
+        <h2 class="text-xl">افزودن یادداشت</h2>
         <div>
           <UButtonGroup size="xl" class="border-gray-200 border px-1">
             <UButton

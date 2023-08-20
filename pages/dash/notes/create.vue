@@ -124,7 +124,21 @@ const save = () => {
 };
 </script>
 <template>
-  <UCard class="w-full">
+  <UCard
+    class="w-full"
+    :ui="{
+      base: '',
+      ring: '',
+      shadow: '',
+      divide: 'divide-y divide-gray-200 dark:divide-gray-700',
+      header: { padding: 'px-0 py-5' },
+      body: {
+        padding: '',
+        base: 'divide-y divide-gray-200 dark:divide-gray-700',
+      },
+      footer: { padding: 'p-4' },
+    }"
+  >
     <template #header>
       <div class="flex justify-between w-full items-center">
         <h2 class="text-xl">افزودن یادداشت</h2>
