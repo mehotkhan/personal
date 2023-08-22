@@ -8,16 +8,15 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 const loadEditor = () => {
   const mainElement = document.getElementById("editorJs");
-  setTimeout(() => {
-    console.log("loding");
-    if (mainElement !== null) {
-      return editorJS(props.modelValue, (data: any) => {
-        emit("update:modelValue", data);
-      });
-    } else {
+  if (mainElement !== null) {
+    return editorJS(props.modelValue, (data: any) => {
+      emit("update:modelValue", data);
+    });
+  } else {
+    setTimeout(() => {
       loadEditor();
-    }
-  }, 100);
+    }, 50);
+  }
 };
 onMounted(() => {
   loadEditor();

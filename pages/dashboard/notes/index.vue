@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const { allNotes } = useDashboardNotes();
+
 useHead({
   title: "یادداشت‌ها",
 });
@@ -8,43 +10,42 @@ definePageMeta({
 // Columns
 const columns = [
   {
-    key: "id",
-    label: "#",
-    sortable: true,
-  },
-  {
     key: "title",
-    label: "Title",
+    label: "عنوان",
     sortable: true,
   },
   {
-    key: "completed",
-    label: "Status",
+    key: "description",
+    label: "توضیحات",
     sortable: true,
   },
   {
-    key: "actions",
-    label: "Actions",
+    key: "status",
+    label: "وضعیت",
+    sortable: true,
+  },
+  {
+    key: "created_at",
+    label: "ایجاد",
+  },
+  {
+    key: "updated_at",
+    label: "به‌روزرسانی",
+  },
+  {
+    key: "id",
+    label: "عملیات",
     sortable: false,
   },
 ];
 
 const selectedColumns = ref(columns);
 const columnsTable = computed(() =>
-  columns.filter((column) => selectedColumns.value.includes(column)),
+  columns.filter((column) => selectedColumns.value.includes(column))
 );
 
 // Selected Rows
 const selectedRows = ref([]);
-
-function select(row: any) {
-  const index = selectedRows.value.findIndex((item) => item.id === row.id);
-  if (index === -1) {
-    selectedRows.value.push(row);
-  } else {
-    selectedRows.value.splice(index, 1);
-  }
-}
 
 // Actions
 const actions = [
@@ -65,112 +66,26 @@ const actions = [
 ];
 
 // Filters
-const todoStatus = [
+const notesStatus = [
   {
-    key: "uncompleted",
-    label: "In Progress",
-    value: false,
+    key: "draft",
+    label: "پیش‌نویس",
+    value: "draft",
   },
   {
-    key: "completed",
-    label: "Completed",
-    value: true,
+    key: "publish",
+    label: "منتشر شده",
+    value: "publish",
   },
 ];
 
 const search = ref("");
 const selectedStatus = ref([]);
-const searchStatus = computed(() => {
-  if (selectedStatus.value?.length === 0) {
-    return "";
-  }
-
-  if (selectedStatus?.value?.length > 1) {
-    return `?completed=${selectedStatus.value[0].value}&completed=${selectedStatus.value[1].value}`;
-  }
-
-  return `?completed=${selectedStatus.value[0].value}`;
-});
 
 const resetFilters = () => {
   search.value = "";
   selectedStatus.value = [];
 };
-
-// Pagination
-const page = ref(1);
-const pageCount = ref(10);
-const pageTotal = ref(200); // This value should be dynamic coming from the API
-const pageFrom = computed(() => (page.value - 1) * pageCount.value + 1);
-const pageTo = computed(() =>
-  Math.min(page.value * pageCount.value, pageTotal.value),
-);
-
-// Data
-const { data: todos, pending } = await useLazyAsyncData(
-  "todos",
-  () =>
-    $fetch<
-      {
-        id: number;
-        title: string;
-        completed: string;
-      }[]
-    >(`https://jsonplaceholder.typicode.com/todos${searchStatus.value}`, {
-      query: {
-        q: search.value,
-        _page: page.value,
-        _limit: pageCount.value,
-      },
-    }),
-  {
-    default: () => [],
-    watch: [page, search, searchStatus, pageCount],
-  },
-);
-const items = [
-  [
-    {
-      label: "Profile",
-      avatar: {
-        src: "https://avatars.githubusercontent.com/u/739984?v=4",
-      },
-    },
-  ],
-  [
-    {
-      label: "Edit",
-      icon: "i-heroicons-pencil-square-20-solid",
-      shortcuts: ["E"],
-      click: () => {
-        console.log("Edit");
-      },
-    },
-    {
-      label: "Duplicate",
-      icon: "i-heroicons-document-duplicate-20-solid",
-      shortcuts: ["D"],
-      disabled: true,
-    },
-  ],
-  [
-    {
-      label: "Archive",
-      icon: "i-heroicons-archive-box-20-solid",
-    },
-    {
-      label: "Move",
-      icon: "i-heroicons-arrow-right-circle-20-solid",
-    },
-  ],
-  [
-    {
-      label: "Delete",
-      icon: "i-heroicons-trash-20-solid",
-      shortcuts: ["⌘", "D"],
-    },
-  ],
-];
 </script>
 
 <template>
@@ -193,24 +108,13 @@ const items = [
       <div class="flex justify-between w-full items-center">
         <h2 class="text-xl">افزودن یادداشت</h2>
         <div>
-          <UButtonGroup size="xl" class="border-gray-200 border px-1">
-            <UButton
-              variant="soft"
-              label="ایجاد یادداشت جدید"
-              color="white"
-              @click="navigateTo('/dashboard/notes/create')"
-            />
-            <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-              <UButton
-                class="px-3"
-                variant="soft"
-                :padded="false"
-                :ui="{ rounded: 'rounded-0', ring: 'ring-0' }"
-                icon="i-heroicons-chevron-down-20-solid"
-                color="gray"
-              />
-            </UDropdown>
-          </UButtonGroup>
+          <UButton
+            size="xl"
+            variant="outline"
+            label="ایجاد یادداشت جدید"
+            color="green"
+            @click="navigateTo('/dashboard/notes/create')"
+          />
         </div>
       </div>
     </template>
@@ -220,50 +124,24 @@ const items = [
       <UInput
         v-model="search"
         icon="i-heroicons-magnifying-glass-20-solid"
-        placeholder="Search..."
+        placeholder="جستجو ..."
       />
 
       <USelectMenu
         v-model="selectedStatus"
-        :options="todoStatus"
+        :options="notesStatus"
         multiple
-        placeholder="Status"
+        placeholder="وضعیت"
         class="w-40"
       />
     </div>
 
     <!-- Header and Action buttons -->
-    <div class="flex justify-between items-center w-full px-4 py-3">
-      <div class="flex items-center gap-1.5">
-        <span class="text-sm leading-5">Rows per page:</span>
-
-        <USelect
-          v-model="pageCount"
-          :options="[3, 5, 10, 20, 30, 40]"
-          class="me-2 w-20"
-          size="xs"
-        />
-      </div>
-
+    <div class="flex justify-end items-center w-full px-4 py-3">
       <div class="flex gap-1.5 items-center">
-        <UDropdown
-          v-if="selectedRows.length > 1"
-          :items="actions"
-          :ui="{ width: 'w-36' }"
-        >
-          <UButton
-            icon="i-heroicons-chevron-down"
-            trailing
-            variant="soft"
-            size="xs"
-          >
-            Mark as
-          </UButton>
-        </UDropdown>
-
         <USelectMenu v-model="selectedColumns" :options="columns" multiple>
           <UButton icon="i-heroicons-view-columns" variant="soft" size="xs">
-            Columns
+            ستون‌ها
           </UButton>
         </USelectMenu>
 
@@ -275,7 +153,7 @@ const items = [
           :disabled="search === '' && selectedStatus.length === 0"
           @click="resetFilters"
         >
-          Reset
+          ریست
         </UButton>
       </div>
     </div>
@@ -283,75 +161,42 @@ const items = [
     <!-- Table -->
     <UTable
       v-model="selectedRows"
-      :rows="todos"
+      :rows="allNotes"
       :columns="columnsTable"
-      :loading="pending"
       sort-asc-icon="i-heroicons-arrow-up"
       sort-desc-icon="i-heroicons-arrow-down"
-      @select="select"
     >
-      <template #completed-data="{ row }">
+      <template #status-data="{ row }">
         <UBadge
           size="xs"
-          :label="row.completed ? 'Completed' : 'In Progress'"
-          :color="row.completed ? 'emerald' : 'orange'"
+          :label="row.status == 'publish' ? 'منتشر شده' : 'پیش‌نویس'"
+          :color="row.status == 'publish' ? 'emerald' : 'orange'"
           variant="subtle"
         />
       </template>
-
-      <template #actions-data="{ row }">
-        <UButton
-          v-if="!row.completed"
-          icon="i-heroicons-check"
-          size="2xs"
-          color="emerald"
-          variant="outline"
-          :ui="{ rounded: 'rounded-full' }"
-          square
-        />
-
-        <UButton
-          v-else
-          icon="i-heroicons-arrow-path"
-          size="2xs"
-          color="orange"
-          variant="outline"
-          :ui="{ rounded: 'rounded-full' }"
-          square
-        />
+      <template #created_at-data="{ row }">
+        {{ FromNow(row.created_at) }}
+      </template>
+      <template #updated_at-data="{ row }">
+        {{ FromNow(row.created_at) }}
+      </template>
+      <template #id-data="{ row }">
+        <UButtonGroup size="xs">
+          <UButton
+            label="ویرایش"
+            icon="i-heroicons-pencil-square"
+            color="emerald"
+            variant="outline"
+            @click="navigateTo('notes/edit/' + row.id)"
+          />
+          <UButton
+            label="حذف"
+            icon="i-heroicons-trash"
+            color="red"
+            variant="outline"
+          />
+        </UButtonGroup>
       </template>
     </UTable>
-
-    <!-- Number of rows & Pagination -->
-    <template #footer>
-      <div class="flex justify-between items-center">
-        <div>
-          <span class="text-sm leading-5">
-            Showing
-            <span class="font-medium">{{ pageFrom }}</span>
-            to
-            <span class="font-medium">{{ pageTo }}</span>
-            of
-            <span class="font-medium">{{ pageTotal }}</span>
-            results
-          </span>
-        </div>
-
-        <UPagination
-          v-model="page"
-          :page-count="pageCount"
-          :total="pageTotal"
-          :ui="{
-            wrapper: 'flex items-center gap-1',
-            rounded: '!rounded-full min-w-[32px] justify-center',
-            default: {
-              activeButton: {
-                variant: 'outline',
-              },
-            },
-          }"
-        />
-      </div>
-    </template>
   </UCard>
 </template>

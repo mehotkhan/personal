@@ -1,10 +1,14 @@
 <script setup>
-const { saveNotes, editorValues } = useDashboardNotes();
+const { loadNotes, editorValues, updateNotes } = useDashboardNotes();
+const route = useRoute();
+onMounted(() => {
+  loadNotes(route.params.notesId);
+});
 definePageMeta({
   layout: "dashboard",
 });
 useHead({
-  title: "افزودن یادداشت",
+  title: "ویرایش یادداشت",
 });
 
 const items = [
@@ -13,7 +17,7 @@ const items = [
       label: "ذخیره پیش‌نویس",
       icon: "i-heroicons-rectangle-stack",
       click: async () => {
-        await saveNotes("draft");
+        await updateNotes(route.params.notesId, "draft");
         navigateTo("/dashboard/notes");
       },
     },
@@ -26,8 +30,8 @@ const items = [
     },
   ],
 ];
-const publish = async () => {
-  await saveNotes("publish");
+const update = async () => {
+  await updateNotes(route.params.notesId, "publish");
   navigateTo("/dashboard/notes");
 };
 </script>
@@ -49,14 +53,14 @@ const publish = async () => {
   >
     <template #header>
       <div class="flex justify-between w-full items-center">
-        <h2 class="text-xl">افزودن یادداشت</h2>
+        <h2 class="text-xl">ویرایش یادداشت</h2>
         <div>
           <UButtonGroup size="xl" class="border-gray-200 border px-1">
             <UButton
               variant="soft"
-              label="انتشار"
+              label="به‌روز‌رسانی"
               color="green"
-              @click="publish()"
+              @click="update()"
             />
             <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
               <UButton
