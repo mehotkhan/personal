@@ -38,6 +38,11 @@ export default defineAppConfig({
       icon: "i-heroicons-shopping-bag",
     },
     {
+      title: "خبرنامه",
+      to: "/dashboard/newsletter",
+      icon: "i-heroicons-newspaper",
+    },
+    {
       title: "دیدگاه‌ها",
       to: "/dashboard/comments",
       icon: "i-heroicons-chat-bubble-left-ellipsis",

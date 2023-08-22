@@ -27,6 +27,6 @@
         </div>
       </section>
     </Suspense>
-    <SupportStart />
+    <!-- <SupportStart /> -->
   </div>
 </template>

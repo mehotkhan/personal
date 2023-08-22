@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-const route = useRoute();
-
 const { profile } = useUser();
 </script>
 
@@ -17,23 +15,21 @@ const { profile } = useUser();
       >
         <div class="flex items-center justify-between w-full ml-[2rem]">
           <div class="flex items-center w-93">
-            <NuxtLink
-              :external="true"
-              tag="a"
-              class="flex-none ml-3"
-              to="/#intro"
-            >
-              <ProfileUserAvatar :pub="profile.pub" size="md" />
+            <NuxtLink :external="true" tag="a" class="flex-none ml-3" to="/">
+              <UAvatar size="xl" class="text-md avatar" alt="مدیر کل" />
+              <!-- <ProfileUserAvatar :pub="profile.pub" size="md" /> -->
             </NuxtLink>
             <div class="flex flex-col w-[20rem]">
-              <NuxtLink tag="a" class="flex-none ml-3" to="/social">
+              <NuxtLink tag="a" class="flex-none ml-3" to="/dashboard">
                 <div class="text-xl">
-                  <span class="text-orange">سلام، </span>
-                  <ProfileUserName
+                  <span class="text-orange"> سلام، مدیر سیستم </span>
+
+                  <!-- <ProfileUserName
+                    
                     :pub="profile.pub"
                     class="contents"
                     :support="true"
-                  />
+                  /> -->
                 </div>
                 <div class="text-xs">
                   {{ `  به پنل مدیریت بگ‌چه خوش آمدید:)` }}
@@ -84,5 +80,8 @@ const { profile } = useUser();
 .slide-fade-from-up-leave-to {
   transform: translateY(-20px);
   opacity: 0;
+}
+.avatar > span {
+  letter-spacing: 5px !important;
 }
 </style>

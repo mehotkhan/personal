@@ -1,6 +1,4 @@
 <script setup>
-import edjsHTML from "editorjs-html";
-const edjsParser = edjsHTML();
 definePageMeta({
   layout: "dashboard",
 });
@@ -119,7 +117,6 @@ const items = [
   ],
 ];
 const save = () => {
-  // const html = edjsParser.parse(dat.value);
   console.log(dat.value);
 };
 </script>

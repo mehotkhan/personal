@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { $editorJS } = useNuxtApp();
-
 const props = defineProps({
   modelValue: {
     default: {},
@@ -13,7 +11,7 @@ const loadEditor = () => {
   setTimeout(() => {
     console.log("loding");
     if (mainElement !== null) {
-      return $editorJS(props.modelValue, (data: any) => {
+      return editorJS(props.modelValue, (data: any) => {
         emit("update:modelValue", data);
       });
     } else {
