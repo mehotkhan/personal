@@ -5,10 +5,10 @@
     "clean": "rm -rf .nuxt dist .output",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
-    "lint:prettier": "prettier --check .",
     "lint": "pnpm lint:js && pnpm lint:prettier",
     "lint:fix": "prettier --write --list-different . && pnpm lint:js --fix",
+    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
     "pages:dev": "wrangler pages dev .output/public --kv=ALIZEMANI --local",
     "preview": "nuxt preview"
   },
