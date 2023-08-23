@@ -50,7 +50,7 @@ export default () => {
         .limit(100)
         .reverse()
         .toArray(),
-    []
+    [],
   );
   const loadNotes = async (id: string) => {
     const query = await DexieDB.dashboardNotes.get(id);

@@ -41,7 +41,7 @@ const columns = [
 
 const selectedColumns = ref(columns);
 const columnsTable = computed(() =>
-  columns.filter((column) => selectedColumns.value.includes(column))
+  columns.filter((column) => selectedColumns.value.includes(column)),
 );
 
 // Selected Rows
@@ -178,7 +178,7 @@ const resetFilters = () => {
         {{ FromNow(row.created_at) }}
       </template>
       <template #updated_at-data="{ row }">
-        {{ FromNow(row.created_at) }}
+        {{ FromNow(row.updated_at) }}
       </template>
       <template #id-data="{ row }">
         <UButtonGroup size="xs">
