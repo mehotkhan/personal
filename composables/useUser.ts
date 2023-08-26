@@ -45,8 +45,8 @@ export default () => {
         pub,
         priv,
       };
-      setProfileMetadata(newProfile, user);
-      uploadUserDetails(newProfile, pub);
+      // setProfileMetadata(newProfile, user);
+      // uploadUserDetails(newProfile, pub);
       loggedIn.value = true;
     }
     console.log("profile", profile.value);
@@ -91,25 +91,25 @@ export default () => {
   //     body: userData,
   //   });
   // };
-  // const getUserDetails = async (pub: string) => {
-  //   try {
-  //     const api: string = await $fetch(
-  //       baseApiURL() + "social/get-user-details",
-  //       {
-  //         method: "GET",
-  //         params: {
-  //           pub,
-  //         },
-  //       },
-  //     );
-  //     const response: string[] = await JSON.parse(api);
+  const getUserDetails = async (pub: string) => {
+    try {
+      const api: string = await $fetch(
+        baseApiURL() + "social/get-user-details",
+        {
+          method: "GET",
+          params: {
+            pub,
+          },
+        }
+      );
+      const response: string[] = await JSON.parse(api);
 
-  //     return response;
-  //   } catch (error) {
-  //     console.log(error);
-  //     return null;
-  //   }
-  // };
+      return response;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
   // const logOut = async () => {
   //   await $dexieDb.delete();
   //   profile.value = null;
@@ -150,6 +150,6 @@ export default () => {
     registerNew,
     // UpdateUserDetails,
     // profileStream,
-    // getUserDetails,
+    getUserDetails,
   };
 };
